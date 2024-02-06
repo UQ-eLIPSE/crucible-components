@@ -1,3 +1,4 @@
+/// <reference types="vitest" />
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import { resolve } from 'path';
@@ -18,5 +19,10 @@ export default defineConfig({
         }
       }
     }
-  }
+  },
+  test: {
+    files: ["tests/*.test.ts"],
+    globals: true,
+    environment: "jsdom",
+  },
 })
