@@ -1,3 +1,4 @@
+import { describe, test, expect } from "vitest";
 import { mount } from "@vue/test-utils";
 import MCQ from "../src/components/MCQ.vue";
 

@@ -1,28 +1,28 @@
 /// <reference types="vitest" />
-import { defineConfig } from 'vite'
-import vue from '@vitejs/plugin-vue'
-import { resolve } from 'path';
+import { defineConfig } from "vite";
+import vue from "@vitejs/plugin-vue";
+import { resolve } from "path";
 
 export default defineConfig({
   plugins: [vue()],
   build: {
     lib: {
-      entry: resolve(__dirname, 'src/main.ts'),
-      name: 'CrucibleUtils',
-      fileName: (format) => `crucible-utils.${format}.js`
+      entry: resolve(__dirname, "src/main.ts"),
+      name: "CrucibleUtils",
+      fileName: (format) => `crucible-utils.${format}.js`,
     },
     rollupOptions: {
-      external: ['vue'],
+      external: ["vue"],
       output: {
         globals: {
-          vue: 'Vue'
-        }
-      }
-    }
+          vue: "Vue",
+        },
+      },
+    },
   },
   test: {
     files: ["tests/*.test.ts"],
     globals: true,
     environment: "jsdom",
   },
-})
+});

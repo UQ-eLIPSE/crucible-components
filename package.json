@@ -11,11 +11,13 @@
     }
   },
   "types": "./dist/crucible-utils.d.ts",
+  "type": "module",
   "scripts": {
     "test": "vitest --ui tests//*.test.ts",
     "dev": "vite",
     "build": "vue-tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "lint": "eslint --ext .ts,.vue src tests"
   },
   "dependencies": {
     "vue": "^3.3.11"

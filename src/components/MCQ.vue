@@ -1,6 +1,5 @@
 <template>
-    <div>MCQ Test</div>
+  <div>MCQ Test</div>
 </template>
 
-<script setup lang="ts">
-</script>
+<script setup lang="ts"></script>
