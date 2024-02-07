@@ -13,11 +13,16 @@
   "types": "./dist/crucible-utils.d.ts",
   "type": "module",
   "scripts": {
-    "test": "vitest --ui tests//*.test.ts",
+    "prepare": "husky install",
+    "test": "vitest tests/*.test.ts",
+    "test:ui": "vitest --ui tests/*.test.ts",
     "dev": "vite",
     "build": "vue-tsc && vite build",
     "preview": "vite preview",
-    "lint": "eslint --ext .ts,.vue src tests"
+    "lint": "eslint --ext .ts,.vue src tests --fix"
+  },
+  "lint-staged": {
+    "*.{ts,vue}": "eslint --cache --fix"
   },
   "dependencies": {
     "vue": "^3.3.11"
@@ -34,7 +39,9 @@
     "@vue/test-utils": "^2.4.4",
     "eslint": "^8.56.0",
     "eslint-plugin-vue": "^9.21.1",
+    "husky": "^9.0.10",
     "jsdom": "^24.0.0",
+    "lint-staged": "^15.2.2",
     "prettier": "^3.2.5",
     "typescript": "^5.2.2",
     "vite": "^5.0.8",
