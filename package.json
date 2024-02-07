@@ -1,16 +1,16 @@
 {
-  "name": "crucible-utils",
+  "name": "crucible-components",
   "private": true,
   "version": "1.0.0",
-  "main": "./dist/crucible-utils.umd.js",
-  "module": "./dist/crucible-utils.es.js",
+  "main": "./dist/crucible-components.umd.js",
+  "module": "./dist/crucible-components.es.js",
   "exports": {
     ".": {
-      "import": "./dist/crucible-utils.es.js",
-      "require": "./dist/crucible-utils.umd.js"
+      "import": "./dist/crucible-components.es.js",
+      "require": "./dist/crucible-components.umd.js"
     }
   },
-  "types": "./dist/crucible-utils.d.ts",
+  "types": "./dist/crucible-components.d.ts",
   "type": "module",
   "scripts": {
     "prepare": "husky install",
