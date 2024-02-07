@@ -22,7 +22,7 @@
     "lint": "eslint --ext .ts,.vue src tests --fix"
   },
   "lint-staged": {
-    "*.{ts,vue}": "eslint --cache --fix"
+    "**/*.{ts,vue}": "eslint --cache --fix"
   },
   "dependencies": {
     "vue": "^3.3.11"
