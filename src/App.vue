@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import MCQ from "./components/MCQ.vue";
-import { title } from "../question-data.json";
+import { title, options } from "../question-data.json";
 </script>
 
 <template>
@@ -12,7 +12,7 @@ import { title } from "../question-data.json";
       <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
     </a>
   </div>
-  <MCQ :title="title" />
+  <MCQ :title="title" :options="options" />
 </template>
 
 <style scoped>
