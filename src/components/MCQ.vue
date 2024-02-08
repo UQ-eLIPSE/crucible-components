@@ -1,7 +1,9 @@
 <template>
-  <div>{{ title }}</div>
+  <div>MCQ Test</div>
+  <div class="mcq-title">{{ title }}</div>
 </template>
 
 <script setup lang="ts">
-defineProps<{ title: string }>();
+import type { MCQProps } from "@type/MCQ.d.ts";
+defineProps<MCQProps>();
 </script>
