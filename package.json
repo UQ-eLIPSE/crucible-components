@@ -2,19 +2,10 @@
   "name": "crucible-components",
   "private": true,
   "version": "1.0.0",
-  "main": "./dist/crucible-components.umd.js",
-  "module": "./dist/crucible-components.es.js",
-  "exports": {
-    ".": {
-      "import": "./dist/crucible-components.es.js",
-      "require": "./dist/crucible-components.umd.js"
-    }
-  },
-  "types": "./dist/crucible-components.d.ts",
   "type": "module",
   "scripts": {
     "prepare": "husky install",
-    "test": "vitest tests/*.test.ts",
+    "test": "vitest tests/components/*.test.ts",
     "test:ui": "vitest --ui tests/*.test.ts",
     "dev": "vite",
     "build": "vue-tsc && vite build",
@@ -32,7 +23,7 @@
     "@types/node": "^20.11.16",
     "@typescript-eslint/eslint-plugin": "^6.21.0",
     "@typescript-eslint/parser": "^6.21.0",
-    "@vitejs/plugin-vue": "^4.5.2",
+    "@vitejs/plugin-vue": "^5.0.3",
     "@vitest/ui": "^1.2.2",
     "@vue/eslint-config-prettier": "^9.0.0",
     "@vue/eslint-config-typescript": "^12.0.0",

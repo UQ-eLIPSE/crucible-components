@@ -1,27 +1,23 @@
 /// <reference types="vitest" />
+import { fileURLToPath, URL } from "node:url";
+
 import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
-import { resolve } from "path";
 
 export default defineConfig({
   plugins: [vue()],
-  build: {
-    lib: {
-      entry: resolve(__dirname, "src/main.ts"),
-      name: "CrucibleUtils",
-      fileName: (format) => `crucible-utils.${format}.js`,
-    },
-    rollupOptions: {
-      external: ["vue"],
-      output: {
-        globals: {
-          vue: "Vue",
-        },
-      },
+  resolve: {
+    alias: {
+      "@": fileURLToPath(new URL("./src", import.meta.url)),
+      "@components": fileURLToPath(
+        new URL("./src/components", import.meta.url),
+      ),
+      "@data": fileURLToPath(new URL("./data", import.meta.url)),
+      "@type": fileURLToPath(new URL("./src/types", import.meta.url)),
     },
   },
   test: {
-    files: ["tests/*.test.ts"],
+    files: ["tests/components/*.test.ts"],
     globals: true,
     environment: "jsdom",
   },

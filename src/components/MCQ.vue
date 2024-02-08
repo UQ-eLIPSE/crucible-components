@@ -1,17 +1,12 @@
 <template>
-  <div>{{ title }}</div>
+  <div>MCQ Test</div>
+  <div class="mcq-title">{{ title }}</div>
   <ul>
-    <li v-for="[key, value] in questionOptions" :key="key">
-      {{ key }}: {{ value }}
-    </li>
+    <li v-for="[key, value] in options" :key="key">{{ key }}: {{ value }}</li>
   </ul>
 </template>
 
 <script setup lang="ts">
-const props = defineProps<{
-  title: string;
-  options: { [key: string]: string };
-}>();
-
-const questionOptions = Object.entries(props.options);
+import type { MCQProps } from "@type/MCQ.d.ts";
+const { title, options } = defineProps<MCQProps>();
 </script>

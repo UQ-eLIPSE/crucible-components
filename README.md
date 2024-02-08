@@ -7,25 +7,25 @@ Node version requirement: 20
 ## Project Setup
 
 ```sh
-npm install
+yarn install
 ```
 
 ### Compile and Hot-Reload for Development
 
 ```sh
-npm run dev
+yarn run dev
 ```
 
 ### Type-Check, Compile and Minify for Production
 
 ```sh
-npm run build
+yarn run build
 ```
 
 ### Run Headed Component Tests with [Vitest Component Testing](https://vitest.dev)
 
 ```sh
-yarn run test # or `yarn run test:unit` for headless testing
+yarn run test
 ```
 
 ## Recommended IDE Setup
