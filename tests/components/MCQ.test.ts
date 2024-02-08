@@ -1,7 +1,7 @@
 import { describe, test, expect } from "vitest";
 import { mount } from "@vue/test-utils";
-import { title } from "../question-data.json";
-import MCQ from "../src/components/MCQ.vue";
+import { title } from "@data/question-data.json";
+import MCQ from "@components/MCQ.vue";
 
 describe("MCQ.vue", () => {
   test("Renders component with title", () => {

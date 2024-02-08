@@ -9,13 +9,6 @@ module.exports = {
     "@vue/eslint-config-typescript",
     "@vue/eslint-config-prettier",
   ],
-  rules: {
-    "prettier/prettier": [
-      "error",
-      { config: ".prettierrc", ignorePath: ".prettierignore" },
-    ],
-    quotes: ["warn", "double"],
-  },
   parserOptions: {
     ecmaVersion: "latest",
   },
