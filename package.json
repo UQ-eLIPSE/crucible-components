@@ -2,19 +2,10 @@
   "name": "crucible-components",
   "private": true,
   "version": "1.0.0",
-  "main": "./dist/crucible-components.umd.js",
-  "module": "./dist/crucible-components.es.js",
-  "exports": {
-    ".": {
-      "import": "./dist/crucible-components.es.js",
-      "require": "./dist/crucible-components.umd.js"
-    }
-  },
-  "types": "./dist/crucible-components.d.ts",
   "type": "module",
   "scripts": {
     "prepare": "husky install",
-    "test": "vitest tests/*.test.ts",
+    "test": "vitest tests/components/*.test.ts",
     "test:ui": "vitest --ui tests/*.test.ts",
     "dev": "vite",
     "build": "vue-tsc && vite build",
