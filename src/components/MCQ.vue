@@ -2,7 +2,9 @@
   <div>MCQ Test</div>
   <div class="mcq-title">{{ title }}</div>
   <ul>
-    <li v-for="[key, value] in options" :key="key">{{ key }}: {{ value }}</li>
+    <li v-for="(value, key) in options" :key="key" class="mcq-option">
+      {{ key }}: {{ value }}
+    </li>
   </ul>
 </template>
 

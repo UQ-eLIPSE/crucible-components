@@ -1,9 +1,0 @@
-{
-    "title": "The Test Question",
-    "options": {
-        "A": "Answer A",
-        "B": "Answer B",
-        "C": "Answer C"
-    },
-    "correct": "B"
-}

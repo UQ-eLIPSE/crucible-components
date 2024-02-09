@@ -1,6 +1,6 @@
 import { describe, test, expect } from "vitest";
 import { mount } from "@vue/test-utils";
-import { title } from "@data/question-data.json";
+import { title, options } from "@data/question-data.json";
 import MCQ from "@components/MCQ.vue";
 
 describe("MCQ.vue", () => {
@@ -35,14 +35,14 @@ describe("MCQ.vue", () => {
     const questionKeys = Object.keys(options);
 
     // Check that the correct number of options are rendered
-    const optionList = wrapper.findAll("li");
+    const optionList = wrapper.findAll(".mcq-option");
     expect(optionList.length).toBe(questionKeys.length);
 
     // Check that each option is rendered correctly
-    for (const [index, option] of questionKeys) {
-      const option = optionList[index];
+    for (const [index] of questionKeys.entries()) {
+      const renderedOption = optionList[index];
       const [key, value] = Object.entries(options)[index];
-      expect(option.text()).toBe(`${key}: ${value}`);
+      expect(renderedOption.text()).toBe(`${key}: ${value}`);
     }
   });
 });
