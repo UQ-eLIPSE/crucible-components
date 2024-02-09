@@ -77,3 +77,14 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+.mcq-option {
+  cursor: pointer;
+  margin: 0.2rem 0 0.2rem;
+  padding: 1rem 1rem 1rem;
+  border: 1px solid;
+  border-radius: 0.2rem;
+  box-shadow: transparent 0 0.2rem 0.5rem;
+  -webkit-transition: background-color 0.3s;
+  transition: background-color 0.3s;
+}
