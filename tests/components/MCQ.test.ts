@@ -23,7 +23,6 @@ describe("MCQ.vue", () => {
         options,
       },
     });
-    // Rather than looking at the whole wrapper, targetting specific class.
     expect(wrapper.get(".mcq-title").text()).toContain(title);
   });
 
@@ -36,7 +35,7 @@ describe("MCQ.vue", () => {
     const singleOption = [{ text: "Option A", correct: true }];
     const optionList = optionMount({ title, options: singleOption });
     expect(optionList.length).toBe(1);
-    expect(optionList[0].text()).toBe("0: Option A");
+    expect(optionList[0].text()).toBe(singleOption[0].text);
   });
 
   test("Renders component with options", () => {
@@ -46,8 +45,8 @@ describe("MCQ.vue", () => {
 
     for (const [index] of questionKeys.entries()) {
       const renderedOption = optionList[index];
-      const [key, value] = Object.entries(options)[index];
-      expect(renderedOption.text()).toBe(`${key}: ${value.text}`);
+      const value = Object.values(options)[index];
+      expect(renderedOption.text()).toBe(`${value.text}`);
     }
   });
 });

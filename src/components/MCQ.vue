@@ -7,7 +7,7 @@
       :key="key"
       class="mcq-option"
     >
-      {{ key }}: {{ value.text }}
+      {{ value.text }}
     </li>
   </ul>
 </template>
