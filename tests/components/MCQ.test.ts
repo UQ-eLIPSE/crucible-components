@@ -4,33 +4,26 @@ import { title, options } from "@data/question-data.json";
 import MCQ from "@components/MCQ.vue";
 import { MCQProps } from "@/types/MCQ";
 
-/**
- * This file contains utility functions for testing MCQ component
- */
-export const optionMount = (propsData: MCQProps) => {
-  const wrapper = mount(MCQ, { propsData });
-  return wrapper.findAll(".mcq-option");
+const wrapper = mount(MCQ, {
+  props: {
+    title,
+    options,
+  },
+});
+
+export const optionMount = (propsData?: MCQProps) => {
+  const optionWrapper = propsData ? mount(MCQ, { propsData }) : wrapper;
+
+  return optionWrapper.findAll(".mcq-option");
 };
 
 describe("MCQ.vue", () => {
   test("Renders component", () => {
-    const wrapper = mount(MCQ, {
-      props: {
-        title,
-        options,
-      },
-    });
     expect(wrapper.exists()).toBe(true);
     expect(wrapper.text()).toContain("MCQ Test");
   });
 
   test("Renders component with title", () => {
-    const wrapper = mount(MCQ, {
-      props: {
-        title,
-        options,
-      },
-    });
     expect(wrapper.get(".mcq-title").text()).toContain(title);
   });
 
@@ -47,7 +40,7 @@ describe("MCQ.vue", () => {
   });
 
   test("Renders component with options", () => {
-    const optionList = optionMount({ title, options });
+    const optionList = optionMount();
     const questionKeys = Object.keys(options);
     expect(optionList.length).toBe(questionKeys.length);
 
@@ -56,5 +49,21 @@ describe("MCQ.vue", () => {
       const value = Object.values(options)[index];
       expect(renderedOption.text()).toBe(`${value.text}`);
     }
+  });
+
+  test("Selects the first option", async () => {
+    expect(wrapper.vm.selectedOption).toBeNull();
+    const optionList = wrapper.findAll(".mcq-option");
+    const firstOption = optionList[0];
+    await firstOption.trigger("click");
+    expect(firstOption.classes()).toContain("selected");
+    expect(wrapper.vm.selectedOption).toBe("0");
+  });
+
+  test("Check selection text", async () => {
+    const optionList = optionMount();
+    const selectedOption = optionList[2];
+    await selectedOption.trigger("click");
+    expect(selectedOption.text()).toContain(options[2].text);
   });
 });
