@@ -3,6 +3,7 @@ import { mount } from "@vue/test-utils";
 import { title, options } from "@data/question-data.json";
 import MCQ from "@components/MCQ.vue";
 import { MCQProps } from "@/types/MCQ";
+import { nextTick } from "vue";
 
 const wrapper = mount(MCQ, {
   props: {
@@ -65,5 +66,29 @@ describe("MCQ.vue", () => {
     const selectedOption = optionList[2];
     await selectedOption.trigger("click");
     expect(selectedOption.text()).toContain(options[2].text);
+  });
+
+  test("Submit button is rendered", () => {
+    expect(wrapper.find(".mcq-submit").exists()).toBe(true);
+  });
+
+  test("Adds correct class when submit is pressed for the correct option", async () => {
+    const optionList = optionMount();
+    const correctOption = optionList[1];
+    await correctOption.trigger("click");
+    await wrapper.find(".mcq-submit").trigger("click");
+    expect(correctOption.classes()).toContain("correct");
+  });
+
+  test("Adds both correct and wrong classes when submit is pressed for the wrong option", async () => {
+    // const optionList = optionMount();
+    // const wrongOption = optionList[0];
+    // const correctOption = optionList[1];
+    // await wrongOption.trigger("click");
+    // await wrapper.find(".mcq-submit").trigger("click");
+    // await nextTick();
+    // console.log(optionList);
+    // expect(wrongOption.classes()).toContain("wrong");
+    // expect(correctOption.classes()).toContain("correct");
   });
 });

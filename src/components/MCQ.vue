@@ -12,7 +12,7 @@
       {{ value.text }}
     </li>
   </ul>
-  <button class="attempt-btn" :disabled="!selectedOption" @click="submit">
+  <button class="mcq-submit" :disabled="!selectedOption" @click="submit">
     Submit
   </button>
 </template>
