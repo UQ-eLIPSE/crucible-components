@@ -57,4 +57,21 @@ describe("MCQ.vue", () => {
       expect(renderedOption.text()).toBe(`${value.text}`);
     }
   });
+
+  test("Selecting an option", async () => {
+    const wrapper = mount(MCQ, {
+      props: {
+        title,
+        options,
+      },
+    });
+
+    expect(wrapper.vm.selectedOption).toBeNull();
+    const optionList = wrapper.findAll(".mcq-option");
+    const firstOption = optionList[0];
+    await firstOption.trigger("click");
+    expect(firstOption.classes()).toContain("selected");
+    expect(firstOption.text()).toContain(options[0].text);
+    expect(wrapper.vm.selectedOption).toBe("0");
+  });
 });
