@@ -98,3 +98,24 @@ button:focus-visible {
   background-color: #666;
   color: #ffffff;
 }
+.attempt-btn {
+  color: #155724;
+  background-color: #d4edda;
+  border-color: #c3e6cb;
+}
+
+.attempt-btn:disabled {
+  color: #ffffff;
+  background-color: #7f7f7f;
+  border-color: #c3e6cb;
+}
+
+.wrong {
+  background-color: #f2dede;
+  color: #a94442;
+}
+
+.correct {
+  background-color: #dff0d8;
+  color: #3c763d
+}
