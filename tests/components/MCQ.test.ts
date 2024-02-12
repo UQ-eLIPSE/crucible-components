@@ -2,7 +2,15 @@ import { describe, test, expect } from "vitest";
 import { mount } from "@vue/test-utils";
 import { title, options } from "@data/question-data.json";
 import MCQ from "@components/MCQ.vue";
-import { optionMount } from "./MCQUtils";
+import { MCQProps } from "@/types/MCQ";
+
+/**
+ * This file contains utility functions for testing MCQ component
+ */
+export const optionMount = (propsData: MCQProps) => {
+  const wrapper = mount(MCQ, { propsData });
+  return wrapper.findAll(".mcq-option");
+};
 
 describe("MCQ.vue", () => {
   test("Renders component", () => {
