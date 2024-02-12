@@ -1,3 +1,8 @@
 {
-    "title": "The Test Question"
+    "title": "The Test Question",
+    "options": [
+        {"text": "Answer A"},
+        {"text": "Answer B", "correct": true},
+        {"text": "Answer C"}
+    ]
 }
