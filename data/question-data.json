@@ -1,9 +1,8 @@
 {
     "title": "The Test Question",
-    "options": {
-        "A": "Answer A",
-        "B": "Answer B",
-        "C": "Answer C"
-    },
-    "correct": "B"
+    "options": [
+        {"text": "Answer A"},
+        {"text": "Answer B", "correct": true},
+        {"text": "Answer C"}
+    ]
 }
