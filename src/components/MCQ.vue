@@ -36,11 +36,8 @@ const selectOption = (key: string) => {
 
 const optionClass = (key: string) => {
   if (submitted.value) {
-    if (selectedOption.value === key) {
+    if (selectedOption.value === key || options[parseInt(key)].correct) {
       return options[parseInt(key)].correct ? "correct" : "wrong";
-    }
-    if (options[parseInt(key)].correct) {
-      return "correct";
     }
   }
   return selectedOption.value === key ? "selected" : "";
