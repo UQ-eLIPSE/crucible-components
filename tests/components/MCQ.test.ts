@@ -1,15 +1,18 @@
-import { describe, test, expect } from "vitest";
-import { mount } from "@vue/test-utils";
+import { describe, test, expect, beforeEach } from "vitest";
 import { title, options } from "@data/question-data.json";
 import MCQ from "@components/MCQ.vue";
 import { MCQProps } from "@/types/MCQ";
-import { nextTick } from "vue";
+import { mount, VueWrapper } from "@vue/test-utils";
 
-const wrapper = mount(MCQ, {
-  props: {
-    title,
-    options,
-  },
+let wrapper: VueWrapper;
+
+beforeEach(() => {
+  wrapper = mount(MCQ, {
+    props: {
+      title,
+      options,
+    },
+  });
 });
 
 export const optionMount = (propsData?: MCQProps) => {
@@ -81,14 +84,12 @@ describe("MCQ.vue", () => {
   });
 
   test("Adds both correct and wrong classes when submit is pressed for the wrong option", async () => {
-    // const optionList = optionMount();
-    // const wrongOption = optionList[0];
-    // const correctOption = optionList[1];
-    // await wrongOption.trigger("click");
-    // await wrapper.find(".mcq-submit").trigger("click");
-    // await nextTick();
-    // console.log(optionList);
-    // expect(wrongOption.classes()).toContain("wrong");
-    // expect(correctOption.classes()).toContain("correct");
+    const optionList = optionMount();
+    const wrongOption = optionList[0];
+    const correctOption = optionList[1];
+    await wrongOption.trigger("click");
+    await wrapper.find(".mcq-submit").trigger("click");
+    expect(wrongOption.classes()).toContain("wrong");
+    expect(correctOption.classes()).toContain("correct");
   });
 });
