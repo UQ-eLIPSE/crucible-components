@@ -12,19 +12,23 @@
       {{ value.text }}
     </li>
   </ul>
-  <button class="mcq-submit" :disabled="!selectedOption" @click="submit">
-    Submit
-  </button>
+  <MCQSubmit
+    :selected="!!selectedOption"
+    :is-final="true"
+    :submitted="submitted"
+    @submit="handleSubmit"
+  />
 </template>
 
 <script setup lang="ts">
 import { ref } from "vue";
 import type { MCQProps } from "@type/MCQ.d.ts";
+import MCQSubmit from "./MCQSubmit.vue";
 const { title, options } = defineProps<MCQProps>();
 const selectedOption = ref<string | null>(null);
 const submitted = ref<boolean>(false);
 
-const submit = () => {
+const handleSubmit = () => {
   submitted.value = true;
 };
 
