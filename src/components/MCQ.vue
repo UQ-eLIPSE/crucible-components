@@ -6,17 +6,43 @@
       v-for="[key, value] in Object.entries(options)"
       :key="key"
       class="mcq-option"
-      :class="{ selected: selectedOption === key }"
-      @click="selectedOption = key"
+      :class="optionClass(key)"
+      @click="selectCurrentOption(key)"
     >
       {{ value.text }}
     </li>
   </ul>
+  <button class="mcq-submit" :disabled="!selectedOption" @click="submit">
+    Submit
+  </button>
 </template>
 
 <script setup lang="ts">
 import { ref } from "vue";
 import type { MCQProps } from "@type/MCQ.d.ts";
 const { title, options } = defineProps<MCQProps>();
-const selectedOption = ref(null);
+const selectedOption = ref<string | null>(null);
+const submitted = ref<boolean>(false);
+
+const submit = () => {
+  submitted.value = true;
+};
+
+// Only allow selection if the quiz is not submitted
+const selectCurrentOption = (key: string) => {
+  if (!submitted.value) {
+    selectedOption.value = key;
+  }
+};
+
+const optionClass = (key: string) => {
+  const option = options[parseInt(key)];
+  const isSelected = selectedOption.value === key;
+
+  if (!submitted.value) {
+    return isSelected ? "selected" : "";
+  }
+
+  return option.correct ? "correct" : isSelected ? "wrong" : "";
+};
 </script>
