@@ -29,7 +29,19 @@ describe("MCQSubmit", () => {
     expect(wrapper.find(".mcq-submit").text()).toBe("Submit");
   });
 
-  test('displays "Finished" when submitted', () => {
+  test('displays "Submit" when submitted', () => {
+    const wrapper = mount(MCQSubmit, {
+      props: {
+        selected: true,
+        submitted: true,
+        isFinal: false,
+      },
+    });
+
+    expect(wrapper.find(".mcq-submit").text()).toBe("Submit");
+  });
+
+  test('displays "Finished" when submitted and is the final question', () => {
     const wrapper = mount(MCQSubmit, {
       props: {
         selected: true,
