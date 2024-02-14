@@ -12,7 +12,7 @@ describe("MCQSubmit", () => {
       },
     });
 
-    await wrapper.find("mcq-submit").trigger("click");
+    await wrapper.findComponent(MCQSubmit).trigger("click");
 
     expect(wrapper.emitted()).toHaveProperty("submit");
   });
@@ -26,7 +26,7 @@ describe("MCQSubmit", () => {
       },
     });
 
-    expect(wrapper.find("mcq-submit").text()).toBe("Submit");
+    expect(wrapper.find(".mcq-submit").text()).toBe("Submit");
   });
 
   test('displays "Finished" when submitted', () => {
@@ -38,6 +38,6 @@ describe("MCQSubmit", () => {
       },
     });
 
-    expect(wrapper.find("mcq-submit").text()).toBe("Finished");
+    expect(wrapper.find(".mcq-submit").text()).toBe("Finished");
   });
 });
