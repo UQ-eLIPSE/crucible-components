@@ -6,7 +6,7 @@
   "scripts": {
     "prepare": "husky install",
     "test": "vitest tests/components/*.test.ts",
-    "test:ui": "vitest --ui tests/*.test.ts",
+    "test:ui": "vitest --ui tests/components/*.test.ts",
     "dev": "vite",
     "build": "vue-tsc && vite build",
     "preview": "vite preview",
