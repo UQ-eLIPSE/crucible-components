@@ -7,7 +7,7 @@
       :key="key"
       class="mcq-option"
       :class="optionClass(key)"
-      @click="selectOption(key)"
+      @click="selectCurrentOption(key)"
     >
       {{ value.text }}
     </li>
@@ -32,18 +32,21 @@ const handleSubmit = () => {
   submitted.value = true;
 };
 
-const selectOption = (key: string) => {
+// Only allow selection if the quiz is not submitted
+const selectCurrentOption = (key: string) => {
   if (!submitted.value) {
     selectedOption.value = key;
   }
 };
 
 const optionClass = (key: string) => {
-  if (submitted.value) {
-    if (selectedOption.value === key || options[parseInt(key)].correct) {
-      return options[parseInt(key)].correct ? "correct" : "wrong";
-    }
+  const option = options[parseInt(key)];
+  const isSelected = selectedOption.value === key;
+
+  if (!submitted.value) {
+    return isSelected ? "selected" : "";
   }
-  return selectedOption.value === key ? "selected" : "";
+
+  return option.correct ? "correct" : isSelected ? "wrong" : "";
 };
 </script>
