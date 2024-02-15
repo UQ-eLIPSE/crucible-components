@@ -9,10 +9,25 @@
       :class="optionClass(key)"
       @click="selectCurrentOption(key)"
     >
-      {{ value.text }}
+      <input
+        :id="'option-' + key"
+        :key="key"
+        type="radio"
+        :checked="selectedOption === key"
+        name="options"
+        :class="optionClass(key)"
+      />
+      <label :key="key" :for="'option-' + key" class="mcq-option-label">
+        {{ value.text }}
+      </label>
     </li>
   </ul>
-  <button class="mcq-submit" :disabled="!selectedOption" @click="submit">
+
+  <button
+    class="mcq-submit"
+    :disabled="!selectedOption || submitted"
+    @click="submit"
+  >
     Submit
   </button>
 </template>
@@ -30,9 +45,8 @@ const submit = () => {
 
 // Only allow selection if the quiz is not submitted
 const selectCurrentOption = (key: string) => {
-  if (!submitted.value) {
-    selectedOption.value = key;
-  }
+  selectedOption.value = key;
+  submitted.value = false;
 };
 
 const optionClass = (key: string) => {
