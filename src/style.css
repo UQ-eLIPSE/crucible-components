@@ -97,7 +97,7 @@ button:focus-visible {
 }
 
 .mcq-option:hover {
-  background-color: #666;
+  background-color: #7f7f7f;
 }
 
 input[type=radio] {
@@ -112,9 +112,13 @@ input[type=radio] {
 }
 
 .mcq-option.selected {
-  background-color: #666;
+  background-color: #7f7f7f;
   color: white;
   border-color: black;
+}
+
+.selected input[type=radio]:checked {
+  border-color: white;
 }
 
 .selected input[type=radio]:checked::before {
@@ -130,6 +134,10 @@ input[type=radio] {
   color: #a94442;
 }
 
+.wrong input[type=radio]:checked {
+  border-color: #a94442;
+}
+
 .wrong input[type=radio]::before {
   color: #a94442;
   content: "\f00d";
@@ -141,6 +149,10 @@ input[type=radio] {
 .mcq-option.correct {
   background-color: #dff0d8;
   color: #3c763d
+}
+
+.correct input[type=radio]:checked {
+  border-color: #3c763d;
 }
 
 .correct input[type=radio]::before {
