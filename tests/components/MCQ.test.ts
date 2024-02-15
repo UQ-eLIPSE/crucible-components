@@ -1,5 +1,5 @@
 import { describe, test, expect, beforeEach } from "vitest";
-import { title, options } from "@data/question-data.json";
+import { questions as questionList } from "@data/question-data.json";
 import MCQ from "@components/MCQ.vue";
 import { MCQProps } from "@/types/MCQ";
 import { mount, VueWrapper } from "@vue/test-utils";
@@ -9,14 +9,15 @@ let wrapper: VueWrapper;
 beforeEach(() => {
   wrapper = mount(MCQ, {
     props: {
-      title,
-      options,
+      questions: questionList,
     },
   });
 });
 
 export const optionMount = (propsData?: MCQProps) => {
-  const optionWrapper = propsData ? mount(MCQ, { propsData }) : wrapper;
+  const optionWrapper = propsData
+    ? mount(MCQ, { props: { questions: [propsData] } })
+    : wrapper;
 
   return optionWrapper.findAll(".mcq-option");
 };
@@ -28,29 +29,35 @@ describe("MCQ.vue", () => {
   });
 
   test("Renders component with title", () => {
-    expect(wrapper.get(".mcq-title").text()).toContain(title);
+    expect(wrapper.get(".mcq-title").text()).toContain(questionList[0].title);
   });
 
   test("Renders component with no options", () => {
-    const optionList = optionMount({ title, options: [] });
+    const optionList = optionMount({
+      title: questionList[0].title,
+      options: [],
+    });
     expect(optionList.length).toBe(0);
   });
 
   test("Renders component with one option", () => {
     const singleOption = [{ text: "Option A", correct: true }];
-    const optionList = optionMount({ title, options: singleOption });
+    const optionList = optionMount({
+      title: questionList[0].title,
+      options: singleOption,
+    });
     expect(optionList.length).toBe(1);
     expect(optionList[0].text()).toBe(singleOption[0].text);
   });
 
   test("Renders component with options", () => {
     const optionList = optionMount();
-    const questionKeys = Object.keys(options);
+    const questionKeys = Object.keys(questionList[0].options);
     expect(optionList.length).toBe(questionKeys.length);
 
     for (const [index] of questionKeys.entries()) {
       const renderedOption = optionList[index];
-      const value = Object.values(options)[index];
+      const value = Object.values(questionList[0].options)[index];
       expect(renderedOption.text()).toBe(`${value.text}`);
     }
   });
@@ -68,7 +75,7 @@ describe("MCQ.vue", () => {
     const optionList = optionMount();
     const selectedOption = optionList[2];
     await selectedOption.trigger("click");
-    expect(selectedOption.text()).toContain(options[2].text);
+    expect(selectedOption.text()).toContain(questionList[0].options[2].text);
   });
 
   test("Submit button is rendered", () => {

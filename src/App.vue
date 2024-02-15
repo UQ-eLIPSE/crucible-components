@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import MCQ from "./components/MCQ.vue";
-import { title, options } from "@data/question-data.json";
+import { questions } from "@data/question-data.json";
 </script>
 
 <template>
-  <MCQ :title="title" :options="options" />
+  <MCQ :questions="questions" />
 </template>
 
 <style scoped></style>
