@@ -25,7 +25,7 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import MCQSubmit from "./MCQSubmit.vue";
-import { MCQProps } from "@/types/MCQ";
+import { MCQOptions, MCQProps } from "@/types/MCQ";
 const { questions } = defineProps<{ questions: MCQProps[] }>();
 
 const selectedOption = ref<string | null>(null);
@@ -42,7 +42,7 @@ const selectCurrentOption = (key: string) => {
   }
 };
 
-const optionClass = (key: string, options: any) => {
+const optionClass = (key: string, options: MCQOptions[]) => {
   const option = options[parseInt(key)];
   const isSelected = selectedOption.value === key;
 
