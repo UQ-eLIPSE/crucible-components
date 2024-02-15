@@ -100,33 +100,10 @@ button:focus-visible {
   background-color: #7f7f7f;
 }
 
-input[type=radio] {
-  cursor: pointer;
-  width: 18px;
-  height: 18px;
-  border: 1px solid black;
-  font-family: "icomoon";
-  margin: 0 12px 0 0;
-  border-radius: 50%;
-  appearance: none; 
-}
-
 .mcq-option.selected {
   background-color: #7f7f7f;
   color: white;
   border-color: black;
-}
-
-.selected input[type=radio]:checked {
-  border-color: white;
-}
-
-.selected input[type=radio]:checked::before {
-  color: #ffffff;
-  content: "\e906";
-  display: flex;
-  align-items: center;
-  justify-content: center;   
 }
 
 .mcq-option.wrong {
@@ -134,33 +111,9 @@ input[type=radio] {
   color: #a94442;
 }
 
-.wrong input[type=radio]:checked {
-  border-color: #a94442;
-}
-
-.wrong input[type=radio]::before {
-  color: #a94442;
-  content: "\f00d";
-  display: flex;
-  align-items: center;
-  justify-content: center; 
-}
-
 .mcq-option.correct {
   background-color: #dff0d8;
   color: #3c763d
-}
-
-.correct input[type=radio]:checked {
-  border-color: #3c763d;
-}
-
-.correct input[type=radio]::before {
-  color: #3c763d;
-  content: "\f00c";
-  display: flex;
-  align-items: center;
-  justify-content: center; 
 }
 
 .mcq-submit {
@@ -177,4 +130,54 @@ input[type=radio] {
 
 .mcq-option-label {
   cursor: pointer;
+}
+
+input[type=radio] {
+  cursor: pointer;
+  width: 18px;
+  height: 18px;
+  border: 1px solid black;
+  font-family: "icomoon";
+  margin: 0 12px 0 0;
+  border-radius: 50%;
+  appearance: none; 
+}
+
+.selected input[type=radio]:checked {
+  border-color: white;
+}
+
+.selected input[type=radio]:checked::before {
+  color: #ffffff;
+  content: "\e906";
+  display: flex;
+  align-items: center;
+  justify-content: center;   
+}
+
+.correct input[type=radio],
+.correct input[type=radio]:checked {
+  border-color: #3c763d;
+}
+
+.correct input[type=radio]::before {
+  color: #3c763d;
+  border-color: #3c763d;
+  content: "\f00c";
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+}
+
+.wrong input[type=radio]:checked {
+  border-color: #a94442;
+}
+
+.wrong input[type=radio]::before {
+  color: #a94442;
+  border-color: #a94442;
+  content: "\f00d";
+  display: flex;
+  align-items: center;
+  justify-content: center; 
 }
