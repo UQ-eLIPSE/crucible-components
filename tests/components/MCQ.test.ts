@@ -69,6 +69,7 @@ describe("MCQ.vue", () => {
     const selectedOption = optionList[2];
     await selectedOption.trigger("click");
     expect(selectedOption.text()).toContain(options[2].text);
+    expect(selectedOption.find("input").classes()).toContain("selected");
   });
 
   test("Submit button is rendered", () => {
@@ -81,6 +82,7 @@ describe("MCQ.vue", () => {
     await correctOption.trigger("click");
     await wrapper.find(".mcq-submit").trigger("click");
     expect(correctOption.classes()).toContain("correct");
+    expect(correctOption.find("input").classes()).toContain("correct");
   });
 
   test("Adds both correct and wrong classes when submit is pressed for the wrong option", async () => {
@@ -90,6 +92,8 @@ describe("MCQ.vue", () => {
     await wrongOption.trigger("click");
     await wrapper.find(".mcq-submit").trigger("click");
     expect(wrongOption.classes()).toContain("wrong");
+    expect(wrongOption.find("input").classes()).toContain("wrong");
     expect(correctOption.classes()).toContain("correct");
+    expect(correctOption.find("input").classes()).toContain("correct");
   });
 });

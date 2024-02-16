@@ -45,8 +45,7 @@ const submit = () => {
 
 // Only allow selection if the quiz is not submitted
 const selectCurrentOption = (key: string) => {
-  selectedOption.value = key;
-  submitted.value = false;
+  if (!submitted.value) selectedOption.value = key;
 };
 
 const optionClass = (key: string) => {
