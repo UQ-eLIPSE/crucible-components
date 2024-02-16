@@ -9,17 +9,12 @@
       :class="optionClass(key)"
       @click="selectCurrentOption(key)"
     >
-      <input
-        :id="'option-' + key"
-        :key="key"
-        type="radio"
+      <MCQOption
+        :option-key="key"
         :checked="selectedOption === key"
-        name="options"
-        :class="optionClass(key)"
+        :option-text="value.text"
+        :option-class="optionClass"
       />
-      <label :key="key" :for="'option-' + key" class="mcq-option-label">
-        {{ value.text }}
-      </label>
     </li>
   </ul>
 
@@ -35,6 +30,7 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import type { MCQProps } from "@type/MCQ.d.ts";
+import MCQOption from "./MCQOption.vue";
 const { title, options } = defineProps<MCQProps>();
 const selectedOption = ref<string | null>(null);
 const submitted = ref<boolean>(false);
