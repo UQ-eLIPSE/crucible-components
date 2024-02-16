@@ -1,3 +1,8 @@
+@font-face {
+  font-family: "icomoon";
+  src: url("./fonts/icomoon.eot?tvt6dy#iefix") format("embedded-opentype"), url("./fonts/icomoon.ttf?tvt6dy") format("truetype"), url("./fonts/icomoon.woff?tvt6dy") format("woff"), url("./fonts/icomoon.svg?tvt6dy#icomoon") format("svg");
+}
+
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -39,12 +44,10 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
   transition: border-color 0.25s;
 }
-button:hover {
-  border-color: #646cff;
+button:not([disabled]):hover {
+  border-color: black;
 }
 button:focus,
 button:focus-visible {
@@ -89,33 +92,92 @@ button:focus-visible {
   box-shadow: transparent 0 0.2rem 0.5rem;
   -webkit-transition: background-color 0.3s;
   transition: background-color 0.3s;
+  display: flex;
+  align-items: center;
 }
+
 .mcq-option:hover {
-  background-color: #666;
-}
-
-.selected {
-  background-color: #666;
-  color: #ffffff;
-}
-.mcq-submit {
-  color: #155724;
-  background-color: #d4edda;
-  border-color: #c3e6cb;
-}
-
-.mcq-submit:disabled {
-  color: #ffffff;
   background-color: #7f7f7f;
-  border-color: #c3e6cb;
 }
 
-.wrong {
+.mcq-option.selected {
+  background-color: #7f7f7f;
+  color: white;
+  border-color: black;
+}
+
+.mcq-option.wrong {
   background-color: #f2dede;
   color: #a94442;
 }
 
-.correct {
+.mcq-option.correct {
   background-color: #dff0d8;
   color: #3c763d
+}
+
+.mcq-submit {
+  color: #ffffff;
+  background-color: #7f7f7f;
+  border-color: #c3e6cb;
+  cursor: pointer;
+}
+
+.mcq-submit:disabled {  
+  opacity: 50%;
+  cursor: default;
+}
+
+.mcq-option-label {
+  cursor: pointer;
+}
+
+input[type=radio] {
+  cursor: pointer;
+  width: 18px;
+  height: 18px;
+  border: 1px solid black;
+  font-family: "icomoon";
+  margin: 0 12px 0 0;
+  border-radius: 50%;
+  appearance: none; 
+}
+
+.selected input[type=radio]:checked {
+  border-color: white;
+}
+
+.selected input[type=radio]:checked::before {
+  color: #ffffff;
+  content: "\e906";
+  display: flex;
+  align-items: center;
+  justify-content: center;   
+}
+
+.correct input[type=radio],
+.correct input[type=radio]:checked {
+  border-color: #3c763d;
+}
+
+.correct input[type=radio]::before {
+  color: #3c763d;
+  border-color: #3c763d;
+  content: "\f00c";
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+}
+
+.wrong input[type=radio]:checked {
+  border-color: #a94442;
+}
+
+.wrong input[type=radio]::before {
+  color: #a94442;
+  border-color: #a94442;
+  content: "\f00d";
+  display: flex;
+  align-items: center;
+  justify-content: center; 
 }

@@ -9,10 +9,20 @@
       :class="optionClass(key)"
       @click="selectCurrentOption(key)"
     >
-      {{ value.text }}
+      <MCQOption
+        :option-key="key"
+        :checked="selectedOption === key"
+        :option-text="value.text"
+        :option-class="optionClass"
+      />
     </li>
   </ul>
-  <button class="mcq-submit" :disabled="!selectedOption" @click="submit">
+
+  <button
+    class="mcq-submit"
+    :disabled="!selectedOption || submitted"
+    @click="submit"
+  >
     Submit
   </button>
 </template>
@@ -20,6 +30,7 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import type { MCQProps } from "@type/MCQ.d.ts";
+import MCQOption from "./MCQOption.vue";
 const { title, options } = defineProps<MCQProps>();
 const selectedOption = ref<string | null>(null);
 const submitted = ref<boolean>(false);
@@ -30,9 +41,7 @@ const submit = () => {
 
 // Only allow selection if the quiz is not submitted
 const selectCurrentOption = (key: string) => {
-  if (!submitted.value) {
-    selectedOption.value = key;
-  }
+  if (!submitted.value) selectedOption.value = key;
 };
 
 const optionClass = (key: string) => {
