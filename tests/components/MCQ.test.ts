@@ -96,4 +96,9 @@ describe("MCQ.vue", () => {
     expect(correctOption.classes()).toContain("correct");
     expect(correctOption.find("input").classes()).toContain("correct");
   });
+
+  test("Able to submit without selecting an option", async () => {
+    await wrapper.find(".mcq-submit").trigger("click");
+    expect(wrapper.vm.submitted).toBe(false);
+  });
 });

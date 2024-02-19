@@ -7,7 +7,7 @@
       :key="key"
       class="mcq-option"
       :class="optionClass(key)"
-      @click="selectCurrentOption(key)"
+      @click="selectedOption = key"
     >
       <MCQOption
         :option-key="key"
@@ -18,13 +18,7 @@
     </li>
   </ul>
 
-  <button
-    class="mcq-submit"
-    :disabled="!selectedOption || submitted"
-    @click="submit"
-  >
-    Submit
-  </button>
+  <button class="mcq-submit" @click="submit">Submit</button>
 </template>
 
 <script setup lang="ts">
@@ -36,12 +30,8 @@ const selectedOption = ref<string | null>(null);
 const submitted = ref<boolean>(false);
 
 const submit = () => {
+  if (!selectedOption.value) return;
   submitted.value = true;
-};
-
-// Only allow selection if the quiz is not submitted
-const selectCurrentOption = (key: string) => {
-  if (!submitted.value) selectedOption.value = key;
 };
 
 const optionClass = (key: string) => {
