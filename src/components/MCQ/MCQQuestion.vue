@@ -1,8 +1,8 @@
 <template>
   <div>MCQ Test</div>
   <div class="mcq-title">{{ title }}</div>
-  <ul class="mcq-list">
-    <li
+  <div class="mcq-list">
+    <div
       v-for="[key, value] in Object.entries(options)"
       :key="key"
       class="mcq-option"
@@ -12,12 +12,16 @@
       <MCQOption
         :option-key="key"
         :checked="selectedOption === key"
-        :option-text="value.text"
-        :option-class="optionClass"
+        :option="value"
+        :submitted="submitted"
       />
-    </li>
-  </ul>
-
+    </div>
+  </div>
+  <MCQButton
+    :active="!!selectedOption"
+    :is-submitted="submitted"
+    @submit="submit"
+  />
   <button
     class="mcq-submit"
     :disabled="!selectedOption || submitted"
@@ -31,6 +35,7 @@
 import { ref } from "vue";
 import type { MCQProps } from "@type/MCQ.d.ts";
 import MCQOption from "./MCQOption.vue";
+import MCQButton from "./MCQButton.vue";
 const { title, options } = defineProps<MCQProps>();
 const selectedOption = ref<string | null>(null);
 const submitted = ref<boolean>(false);
