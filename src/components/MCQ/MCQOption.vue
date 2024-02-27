@@ -1,10 +1,10 @@
 <template>
   <input
-    type="radio"
-    disabled=true
-    name="options"
     :id="'option-' + optionKey"
     :key="optionKey"
+    type="radio"
+    disabled="true"
+    name="options"
     :checked="checked"
     :class="optionClass()"
   />

@@ -4,8 +4,8 @@
   <div class="mcq-list">
     <div
       v-for="[key, value] in Object.entries(options)"
-      class="mcq-option"
       :key="key"
+      class="mcq-option"
       :class="optionClass(key)"
       @click="selectOption(key)"
     >

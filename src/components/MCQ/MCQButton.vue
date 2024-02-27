@@ -15,7 +15,7 @@
 import { ref } from "vue";
 import type { MCQButton } from "@type/MCQ.d.ts";
 
-const { submitted, buttonDisabled } = defineProps <MCQButton>();
+const { submitted, buttonDisabled } = defineProps<MCQButton>();
 const buttonClass = ref<string>("submit");
 const buttonText = ref<string>("Submit");
 const emit = defineEmits(["submitAnswer", "nextQuestion"]);
