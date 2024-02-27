@@ -1,24 +1,34 @@
 <template>
   <div>
-    <button class="mcq-submit" @click="handleClick">{{ buttonText }}</button>
+    <button
+      class="mcq-button"
+      :class="buttonClass"
+      :disabled="buttonDisabled"
+      @click="handleButtonClick(submitted)"
+    >
+      {{ buttonText }}
+    </button>
   </div>
 </template>
 
 <script setup lang="ts">
-import { computed } from "vue";
+import { ref } from "vue";
+import type { MCQButton } from "@type/MCQ.d.ts";
 
-const { active, isSubmitted } = defineProps({
-  active: Boolean,
-  isSubmitted: Boolean,
-});
+const { submitted, buttonDisabled } = defineProps <MCQButton>();
+const buttonClass = ref<string>("submit");
+const buttonText = ref<string>("Submit");
+const emit = defineEmits(["submitAnswer", "nextQuestion"]);
 
-const emit = defineEmits(["submit"]);
-
-const handleClick = () => {
-  emit("submit");
+const handleButtonClick = (submittedValue: boolean) => {
+  if (!submittedValue) {
+    emit("submitAnswer");
+    buttonClass.value = "next";
+    buttonText.value = "Next";
+  } else if (submittedValue) {
+    emit("nextQuestion");
+    buttonClass.value = "submit";
+    buttonText.value = "Submit";
+  }
 };
-
-console.log(active, isSubmitted);
-
-const buttonText = computed(() => (active && isSubmitted ? "Next" : "Submit"));
 </script>

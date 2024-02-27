@@ -1,10 +1,11 @@
 <template>
   <input
+    type="radio"
+    disabled=true
+    name="options"
     :id="'option-' + optionKey"
     :key="optionKey"
-    type="radio"
     :checked="checked"
-    name="options"
     :class="optionClass()"
   />
   <label :key="optionKey" :for="'option-' + optionKey" class="mcq-option-label">

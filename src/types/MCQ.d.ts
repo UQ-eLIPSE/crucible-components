@@ -10,6 +10,11 @@ export interface MCQOptions {
   correct?: boolean;
 }
 
+export interface MCQButton {
+  submitted: boolean;
+  buttonDisabled: boolean;
+}
+
 export interface MCQRadioOption {
   optionKey: string;
   checked: boolean;

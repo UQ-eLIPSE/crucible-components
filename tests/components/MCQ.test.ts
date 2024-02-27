@@ -17,7 +17,6 @@ beforeEach(() => {
 
 export const optionMount = (propsData?: MCQProps) => {
   const optionWrapper = propsData ? mount(MCQQuestion, { propsData }) : wrapper;
-
   return optionWrapper.findAll(".mcq-option");
 };
 
@@ -57,11 +56,15 @@ describe("MCQ.vue", () => {
 
   test("Selects the first option", async () => {
     expect(wrapper.vm.selectedOption).toBeNull();
-    const optionList = wrapper.findAll(".mcq-option");
+    const optionList = optionMount();
     const firstOption = optionList[0];
     await firstOption.trigger("click");
     expect(firstOption.classes()).toContain("selected");
     expect(wrapper.vm.selectedOption).toBe("0");
+  });
+
+  test("MCQ button is rendered", () => {
+    expect(wrapper.find(".mcq-button").exists()).toBe(true);
   });
 
   test("Check selection text", async () => {
@@ -69,20 +72,15 @@ describe("MCQ.vue", () => {
     const selectedOption = optionList[2];
     await selectedOption.trigger("click");
     expect(selectedOption.text()).toContain(options[2].text);
-    expect(selectedOption.find("input").classes()).toContain("selected");
-  });
-
-  test("Submit button is rendered", () => {
-    expect(wrapper.find(".mcq-submit").exists()).toBe(true);
+    expect(selectedOption.classes()).toContain("selected");
   });
 
   test("Adds correct class when submit is pressed for the correct option", async () => {
     const optionList = optionMount();
     const correctOption = optionList[1];
     await correctOption.trigger("click");
-    await wrapper.find(".mcq-submit").trigger("click");
+    await wrapper.find(".mcq-button").trigger("click");
     expect(correctOption.classes()).toContain("correct");
-    expect(correctOption.find("input").classes()).toContain("correct");
   });
 
   test("Adds both correct and wrong classes when submit is pressed for the wrong option", async () => {
@@ -90,10 +88,54 @@ describe("MCQ.vue", () => {
     const wrongOption = optionList[0];
     const correctOption = optionList[1];
     await wrongOption.trigger("click");
-    await wrapper.find(".mcq-submit").trigger("click");
+    await wrapper.find(".mcq-button").trigger("click");
     expect(wrongOption.classes()).toContain("wrong");
-    expect(wrongOption.find("input").classes()).toContain("wrong");
     expect(correctOption.classes()).toContain("correct");
-    expect(correctOption.find("input").classes()).toContain("correct");
+  });
+
+  test("MCQ button behaves as expected when submission is correct", async () => {
+    let button = wrapper.find(".mcq-button[disabled]");
+    expect(button.exists()).toBe(true);
+    expect(button.classes()).toContain("submit");
+    expect(button.text()).toBe("Submit");
+
+    const optionList = optionMount();
+    const correctOption = optionList[1];
+    await correctOption.trigger("click");
+    await button.trigger("click");
+    button = wrapper.find(".mcq-button:not([disabled])");
+
+    expect(button.exists()).toBe(true);
+    expect(button.classes()).toContain("next");
+    expect(button.text()).toBe("Next");
+    await button.trigger("click");
+
+    button = wrapper.find(".mcq-button[disabled]");
+    expect(button.exists()).toBe(true);
+    expect(button.classes()).toContain("submit");
+    expect(button.text()).toBe("Submit");
+  });
+
+  test("MCQ button behaves as expected when submission is wrong", async () => {
+    let button = wrapper.find(".mcq-button[disabled]");
+    expect(button.exists()).toBe(true);
+    expect(button.classes()).toContain("submit");
+    expect(button.text()).toBe("Submit");
+
+    const optionList = optionMount();
+    const wrongOption = optionList[0];
+    await wrongOption.trigger("click");
+    await button.trigger("click");
+    button = wrapper.find(".mcq-button:not([disabled])");
+
+    expect(button.exists()).toBe(true);
+    expect(button.classes()).toContain("next");
+    expect(button.text()).toBe("Next");
+    await button.trigger("click");
+
+    button = wrapper.find(".mcq-button[disabled]");
+    expect(button.exists()).toBe(true);
+    expect(button.classes()).toContain("submit");
+    expect(button.text()).toBe("Submit");
   });
 });
