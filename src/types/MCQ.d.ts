@@ -1,3 +1,5 @@
+import { Ref } from "vue";
+
 export interface MCQProps {
   title: string;
   options: MCQOptions[];
@@ -8,9 +10,14 @@ export interface MCQOptions {
   correct?: boolean;
 }
 
+export interface MCQButton {
+  submitted: boolean;
+  buttonDisabled: boolean;
+}
+
 export interface MCQRadioOption {
   optionKey: string;
   checked: boolean;
-  optionText: string;
-  optionClass: (key: string) => string;
+  option: MCQOptions;
+  submitted: boolean;
 }

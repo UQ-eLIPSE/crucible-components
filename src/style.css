@@ -81,6 +81,7 @@ button:focus-visible {
 .mcq-list {
   list-style: none;
   padding: 0;
+  margin: 1rem;
 }
 
 .mcq-option {
@@ -116,16 +117,24 @@ button:focus-visible {
   color: #3c763d
 }
 
-.mcq-submit {
+.mcq-button {
   color: #ffffff;
   background-color: #7f7f7f;
   border-color: #c3e6cb;
   cursor: pointer;
 }
 
-.mcq-submit:disabled {  
+.mcq-button:disabled {  
   opacity: 50%;
   cursor: default;
+}
+
+.submit {
+  background-color: #7f7f7f;
+}
+
+.next {
+  background-color: #2a52be;
 }
 
 .mcq-option-label {

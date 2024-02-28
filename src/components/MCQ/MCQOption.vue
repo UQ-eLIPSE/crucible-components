@@ -3,17 +3,25 @@
     :id="'option-' + optionKey"
     :key="optionKey"
     type="radio"
-    :checked="checked"
+    disabled="true"
     name="options"
-    :class="optionClass(optionKey)"
+    :checked="checked"
+    :class="optionClass()"
   />
   <label :key="optionKey" :for="'option-' + optionKey" class="mcq-option-label">
-    {{ optionText }}
+    {{ option.text }}
   </label>
 </template>
 
 <script setup lang="ts">
 import type { MCQRadioOption } from "@type/MCQ.d.ts";
-const { optionKey, checked, optionText, optionClass } =
-  defineProps<MCQRadioOption>();
+const { optionKey, checked, option, submitted } = defineProps<MCQRadioOption>();
+
+const optionClass = () => {
+  if (!submitted) {
+    return checked ? "selected" : "";
+  }
+
+  return option.correct ? "correct" : checked ? "wrong" : "";
+};
 </script>
