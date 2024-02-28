@@ -49,9 +49,12 @@ const nextQuestion = () => {
 
 // Only allow selection if the quiz is not submitted
 const selectOption = (key: string) => {
-  if (!submitted.value) {
+  if (!submitted.value && selectedOption.value != key) {
     selectedOption.value = key;
     buttonDisabled.value = false;
+  } else if (!submitted.value && selectedOption.value === key) {
+    selectedOption.value = null;
+    buttonDisabled.value = true;
   }
 };
 
