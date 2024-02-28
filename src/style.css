@@ -85,7 +85,7 @@ button:focus-visible {
 }
 
 .mcq-option {
-  cursor: pointer;
+  cursor: default;
   margin: 0.2rem 0 0.2rem;
   padding: 1rem 1rem 1rem;
   border: 1px solid;
@@ -97,7 +97,8 @@ button:focus-visible {
   align-items: center;
 }
 
-.mcq-option:hover {
+.mcq-option:not(.ignore-hover):hover {
+  cursor: pointer;
   background-color: #7f7f7f;
 }
 
@@ -114,7 +115,7 @@ button:focus-visible {
 
 .mcq-option.correct {
   background-color: #dff0d8;
-  color: #3c763d
+  color: #3c763d;
 }
 
 .mcq-button {
@@ -137,12 +138,12 @@ button:focus-visible {
   background-color: #2a52be;
 }
 
-.mcq-option-label {
+.mcq-option-label:not(.ignore-hover):hover {
   cursor: pointer;
 }
 
 input[type=radio] {
-  cursor: pointer;
+  cursor: default;
   width: 18px;
   height: 18px;
   border: 1px solid black;
@@ -150,6 +151,10 @@ input[type=radio] {
   margin: 0 12px 0 0;
   border-radius: 50%;
   appearance: none; 
+}
+
+input[type=radio]:not(.ignore-hover):hover {
+  cursor: pointer;
 }
 
 .selected input[type=radio]:checked {

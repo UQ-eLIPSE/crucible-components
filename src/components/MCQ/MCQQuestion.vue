@@ -66,6 +66,10 @@ const optionClass = (key: string) => {
     return isSelected ? "selected" : "";
   }
 
-  return option.correct ? "correct" : isSelected ? "wrong" : "";
+  return option.correct
+    ? "correct ignore-hover"
+    : isSelected
+      ? "wrong ignore-hover"
+      : "ignore-hover";
 };
 </script>
