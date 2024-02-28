@@ -42,10 +42,6 @@ describe("MCQ.vue", () => {
     expect(optionList[0].text()).toBe(singleOption[0].text);
   });
 
-  it("Initially has no selected option", () => {
-    expect(wrapper.vm.selectedOption).toBeNull();
-  });
-
   it("Renders component with options", () => {
     const optionList = optionMount();
     const questionKeys = Object.keys(options);
@@ -58,6 +54,10 @@ describe("MCQ.vue", () => {
     }
   });
 
+  it("Initially has no selected option", () => {
+    expect(wrapper.vm.selectedOption).toBeNull();
+  });
+
   it("Selects the first option", async () => {
     const optionList = optionMount();
     const firstOption = optionList[0];
@@ -66,7 +66,7 @@ describe("MCQ.vue", () => {
     expect(wrapper.vm.selectedOption).toBe("0");
   });
 
-  it("Check selection text", async () => {
+  it("Adds correct class when option is selected", async () => {
     const optionList = optionMount();
     const selectedOption = optionList[2];
     await selectedOption.trigger("click");
