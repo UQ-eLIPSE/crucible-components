@@ -21,7 +21,7 @@ export const optionMount = (propsData?: MCQProps) => {
 };
 
 describe("MCQButton.vue", () => {
-  it("MCQ button should initially allow skip question", () => {
+  it("Should initially allow to skip question as there is no selection", () => {
     expect(wrapper.get(".mcq-button").classes()).toContain("skip");
     expect(wrapper.get(".mcq-button").text()).toBe("Skip");
   });
@@ -53,7 +53,7 @@ describe("MCQButton.vue", () => {
     expect(wrapper.get(".mcq-button").text()).toBe("Skip");
   });
 
-  it("MCQ button should allow skip question after clearing selection", async () => {
+  it("Should allow skip question after clearing selection", async () => {
     const optionList = optionMount();
     const option = optionList[1];
     await option.trigger("click");
