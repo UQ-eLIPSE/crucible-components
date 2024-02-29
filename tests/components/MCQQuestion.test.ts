@@ -32,16 +32,13 @@ describe("MCQQuestion.vue", () => {
   });
 
   it("Renders component with no options", () => {
-    const optionList = optionMount({ title: title, options: [] });
+    const optionList = optionMount({ title, options: [] });
     expect(optionList.length).toBe(0);
   });
 
   it("Renders component with one option", () => {
     const singleOption = [{ text: "Option A", correct: true }];
-    const optionList = optionMount({
-      title: title,
-      options: singleOption,
-    });
+    const optionList = optionMount({ title, options: singleOption });
     expect(optionList.length).toBe(1);
     expect(optionList[0].text()).toBe(singleOption[0].text);
   });
