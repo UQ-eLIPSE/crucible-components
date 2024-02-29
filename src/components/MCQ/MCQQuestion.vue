@@ -27,11 +27,11 @@
 
 <script setup lang="ts">
 import { ref } from "vue";
-import type { MCQ, MCQOptions } from "@type/MCQ.d.ts";
+import type { MCQProps, MCQOptions } from "@type/MCQ.d.ts";
 import MCQOption from "./MCQOption.vue";
 import MCQButton from "./MCQButton.vue";
 
-const { title, options } = defineProps<MCQ>();
+const { title, options } = defineProps<MCQProps>();
 const selectedOption = ref<string | null>(null);
 const submitted = ref<boolean>(false);
 const emit = defineEmits(["nextQuestion"]);

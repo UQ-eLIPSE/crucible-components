@@ -2,7 +2,7 @@ export interface MCQQuiz {
   questions: MCQProps[];
 }
 
-export interface MCQ {
+export interface MCQProps {
   title: string;
   options: MCQOptions[];
 }
