@@ -41,7 +41,7 @@ describe("MCQOption.vue", () => {
 
   it("Adds correct class when submit is pressed for the correct option", async () => {
     const optionList = optionMount();
-    const correctOption = optionList[0];
+    const correctOption = optionList[1];
     await correctOption.trigger("click");
     await wrapper.get(".mcq-button").trigger("click");
     expect(correctOption.classes()).toContain("correct");
@@ -49,8 +49,8 @@ describe("MCQOption.vue", () => {
 
   it("Adds both correct and wrong classes when submit is pressed for the wrong option", async () => {
     const optionList = optionMount();
-    const wrongOption = optionList[1];
-    const correctOption = optionList[0];
+    const wrongOption = optionList[0];
+    const correctOption = optionList[1];
     await wrongOption.trigger("click");
     await wrapper.get(".mcq-button").trigger("click");
     expect(wrongOption.classes()).toContain("wrong");
@@ -62,8 +62,8 @@ describe("MCQOption.vue", () => {
     const option = optionList[0];
     await option.trigger("click");
     await wrapper.get(".mcq-button").trigger("click");
-    optionList.forEach((optionInList) => {
-      expect(optionInList.classes()).toContain("ignore-hover");
+    optionList.forEach((option) => {
+      expect(option.classes()).toContain("ignore-hover");
     });
   });
 
@@ -72,8 +72,8 @@ describe("MCQOption.vue", () => {
     const option = optionList[1];
     await option.trigger("click");
     await wrapper.get(".mcq-button").trigger("click");
-    optionList.forEach((optionInList) => {
-      expect(optionInList.classes()).toContain("ignore-hover");
+    optionList.forEach((option) => {
+      expect(option.classes()).toContain("ignore-hover");
     });
   });
 });
