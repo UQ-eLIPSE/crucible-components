@@ -12,7 +12,7 @@ export interface MCQOptions {
 
 export interface MCQButton {
   submitted: boolean;
-  buttonDisabled: boolean;
+  selectedOption: string | null;
 }
 
 export interface MCQRadioOption {

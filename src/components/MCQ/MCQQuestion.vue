@@ -19,9 +19,10 @@
   </div>
   <MCQButton
     :submitted="submitted"
-    :button-disabled="buttonDisabled"
+    :selected-option="selectedOption"
     @submit-answer="submitAnswer"
     @next-question="nextQuestion"
+    @skip-question="nextQuestion"
   />
 </template>
 
@@ -34,16 +35,13 @@ import MCQButton from "./MCQButton.vue";
 const { title, options } = defineProps<MCQProps>();
 const selectedOption = ref<string | null>(null);
 const submitted = ref<boolean>(false);
-const buttonDisabled = ref<boolean>(true);
 
 const submitAnswer = () => {
   submitted.value = true;
-  buttonDisabled.value = false;
 };
 
 const nextQuestion = () => {
   submitted.value = false;
-  buttonDisabled.value = true;
   selectedOption.value = null;
 };
 
@@ -51,10 +49,8 @@ const nextQuestion = () => {
 const selectOption = (key: string) => {
   if (!submitted.value && selectedOption.value != key) {
     selectedOption.value = key;
-    buttonDisabled.value = false;
   } else if (!submitted.value && selectedOption.value === key) {
     selectedOption.value = null;
-    buttonDisabled.value = true;
   }
 };
 

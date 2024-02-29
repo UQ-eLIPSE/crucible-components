@@ -2,11 +2,10 @@
   <div>
     <button
       class="mcq-button"
-      :class="buttonClass"
-      :disabled="buttonDisabled"
-      @click="handleButtonClick(submitted)"
+      :class="getButtonClassAndText(submitted, selectedOption).class"
+      @click="handleButtonClick(submitted, selectedOption)"
     >
-      {{ buttonText }}
+      {{ getButtonClassAndText(submitted, selectedOption).text }}
     </button>
   </div>
 </template>
@@ -15,22 +14,41 @@
 import { ref } from "vue";
 import type { MCQButton } from "@type/MCQ.d.ts";
 
-const { submitted, buttonDisabled } = defineProps<MCQButton>();
-const buttonClass = ref<string>("submit");
-const buttonText = ref<string>("Submit");
-const emit = defineEmits(["submitAnswer", "nextQuestion"]);
+const { submitted, selectedOption } = defineProps<MCQButton>();
+const buttonClass = ref<string>("skip");
+const buttonText = ref<string>("Skip");
+const emit = defineEmits(["submitAnswer", "nextQuestion", "skipQuestion"]);
 
-const handleButtonClick = (submittedValue: boolean) => {
-  if (!submittedValue) {
-    emit("submitAnswer");
-    buttonClass.value = "next";
-    buttonText.value = "Next";
-  } else if (submittedValue) {
-    emit("nextQuestion");
-    buttonClass.value = "submit";
-    buttonText.value = "Submit";
+const handleButtonClick = (
+  submittedValue: boolean,
+  selectedOptionValue: string | null,
+) => {
+  if (!submittedValue && selectedOptionValue) {
+    modifyButtonAndEmit("next", "Next", "submitAnswer");
+  } else if (submittedValue && selectedOptionValue) {
+    modifyButtonAndEmit("skip", "Skip", "nextQuestion");
+  } else if (!submittedValue && !selectedOptionValue) {
+    modifyButtonAndEmit("skip", "Skip", "skipQuestion");
   }
 };
+
+const modifyButtonAndEmit = (
+  className: string,
+  text: string,
+  event: "submitAnswer" | "nextQuestion" | "skipQuestion",
+) => {
+  buttonClass.value = className;
+  buttonText.value = text;
+  emit(event);
+};
+
+const getButtonClassAndText = (
+  submittedValue: boolean,
+  selectedOptionValue: string | null,
+) =>
+  !submittedValue && selectedOptionValue
+    ? { class: "submit", text: "Submit" }
+    : { class: buttonClass.value, text: buttonText.value };
 </script>
 
 <style scoped>
@@ -57,7 +75,6 @@ button:focus-visible {
   border-color: #c3e6cb;
   cursor: pointer;
 }
-
 .mcq-button:disabled {
   opacity: 50%;
   cursor: default;
@@ -66,8 +83,10 @@ button:focus-visible {
 .submit {
   background-color: #7f7f7f;
 }
-
 .next {
   background-color: #2a52be;
+}
+.skip {
+  background-color: #569821;
 }
 </style>
