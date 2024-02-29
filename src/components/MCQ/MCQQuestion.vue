@@ -49,9 +49,12 @@ const nextQuestion = () => {
 
 // Only allow selection if the quiz is not submitted
 const selectOption = (key: string) => {
-  if (!submitted.value) {
+  if (!submitted.value && selectedOption.value != key) {
     selectedOption.value = key;
     buttonDisabled.value = false;
+  } else if (!submitted.value && selectedOption.value === key) {
+    selectedOption.value = null;
+    buttonDisabled.value = true;
   }
 };
 
@@ -63,6 +66,52 @@ const optionClass = (key: string) => {
     return isSelected ? "selected" : "";
   }
 
-  return option.correct ? "correct" : isSelected ? "wrong" : "";
+  return option.correct
+    ? "correct ignore-hover"
+    : isSelected
+      ? "wrong ignore-hover"
+      : "ignore-hover";
 };
 </script>
+
+<style scoped>
+.mcq-list {
+  list-style: none;
+  padding: 0;
+  margin: 1rem;
+}
+
+.mcq-option {
+  cursor: default;
+  margin: 0.2rem 0 0.2rem;
+  padding: 1rem 1rem 1rem;
+  border: 1px solid;
+  border-radius: 0.2rem;
+  box-shadow: transparent 0 0.2rem 0.5rem;
+  -webkit-transition: background-color 0.3s;
+  transition: background-color 0.3s;
+  display: flex;
+  align-items: center;
+}
+
+.mcq-option:not(.ignore-hover):hover {
+  cursor: pointer;
+  background-color: #7f7f7f;
+}
+
+.mcq-option.selected {
+  background-color: #7f7f7f;
+  color: white;
+  border-color: black;
+}
+
+.mcq-option.wrong {
+  background-color: #f2dede;
+  color: #a94442;
+}
+
+.mcq-option.correct {
+  background-color: #dff0d8;
+  color: #3c763d;
+}
+</style>

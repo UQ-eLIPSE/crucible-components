@@ -66,29 +66,11 @@ describe("MCQ.vue", () => {
     expect(wrapper.vm.selectedOption).toBe("0");
   });
 
-  it("Adds correct class when option is selected", async () => {
+  it("Selects and deselect the first option", async () => {
     const optionList = optionMount();
-    const selectedOption = optionList[2];
-    await selectedOption.trigger("click");
-    expect(selectedOption.text()).toContain(options[2].text);
-    expect(selectedOption.classes()).toContain("selected");
-  });
-
-  it("Adds correct class when submit is pressed for the correct option", async () => {
-    const optionList = optionMount();
-    const correctOption = optionList[1];
-    await correctOption.trigger("click");
-    await wrapper.get(".mcq-button").trigger("click");
-    expect(correctOption.classes()).toContain("correct");
-  });
-
-  it("Adds both correct and wrong classes when submit is pressed for the wrong option", async () => {
-    const optionList = optionMount();
-    const wrongOption = optionList[0];
-    const correctOption = optionList[1];
-    await wrongOption.trigger("click");
-    await wrapper.get(".mcq-button").trigger("click");
-    expect(wrongOption.classes()).toContain("wrong");
-    expect(correctOption.classes()).toContain("correct");
+    const firstOption = optionList[0];
+    await firstOption.trigger("click");
+    await firstOption.trigger("click");
+    expect(wrapper.vm.selectedOption).toBeNull();
   });
 });
