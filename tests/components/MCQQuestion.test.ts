@@ -21,7 +21,7 @@ const optionMount = (propsData?: MCQ) => {
   return optionWrapper.findAll(".mcq-option");
 };
 
-describe("MCQ.vue", () => {
+describe("MCQQuestion.vue", () => {
   it("Renders component", () => {
     expect(wrapper.exists()).toBe(true);
     expect(wrapper.text()).toContain("MCQ Test");

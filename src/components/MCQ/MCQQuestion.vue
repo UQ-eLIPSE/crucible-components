@@ -5,7 +5,7 @@
       v-for="[key, value] in Object.entries(options)"
       :key="key"
       class="mcq-option"
-      :class="optionClass(key)"
+      :class="optionClass(key, options)"
       @click="selectOption(key)"
     >
       <MCQOption
@@ -27,7 +27,7 @@
 
 <script setup lang="ts">
 import { ref } from "vue";
-import type { MCQ } from "@type/MCQ.d.ts";
+import type { MCQ, MCQOptions } from "@type/MCQ.d.ts";
 import MCQOption from "./MCQOption.vue";
 import MCQButton from "./MCQButton.vue";
 
@@ -55,8 +55,8 @@ const selectOption = (key: string) => {
   }
 };
 
-const optionClass = (key: string) => {
-  const option = options[parseInt(key)];
+const optionClass = (key: string, updatedOptions: MCQOptions[]) => {
+  const option = updatedOptions[parseInt(key)];
   const isSelected = selectedOption.value === key;
 
   if (!submitted.value) {

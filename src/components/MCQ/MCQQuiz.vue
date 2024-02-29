@@ -1,5 +1,5 @@
 <template>
-  <div>MCQ Test</div>
+  <div>MCQ Quiz</div>
   <MCQQuestion
     :title="questions[currentQuestionIndex].title"
     :options="questions[currentQuestionIndex].options"
