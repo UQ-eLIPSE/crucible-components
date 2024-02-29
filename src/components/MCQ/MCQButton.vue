@@ -41,16 +41,12 @@ const handleButtonClick = (
 const getButtonClass = (
   submittedValue: boolean,
   selectedOptionValue: string | null,
-) => {
-  return !submittedValue && selectedOptionValue ? "submit" : buttonClass.value;
-};
+) => (!submittedValue && selectedOptionValue ? "submit" : buttonClass.value);
 
 const getButtonText = (
   submittedValue: boolean,
   selectedOptionValue: string | null,
-) => {
-  return !submittedValue && selectedOptionValue ? "Submit" : buttonText.value;
-};
+) => (!submittedValue && selectedOptionValue ? "Submit" : buttonText.value);
 </script>
 
 <style scoped>
