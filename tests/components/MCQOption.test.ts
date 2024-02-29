@@ -1,21 +1,25 @@
 import { describe, it, expect, beforeEach } from "vitest";
-import { title, options } from "@data/question-data.json";
+import { questions } from "@data/question-data.json";
 import MCQQuestion from "@components/MCQ/MCQQuestion.vue";
-import { MCQProps } from "@/types/MCQ";
-import { mount, VueWrapper } from "@vue/test-utils";
+import { DOMWrapper, mount, VueWrapper } from "@vue/test-utils";
+import { MCQ } from "@/types/MCQ";
 
 let wrapper: VueWrapper;
+let mcqBtn: Omit<DOMWrapper<Element>, "exists">;
+const question = questions[0];
 
 beforeEach(() => {
   wrapper = mount(MCQQuestion, {
     props: {
-      title,
-      options,
+      title: question.title,
+      options: question.options,
     },
   });
+
+  mcqBtn = wrapper.get(".mcq-button");
 });
 
-export const optionMount = (propsData?: MCQProps) => {
+const optionMount = (propsData?: MCQ) => {
   const optionWrapper = propsData ? mount(MCQQuestion, { propsData }) : wrapper;
   return optionWrapper.findAll(".mcq-option");
 };
@@ -25,7 +29,7 @@ describe("MCQOption.vue", () => {
     const optionList = optionMount();
     const selectedOption = optionList[2];
     await selectedOption.trigger("click");
-    expect(selectedOption.text()).toContain(options[2].text);
+    expect(selectedOption.text()).toContain(question.options[2].text);
     expect(selectedOption.classes()).toContain("selected");
   });
 
@@ -41,7 +45,7 @@ describe("MCQOption.vue", () => {
     const optionList = optionMount();
     const correctOption = optionList[1];
     await correctOption.trigger("click");
-    await wrapper.get(".mcq-button").trigger("click");
+    await mcqBtn.trigger("click");
     expect(correctOption.classes()).toContain("correct");
   });
 
@@ -50,7 +54,7 @@ describe("MCQOption.vue", () => {
     const wrongOption = optionList[0];
     const correctOption = optionList[1];
     await wrongOption.trigger("click");
-    await wrapper.get(".mcq-button").trigger("click");
+    await mcqBtn.trigger("click");
     expect(wrongOption.classes()).toContain("wrong");
     expect(correctOption.classes()).toContain("correct");
   });
@@ -59,9 +63,9 @@ describe("MCQOption.vue", () => {
     const optionList = optionMount();
     const option = optionList[0];
     await option.trigger("click");
-    await wrapper.get(".mcq-button").trigger("click");
-    optionList.forEach((option) => {
-      expect(option.classes()).toContain("ignore-hover");
+    await mcqBtn.trigger("click");
+    optionList.forEach((optionInList) => {
+      expect(optionInList.classes()).toContain("ignore-hover");
     });
   });
 
@@ -69,9 +73,9 @@ describe("MCQOption.vue", () => {
     const optionList = optionMount();
     const option = optionList[1];
     await option.trigger("click");
-    await wrapper.get(".mcq-button").trigger("click");
-    optionList.forEach((option) => {
-      expect(option.classes()).toContain("ignore-hover");
+    await mcqBtn.trigger("click");
+    optionList.forEach((optionInList) => {
+      expect(optionInList.classes()).toContain("ignore-hover");
     });
   });
 });

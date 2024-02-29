@@ -1,10 +1,8 @@
-<script setup lang="ts">
-import MCQQuestion from "@components/MCQ/MCQQuestion.vue";
-import { title, options } from "@data/question-data.json";
-</script>
-
 <template>
-  <MCQQuestion :title="title" :options="options" />
+  <MCQQuiz :questions="questions" />
 </template>
 
-<style scoped></style>
+<script setup lang="ts">
+import MCQQuiz from "@components/MCQ/MCQQuiz.vue";
+import { questions } from "@data/question-data.json";
+</script>

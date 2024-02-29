@@ -1,24 +1,25 @@
 import { describe, it, expect, beforeEach } from "vitest";
-import { title, options } from "@data/question-data.json";
+import { questions } from "@data/question-data.json";
 import MCQQuestion from "@components/MCQ/MCQQuestion.vue";
-import { MCQProps } from "@/types/MCQ";
 import { DOMWrapper, mount, VueWrapper } from "@vue/test-utils";
+import { MCQ } from "@/types/MCQ";
 
 let wrapper: VueWrapper;
 let mcqBtn: Omit<DOMWrapper<Element>, "exists">;
+const question = questions[0];
 
 beforeEach(() => {
   wrapper = mount(MCQQuestion, {
     props: {
-      title,
-      options,
+      title: question.title,
+      options: question.options,
     },
   });
 
   mcqBtn = wrapper.get(".mcq-button");
 });
 
-export const optionMount = (propsData?: MCQProps) => {
+const optionMount = (propsData?: MCQ) => {
   const optionWrapper = propsData ? mount(MCQQuestion, { propsData }) : wrapper;
   return optionWrapper.findAll(".mcq-option");
 };

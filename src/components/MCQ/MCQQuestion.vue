@@ -1,5 +1,4 @@
 <template>
-  <div>MCQ Test</div>
   <div class="mcq-title">{{ title }}</div>
   <div class="mcq-list">
     <div
@@ -28,13 +27,14 @@
 
 <script setup lang="ts">
 import { ref } from "vue";
-import type { MCQProps } from "@type/MCQ.d.ts";
+import type { MCQ } from "@type/MCQ.d.ts";
 import MCQOption from "./MCQOption.vue";
 import MCQButton from "./MCQButton.vue";
 
-const { title, options } = defineProps<MCQProps>();
+const { title, options } = defineProps<MCQ>();
 const selectedOption = ref<string | null>(null);
 const submitted = ref<boolean>(false);
+const emit = defineEmits(["nextQuestion"]);
 
 const submitAnswer = () => {
   submitted.value = true;
@@ -43,6 +43,7 @@ const submitAnswer = () => {
 const nextQuestion = () => {
   submitted.value = false;
   selectedOption.value = null;
+  emit("nextQuestion");
 };
 
 // Only allow selection if the quiz is not submitted
