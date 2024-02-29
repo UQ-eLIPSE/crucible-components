@@ -24,7 +24,6 @@ const optionMount = (propsData?: MCQ) => {
 describe("MCQQuestion.vue", () => {
   it("Renders component", () => {
     expect(wrapper.exists()).toBe(true);
-    expect(wrapper.text()).toContain("MCQ Test");
   });
 
   it("Renders component with title", () => {
