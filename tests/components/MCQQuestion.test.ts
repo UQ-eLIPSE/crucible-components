@@ -1,22 +1,23 @@
 import { describe, it, expect, beforeEach } from "vitest";
 import { questions } from "@data/question-data.json";
 import MCQQuestion from "@components/MCQ/MCQQuestion.vue";
-import { MCQ } from "@/types/MCQ";
+import { MCQProps } from "@/types/MCQ";
 import { mount, VueWrapper } from "@vue/test-utils";
 
 let wrapper: VueWrapper;
-const question = questions[0];
+const title = questions[0].title;
+const options = questions[0].options;
 
 beforeEach(() => {
   wrapper = mount(MCQQuestion, {
     props: {
-      title: question.title,
-      options: question.options,
+      title,
+      options,
     },
   });
 });
 
-const optionMount = (propsData?: MCQ) => {
+export const optionMount = (propsData?: MCQProps) => {
   const optionWrapper = propsData ? mount(MCQQuestion, { propsData }) : wrapper;
   return optionWrapper.findAll(".mcq-option");
 };
@@ -27,18 +28,18 @@ describe("MCQQuestion.vue", () => {
   });
 
   it("Renders component with title", () => {
-    expect(wrapper.get(".mcq-title").text()).toContain(question.title);
+    expect(wrapper.get(".mcq-title").text()).toContain(title);
   });
 
   it("Renders component with no options", () => {
-    const optionList = optionMount({ title: question.title, options: [] });
+    const optionList = optionMount({ title: title, options: [] });
     expect(optionList.length).toBe(0);
   });
 
   it("Renders component with one option", () => {
     const singleOption = [{ text: "Option A", correct: true }];
     const optionList = optionMount({
-      title: question.title,
+      title: title,
       options: singleOption,
     });
     expect(optionList.length).toBe(1);
@@ -47,12 +48,12 @@ describe("MCQQuestion.vue", () => {
 
   it("Renders component with options", () => {
     const optionList = optionMount();
-    const questionKeys = Object.keys(question.options);
+    const questionKeys = Object.keys(options);
     expect(optionList.length).toBe(questionKeys.length);
 
     for (const [index] of questionKeys.entries()) {
       const renderedOption = optionList[index];
-      const value = Object.values(question.options)[index];
+      const value = Object.values(options)[index];
       expect(renderedOption.text()).toBe(`${value.text}`);
     }
   });
