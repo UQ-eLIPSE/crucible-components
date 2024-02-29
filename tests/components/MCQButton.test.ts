@@ -21,39 +21,44 @@ export const optionMount = (propsData?: MCQProps) => {
 };
 
 describe("MCQButton.vue", () => {
-  it("Should render disabled MCQ button initially with the right content", () => {
-    expect(wrapper.get(".mcq-button[disabled]").classes()).toContain("submit");
-    expect(wrapper.get(".mcq-button[disabled]").text()).toBe("Submit");
+  it("MCQ button should initially allow skip question", () => {
+    expect(wrapper.get(".mcq-button").classes()).toContain("skip");
+    expect(wrapper.get(".mcq-button").text()).toBe("Skip");
   });
 
-  it("Should enable MCQ button when option is selected", async () => {
+  it("Should enable MCQ button submission when option is selected", async () => {
     const optionList = optionMount();
     const option = optionList[1];
     await option.trigger("click");
-    expect(wrapper.get(".mcq-button:not([disabled])").classes()).toContain(
-      "submit",
-    );
-    expect(wrapper.get(".mcq-button:not([disabled])").text()).toBe("Submit");
+    expect(wrapper.get(".mcq-button").classes()).toContain("submit");
+    expect(wrapper.get(".mcq-button").text()).toBe("Submit");
   });
 
   it("Should change MCQ button styling and content upon submission", async () => {
     const optionList = optionMount();
     const option = optionList[1];
     await option.trigger("click");
-    await wrapper.get(".mcq-button:not([disabled])").trigger("click");
-    expect(wrapper.get(".mcq-button:not([disabled])").classes()).toContain(
-      "next",
-    );
-    expect(wrapper.get(".mcq-button:not([disabled])").text()).toBe("Next");
+    await wrapper.get(".mcq-button").trigger("click");
+    expect(wrapper.get(".mcq-button").classes()).toContain("next");
+    expect(wrapper.get(".mcq-button").text()).toBe("Next");
   });
 
   it("Should change MCQ button styling and content upon navigating to next question", async () => {
     const optionList = optionMount();
     const option = optionList[1];
     await option.trigger("click");
-    await wrapper.get(".mcq-button:not([disabled])").trigger("click");
-    await wrapper.get(".mcq-button:not([disabled])").trigger("click");
-    expect(wrapper.get(".mcq-button[disabled]").classes()).toContain("submit");
-    expect(wrapper.get(".mcq-button[disabled]").text()).toBe("Submit");
+    await wrapper.get(".mcq-button").trigger("click");
+    await wrapper.get(".mcq-button").trigger("click");
+    expect(wrapper.get(".mcq-button").classes()).toContain("skip");
+    expect(wrapper.get(".mcq-button").text()).toBe("Skip");
+  });
+
+  it("MCQ button should allow skip question after clearing selection", async () => {
+    const optionList = optionMount();
+    const option = optionList[1];
+    await option.trigger("click");
+    await option.trigger("click");
+    expect(wrapper.get(".mcq-button").classes()).toContain("skip");
+    expect(wrapper.get(".mcq-button").text()).toBe("Skip");
   });
 });

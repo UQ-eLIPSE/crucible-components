@@ -2,11 +2,10 @@
   <div>
     <button
       class="mcq-button"
-      :class="buttonClass"
-      :disabled="buttonDisabled"
-      @click="handleButtonClick(submitted)"
+      :class="getButtonClass(submitted, selectedOption)"
+      @click="handleButtonClick(submitted, selectedOption)"
     >
-      {{ buttonText }}
+      {{ getButtonText(submitted, selectedOption) }}
     </button>
   </div>
 </template>
@@ -15,21 +14,42 @@
 import { ref } from "vue";
 import type { MCQButton } from "@type/MCQ.d.ts";
 
-const { submitted, buttonDisabled } = defineProps<MCQButton>();
-const buttonClass = ref<string>("submit");
-const buttonText = ref<string>("Submit");
-const emit = defineEmits(["submitAnswer", "nextQuestion"]);
+const { submitted, selectedOption } = defineProps<MCQButton>();
+const buttonClass = ref<string>("skip");
+const buttonText = ref<string>("Skip");
+const emit = defineEmits(["submitAnswer", "nextQuestion", "skipQuestion"]);
 
-const handleButtonClick = (submittedValue: boolean) => {
-  if (!submittedValue) {
+const handleButtonClick = (
+  submittedValue: boolean,
+  selectedOptionValue: string | null,
+) => {
+  if (!submittedValue && selectedOptionValue) {
     emit("submitAnswer");
     buttonClass.value = "next";
     buttonText.value = "Next";
-  } else if (submittedValue) {
+  } else if (submittedValue && selectedOptionValue) {
     emit("nextQuestion");
-    buttonClass.value = "submit";
-    buttonText.value = "Submit";
+    buttonClass.value = "skip";
+    buttonText.value = "Skip";
+  } else if (!submittedValue && !selectedOptionValue) {
+    emit("skipQuestion");
+    buttonClass.value = "skip";
+    buttonText.value = "Skip";
   }
+};
+
+const getButtonClass = (
+  submittedValue: boolean,
+  selectedOptionValue: string | null,
+) => {
+  return !submittedValue && selectedOptionValue ? "submit" : buttonClass.value;
+};
+
+const getButtonText = (
+  submittedValue: boolean,
+  selectedOptionValue: string | null,
+) => {
+  return !submittedValue && selectedOptionValue ? "Submit" : buttonText.value;
 };
 </script>
 
@@ -66,8 +86,10 @@ button:focus-visible {
 .submit {
   background-color: #7f7f7f;
 }
-
 .next {
   background-color: #2a52be;
+}
+.skip {
+  background-color: #569821;
 }
 </style>
