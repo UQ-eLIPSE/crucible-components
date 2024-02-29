@@ -2,10 +2,10 @@
   <div>
     <button
       class="mcq-button"
-      :class="getButtonClass(submitted, selectedOption)"
+      :class="getButtonClassAndText(submitted, selectedOption).class"
       @click="handleButtonClick(submitted, selectedOption)"
     >
-      {{ getButtonText(submitted, selectedOption) }}
+      {{ getButtonClassAndText(submitted, selectedOption).text }}
     </button>
   </div>
 </template>
@@ -24,29 +24,31 @@ const handleButtonClick = (
   selectedOptionValue: string | null,
 ) => {
   if (!submittedValue && selectedOptionValue) {
-    emit("submitAnswer");
-    buttonClass.value = "next";
-    buttonText.value = "Next";
+    modifyButtonAndEmit("next", "Next", "submitAnswer");
   } else if (submittedValue && selectedOptionValue) {
-    emit("nextQuestion");
-    buttonClass.value = "skip";
-    buttonText.value = "Skip";
+    modifyButtonAndEmit("skip", "Skip", "nextQuestion");
   } else if (!submittedValue && !selectedOptionValue) {
-    emit("skipQuestion");
-    buttonClass.value = "skip";
-    buttonText.value = "Skip";
+    modifyButtonAndEmit("skip", "Skip", "skipQuestion");
   }
 };
 
-const getButtonClass = (
-  submittedValue: boolean,
-  selectedOptionValue: string | null,
-) => (!submittedValue && selectedOptionValue ? "submit" : buttonClass.value);
+const modifyButtonAndEmit = (
+  className: string,
+  text: string,
+  event: "submitAnswer" | "nextQuestion" | "skipQuestion",
+) => {
+  buttonClass.value = className;
+  buttonText.value = text;
+  emit(event);
+};
 
-const getButtonText = (
+const getButtonClassAndText = (
   submittedValue: boolean,
   selectedOptionValue: string | null,
-) => (!submittedValue && selectedOptionValue ? "Submit" : buttonText.value);
+) =>
+  !submittedValue && selectedOptionValue
+    ? { class: "submit", text: "Submit" }
+    : { class: buttonClass.value, text: buttonText.value };
 </script>
 
 <style scoped>
@@ -73,7 +75,6 @@ button:focus-visible {
   border-color: #c3e6cb;
   cursor: pointer;
 }
-
 .mcq-button:disabled {
   opacity: 50%;
   cursor: default;
