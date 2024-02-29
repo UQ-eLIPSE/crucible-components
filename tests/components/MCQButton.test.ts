@@ -20,7 +20,7 @@ beforeEach(() => {
   mcqBtn = wrapper.get(".mcq-button");
 });
 
-const optionMount = (propsData?: MCQProps) => {
+export const optionMount = (propsData?: MCQProps) => {
   const optionWrapper = propsData ? mount(MCQQuestion, { propsData }) : wrapper;
   return optionWrapper.findAll(".mcq-option");
 };
