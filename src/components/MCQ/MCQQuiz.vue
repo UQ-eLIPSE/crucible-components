@@ -1,24 +1,45 @@
 <template>
   <div>MCQ Quiz</div>
   <MCQQuestion
-    :title="questions[currentQuestionIndex].title"
-    :options="questions[currentQuestionIndex].options"
+    v-if="currentQuestion"
+    :title="currentQuestion.title"
+    :options="currentQuestion.options"
     @next-question="nextQuestion"
+    @skip-question="skipQuestion"
   />
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
+import { onMounted, ref } from "vue";
 import MCQQuestion from "@components/MCQ/MCQQuestion.vue";
-import type { MCQQuiz } from "@type/MCQ.d.ts";
+import type { MCQProps, MCQQuiz } from "@type/MCQ.d.ts";
 
 const { questions } = defineProps<MCQQuiz>();
-const currentQuestionIndex = ref<number>(0);
+const currentQuestion = ref<MCQProps | null>(null);
+const questionsQueue = ref<MCQProps[]>([]);
+
+onMounted(() => {
+  enqueueQuestionItems();
+  nextQuestion();
+});
+
+const enqueueQuestionItems = () => {
+  for (const question of questions) {
+    questionsQueue.value.push(question);    
+  }
+}
+
+const enqueueSkippedQuestion = (question: MCQProps) => {
+  questionsQueue.value.push(question);
+}
+
+const skipQuestion = () => {
+  enqueueSkippedQuestion(currentQuestion.value as MCQProps);
+  nextQuestion();
+};
 
 const nextQuestion = () => {
-  currentQuestionIndex.value =
-    currentQuestionIndex.value + 1 < questions.length
-      ? currentQuestionIndex.value + 1
-      : 0;
+  const nextQuestion = questionsQueue.value.shift();
+  currentQuestion.value = nextQuestion ? nextQuestion : null;
 };
 </script>
