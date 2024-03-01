@@ -26,6 +26,13 @@ export const getOptions = (wrapper: VueWrapper) => {
   return wrapper.findAll(".mcq-option");
 };
 
+export const questionIsFullyDisplayed = (wrapper: VueWrapper) => {
+  const titleExists = wrapper.find(".mcq-title").exists();
+  const optionsListExists = wrapper.find(".mcq-list").exists();
+  const buttonExists = wrapper.find(".mcq-button").exists();
+  return titleExists && optionsListExists && buttonExists;
+};
+
 describe("MCQQuestion.vue", () => {
   it("Renders component", () => {
     expect(wrapper.exists()).toBe(true);
@@ -45,6 +52,10 @@ describe("MCQQuestion.vue", () => {
     const optionList = optionMount({ title, options: singleOption });
     expect(optionList.length).toBe(1);
     expect(optionList[0].text()).toBe(singleOption[0].text);
+  });
+
+  it("Renders question with title options and button", () => {
+    expect(questionIsFullyDisplayed(wrapper)).toBe(true);
   });
 
   it("Renders component with options", () => {
