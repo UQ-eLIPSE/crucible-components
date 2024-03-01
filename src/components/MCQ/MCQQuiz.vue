@@ -20,7 +20,7 @@ const questionsQueue = ref<MCQProps[]>([]);
 
 onMounted(() => {
   enqueueQuestionItems();
-  nextQuestion(false);
+  nextQuestion();
 });
 
 const enqueueQuestionItems = () => {
