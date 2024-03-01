@@ -2,7 +2,7 @@ import { describe, it, expect, beforeEach } from "vitest";
 import { questions } from "@data/question-data.json";
 import MCQQuiz from "@components/MCQ/MCQQuiz.vue";
 import { mount, VueWrapper, DOMWrapper } from "@vue/test-utils";
-import { getOptions, questionIsFullyDisplayed } from "./MCQQuestion.test";
+import { getOptions } from "./MCQQuestion.test";
 
 let wrapper: VueWrapper;
 let mcqBtn: Omit<DOMWrapper<Element>, "exists">;
@@ -17,6 +17,13 @@ beforeEach(async () => {
   await wrapper.vm.$nextTick();
   mcqBtn = wrapper.get(".mcq-button");
 });
+
+const questionIsFullyDisplayed = (wrapper: VueWrapper) => {
+  const titleExists = wrapper.find(".mcq-title").exists();
+  const optionsListExists = wrapper.find(".mcq-list").exists();
+  const buttonExists = wrapper.find(".mcq-button").exists();
+  return titleExists && optionsListExists && buttonExists;
+};
 
 describe("MCQQuiz.vue", () => {
   it("Renders quiz properly", () => {
