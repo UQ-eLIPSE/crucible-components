@@ -21,7 +21,7 @@
     :selected-option="selectedOption"
     @submit-answer="submitAnswer"
     @next-question="nextQuestion"
-    @skip-question="nextQuestion"
+    @skip-question="skipQuestion"
   />
 </template>
 
@@ -34,17 +34,26 @@ import MCQButton from "./MCQButton.vue";
 const { title, options } = defineProps<MCQProps>();
 const selectedOption = ref<string | null>(null);
 const submitted = ref<boolean>(false);
-const emit = defineEmits(["nextQuestion"]);
+const emit = defineEmits(["nextQuestion", "skipQuestion"]);
 
 const submitAnswer = () => {
   submitted.value = true;
 };
 
-const nextQuestion = (skipped: boolean) => {
+const nextQuestion = () => {
+  resetQuestion();
+  emit("nextQuestion");
+};
+
+const skipQuestion = () => {
+  resetQuestion();
+  emit("skipQuestion");
+};
+
+const resetQuestion = () => {
   submitted.value = false;
   selectedOption.value = null;
-  emit("nextQuestion", skipped);
-};
+}
 
 // Only allow selection if the quiz is not submitted
 const selectOption = (key: string) => {

@@ -47,14 +47,14 @@ describe("MCQQuiz.vue", () => {
   });
 
   it("Should go back to first question when skipping all the questions", async () => {
-   for (let index = 0; index < questions.length; index++) {
+   for (let i = 0; i < questions.length; i++) {
       await mcqBtn.trigger("click");      
     }
     expect(wrapper.text()).toContain("The question 0");
   });
 
   it("Should display all questions properly when skipping them", async () => {
-    for (let index = 0; index < questions.length; index++) {
+    for (let i = 0; i < questions.length; i++) {
       expect(questionIsFullyDisplayed(wrapper)).toBe(true);
       await mcqBtn.trigger("click");      
      }
@@ -63,7 +63,7 @@ describe("MCQQuiz.vue", () => {
   it("Should display all questions properly when answering them", async () => {
     const optionList = getOptions(wrapper);
     const firstOption = optionList[0];
-    for (let index = 0; index < questions.length; index++) {
+    for (let i = 0; i < questions.length; i++) {
       expect(questionIsFullyDisplayed(wrapper)).toBe(true);
       await firstOption.trigger("click");
       await mcqBtn.trigger("click");
@@ -74,7 +74,7 @@ describe("MCQQuiz.vue", () => {
   it("Should display no questions after answering them all", async () => {
     const optionList = getOptions(wrapper);
     const firstOption = optionList[0];
-    for (let index = 0; index < questions.length; index++) {
+    for (let i = 0; i < questions.length; i++) {
       await firstOption.trigger("click");
       await mcqBtn.trigger("click");
       await mcqBtn.trigger("click");      

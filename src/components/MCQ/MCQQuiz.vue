@@ -5,6 +5,7 @@
     :title="currentQuestion.title"
     :options="currentQuestion.options"
     @next-question="nextQuestion"
+    @skip-question="skipQuestion"
   />
 </template>
 
@@ -32,8 +33,12 @@ const enqueueSkippedQuestion = (question: MCQProps) => {
   questionsQueue.value.push(question);
 }
 
-const nextQuestion = (skipped: boolean) => {
-  if(skipped) enqueueSkippedQuestion(currentQuestion.value as MCQProps);
+const skipQuestion = () => {
+  enqueueSkippedQuestion(currentQuestion.value as MCQProps);
+  nextQuestion();
+};
+
+const nextQuestion = () => {
   const nextQuestion = questionsQueue.value.shift();
   currentQuestion.value = nextQuestion ? nextQuestion : null;
 };
