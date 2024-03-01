@@ -37,4 +37,11 @@ describe("MCQQuiz.vue", () => {
     await mcqBtn.trigger("click");
     expect(wrapper.text()).toContain("The question 1");
   });
+
+  it("Should traverse all the stack and go back to first question", async () => {
+    await mcqBtn.trigger("click");
+    await mcqBtn.trigger("click");
+    await mcqBtn.trigger("click");
+    expect(wrapper.text()).toContain("The question 0");
+  });
 });
