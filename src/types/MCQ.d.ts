@@ -1,4 +1,6 @@
-import { Ref } from "vue";
+export interface MCQQuiz {
+  questions: MCQProps[];
+}
 
 export interface MCQProps {
   title: string;

@@ -1,12 +1,11 @@
 <template>
-  <div>MCQ Test</div>
   <div class="mcq-title">{{ title }}</div>
   <div class="mcq-list">
     <div
       v-for="[key, value] in Object.entries(options)"
       :key="key"
       class="mcq-option"
-      :class="optionClass(key)"
+      :class="optionClass(key, options)"
       @click="selectOption(key)"
     >
       <MCQOption
@@ -28,13 +27,14 @@
 
 <script setup lang="ts">
 import { ref } from "vue";
-import type { MCQProps } from "@type/MCQ.d.ts";
+import type { MCQProps, MCQOptions } from "@type/MCQ.d.ts";
 import MCQOption from "./MCQOption.vue";
 import MCQButton from "./MCQButton.vue";
 
 const { title, options } = defineProps<MCQProps>();
 const selectedOption = ref<string | null>(null);
 const submitted = ref<boolean>(false);
+const emit = defineEmits(["nextQuestion"]);
 
 const submitAnswer = () => {
   submitted.value = true;
@@ -43,6 +43,7 @@ const submitAnswer = () => {
 const nextQuestion = () => {
   submitted.value = false;
   selectedOption.value = null;
+  emit("nextQuestion");
 };
 
 // Only allow selection if the quiz is not submitted
@@ -54,8 +55,8 @@ const selectOption = (key: string) => {
   }
 };
 
-const optionClass = (key: string) => {
-  const option = options[parseInt(key)];
+const optionClass = (key: string, optionsList: MCQOptions[]) => {
+  const option = optionsList[parseInt(key)];
   const isSelected = selectedOption.value === key;
 
   if (!submitted.value) {

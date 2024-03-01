@@ -1,10 +1,12 @@
 import { describe, it, expect, beforeEach } from "vitest";
-import { title, options } from "@data/question-data.json";
+import { questions } from "@data/question-data.json";
 import MCQQuestion from "@components/MCQ/MCQQuestion.vue";
 import { MCQProps } from "@/types/MCQ";
 import { mount, VueWrapper } from "@vue/test-utils";
 
 let wrapper: VueWrapper;
+const title = questions[0].title;
+const options = questions[0].options;
 
 beforeEach(() => {
   wrapper = mount(MCQQuestion, {
@@ -15,15 +17,18 @@ beforeEach(() => {
   });
 });
 
-export const optionMount = (propsData?: MCQProps) => {
-  const optionWrapper = propsData ? mount(MCQQuestion, { propsData }) : wrapper;
+const optionMount = (propsData: MCQProps) => {
+  const optionWrapper = mount(MCQQuestion, { propsData });
   return optionWrapper.findAll(".mcq-option");
 };
 
-describe("MCQ.vue", () => {
+export const getOptions = (wrapper: VueWrapper) => {
+  return wrapper.findAll(".mcq-option");
+};
+
+describe("MCQQuestion.vue", () => {
   it("Renders component", () => {
     expect(wrapper.exists()).toBe(true);
-    expect(wrapper.text()).toContain("MCQ Test");
   });
 
   it("Renders component with title", () => {
@@ -43,7 +48,7 @@ describe("MCQ.vue", () => {
   });
 
   it("Renders component with options", () => {
-    const optionList = optionMount();
+    const optionList = getOptions(wrapper);
     const questionKeys = Object.keys(options);
     expect(optionList.length).toBe(questionKeys.length);
 
@@ -59,7 +64,7 @@ describe("MCQ.vue", () => {
   });
 
   it("Selects the first option", async () => {
-    const optionList = optionMount();
+    const optionList = getOptions(wrapper);
     const firstOption = optionList[0];
     await firstOption.trigger("click");
     expect(firstOption.classes()).toContain("selected");
@@ -67,7 +72,7 @@ describe("MCQ.vue", () => {
   });
 
   it("Selects and deselect the first option", async () => {
-    const optionList = optionMount();
+    const optionList = getOptions(wrapper);
     const firstOption = optionList[0];
     await firstOption.trigger("click");
     await firstOption.trigger("click");
