@@ -17,9 +17,13 @@ beforeEach(() => {
   });
 });
 
-export const optionMount = (propsData?: MCQProps) => {
-  const optionWrapper = propsData ? mount(MCQQuestion, { propsData }) : wrapper;
+const optionMount = (propsData: MCQProps) => {
+  const optionWrapper = mount(MCQQuestion, { propsData });
   return optionWrapper.findAll(".mcq-option");
+};
+
+export const getOptions = (wrapper: VueWrapper) => {
+  return wrapper.findAll(".mcq-option");
 };
 
 describe("MCQQuestion.vue", () => {
@@ -44,7 +48,7 @@ describe("MCQQuestion.vue", () => {
   });
 
   it("Renders component with options", () => {
-    const optionList = optionMount();
+    const optionList = getOptions(wrapper);
     const questionKeys = Object.keys(options);
     expect(optionList.length).toBe(questionKeys.length);
 
@@ -60,7 +64,7 @@ describe("MCQQuestion.vue", () => {
   });
 
   it("Selects the first option", async () => {
-    const optionList = optionMount();
+    const optionList = getOptions(wrapper);
     const firstOption = optionList[0];
     await firstOption.trigger("click");
     expect(firstOption.classes()).toContain("selected");
@@ -68,7 +72,7 @@ describe("MCQQuestion.vue", () => {
   });
 
   it("Selects and deselect the first option", async () => {
-    const optionList = optionMount();
+    const optionList = getOptions(wrapper);
     const firstOption = optionList[0];
     await firstOption.trigger("click");
     await firstOption.trigger("click");

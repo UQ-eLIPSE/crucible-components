@@ -1,8 +1,8 @@
 import { describe, it, expect, beforeEach } from "vitest";
 import { questions } from "@data/question-data.json";
 import MCQQuestion from "@components/MCQ/MCQQuestion.vue";
-import { MCQProps } from "@/types/MCQ";
 import { DOMWrapper, mount, VueWrapper } from "@vue/test-utils";
+import { getOptions } from "./MCQQuestion.test";
 
 let wrapper: VueWrapper;
 let mcqBtn: Omit<DOMWrapper<Element>, "exists">;
@@ -20,11 +20,6 @@ beforeEach(() => {
   mcqBtn = wrapper.get(".mcq-button");
 });
 
-export const optionMount = (propsData?: MCQProps) => {
-  const optionWrapper = propsData ? mount(MCQQuestion, { propsData }) : wrapper;
-  return optionWrapper.findAll(".mcq-option");
-};
-
 describe("MCQButton.vue", () => {
   it("Should initially allow to skip question as there is no selection", () => {
     expect(mcqBtn.classes()).toContain("skip");
@@ -32,7 +27,7 @@ describe("MCQButton.vue", () => {
   });
 
   it("Should enable MCQ button submission when option is selected", async () => {
-    const optionList = optionMount();
+    const optionList = getOptions(wrapper);
     const option = optionList[1];
     await option.trigger("click");
     expect(mcqBtn.classes()).toContain("submit");
@@ -40,7 +35,7 @@ describe("MCQButton.vue", () => {
   });
 
   it("Should change MCQ button styling and content upon submission", async () => {
-    const optionList = optionMount();
+    const optionList = getOptions(wrapper);
     const option = optionList[1];
     await option.trigger("click");
     await mcqBtn.trigger("click");
@@ -49,7 +44,7 @@ describe("MCQButton.vue", () => {
   });
 
   it("Should change MCQ button styling and content upon navigating to next question", async () => {
-    const optionList = optionMount();
+    const optionList = getOptions(wrapper);
     const option = optionList[1];
     await option.trigger("click");
     await mcqBtn.trigger("click");
@@ -59,7 +54,7 @@ describe("MCQButton.vue", () => {
   });
 
   it("Should allow skip question after clearing selection", async () => {
-    const optionList = optionMount();
+    const optionList = getOptions(wrapper);
     const option = optionList[1];
     await option.trigger("click");
     await option.trigger("click");
