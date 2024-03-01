@@ -40,10 +40,10 @@ const submitAnswer = () => {
   submitted.value = true;
 };
 
-const nextQuestion = () => {
+const nextQuestion = (skipped: boolean) => {
   submitted.value = false;
   selectedOption.value = null;
-  emit("nextQuestion");
+  emit("nextQuestion", skipped);
 };
 
 // Only allow selection if the quiz is not submitted

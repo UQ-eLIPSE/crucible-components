@@ -39,7 +39,22 @@ const modifyButtonAndEmit = (
 ) => {
   buttonClass.value = className;
   buttonText.value = text;
-  emit(event);
+  dispatchEvent(event);
+};
+
+const dispatchEvent = (
+  event: "submitAnswer" | "nextQuestion" | "skipQuestion"
+) => {
+  switch(event){
+    case "nextQuestion":
+      emit(event, false);
+      break;
+    case "skipQuestion":
+      emit(event, true);
+      break;
+    default:
+      emit(event);
+  }
 };
 
 const getButtonClassAndText = (
