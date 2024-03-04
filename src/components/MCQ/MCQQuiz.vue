@@ -25,13 +25,13 @@ onMounted(() => {
 
 const enqueueQuestionItems = () => {
   for (const question of questions) {
-    questionsQueue.value.push(question);    
+    questionsQueue.value.push(question);
   }
-}
+};
 
 const enqueueSkippedQuestion = (question: MCQProps) => {
   questionsQueue.value.push(question);
-}
+};
 
 const skipQuestion = () => {
   enqueueSkippedQuestion(currentQuestion.value as MCQProps);

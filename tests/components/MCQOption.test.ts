@@ -16,7 +16,7 @@ beforeEach(() => {
       options,
     },
   });
-  
+
   mcqBtn = wrapper.get(".mcq-button");
 });
 
