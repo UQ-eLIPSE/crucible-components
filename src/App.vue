@@ -1,43 +1,20 @@
 <script setup lang="ts">
-import { ref, computed, watch } from "vue";
+import { ref } from "vue";
 import MCQQuiz from "@components/MCQ/MCQQuiz.vue";
 import { questions } from "@data/question-data.json";
+import StartPage from "./components/MCQ/StartPage.vue";
 const showQuiz = ref(false);
-const questionAmount = ref<number>(0);
-const selectedQuestions = computed(() =>
-  questionAmount.value > 0
-    ? questions.slice(0, questionAmount.value)
-    : questions,
-);
+const quizQuestions = ref(questions);
 
-watch(questionAmount, (newVal) => {
-  if (newVal > questions.length) {
-    questionAmount.value = questions.length;
-  }
-});
-
-const startQuiz = () => {
+const handleStartQuiz = (questionAmount: number) => {
+  quizQuestions.value = questions.slice(0, questionAmount);
   showQuiz.value = true;
 };
 </script>
 
 <template>
-  <MCQQuiz v-if="showQuiz" :questions="selectedQuestions" />
-  <div v-else>
-    <h1>Welcome to VetsCloud Smart Quiz</h1>
-    <div>
-      <label for="question-amount"> Select the amount of questions:</label>
-      <input
-        id="question-amount"
-        v-model.number="questionAmount"
-        type="number"
-        placeholder="Question amount"
-        min="0"
-        :max="questions.length"
-      />
-    </div>
-    <button class="start-button" @click="startQuiz">Start</button>
-  </div>
+  <MCQQuiz v-if="showQuiz" :questions="quizQuestions" />
+  <StartPage v-else :questions="questions" @start-quiz="handleStartQuiz" />
 </template>
 
 <style scoped>
