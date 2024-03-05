@@ -7,28 +7,27 @@ import StartPage from "@/components/MCQ/StartPage.vue";
 
 describe("StartPage.vue", () => {
   it("renders App component", () => {
-    const wrapper = mount(StartPage);
+    const wrapper = mount(StartPage, {
+      props: { questions },
+    });
     expect(wrapper.exists()).toBe(true);
   });
 
-  //   it("renders start button", () => {
-  //     const wrapper = mount(StartPage);
-  //     expect(wrapper.find("button").text()).toBe("Start");
-  //   });
+  it("renders start button", () => {
+    const wrapper = mount(StartPage, {
+      props: { questions },
+    });
+    expect(wrapper.find("button").text()).toBe("Start");
+  });
 
-  //   it("renders MCQQuiz component when start button is clicked", async () => {
-  //     const wrapper = mount(StartPage);
-  //     expect(wrapper.findComponent({ name: "MCQQuiz" }).exists()).toBe(false);
-  //     await wrapper.find("button").trigger("click");
-  //     expect(wrapper.findComponent({ name: "MCQQuiz" }).exists()).toBe(true);
+  // it("Sets input value to the max when a higher number than the question is set. ", async () => {
+  //   const wrapper = mount(StartPage, {
+  //     props: { questions },
   //   });
-
-  //   it("Sets input value to the max when a higher number than the question is set. ", async () => {
-  //     const wrapper = mount(StartPage);
-  //     const input = wrapper.find("#question-amount");
-  //     await input.setValue("8");
-  //     expect(wrapper.vm.questionAmount).toBe(questions.length);
-  //   });
+  //   const input = wrapper.find("#question-amount");
+  //   await input.setValue("8");
+  //   expect(wrapper.vm.questionAmount).toBe(questions.length);
+  // });
 
   //   it("Sets input value in the range of the amount of questions. ", async () => {
   //     const wrapper = mount(StartPage);
