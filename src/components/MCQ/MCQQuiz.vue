@@ -15,31 +15,22 @@ import MCQQuestion from "@components/MCQ/MCQQuestion.vue";
 import type { MCQProps, MCQQuiz } from "@type/MCQ.d.ts";
 
 const { questions } = defineProps<MCQQuiz>();
-const currentQuestion = ref<MCQProps | null>(null);
-const questionsQueue = ref<MCQProps[]>([]);
+const currentQuestion = ref<MCQProps | undefined>();
+const questionsQueue = ref<MCQProps[]>([...questions]);
 
 onMounted(() => {
-  enqueueQuestionItems();
   nextQuestion();
 });
 
-const enqueueQuestionItems = () => {
-  for (const question of questions) {
-    questionsQueue.value.push(question);    
-  }
-}
-
-const enqueueSkippedQuestion = (question: MCQProps) => {
+const enqueueQuestion = (question: MCQProps) =>
   questionsQueue.value.push(question);
-}
+
+const dequeueQuestion = () => questionsQueue.value.shift();
 
 const skipQuestion = () => {
-  enqueueSkippedQuestion(currentQuestion.value as MCQProps);
+  enqueueQuestion(currentQuestion.value as MCQProps);
   nextQuestion();
 };
 
-const nextQuestion = () => {
-  const nextQuestion = questionsQueue.value.shift();
-  currentQuestion.value = nextQuestion ? nextQuestion : null;
-};
+const nextQuestion = () => (currentQuestion.value = dequeueQuestion());
 </script>

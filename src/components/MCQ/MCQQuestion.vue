@@ -53,7 +53,7 @@ const skipQuestion = () => {
 const resetQuestion = () => {
   submitted.value = false;
   selectedOption.value = null;
-}
+};
 
 // Only allow selection if the quiz is not submitted
 const selectOption = (key: string) => {

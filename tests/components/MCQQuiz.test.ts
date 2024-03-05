@@ -47,8 +47,8 @@ describe("MCQQuiz.vue", () => {
   });
 
   it("Should go back to first question when skipping all the questions", async () => {
-   for (let i = 0; i < questions.length; i++) {
-      await mcqBtn.trigger("click");      
+    for (let i = 0; i < questions.length; i++) {
+      await mcqBtn.trigger("click");
     }
     expect(wrapper.text()).toContain("The question 0");
   });
@@ -56,8 +56,8 @@ describe("MCQQuiz.vue", () => {
   it("Should display all questions properly when skipping them", async () => {
     for (let i = 0; i < questions.length; i++) {
       expect(questionIsFullyDisplayed(wrapper)).toBe(true);
-      await mcqBtn.trigger("click");      
-     }
+      await mcqBtn.trigger("click");
+    }
   });
 
   it("Should display all questions properly when answering them", async () => {
@@ -67,7 +67,7 @@ describe("MCQQuiz.vue", () => {
       expect(questionIsFullyDisplayed(wrapper)).toBe(true);
       await firstOption.trigger("click");
       await mcqBtn.trigger("click");
-      await mcqBtn.trigger("click");      
+      await mcqBtn.trigger("click");
     }
   });
 
@@ -77,7 +77,7 @@ describe("MCQQuiz.vue", () => {
     for (let i = 0; i < questions.length; i++) {
       await firstOption.trigger("click");
       await mcqBtn.trigger("click");
-      await mcqBtn.trigger("click");      
+      await mcqBtn.trigger("click");
     }
     expect(questionIsFullyDisplayed(wrapper)).toBe(false);
   });
