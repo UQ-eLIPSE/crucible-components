@@ -10,11 +10,11 @@ const startQuiz = () => {
 </script>
 
 <template>
-  <div v-if="!showQuiz">
+  <MCQQuiz v-if="showQuiz" :questions="questions" />
+  <div v-else>
     <h1>Welcome to VetsCloud Smart Quiz</h1>
     <button class="start-button" @click="startQuiz">Start</button>
   </div>
-  <MCQQuiz v-if="showQuiz" :questions="questions" />
 </template>
 
 <style scoped>
