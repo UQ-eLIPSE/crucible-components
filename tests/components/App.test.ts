@@ -24,14 +24,14 @@ describe("App.vue", () => {
 
   it("Sets input value to the max when a higher number than the question is set. ", async () => {
     const wrapper = mount(App);
-    const input = wrapper.find(".question-amount");
+    const input = wrapper.find("#question-amount");
     await input.setValue("8");
     expect(wrapper.vm.questionAmount).toBe(questions.length);
   });
 
   it("Sets input value in the range of the amount of questions. ", async () => {
     const wrapper = mount(App);
-    const input = wrapper.find(".question-amount");
+    const input = wrapper.find("#question-amount");
     await input.setValue("2");
     expect(wrapper.vm.questionAmount).toBe(2);
   });

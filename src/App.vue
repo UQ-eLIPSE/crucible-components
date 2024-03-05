@@ -25,21 +25,28 @@ const startQuiz = () => {
   <MCQQuiz v-if="showQuiz" :questions="selectedQuestions" />
   <div v-else>
     <h1>Welcome to VetsCloud Smart Quiz</h1>
-    <input
-      v-model.number="questionAmount"
-      class="question-amount"
-      type="number"
-      placeholder="Question amount"
-      min="0"
-      :max="questions.length"
-    />
+    <div>
+      <label for="question-amount"> Select the amount of questions:</label>
+      <input
+        id="question-amount"
+        v-model.number="questionAmount"
+        type="number"
+        placeholder="Question amount"
+        min="0"
+        :max="questions.length"
+      />
+    </div>
     <button class="start-button" @click="startQuiz">Start</button>
   </div>
 </template>
 
 <style scoped>
+#question-amount {
+  margin-left: 5px;
+}
 .start-button {
   color: #ffffff;
   background-color: #2a52be;
+  margin-top: 5%;
 }
 </style>
