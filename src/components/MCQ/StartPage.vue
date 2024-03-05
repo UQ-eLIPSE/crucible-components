@@ -8,7 +8,7 @@
         v-model.number="questionAmount"
         type="number"
         placeholder="Question amount"
-        min="0"
+        min="1"
         :max="questions.length"
       />
     </div>
