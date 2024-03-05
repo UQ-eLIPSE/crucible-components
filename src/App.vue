@@ -26,7 +26,8 @@ const handleTagSelection = (event: Event) => {
 </script>
 
 <template>
-  <div v-if="!showQuiz">
+  <MCQQuiz v-if="showQuiz" :questions="questions" />
+  <div v-else>
     <h1>Welcome to VetsCloud Smart Quiz</h1>
     <h3>Select your tags:</h3>
     <div class="tag-list">
@@ -42,7 +43,6 @@ const handleTagSelection = (event: Event) => {
     </div>
     <button class="start-button" @click="startQuiz">Start</button>
   </div>
-  <MCQQuiz v-if="showQuiz" :questions="questions" />
 </template>
 
 <style scoped>
