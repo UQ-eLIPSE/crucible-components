@@ -18,7 +18,7 @@
 
 <script setup lang="ts">
 import { MCQQuiz } from "@/types/MCQ";
-import { ref, defineEmits } from "vue";
+import { ref } from "vue";
 const { questions } = defineProps<MCQQuiz>();
 const questionAmount = ref<number>(0);
 
