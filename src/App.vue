@@ -9,11 +9,11 @@ const quizQuestions = ref(questions);
 const handleStartQuiz = (questionAmount: number, tag?: string) => {
   quizQuestions.value = questions.slice(0, questionAmount);
 
-  if (tag) {
+  if (tag)
     quizQuestions.value = quizQuestions.value.filter(
       (question) => question.tags && question.tags.includes(tag),
     );
-  }
+
   showQuiz.value = true;
 };
 </script>
