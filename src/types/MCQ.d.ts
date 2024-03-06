@@ -4,7 +4,7 @@ export interface MCQQuiz {
 
 export interface MCQProps {
   title: string;
-  tags?: string[];
+  tags?: string;
   options: MCQOptions[];
 }
 

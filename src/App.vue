@@ -2,53 +2,35 @@
 import { ref } from "vue";
 import MCQQuiz from "@components/MCQ/MCQQuiz.vue";
 import { questions } from "@data/question-data.json";
+import StartPage from "./components/MCQ/StartPage.vue";
 const showQuiz = ref(false);
-const selectedTags = ref<string[]>([]);
+const quizQuestions = ref(questions);
 
-const startQuiz = () => {
-  showQuiz.value = true;
-};
+const handleStartQuiz = (questionAmount: number, tag?: string) => {
+  quizQuestions.value = questions.slice(0, questionAmount);
 
-const tags = Array.from(
-  new Set(questions.map((question) => question.tags).flat()),
-);
-
-const handleTagSelection = (event: Event) => {
-  const target = event.target as HTMLInputElement;
-  if (target.checked) {
-    selectedTags.value.push(target.value);
-  } else {
-    selectedTags.value = selectedTags.value.filter(
-      (tag) => tag !== target.value,
+  if (tag) {
+    quizQuestions.value = quizQuestions.value.filter(
+      (question) => question.tags && question.tags.includes(tag),
     );
   }
+  showQuiz.value = true;
 };
 </script>
 
 <template>
-  <MCQQuiz v-if="showQuiz" :questions="questions" />
-  <div v-else>
-    <h1>Welcome to VetsCloud Smart Quiz</h1>
-    <h3>Select your tags:</h3>
-    <div class="tag-list">
-      <div v-for="tag in tags" :key="tag">
-        <input
-          :id="tag"
-          type="checkbox"
-          :value="tag"
-          @change="handleTagSelection"
-        />
-        <label :for="tag">{{ tag }}</label>
-      </div>
-    </div>
-    <button class="start-button" @click="startQuiz">Start</button>
-  </div>
+  <MCQQuiz v-if="showQuiz" :questions="quizQuestions" />
+  <StartPage v-else :questions="questions" @start-quiz="handleStartQuiz" />
 </template>
 
 <style scoped>
+#question-amount {
+  margin-left: 5px;
+}
 .start-button {
   color: #ffffff;
   background-color: #2a52be;
+  margin-top: 5%;
 }
 .tag-list {
   display: flex;
