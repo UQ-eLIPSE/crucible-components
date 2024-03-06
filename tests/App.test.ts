@@ -27,4 +27,13 @@ describe("App.vue", () => {
     const mcqQuiz = wrapper.findComponent(MCQQuiz);
     expect(mcqQuiz.props().questions.length).toBe(0);
   });
+
+  it("Update tag value and question amount should reflect", async () => {
+    const wrapper = mount(App);
+    await wrapper.find('input[name="tags"]').setValue("tag1");
+    const input = wrapper.find("#question-amount");
+    await input.setValue("2");
+    const mcqQuiz = wrapper.findComponent(MCQQuiz);
+    expect(mcqQuiz.props().questions.length).toBe(1);
+  });
 });

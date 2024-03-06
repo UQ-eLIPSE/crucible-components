@@ -26,4 +26,12 @@ describe("StartPage.vue", () => {
     await input.setValue("2");
     expect(wrapper.vm.questionAmount).toBe(2);
   });
+
+  it("Update tag value", async () => {
+    const wrapper = mount(StartPage, {
+      props: { questions },
+    });
+    await wrapper.find('input[name="tags"]').setValue("tag1");
+    expect(wrapper.vm.tag).toBe("tag1");
+  });
 });
