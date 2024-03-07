@@ -19,7 +19,6 @@
         type="number"
         placeholder="Question amount"
         min="1"
-        :max="questions.length"
       />
     </div>
     <button class="start-button" @click="startQuiz">Start</button>
@@ -27,9 +26,7 @@
 </template>
 
 <script setup lang="ts">
-import { MCQQuiz } from "@/types/MCQ";
 import { ref } from "vue";
-const { questions } = defineProps<MCQQuiz>();
 const questionAmount = ref<number>(0);
 const tag = ref<string>("");
 const emit = defineEmits(["start-quiz"]);
