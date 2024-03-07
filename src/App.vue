@@ -7,12 +7,11 @@ const showQuiz = ref(false);
 const quizQuestions = ref(questions);
 
 const handleStartQuiz = (questionAmount: number, tag?: string) => {
-  quizQuestions.value = questions.slice(0, questionAmount);
-
   if (tag)
-    quizQuestions.value = quizQuestions.value.filter(
-      (question) => question.tags && question.tags.includes(tag),
-    );
+    quizQuestions.value = quizQuestions.value
+      .filter((question) => question.tags && question.tags.includes(tag))
+      .slice(0, questionAmount);
+  else quizQuestions.value = quizQuestions.value.slice(0, questionAmount);
 
   showQuiz.value = true;
 };
@@ -27,11 +26,13 @@ const handleStartQuiz = (questionAmount: number, tag?: string) => {
 #question-amount {
   margin-left: 5px;
 }
+
 .start-button {
   color: #ffffff;
   background-color: #2a52be;
   margin-top: 5%;
 }
+
 .tag-list {
   display: flex;
   justify-content: center;
