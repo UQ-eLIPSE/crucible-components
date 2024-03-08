@@ -32,7 +32,7 @@ const tag = ref<string>("");
 const emit = defineEmits(["start-quiz"]);
 
 const startQuiz = () => {
-  emit("start-quiz", questionAmount.value, tag.value);
+  emit("start-quiz", questionAmount.value, tag.value.split(" "));
 };
 </script>
 

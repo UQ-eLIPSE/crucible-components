@@ -2,7 +2,7 @@
     "questions": [
         {
             "title": "The question 0",
-            "tags": "tag1",
+            "tags": ["tag1"],
             "options": [
                 {"text": "Answer A Q0"},
                 {"text": "Answer B Q0", "correct": true},
@@ -19,11 +19,20 @@
         },
         {
             "title": "The question 2",
-            "tags": "tag2",
+            "tags": ["tag2"],
             "options": [
                 {"text": "Answer A Q2"},
                 {"text": "Answer B Q2"},
                 {"text": "Answer C Q2", "correct": true}
+            ]
+        },
+        {
+            "title": "The question 3",
+            "tags": ["tag1"],
+            "options": [
+                {"text": "Answer A Q3", "correct": true},
+                {"text": "Answer B Q3"},
+                {"text": "Answer C Q3"}
             ]
         }
     ]

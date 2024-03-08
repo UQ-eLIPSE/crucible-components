@@ -31,15 +31,15 @@ describe("StartPage.vue", () => {
     const wrapper = mount(StartPage, {
       props: { questions },
     });
-    await wrapper.find('input[name="tags"]').setValue("tag1");
-    expect(wrapper.vm.tag).toBe(["tag1"]);
+    await wrapper.find("#question-tag").setValue("tag1");
+    expect(wrapper.vm.tag).toBe("tag1");
   });
 
   it("Add multiple tags", async () => {
     const wrapper = mount(StartPage, {
       props: { questions },
     });
-    await wrapper.find('input[name="tags"]').setValue("tag1 tag2");
-    expect(wrapper.vm.tag).toBe(["tag1", "tag2"]);
+    await wrapper.find("#question-tag").setValue("tag1 tag2");
+    expect(wrapper.vm.tag).toBe("tag1 tag2");
   });
 });

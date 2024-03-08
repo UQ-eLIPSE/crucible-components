@@ -5,13 +5,13 @@ import StartPage from "./components/MCQ/StartPage.vue";
 import { setQuestions } from "./components/QuestionStore";
 const quizQuestions = ref();
 
-const handleStartQuiz = (questionAmount: number, tag?: string) => {
-  quizQuestions.value = setQuestions(questionAmount, tag);
+const handleStartQuiz = (questionAmount: number, tags?: string[]) => {
+  quizQuestions.value = setQuestions(questionAmount, tags);
 };
 </script>
 
 <template>
-  <MCQQuiz v-if="quizQuestions.length" :questions="quizQuestions" />
+  <MCQQuiz v-if="quizQuestions" :questions="quizQuestions" />
   <StartPage v-else @start-quiz="handleStartQuiz" />
 </template>
 
