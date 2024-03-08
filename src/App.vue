@@ -2,11 +2,14 @@
 import { ref } from "vue";
 import MCQQuiz from "@components/MCQ/MCQQuiz.vue";
 import StartPage from "@components/StartPage.vue";
-import { setQuestions } from "./components/QuestionStore";
+import { retrieveNumberOfQuestionsFilteredByTags } from "./components/QuestionStore";
 const quizQuestions = ref();
 
 const handleStartQuiz = (questionAmount: number, tags?: string[]) => {
-  quizQuestions.value = setQuestions(questionAmount, tags);
+  quizQuestions.value = retrieveNumberOfQuestionsFilteredByTags(
+    questionAmount,
+    tags,
+  );
 };
 </script>
 
