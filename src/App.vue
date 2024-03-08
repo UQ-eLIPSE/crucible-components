@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import MCQQuiz from "@components/MCQ/MCQQuiz.vue";
-import StartPage from "./components/MCQ/StartPage.vue";
+import StartPage from "@components/StartPage.vue";
 import { setQuestions } from "./components/QuestionStore";
 const quizQuestions = ref();
 
@@ -33,3 +33,4 @@ const handleStartQuiz = (questionAmount: number, tags?: string[]) => {
   gap: 10px;
 }
 </style>
+./components/StartPage.vue

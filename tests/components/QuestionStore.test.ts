@@ -23,7 +23,7 @@ test("Specify question tag and amount ", () => {
 
 test("Specify multiple question tags and amount ", () => {
   const tags = ["tag1", "tag2"];
-  const result = setQuestions(2, tags);
+  const result = setQuestions(3, tags);
   const tagged = questions.filter(
     (question) =>
       question.tags && tags.some((tag) => question.tags?.includes(tag)),

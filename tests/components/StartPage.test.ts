@@ -1,7 +1,7 @@
 import { describe, it, expect } from "vitest";
 import { mount } from "@vue/test-utils";
 import { questions } from "@data/question-data.json";
-import StartPage from "@/components/MCQ/StartPage.vue";
+import StartPage from "@components/StartPage.vue";
 
 describe("StartPage.vue", () => {
   it("renders App component", () => {
