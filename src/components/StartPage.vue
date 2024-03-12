@@ -5,7 +5,7 @@
       <label for="question-amount">Enter a tag:</label>
       <input
         id="question-tag"
-        v-model="tag"
+        v-model="tags"
         type="text"
         name="tags"
         placeholder="Enter your tag"
@@ -28,11 +28,13 @@
 <script setup lang="ts">
 import { ref } from "vue";
 const questionAmount = ref<number>(0);
-const tag = ref<string | null>(null);
+const tags = ref<string | null>(null);
 const emit = defineEmits(["start-quiz"]);
 
+const getTags = () => tags.value && tags.value.split(" ");
+
 const startQuiz = () => {
-  emit("start-quiz", questionAmount.value, tag.value && tag.value.split(" "));
+  emit("start-quiz", questionAmount.value);
 };
 </script>
 

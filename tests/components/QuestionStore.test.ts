@@ -3,7 +3,7 @@ import { getQuestionsByTagAndLimit } from "@components/QuestionStore";
 
 const questions = [
   {
-    title: "The question 0",
+    title: "The question 1",
     tags: ["tag1"],
     options: [
       { text: "Answer A Q0" },
@@ -23,6 +23,14 @@ const questions = [
   {
     title: "The question 3",
     tags: [],
+    options: [
+      { text: "Answer A Q3", correct: true },
+      { text: "Answer B Q3" },
+      { text: "Answer C Q3" },
+    ],
+  },
+  {
+    title: "The question 4",
     options: [
       { text: "Answer A Q3", correct: true },
       { text: "Answer B Q3" },

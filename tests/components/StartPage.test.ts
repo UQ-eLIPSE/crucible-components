@@ -32,7 +32,7 @@ describe("StartPage.vue", () => {
       props: { questions },
     });
     await wrapper.find("#question-tag").setValue("tag1");
-    expect(wrapper.vm.tag).toBe("tag1");
+    expect(wrapper.vm.tags).toBe("tag1");
   });
 
   it("Add multiple tags", async () => {
@@ -40,6 +40,6 @@ describe("StartPage.vue", () => {
       props: { questions },
     });
     await wrapper.find("#question-tag").setValue("tag1 tag2");
-    expect(wrapper.vm.tag).toBe("tag1 tag2");
+    expect(wrapper.vm.tags).toBe("tag1 tag2");
   });
 });
