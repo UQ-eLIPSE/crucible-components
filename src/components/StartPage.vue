@@ -5,7 +5,7 @@
       <label for="question-amount">Enter a tag:</label>
       <input
         id="question-tag"
-        v-model="tag"
+        v-model="tags"
         type="text"
         name="tags"
         placeholder="Enter your tag"
@@ -19,7 +19,6 @@
         type="number"
         placeholder="Question amount"
         min="1"
-        :max="questions.length"
       />
     </div>
     <button class="start-button" @click="startQuiz">Start</button>
@@ -27,15 +26,15 @@
 </template>
 
 <script setup lang="ts">
-import { MCQQuiz } from "@/types/MCQ";
 import { ref } from "vue";
-const { questions } = defineProps<MCQQuiz>();
 const questionAmount = ref<number>(0);
-const tag = ref<string>("");
+const tags = ref<string | null>(null);
 const emit = defineEmits(["start-quiz"]);
 
+const getTags = () => tags.value && tags.value.split(" ");
+
 const startQuiz = () => {
-  emit("start-quiz", questionAmount.value, tag.value);
+  emit("start-quiz", questionAmount.value, getTags());
 };
 </script>
 

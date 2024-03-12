@@ -1,10 +1,10 @@
 export interface MCQQuiz {
-  questions: MCQProps[];
+  questions: MCQuestion[];
 }
 
-export interface MCQProps {
+export interface MCQuestion {
   title: string;
-  tags?: string;
+  tags?: string[];
   options: MCQOptions[];
 }
 

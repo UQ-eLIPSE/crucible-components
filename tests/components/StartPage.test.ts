@@ -1,7 +1,7 @@
 import { describe, it, expect } from "vitest";
 import { mount } from "@vue/test-utils";
 import { questions } from "@data/question-data.json";
-import StartPage from "@/components/MCQ/StartPage.vue";
+import StartPage from "@components/StartPage.vue";
 
 describe("StartPage.vue", () => {
   it("renders App component", () => {
@@ -27,11 +27,19 @@ describe("StartPage.vue", () => {
     expect(wrapper.vm.questionAmount).toBe(2);
   });
 
-  it("Update tag value", async () => {
+  it("Add a tag", async () => {
     const wrapper = mount(StartPage, {
       props: { questions },
     });
-    await wrapper.find('input[name="tags"]').setValue("tag1");
-    expect(wrapper.vm.tag).toBe("tag1");
+    await wrapper.find("#question-tag").setValue("tag1");
+    expect(wrapper.vm.tags).toBe("tag1");
+  });
+
+  it("Add multiple tags", async () => {
+    const wrapper = mount(StartPage, {
+      props: { questions },
+    });
+    await wrapper.find("#question-tag").setValue("tag1 tag2");
+    expect(wrapper.vm.tags).toBe("tag1 tag2");
   });
 });

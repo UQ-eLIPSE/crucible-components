@@ -1,25 +1,18 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import MCQQuiz from "@components/MCQ/MCQQuiz.vue";
-import { questions } from "@data/question-data.json";
-import StartPage from "./components/MCQ/StartPage.vue";
-const showQuiz = ref(false);
-const quizQuestions = ref(questions);
+import StartPage from "@components/StartPage.vue";
+import { getQuestionsByTagAndLimit } from "./components/QuestionStore";
+const quizQuestions = ref();
 
-const handleStartQuiz = (questionAmount: number, tag?: string) => {
-  if (tag)
-    quizQuestions.value = quizQuestions.value
-      .filter((question) => question.tags && question.tags.includes(tag))
-      .slice(0, questionAmount);
-  else quizQuestions.value = quizQuestions.value.slice(0, questionAmount);
-
-  showQuiz.value = true;
+const handleStartQuiz = (questionAmount: number, tags?: string[]) => {
+  quizQuestions.value = getQuestionsByTagAndLimit(questionAmount, tags);
 };
 </script>
 
 <template>
-  <MCQQuiz v-if="showQuiz" :questions="quizQuestions" />
-  <StartPage v-else :questions="questions" @start-quiz="handleStartQuiz" />
+  <MCQQuiz v-if="quizQuestions" :questions="quizQuestions" />
+  <StartPage v-else @start-quiz="handleStartQuiz" />
 </template>
 
 <style scoped>

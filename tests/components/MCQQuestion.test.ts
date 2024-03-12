@@ -1,7 +1,7 @@
 import { describe, it, expect, beforeEach } from "vitest";
 import { questions } from "@data/question-data.json";
 import MCQQuestion from "@components/MCQ/MCQQuestion.vue";
-import { MCQProps } from "@/types/MCQ";
+import { MCQuestion } from "@/types/MCQ";
 import { mount, VueWrapper } from "@vue/test-utils";
 
 let wrapper: VueWrapper;
@@ -17,7 +17,7 @@ beforeEach(() => {
   });
 });
 
-const optionMount = (propsData: MCQProps) => {
+const optionMount = (propsData: MCQQuestion) => {
   const optionWrapper = mount(MCQQuestion, { propsData });
   return optionWrapper.findAll(".mcq-option");
 };
