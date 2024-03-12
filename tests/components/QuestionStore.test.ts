@@ -1,5 +1,5 @@
 import { test, expect, vi } from "vitest";
-import { retrieveNumberOfQuestionsFilteredByTags } from "@components/QuestionStore";
+import { getQuestionsByTagAndLimit } from "@components/QuestionStore";
 
 const questions = [
   {
@@ -33,34 +33,32 @@ const questions = [
 
 vi.mock("@components/DataAccessLayer", () => {
   return {
-    retrieveAllQuestions: () => questions,
+    getAllQuestions: () => questions,
   };
 });
 
 test("Specify no questions and return with an empty array", () => {
-  const result = retrieveNumberOfQuestionsFilteredByTags(0);
+  const result = getQuestionsByTagAndLimit(0);
   expect(result).toEqual([]);
 });
 
 test("Specify questions more than provided", () => {
-  const result = retrieveNumberOfQuestionsFilteredByTags(5);
+  const result = getQuestionsByTagAndLimit(5);
   expect(result.length).toEqual(questions.length);
 });
 
 test("No question tags specified", () => {
-  const result = retrieveNumberOfQuestionsFilteredByTags(7);
+  const result = getQuestionsByTagAndLimit(7);
   expect(result).toEqual(questions);
 });
 
 test("Specify a non-existent tag", () => {
-  const result = retrieveNumberOfQuestionsFilteredByTags(2, [
-    "Non-existent-tag",
-  ]);
+  const result = getQuestionsByTagAndLimit(2, ["Non-existent-tag"]);
   expect(result).toEqual([]);
 });
 
 test("Specify question tag and amount ", () => {
-  const result = retrieveNumberOfQuestionsFilteredByTags(2, ["tag1"]);
+  const result = getQuestionsByTagAndLimit(2, ["tag1"]);
   const tagged = questions.filter((question) =>
     question.tags?.includes("tag1"),
   );
@@ -70,7 +68,7 @@ test("Specify question tag and amount ", () => {
 
 test("Specify multiple question tags and amount ", () => {
   const tags = ["tag1", "tag2"];
-  const result = retrieveNumberOfQuestionsFilteredByTags(3, tags);
+  const result = getQuestionsByTagAndLimit(3, tags);
   const tagged = questions.filter(
     (question) =>
       question.tags && tags.some((tag) => question.tags?.includes(tag)),

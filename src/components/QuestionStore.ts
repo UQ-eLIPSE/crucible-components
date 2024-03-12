@@ -1,11 +1,8 @@
 import { MCQuestion } from "@/types/MCQ";
-import { retrieveAllQuestions } from "./DataAccessLayer";
+import { getAllQuestions } from "./DataAccessLayer";
 
-export const retrieveNumberOfQuestionsFilteredByTags = (
-  count: number,
-  tags?: string[],
-) => {
-  const allQuestions = retrieveAllQuestions();
+export const getQuestionsByTagAndLimit = (count: number, tags?: string[]) => {
+  const allQuestions = getAllQuestions();
   const quizQuestions = tags
     ? allQuestions
         .filter(

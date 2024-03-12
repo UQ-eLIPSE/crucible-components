@@ -1,6 +1,6 @@
 import { MCQuestion } from "@/types/MCQ";
 import { questions } from "@data/question-data.json";
 
-export const retrieveAllQuestions = () => {
+export const getAllQuestions = () => {
   return questions as MCQuestion[];
 };
