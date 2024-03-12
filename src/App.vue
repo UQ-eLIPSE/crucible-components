@@ -36,4 +36,3 @@ const handleStartQuiz = (questionAmount: number, tags?: string[]) => {
   gap: 10px;
 }
 </style>
-./components/StartPage.vue

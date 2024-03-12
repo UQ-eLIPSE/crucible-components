@@ -28,11 +28,11 @@
 <script setup lang="ts">
 import { ref } from "vue";
 const questionAmount = ref<number>(0);
-const tag = ref<string>("");
+const tag = ref<string | null>(null);
 const emit = defineEmits(["start-quiz"]);
 
 const startQuiz = () => {
-  emit("start-quiz", questionAmount.value, tag.value.split(" "));
+  emit("start-quiz", questionAmount.value, tag.value && tag.value.split(" "));
 };
 </script>
 

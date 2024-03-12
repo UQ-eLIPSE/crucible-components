@@ -19,7 +19,7 @@
         },
         {
             "title": "The question 2",
-            "tags": ["tag2"],
+            "tags": ["tag2", "tag1"],
             "options": [
                 {"text": "Answer A Q2"},
                 {"text": "Answer B Q2"},
@@ -28,7 +28,7 @@
         },
         {
             "title": "The question 3",
-            "tags": ["tag1"],
+            "tags": [],
             "options": [
                 {"text": "Answer A Q3", "correct": true},
                 {"text": "Answer B Q3"},
