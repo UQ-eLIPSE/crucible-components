@@ -34,7 +34,7 @@ const emit = defineEmits(["start-quiz"]);
 const getTags = () => tags.value && tags.value.split(" ");
 
 const startQuiz = () => {
-  emit("start-quiz", questionAmount.value);
+  emit("start-quiz", questionAmount.value, getTags());
 };
 </script>
 
