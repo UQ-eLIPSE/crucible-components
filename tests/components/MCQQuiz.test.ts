@@ -56,7 +56,9 @@ describe("MCQQuiz.vue", () => {
     for (let i = 0; i < questions.length; i++) {
       await mcqBtn.trigger("click");
     }
-    expect(wrapper.text()).toContain("The question 0");
+    expect(wrapper.text()).toContain(
+      "Which clinical exam findings/tests can we use to assess vision in a 6-week-old puppy?",
+    );
   });
 
   it("Should display all questions properly when skipping them", async () => {
