@@ -19,22 +19,26 @@ beforeEach(async () => {
 });
 
 const questionIsFullyDisplayed = (wrapper: VueWrapper) => {
-  const titleExists = wrapper.find(".mcq-title").exists();
+  const statementExists = wrapper.find(".mcq-statement").exists();
   const optionsListExists = wrapper.find(".mcq-list").exists();
   const buttonExists = wrapper.find(".mcq-button").exists();
-  return titleExists && optionsListExists && buttonExists;
+  return statementExists && optionsListExists && buttonExists;
 };
 
 describe("MCQQuiz.vue", () => {
   it("Renders quiz properly", () => {
     expect(wrapper.exists()).toBe(true);
-    expect(wrapper.text()).toContain("MCQ Quiz");
-    expect(wrapper.text()).toContain("The question 0");
+    expect(wrapper.text()).toContain(
+      "Which clinical exam findings/tests can we use to assess vision in a 6-week-old puppy?",
+    );
+    expect(wrapper.text()).toContain("Cotton ball tracking");
   });
 
   it("Navigates question stack upon skip", async () => {
     await mcqBtn.trigger("click");
-    expect(wrapper.text()).toContain("The question 1");
+    expect(wrapper.text()).toContain(
+      "Cranial nerve 5 is motor to what muscle group?",
+    );
   });
 
   it("Navigates question stack upon submission and next", async () => {
@@ -43,7 +47,9 @@ describe("MCQQuiz.vue", () => {
     await firstOption.trigger("click");
     await mcqBtn.trigger("click");
     await mcqBtn.trigger("click");
-    expect(wrapper.text()).toContain("The question 1");
+    expect(wrapper.text()).toContain(
+      "Cranial nerve 5 is motor to what muscle group?",
+    );
   });
 
   it("Should go back to first question when skipping all the questions", async () => {

@@ -3,14 +3,14 @@ export interface MCQQuiz {
 }
 
 export interface MCQuestion {
-  title: string;
+  statement: string;
   tags?: string[];
-  options: MCQOptions[];
+  optionsList: MCQOptions[];
 }
 
 export interface MCQOptions {
-  text: string;
-  correct?: boolean;
+  optionValue: string;
+  optionCorrect?: boolean;
 }
 
 export interface MCQButton {

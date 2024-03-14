@@ -2,8 +2,8 @@
   <div>MCQ Quiz</div>
   <MCQQuestion
     v-if="currentQuestion"
-    :title="currentQuestion.title"
-    :options="currentQuestion.options"
+    :statement="currentQuestion.statement"
+    :options-list="currentQuestion.optionsList"
     @next-question="nextQuestion"
     @skip-question="skipQuestion"
   />
