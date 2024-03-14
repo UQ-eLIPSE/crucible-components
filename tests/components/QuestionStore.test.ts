@@ -3,38 +3,38 @@ import { getQuestionsByTagAndLimit } from "@components/QuestionStore";
 
 const questions = [
   {
-    title: "The question 1",
+    statement: "The question 1",
     tags: ["tag1"],
-    options: [
-      { text: "Answer A Q0" },
-      { text: "Answer B Q0", correct: true },
-      { text: "Answer C Q0" },
+    optionsList: [
+      { optionValue: "Answer A Q0", optionCorrect: false },
+      { optionValue: "Answer B Q0", optionCorrect: true },
+      { optionValue: "Answer C Q0", optionCorrect: false },
     ],
   },
   {
-    title: "The question 2",
+    statement: "The question 2",
     tags: ["tag2", "tag1"],
-    options: [
-      { text: "Answer A Q2" },
-      { text: "Answer B Q2" },
-      { text: "Answer C Q2", correct: true },
+    optionsList: [
+      { optionValue: "Answer A Q2", optionCorrect: false },
+      { optionValue: "Answer B Q2", optionCorrect: false },
+      { optionValue: "Answer C Q2", optionCorrect: true },
     ],
   },
   {
-    title: "The question 3",
+    statement: "The question 3",
     tags: [],
-    options: [
-      { text: "Answer A Q3", correct: true },
-      { text: "Answer B Q3" },
-      { text: "Answer C Q3" },
+    optionsList: [
+      { optionValue: "Answer A Q3", optionCorrect: true },
+      { optionValue: "Answer B Q3", optionCorrect: false },
+      { optionValue: "Answer C Q3", optionCorrect: false },
     ],
   },
   {
-    title: "The question 4",
-    options: [
-      { text: "Answer A Q3", correct: true },
-      { text: "Answer B Q3" },
-      { text: "Answer C Q3" },
+    statement: "The question 4",
+    optionsList: [
+      { optionValue: "Answer A Q3", optionCorrect: true },
+      { optionValue: "Answer B Q3", optionCorrect: false },
+      { optionValue: "Answer C Q3", optionCorrect: false },
     ],
   },
 ];

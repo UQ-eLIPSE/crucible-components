@@ -5,19 +5,19 @@ import { MCQuestion } from "@/types/MCQ";
 import { mount, VueWrapper } from "@vue/test-utils";
 
 let wrapper: VueWrapper;
-const title = questions[0].title;
-const options = questions[0].options;
+const statement = questions[0].statement;
+const optionsList = questions[0].optionsList;
 
 beforeEach(() => {
   wrapper = mount(MCQQuestion, {
     props: {
-      title,
-      options,
+      statement,
+      optionsList,
     },
   });
 });
 
-const optionMount = (propsData: MCQQuestion) => {
+const optionMount = (propsData: MCQuestion) => {
   const optionWrapper = mount(MCQQuestion, { propsData });
   return optionWrapper.findAll(".mcq-option");
 };
@@ -31,31 +31,31 @@ describe("MCQQuestion.vue", () => {
     expect(wrapper.exists()).toBe(true);
   });
 
-  it("Renders component with title", () => {
-    expect(wrapper.get(".mcq-title").text()).toContain(title);
+  it("Renders component with statement", () => {
+    expect(wrapper.get(".mcq-statement").html()).toContain(statement);
   });
 
   it("Renders component with no options", () => {
-    const optionList = optionMount({ title, options: [] });
+    const optionList = optionMount({ statement, optionsList: [] });
     expect(optionList.length).toBe(0);
   });
 
   it("Renders component with one option", () => {
-    const singleOption = [{ text: "Option A", correct: true }];
-    const optionList = optionMount({ title, options: singleOption });
+    const singleOption = [{ optionValue: "Option A", optionCorrect: true }];
+    const optionList = optionMount({ statement, optionsList: singleOption });
     expect(optionList.length).toBe(1);
-    expect(optionList[0].text()).toBe(singleOption[0].text);
+    expect(optionList[0].text()).toBe(singleOption[0].optionValue);
   });
 
   it("Renders component with options", () => {
     const optionList = getOptions(wrapper);
-    const questionKeys = Object.keys(options);
+    const questionKeys = Object.keys(optionsList);
     expect(optionList.length).toBe(questionKeys.length);
 
     for (const [index] of questionKeys.entries()) {
       const renderedOption = optionList[index];
-      const value = Object.values(options)[index];
-      expect(renderedOption.text()).toBe(`${value.text}`);
+      const value = Object.values(optionsList)[index];
+      expect(renderedOption.html()).toContain(`${value.optionValue}`);
     }
   });
 

@@ -1,11 +1,12 @@
+<!-- eslint-disable vue/no-v-html -->
 <template>
-  <div class="mcq-title">{{ title }}</div>
+  <div class="mcq-statement" v-html="statement" />
   <div class="mcq-list">
     <div
-      v-for="[key, value] in Object.entries(options)"
+      v-for="[key, value] in Object.entries(optionsList)"
       :key="key"
       class="mcq-option"
-      :class="optionClass(key, options)"
+      :class="optionClass(key, optionsList)"
       @click="selectOption(key)"
     >
       <MCQOption
@@ -31,7 +32,7 @@ import type { MCQuestion, MCQOptions } from "@type/MCQ.d.ts";
 import MCQOption from "./MCQOption.vue";
 import MCQButton from "./MCQButton.vue";
 
-const { title, options } = defineProps<MCQuestion>();
+const { statement, optionsList } = defineProps<MCQuestion>();
 const selectedOption = ref<string | null>(null);
 const submitted = ref<boolean>(false);
 const emit = defineEmits(["nextQuestion", "skipQuestion"]);
@@ -72,7 +73,7 @@ const optionClass = (key: string, optionsList: MCQOptions[]) => {
     return isSelected ? "selected" : "";
   }
 
-  return option.correct
+  return option.optionCorrect
     ? "correct ignore-hover"
     : isSelected
       ? "wrong ignore-hover"

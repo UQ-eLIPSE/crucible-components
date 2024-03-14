@@ -1,39 +1,434 @@
 {
-    "questions": [
+  "questions": [
+    {
+      "statement": "<p>Which clinical exam findings/tests can we use to assess vision in a 6-week-old puppy?</p>",
+      "optionsList": [
         {
-            "title": "The question 0",
-            "tags": ["tag1"],
-            "options": [
-                {"text": "Answer A Q0"},
-                {"text": "Answer B Q0", "correct": true},
-                {"text": "Answer C Q0"}
-            ]
+          "optionValue": "<p>Cotton ball tracking</p>",
+          "optionCorrect": true
         },
         {
-            "title": "The question 1",
-            "options": [
-                {"text": "Answer A Q1"},
-                {"text": "Answer B Q1", "correct": true},
-                {"text": "Answer C Q1"}
-            ]
+          "optionValue": "<p>Fundic exam</p>",
+          "optionCorrect": false
         },
         {
-            "title": "The question 2",
-            "tags": ["tag2", "tag1"],
-            "options": [
-                {"text": "Answer A Q2"},
-                {"text": "Answer B Q2"},
-                {"text": "Answer C Q2", "correct": true}
-            ]
+          "optionValue": "<p>Menace</p>",
+          "optionCorrect": false
         },
         {
-            "title": "The question 3",
-            "tags": [],
-            "options": [
-                {"text": "Answer A Q3", "correct": true},
-                {"text": "Answer B Q3"},
-                {"text": "Answer C Q3"}
-            ]
+          "optionValue": "<p>PLR</p>",
+          "optionCorrect": false
         }
-    ]
+      ],
+      "_id": {
+        "$oid": "64b8b4af11f0b6cab2561cfe"
+      },
+      "tags": []
+    },
+    {
+      "statement": "<p>Cranial nerve 5 is motor to what muscle group?</p>",
+      "optionsList": [
+        {
+          "optionValue": "<p>CN5 is only sensory</p>",
+          "optionCorrect": false
+        },
+        {
+          "optionValue": "<p>Mastication</p>",
+          "optionCorrect": true
+        },
+        {
+          "optionValue": "<p>Lateral eye movement and position</p>",
+          "optionCorrect": false
+        },
+        {
+          "optionValue": "<p>Palpebral muscles</p>",
+          "optionCorrect": false
+        }
+      ],
+      "_id": {
+        "$oid": "64b8b4af11f0b6cab2561cff"
+      },
+      "tags": []
+    },
+    {
+      "statement": "<p>Testing for &ldquo;drawer&rdquo; sign in the stifle tests for stability of what structure(s)?</p>",
+      "optionsList": [
+        {
+          "optionValue": "<p>Patellar ligament</p>",
+          "optionCorrect": false
+        },
+        {
+          "optionValue": "<p>Gastrocnemius tendon</p>",
+          "optionCorrect": false
+        },
+        {
+          "optionValue": "<p>Lateral collateral stifle</p>",
+          "optionCorrect": false
+        },
+        {
+          "optionValue": "<p>Cruciate ligaments</p>",
+          "optionCorrect": true
+        }
+      ],
+      "_id": {
+        "$oid": "64b8b4af11f0b6cab2561cfc"
+      },
+      "tags": []
+    },
+    {
+      "statement": "<p>In a suspect IVDD dog, the presence of a withdrawal reflex automatically indicates deep pain tracts are intact.</p>",
+      "optionsList": [
+        {
+          "optionValue": "<p>True</p>",
+          "optionCorrect": false
+        },
+        {
+          "optionValue": "<p>False</p>",
+          "optionCorrect": true
+        }
+      ],
+      "_id": {
+        "$oid": "64b8b4af11f0b6cab2561cfd"
+      },
+      "tags": []
+    },
+    {
+      "statement": "<p>What is the principle difference between &ldquo;gait abnormalities&rdquo; and &ldquo;ataxia&rdquo;.</p>",
+      "optionsList": [
+        {
+          "optionValue": "<p>Gait changes are a change in the way the patient moves. &nbsp;Ataxia means the patient cannot control their normal movements.</p>",
+          "optionCorrect": true
+        },
+        {
+          "optionValue": "<p>Gait changes indicate a lack of voluntary control of muscles, Ataxia indicates upper-motor-neuron disease, usually cerebral.</p>",
+          "optionCorrect": false
+        },
+        {
+          "optionValue": "<p>Both changes indicate likely spinal cord lesion.</p>",
+          "optionCorrect": false
+        },
+        {
+          "optionValue": "<p>Ataxia happens secondary to vestibular disease. &nbsp;Gait changes happen secondary to upper-motor-neuron disease.</p>",
+          "optionCorrect": false
+        }
+      ],
+      "_id": {
+        "$oid": "64b8b4af11f0b6cab2561cfa"
+      },
+      "tags": []
+    },
+    {
+      "statement": "<p>The patellar reflex can be minimal to absent in normal dogs.</p>",
+      "optionsList": [
+        {
+          "optionValue": "<p>True</p>",
+          "optionCorrect": true
+        },
+        {
+          "optionValue": "<p>False</p>",
+          "optionCorrect": false
+        }
+      ],
+      "_id": {
+        "$oid": "64b8b4af11f0b6cab2561d01"
+      },
+      "tags": []
+    },
+    {
+      "statement": "<p>The panniculus reflex can indicate the level (on the vertebral column) of a compressive lesion on the spinal cord.</p>",
+      "optionsList": [
+        {
+          "optionValue": "<p>True</p>",
+          "optionCorrect": true
+        },
+        {
+          "optionValue": "<p>False</p>",
+          "optionCorrect": false
+        }
+      ],
+      "_id": {
+        "$oid": "64b8b4af11f0b6cab2561d03"
+      },
+      "tags": []
+    },
+    {
+      "statement": "<p>The spinal cord ends at approximately which vertebra?</p>",
+      "optionsList": [
+        {
+          "optionValue": "<p>T13-L1</p>",
+          "optionCorrect": false
+        },
+        {
+          "optionValue": "<p>L4-L6</p>",
+          "optionCorrect": true
+        },
+        {
+          "optionValue": "<p>L7-S1</p>",
+          "optionCorrect": false
+        },
+        {
+          "optionValue": "<p>T12-L4</p>",
+          "optionCorrect": false
+        }
+      ],
+      "_id": {
+        "$oid": "64b8b4af11f0b6cab2561cfb"
+      },
+      "tags": []
+    },
+    {
+      "statement": "<p>A patient presents with the following neurologic findings:</p>\n<p style=\"text-align: left;\">&nbsp;Pelvic limb paresis</p>\n<p style=\"text-align: left;\">Hyper-reflexive patellar reflexes</p>\n<p style=\"text-align: left;\">Withdraws leg when significant force is applied to toes</p>\n<p style=\"text-align: left;\">Thoracic limbs &ndash; normal</p>\n<p style=\"text-align: left;\">&nbsp;</p>\n<p>This lesion localises to:</p>",
+      "optionsList": [
+        {
+          "optionValue": "<p>C1-C6</p>",
+          "optionCorrect": false
+        },
+        {
+          "optionValue": "<p>C7-T2</p>",
+          "optionCorrect": false
+        },
+        {
+          "optionValue": "<p>T3-L3</p>",
+          "optionCorrect": true
+        },
+        {
+          "optionValue": "<p>L4-S1</p>",
+          "optionCorrect": false
+        }
+      ],
+      "_id": {
+        "$oid": "64b8b4af11f0b6cab2561d02"
+      },
+      "tags": []
+    },
+    {
+      "statement": "<p>What is the difference in the paresis and paralysis seen in upper-motor diseases vs lower motor diseases?</p>",
+      "optionsList": [
+        {
+          "optionValue": "<p>UMN is flaccid, LMN is spastic</p>",
+          "optionCorrect": false
+        },
+        {
+          "optionValue": "<p>Both will be flaccid</p>",
+          "optionCorrect": false
+        },
+        {
+          "optionValue": "<p>Both will be spastic</p>",
+          "optionCorrect": false
+        },
+        {
+          "optionValue": "<p>UMN is spastic, LMN is flaccid</p>",
+          "optionCorrect": true
+        }
+      ],
+      "_id": {
+        "$oid": "64b8b4af11f0b6cab2561d00"
+      },
+      "tags": []
+    },
+    {
+      "statement": "This is a problem",
+      "optionsList": [
+        {
+          "optionValue": "Ignore it",
+          "optionCorrect": true
+        },
+        {
+          "optionValue": "<span style=\"font-family: 'source code pro', monospace, 'Andale Mono';\">Blame someone else</span>",
+          "optionCorrect": false
+        },
+        {
+          "optionValue": "Deal with it",
+          "optionCorrect": false
+        }
+      ],
+      "_id": {
+        "$oid": "64ba560447d01bfdcb099df6"
+      },
+      "tags": []
+    },
+    {
+      "statement": "If you want loyalty, you should get a what?",
+      "optionsList": [
+        {
+          "optionValue": "Dog",
+          "optionCorrect": true
+        },
+        {
+          "optionValue": "Cat",
+          "optionCorrect": false
+        },
+        {
+          "optionValue": "Snake",
+          "optionCorrect": false
+        }
+      ],
+      "_id": {
+        "$oid": "64ba560447d01bfdcb099df7"
+      },
+      "tags": []
+    },
+    {
+      "statement": "Which part of a neuron receives information from surrounding cells?",
+      "optionsList": [
+        {
+          "optionValue": "Axon",
+          "optionCorrect": false
+        },
+        {
+          "optionValue": "Presynaptic terminal",
+          "optionCorrect": false
+        },
+        {
+          "optionValue": "Cell body",
+          "optionCorrect": false
+        },
+        {
+          "optionValue": "Dendrite",
+          "optionCorrect": true
+        },
+        {
+          "optionValue": "Myelin",
+          "optionCorrect": false
+        }
+      ],
+      "_id": {
+        "$oid": "64ba560447d01bfdcb099df8"
+      },
+      "tags": []
+    },
+    {
+      "statement": "The membrane potential is due to:",
+      "optionsList": [
+        {
+          "optionValue": "Na+ diffusion in, K+ diffusion out, the Na+/K+ pump",
+          "optionCorrect": true
+        },
+        {
+          "optionValue": "Na+ diffusion out, K+ diffusion in, the Na+/K+ pump",
+          "optionCorrect": false
+        },
+        {
+          "optionValue": "Na+ diffusion out, K+ diffusion out, the Na+/K+ pump",
+          "optionCorrect": false
+        }
+      ],
+      "_id": {
+        "$oid": "64ba560447d01bfdcb099dfb"
+      },
+      "tags": []
+    },
+    {
+      "statement": "Action potentials are transmitted along which part of a neuron?",
+      "optionsList": [
+        {
+          "optionValue": "Axon",
+          "optionCorrect": true
+        },
+        {
+          "optionValue": "Presynaptic terminal",
+          "optionCorrect": false
+        },
+        {
+          "optionValue": "Cell body",
+          "optionCorrect": false
+        },
+        {
+          "optionValue": "Dendrite",
+          "optionCorrect": false
+        },
+        {
+          "optionValue": "Myelin",
+          "optionCorrect": false
+        }
+      ],
+      "_id": {
+        "$oid": "64ba560447d01bfdcb099df9"
+      },
+      "tags": []
+    },
+    {
+      "statement": "The resting membrane potential of a mammalian neuron is:",
+      "optionsList": [
+        {
+          "optionValue": "-55mV",
+          "optionCorrect": false
+        },
+        {
+          "optionValue": "0mV",
+          "optionCorrect": false
+        },
+        {
+          "optionValue": "70mV",
+          "optionCorrect": false
+        },
+        {
+          "optionValue": "-70mV",
+          "optionCorrect": true
+        }
+      ],
+      "_id": {
+        "$oid": "64ba560447d01bfdcb099dfa"
+      },
+      "tags": []
+    },
+    {
+      "statement": "Which of the following statements regarding action potential is TRUE?",
+      "optionsList": [
+        {
+          "optionValue": "Multiple depolarising events minimises the chance of action potential generation",
+          "optionCorrect": false
+        },
+        {
+          "optionValue": "Reaching the subthreshold level does not stimulate the postsynaptic membrane",
+          "optionCorrect": false
+        },
+        {
+          "optionValue": "Threshold event generates an action potential",
+          "optionCorrect": true
+        },
+        {
+          "optionValue": "Reaching the subthreshold level is enough to generate an action potential",
+          "optionCorrect": false
+        },
+        {
+          "optionValue": "Depolarised synaptic membrane is more negative than the hyperpolarised membrane",
+          "optionCorrect": false
+        }
+      ],
+      "_id": {
+        "$oid": "64ba560447d01bfdcb099dfc"
+      },
+      "tags": []
+    },
+    {
+      "statement": "What happens when an IPSP is generated after EPSP?",
+      "optionsList": [
+        {
+          "optionValue": "Membrane is more depolarised",
+          "optionCorrect": false
+        },
+        {
+          "optionValue": "Effect of subthreshold is enhanced",
+          "optionCorrect": false
+        },
+        {
+          "optionValue": "Action potential is reached",
+          "optionCorrect": false
+        },
+        {
+          "optionValue": "A threshold event takes place",
+          "optionCorrect": false
+        },
+        {
+          "optionValue": "Membrane is hyperpolarised",
+          "optionCorrect": true
+        }
+      ],
+      "_id": {
+        "$oid": "64ba560447d01bfdcb099dfd"
+      },
+      "tags": []
+    }
+  ]
 }

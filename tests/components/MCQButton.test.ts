@@ -6,14 +6,14 @@ import { getOptions } from "./MCQQuestion.test";
 
 let wrapper: VueWrapper;
 let mcqBtn: Omit<DOMWrapper<Element>, "exists">;
-const title = questions[0].title;
-const options = questions[0].options;
+const statement = questions[0].statement;
+const optionsList = questions[0].optionsList;
 
 beforeEach(() => {
   wrapper = mount(MCQQuestion, {
     props: {
-      title,
-      options,
+      statement,
+      optionsList,
     },
   });
 

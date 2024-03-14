@@ -1,3 +1,4 @@
+<!-- eslint-disable vue/no-v-html -->
 <template>
   <input
     :id="'option-' + optionKey"
@@ -12,9 +13,8 @@
     :key="optionKey"
     :for="'option-' + optionKey"
     :class="submitted ? 'mcq-option-label ignore-hover' : 'mcq-option-label'"
-  >
-    {{ option.text }}
-  </label>
+    v-html="option.optionValue"
+  />
 </template>
 
 <script setup lang="ts">
