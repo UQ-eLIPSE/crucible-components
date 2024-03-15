@@ -31,11 +31,13 @@ import { ref } from "vue";
 import type { MCQuestion, MCQOptions } from "@type/MCQ.d.ts";
 import MCQOption from "./MCQOption.vue";
 import MCQButton from "./MCQButton.vue";
+import { useQuizStore } from "@store/QuizStore";
 
-const { statement, optionsList } = defineProps<MCQuestion>();
+const { statement, optionsList, _id } = defineProps<MCQuestion>();
 const selectedOption = ref<string | null>(null);
 const submitted = ref<boolean>(false);
 const emit = defineEmits(["nextQuestion", "skipQuestion"]);
+const quizStats = useQuizStore();
 
 const submitAnswer = () => {
   submitted.value = true;
@@ -44,11 +46,13 @@ const submitAnswer = () => {
 const nextQuestion = () => {
   resetQuestion();
   emit("nextQuestion");
+  quizStats.incrementStat(_id, "attempts");
 };
 
 const skipQuestion = () => {
   resetQuestion();
   emit("skipQuestion");
+  quizStats.incrementStat(_id, "skipped");
 };
 
 const resetQuestion = () => {
@@ -73,11 +77,12 @@ const optionClass = (key: string, optionsList: MCQOptions[]) => {
     return isSelected ? "selected" : "";
   }
 
-  return option.optionCorrect
-    ? "correct ignore-hover"
-    : isSelected
-      ? "wrong ignore-hover"
-      : "ignore-hover";
+  if (option.optionCorrect) {
+    quizStats.incrementStat(_id, "correct");
+    return "correct ignore-hover";
+  }
+
+  return isSelected ? "wrong ignore-hover" : "ignore-hover";
 };
 </script>
 

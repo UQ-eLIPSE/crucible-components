@@ -20,9 +20,7 @@
           "optionCorrect": false
         }
       ],
-      "_id": {
-        "$oid": "64b8b4af11f0b6cab2561cfe"
-      },
+      "_id":  "64b8b4af11f0b6cab2561cfe",
       "tags": []
     },
     {
@@ -45,9 +43,7 @@
           "optionCorrect": false
         }
       ],
-      "_id": {
-        "$oid": "64b8b4af11f0b6cab2561cff"
-      },
+      "_id":  "64b8b4af11f0b6cab2561cff",
       "tags": []
     },
     {
@@ -70,9 +66,7 @@
           "optionCorrect": true
         }
       ],
-      "_id": {
-        "$oid": "64b8b4af11f0b6cab2561cfc"
-      },
+      "_id":  "64b8b4af11f0b6cab2561cfc",
       "tags": []
     },
     {
@@ -87,9 +81,7 @@
           "optionCorrect": true
         }
       ],
-      "_id": {
-        "$oid": "64b8b4af11f0b6cab2561cfd"
-      },
+      "_id":  "64b8b4af11f0b6cab2561cfd",
       "tags": []
     },
     {
@@ -112,9 +104,7 @@
           "optionCorrect": false
         }
       ],
-      "_id": {
-        "$oid": "64b8b4af11f0b6cab2561cfa"
-      },
+      "_id":  "64b8b4af11f0b6cab2561cfa",
       "tags": []
     },
     {
@@ -129,9 +119,7 @@
           "optionCorrect": false
         }
       ],
-      "_id": {
-        "$oid": "64b8b4af11f0b6cab2561d01"
-      },
+      "_id":  "64b8b4af11f0b6cab2561d01",
       "tags": []
     },
     {
@@ -146,9 +134,7 @@
           "optionCorrect": false
         }
       ],
-      "_id": {
-        "$oid": "64b8b4af11f0b6cab2561d03"
-      },
+      "_id":  "64b8b4af11f0b6cab2561d03",
       "tags": []
     },
     {
@@ -171,9 +157,7 @@
           "optionCorrect": false
         }
       ],
-      "_id": {
-        "$oid": "64b8b4af11f0b6cab2561cfb"
-      },
+      "_id":  "64b8b4af11f0b6cab2561cfb",
       "tags": []
     },
     {
@@ -196,9 +180,7 @@
           "optionCorrect": false
         }
       ],
-      "_id": {
-        "$oid": "64b8b4af11f0b6cab2561d02"
-      },
+      "_id":  "64b8b4af11f0b6cab2561d02",
       "tags": []
     },
     {
@@ -221,9 +203,7 @@
           "optionCorrect": true
         }
       ],
-      "_id": {
-        "$oid": "64b8b4af11f0b6cab2561d00"
-      },
+      "_id":  "64b8b4af11f0b6cab2561d00",
       "tags": []
     },
     {
@@ -242,9 +222,7 @@
           "optionCorrect": false
         }
       ],
-      "_id": {
-        "$oid": "64ba560447d01bfdcb099df6"
-      },
+      "_id":  "64ba560447d01bfdcb099df6",
       "tags": []
     },
     {
@@ -263,9 +241,7 @@
           "optionCorrect": false
         }
       ],
-      "_id": {
-        "$oid": "64ba560447d01bfdcb099df7"
-      },
+      "_id":  "64ba560447d01bfdcb099df7",
       "tags": []
     },
     {
@@ -292,9 +268,7 @@
           "optionCorrect": false
         }
       ],
-      "_id": {
-        "$oid": "64ba560447d01bfdcb099df8"
-      },
+      "_id":  "64ba560447d01bfdcb099df8",
       "tags": []
     },
     {
@@ -313,9 +287,7 @@
           "optionCorrect": false
         }
       ],
-      "_id": {
-        "$oid": "64ba560447d01bfdcb099dfb"
-      },
+      "_id":  "64ba560447d01bfdcb099dfb",
       "tags": []
     },
     {
@@ -342,9 +314,7 @@
           "optionCorrect": false
         }
       ],
-      "_id": {
-        "$oid": "64ba560447d01bfdcb099df9"
-      },
+      "_id":  "64ba560447d01bfdcb099df9",
       "tags": []
     },
     {
@@ -367,9 +337,7 @@
           "optionCorrect": true
         }
       ],
-      "_id": {
-        "$oid": "64ba560447d01bfdcb099dfa"
-      },
+      "_id":  "64ba560447d01bfdcb099dfa",
       "tags": []
     },
     {
@@ -396,9 +364,7 @@
           "optionCorrect": false
         }
       ],
-      "_id": {
-        "$oid": "64ba560447d01bfdcb099dfc"
-      },
+      "_id":  "64ba560447d01bfdcb099dfc",
       "tags": []
     },
     {
@@ -425,9 +391,7 @@
           "optionCorrect": true
         }
       ],
-      "_id": {
-        "$oid": "64ba560447d01bfdcb099dfd"
-      },
+      "_id":  "64ba560447d01bfdcb099dfd",
       "tags": []
     }
   ]

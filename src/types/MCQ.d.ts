@@ -1,4 +1,5 @@
 export interface MCQuestion {
+  _id: string;
   statement: string;
   tags?: string[];
   optionsList: MCQOptions[];
@@ -20,3 +21,12 @@ export interface MCQRadioOption {
   option: MCQOptions;
   submitted: boolean;
 }
+
+export interface QuestionState {
+  question: MCQuestion;
+  correct: number;
+  skipped: number;
+  attempts: number;
+}
+
+export type Stat = "correct" | "skipped" | "attempts";

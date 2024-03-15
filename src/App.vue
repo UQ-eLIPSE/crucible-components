@@ -2,14 +2,16 @@
 import MCQQuiz from "@components/MCQ/MCQQuiz.vue";
 import StartPage from "@components/StartPage.vue";
 import { getQuestionsByTagAndLimit } from "./components/QuestionStore";
-import { useQuestionsQueueStore } from '@store/QuizStore'
+import { useQuizStore } from "@store/QuizStore";
 import { ref } from "vue";
 
-const questionsQueue = useQuestionsQueueStore();
+const questionsQueue = useQuizStore();
 const quizStarted = ref<boolean>(false);
 
 const handleStartQuiz = (questionAmount: number, tags?: string[]) => {
-  questionsQueue.initialiseQueue(getQuestionsByTagAndLimit(questionAmount, tags));
+  questionsQueue.initialiseQuiz(
+    getQuestionsByTagAndLimit(questionAmount, tags),
+  );
   quizStarted.value = true;
 };
 </script>

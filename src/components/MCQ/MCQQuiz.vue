@@ -2,6 +2,7 @@
   <div>MCQ Quiz</div>
   <MCQQuestion
     v-if="currentQuestion"
+    :_id="currentQuestion._id"
     :statement="currentQuestion.statement"
     :options-list="currentQuestion.optionsList"
     @next-question="nextQuestion"
@@ -13,10 +14,10 @@
 import { onMounted, ref } from "vue";
 import MCQQuestion from "@components/MCQ/MCQQuestion.vue";
 import type { MCQuestion } from "@type/MCQ.d.ts";
-import { useQuestionsQueueStore } from '@store/QuizStore'
+import { useQuizStore } from "@store/QuizStore";
 
 const currentQuestion = ref<MCQuestion | undefined>();
-const questionsQueue = useQuestionsQueueStore();
+const questionsQueue = useQuizStore();
 
 onMounted(() => {
   nextQuestion();
@@ -27,5 +28,6 @@ const skipQuestion = () => {
   nextQuestion();
 };
 
-const nextQuestion = () => (currentQuestion.value = questionsQueue.dequeueQuestion());
+const nextQuestion = () =>
+  (currentQuestion.value = questionsQueue.dequeueQuestion());
 </script>

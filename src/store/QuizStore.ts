@@ -1,19 +1,36 @@
-import { MCQuestion } from '@/types/MCQ';
-import { defineStore } from 'pinia'
+import { MCQuestion, QuestionState } from "@/types/MCQ";
+import { defineStore } from "pinia";
 
-export const useQuestionsQueueStore = defineStore('questionsQueue', {
+type Stat = "correct" | "skipped" | "attempts";
+const statIndex = (questionId: string, quizStats: QuestionState[]) =>
+  quizStats.findIndex((quizStat) => quizStat.question._id === questionId);
+
+export const useQuizStore = defineStore("questionsQueue", {
   state: () => {
-    return { questionsQueue: [] as MCQuestion[] }
+    return {
+      questionsQueue: [] as MCQuestion[],
+      quizStats: [] as QuestionState[],
+    };
   },
   actions: {
-    initialiseQueue(questions: MCQuestion[]) {
-        this.questionsQueue = questions;
+    initialiseQuiz(questions: MCQuestion[]) {
+      this.questionsQueue = questions;
+      this.quizStats = questions.map((question) => ({
+        question,
+        correct: 0,
+        skipped: 0,
+        attempts: 0,
+      }));
+    },
+    incrementStat(questionId: string, stat: Stat) {
+      const questionIndex = statIndex(questionId, this.quizStats);
+      this.quizStats[questionIndex][stat]++;
     },
     enqueueQuestion(question: MCQuestion) {
-        this.questionsQueue.push(question);
+      this.questionsQueue.push(question);
     },
     dequeueQuestion() {
-        return this.questionsQueue.shift();
-    }
+      return this.questionsQueue.shift();
+    },
   },
 });
