@@ -1,7 +1,3 @@
-export interface MCQQuiz {
-  questions: MCQuestion[];
-}
-
 export interface MCQuestion {
   statement: string;
   tags?: string[];

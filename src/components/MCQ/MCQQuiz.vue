@@ -12,25 +12,20 @@
 <script setup lang="ts">
 import { onMounted, ref } from "vue";
 import MCQQuestion from "@components/MCQ/MCQQuestion.vue";
-import type { MCQuestion, MCQQuiz } from "@type/MCQ.d.ts";
+import type { MCQuestion } from "@type/MCQ.d.ts";
+import { useQuestionsQueueStore } from '@store/QuizStore'
 
-const { questions } = defineProps<MCQQuiz>();
 const currentQuestion = ref<MCQuestion | undefined>();
-const questionsQueue = ref<MCQuestion[]>([...questions]);
+const questionsQueue = useQuestionsQueueStore();
 
 onMounted(() => {
   nextQuestion();
 });
 
-const enqueueQuestion = (question: MCQuestion) =>
-  questionsQueue.value.push(question);
-
-const dequeueQuestion = () => questionsQueue.value.shift();
-
 const skipQuestion = () => {
-  enqueueQuestion(currentQuestion.value as MCQuestion);
+  questionsQueue.enqueueQuestion(currentQuestion.value as MCQuestion);
   nextQuestion();
 };
 
-const nextQuestion = () => (currentQuestion.value = dequeueQuestion());
+const nextQuestion = () => (currentQuestion.value = questionsQueue.dequeueQuestion());
 </script>

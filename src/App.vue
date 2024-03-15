@@ -1,17 +1,21 @@
 <script setup lang="ts">
-import { ref } from "vue";
 import MCQQuiz from "@components/MCQ/MCQQuiz.vue";
 import StartPage from "@components/StartPage.vue";
 import { getQuestionsByTagAndLimit } from "./components/QuestionStore";
-const quizQuestions = ref();
+import { useQuestionsQueueStore } from '@store/QuizStore'
+import { ref } from "vue";
+
+const questionsQueue = useQuestionsQueueStore();
+const quizStarted = ref<boolean>(false);
 
 const handleStartQuiz = (questionAmount: number, tags?: string[]) => {
-  quizQuestions.value = getQuestionsByTagAndLimit(questionAmount, tags);
+  questionsQueue.initialiseQueue(getQuestionsByTagAndLimit(questionAmount, tags));
+  quizStarted.value = true;
 };
 </script>
 
 <template>
-  <MCQQuiz v-if="quizQuestions" :questions="quizQuestions" />
+  <MCQQuiz v-if="quizStarted" />
   <StartPage v-else @start-quiz="handleStartQuiz" />
 </template>
 
