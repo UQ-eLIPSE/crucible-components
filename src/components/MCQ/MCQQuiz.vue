@@ -1,5 +1,4 @@
 <template>
-  <div>MCQ Quiz</div>
   <MCQQuestion
     v-if="currentQuestion"
     :statement="currentQuestion.statement"
@@ -7,6 +6,7 @@
     @next-question="nextQuestion"
     @skip-question="skipQuestion"
   />
+  <div v-if="!currentQuestion">You are done! Please refresh this page.</div>
 </template>
 
 <script setup lang="ts">

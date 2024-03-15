@@ -26,20 +26,4 @@ describe("StartPage.vue", () => {
     await input.setValue("2");
     expect(wrapper.vm.questionAmount).toBe(2);
   });
-
-  it("Add a tag", async () => {
-    const wrapper = mount(StartPage, {
-      props: { questions },
-    });
-    await wrapper.find("#question-tag").setValue("tag1");
-    expect(wrapper.vm.tags).toBe("tag1");
-  });
-
-  it("Add multiple tags", async () => {
-    const wrapper = mount(StartPage, {
-      props: { questions },
-    });
-    await wrapper.find("#question-tag").setValue("tag1 tag2");
-    expect(wrapper.vm.tags).toBe("tag1 tag2");
-  });
 });

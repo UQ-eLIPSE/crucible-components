@@ -28,16 +28,14 @@ const questionIsFullyDisplayed = (wrapper: VueWrapper) => {
 describe("MCQQuiz.vue", () => {
   it("Renders quiz properly", () => {
     expect(wrapper.exists()).toBe(true);
-    expect(wrapper.text()).toContain(
-      "Which clinical exam findings/tests can we use to assess vision in a 6-week-old puppy?",
-    );
-    expect(wrapper.text()).toContain("Cotton ball tracking");
+    expect(wrapper.html()).toContain("mcq-statement");
+    expect(wrapper.html()).toContain("mcq-option-label");
   });
 
   it("Navigates question stack upon skip", async () => {
     await mcqBtn.trigger("click");
     expect(wrapper.text()).toContain(
-      "Cranial nerve 5 is motor to what muscle group?",
+      "Which of the given primary taste stimuli are triggered by ions in the saliva?",
     );
   });
 
@@ -48,7 +46,7 @@ describe("MCQQuiz.vue", () => {
     await mcqBtn.trigger("click");
     await mcqBtn.trigger("click");
     expect(wrapper.text()).toContain(
-      "Cranial nerve 5 is motor to what muscle group?",
+      "Which of the given primary taste stimuli are triggered by ions in the saliva?",
     );
   });
 
@@ -57,7 +55,7 @@ describe("MCQQuiz.vue", () => {
       await mcqBtn.trigger("click");
     }
     expect(wrapper.text()).toContain(
-      "Which clinical exam findings/tests can we use to assess vision in a 6-week-old puppy?",
+      "Which of the given primary taste stimuli depend on G protein-coupled receptors to depolarise the cell?",
     );
   });
 

@@ -2,11 +2,11 @@
 import { ref } from "vue";
 import MCQQuiz from "@components/MCQ/MCQQuiz.vue";
 import StartPage from "@components/StartPage.vue";
-import { getQuestionsByTagAndLimit } from "./components/QuestionStore";
+import { getQuestionsRandomly } from "./components/QuestionStore";
 const quizQuestions = ref();
 
-const handleStartQuiz = (questionAmount: number, tags?: string[]) => {
-  quizQuestions.value = getQuestionsByTagAndLimit(questionAmount, tags);
+const handleStartQuiz = (questionAmount: number) => {
+  quizQuestions.value = getQuestionsRandomly(questionAmount);
 };
 </script>
 

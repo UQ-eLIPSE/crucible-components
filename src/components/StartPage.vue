@@ -2,17 +2,7 @@
   <div>
     <h1>Welcome to VetsCloud Smart Quiz</h1>
     <div>
-      <label for="question-amount">Enter a tag:</label>
-      <input
-        id="question-tag"
-        v-model="tags"
-        type="text"
-        name="tags"
-        placeholder="Enter your tag"
-      />
-    </div>
-    <div>
-      <label for="question-amount"> Select the amount of questions:</label>
+      <label for="question-amount">Select the amount of questions:</label>
       <input
         id="question-amount"
         v-model.number="questionAmount"
@@ -28,13 +18,10 @@
 <script setup lang="ts">
 import { ref } from "vue";
 const questionAmount = ref<number>(0);
-const tags = ref<string | null>(null);
 const emit = defineEmits(["start-quiz"]);
 
-const getTags = () => tags.value && tags.value.split(" ");
-
 const startQuiz = () => {
-  emit("start-quiz", questionAmount.value, getTags());
+  emit("start-quiz", questionAmount.value);
 };
 </script>
 
