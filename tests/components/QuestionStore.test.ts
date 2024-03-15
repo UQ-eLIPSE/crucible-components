@@ -1,5 +1,5 @@
 import { test, expect, vi } from "vitest";
-import { getQuestionsByTagAndLimit } from "@components/QuestionStore";
+import { getQuestionsRandomly } from "@components/QuestionStore";
 
 const questions = [
   {
@@ -46,16 +46,16 @@ vi.mock("@components/DataAccessLayer", () => {
 });
 
 test("Specify no questions and return with an empty array", () => {
-  const result = getQuestionsByTagAndLimit(0);
+  const result = getQuestionsRandomly(0);
   expect(result).toEqual([]);
 });
 
 test("Specify questions more than provided", () => {
-  const result = getQuestionsByTagAndLimit(5);
+  const result = getQuestionsRandomly(5);
   expect(result.length).toEqual(questions.length);
 });
 
 test("No question tags specified", () => {
-  const result = getQuestionsByTagAndLimit(7);
+  const result = getQuestionsRandomly(7);
   expect(result).toEqual(questions);
 });
