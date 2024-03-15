@@ -44,7 +44,7 @@ const startQuiz = () => {
   background-color: #2a52be;
 }
 .questions-count {
-  margin-left: 20px;
+  margin: 20px;
   background-color: lightgoldenrodyellow;
 }
 .course {
@@ -76,6 +76,16 @@ const startQuiz = () => {
   border-top: 5px solid transparent;
   border-bottom: 5px solid transparent;
   border-left: 10px solid black;
-  margin: 0 5px;
+  margin: 5px;
+}
+@media screen and (max-width: 768px) {
+  .tags-display {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .arrow {
+    transform: rotate(90deg);
+  }
 }
 </style>
