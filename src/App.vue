@@ -5,8 +5,8 @@ import StartPage from "@components/StartPage.vue";
 import { getQuestionsByTagAndLimit } from "./components/QuestionStore";
 const quizQuestions = ref();
 
-const handleStartQuiz = (questionAmount: number, tags?: string[]) => {
-  quizQuestions.value = getQuestionsByTagAndLimit(questionAmount, tags);
+const handleStartQuiz = (questionAmount: number) => {
+  quizQuestions.value = getQuestionsByTagAndLimit(questionAmount);
 };
 </script>
 

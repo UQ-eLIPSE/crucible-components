@@ -1,5 +1,4 @@
 <template>
-  <div>MCQ Quiz</div>
   <MCQQuestion
     v-if="currentQuestion"
     :statement="currentQuestion.statement"

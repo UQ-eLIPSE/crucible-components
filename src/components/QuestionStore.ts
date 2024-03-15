@@ -1,16 +1,7 @@
-import { MCQuestion } from "@/types/MCQ";
 import { getAllQuestions } from "./DataAccessLayer";
 
-export const getQuestionsByTagAndLimit = (count: number, tags?: string[]) => {
+export const getQuestionsByTagAndLimit = (count: number) => {
   const allQuestions = getAllQuestions();
-  const quizQuestions = tags
-    ? allQuestions
-        .filter(
-          (question) =>
-            question.tags && tags.some((tag) => question.tags?.includes(tag)),
-        )
-        .slice(0, count)
-    : allQuestions.slice(0, count);
-
-  return quizQuestions as MCQuestion[];
+  const shuffled = allQuestions.sort(() => 0.5 - Math.random());
+  return shuffled.slice(0, count);
 };
