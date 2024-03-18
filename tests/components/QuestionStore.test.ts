@@ -1,5 +1,5 @@
 import { test, expect, vi } from "vitest";
-import { getQuestionsRandomly } from "@components/QuestionStore";
+import { getQuestionsRandomly, shuffleArray } from "@components/QuestionStore";
 
 const questions = [
   {
@@ -58,4 +58,21 @@ test("Specify questions more than provided", () => {
 test("No question tags specified", () => {
   const result = getQuestionsRandomly(7);
   expect(result).toEqual(questions);
+});
+
+test("should return an array with the same length", () => {
+  const shuffled = shuffleArray([...questions]);
+  expect(shuffled).to.have.lengthOf(questions.length);
+});
+
+test("should contain all the same elements", () => {
+  const shuffled = shuffleArray([...questions]);
+  for (const item of questions) {
+    expect(shuffled).to.include(item);
+  }
+});
+
+test("should not return the same array", () => {
+  const shuffled = shuffleArray([...questions]);
+  expect(shuffled).to.not.deep.equal(questions);
 });
