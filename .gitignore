@@ -16,9 +16,17 @@ dist-ssr
 .vscode/*
 !.vscode/extensions.json
 .idea
-.DS_Store
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
 *.sw?
+
+# General 
+.DS_Store
+
+package-lock.json
+yarn.lock
+
+.eslintcache
+.node-version

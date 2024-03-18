@@ -1,30 +1,35 @@
 <script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
+import { ref } from "vue";
+import MCQQuiz from "@components/MCQ/MCQQuiz.vue";
+import StartPage from "@components/StartPage.vue";
+import { getQuestionsRandomly } from "./components/QuestionStore";
+const quizQuestions = ref();
+
+const handleStartQuiz = (questionAmount: number) => {
+  quizQuestions.value = getQuestionsRandomly(questionAmount);
+};
 </script>
 
 <template>
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
-  </div>
-  <HelloWorld msg="Vite + Vue" />
+  <MCQQuiz v-if="quizQuestions" :questions="quizQuestions" />
+  <StartPage v-else @start-quiz="handleStartQuiz" />
 </template>
 
 <style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+#question-amount {
+  margin-left: 5px;
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+
+.start-button {
+  color: #ffffff;
+  background-color: #2a52be;
+  margin-top: 5%;
 }
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
+
+.tag-list {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+  gap: 10px;
 }
 </style>
