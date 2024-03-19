@@ -1,13 +1,19 @@
 <template>
   <div>
-    <h1>Welcome to VetsCloud Smart Quiz</h1>
+    <h1>VetCloud Smart Quiz</h1>
     <div class="tags-display">
       <div class="tag-container course"><p class="tag-text">VETS2011</p></div>
       <div class="arrow"></div>
-      <div class="tag-container subject"><p class="tag-text">Physiology</p></div>
+      <div class="tag-container subject">
+        <p class="tag-text">Physiology</p>
+      </div>
       <div class="arrow"></div>
-      <div class="tag-container system"><p class="tag-text">Neurophysiology</p></div>
-      <div class="tag-container questions-count"><p class="tag-text">115</p></div>
+      <div class="tag-container system">
+        <p class="tag-text">Neurophysiology</p>
+      </div>
+      <div class="tag-container questions-count">
+        <p class="tag-text">115</p>
+      </div>
     </div>
     <div>
       <label for="question-amount">Select the amount of questions:</label>
@@ -48,18 +54,18 @@ const startQuiz = () => {
   background-color: lightgoldenrodyellow;
 }
 .course {
-    background-color: lightblue;
+  background-color: lightblue;
 }
 .subject {
-    background-color: lightcoral;
+  background-color: lightcoral;
 }
 .system {
-    background-color: lightgreen;
+  background-color: lightgreen;
 }
 .tag-container {
-    border-radius: 10px;
-    padding: 10px;
-    text-align: center;
+  border-radius: 10px;
+  padding: 10px;
+  text-align: center;
 }
 .tag-text {
   margin: 0px;
