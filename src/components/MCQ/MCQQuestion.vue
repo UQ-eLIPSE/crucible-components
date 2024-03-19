@@ -34,10 +34,13 @@ import MCQButton from "./MCQButton.vue";
 
 const { statement, optionsList } = defineProps<MCQuestion>();
 const selectedOption = ref<string | null>(null);
+const correct_index = ref<string | null>(null);
 const submitted = ref<boolean>(false);
 const emit = defineEmits(["nextQuestion", "skipQuestion", "updateCount"]);
 
-let correct_index: string; // used to track correct option index(key) in a optionList
+defineExpose({ selectedOption });
+
+// let correct_index: string; // used to track correct option index(key) in a optionList
 
 const submitAnswer = () => {
   submitted.value = true;
@@ -55,7 +58,7 @@ const skipQuestion = () => {
 
 //function to emit correct answer count
 const countCorrect = () => {
-  if (correct_index === selectedOption.value && submitted.value) {
+  if (correct_index.value === selectedOption.value && submitted.value) {
     console.log("check"); //Todo: delete when merge to develop
     emit("updateCount");
   }
@@ -86,7 +89,7 @@ const optionClass = (key: string, optionsList: MCQOptions[]) => {
   // get the correct option index(key) in the List
   // after submit(submitted.value = true)
   if (option.optionCorrect) {
-    correct_index = key;
+    correct_index.value = key;
   }
   return option.optionCorrect
     ? "correct ignore-hover"
