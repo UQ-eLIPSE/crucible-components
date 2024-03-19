@@ -37,8 +37,26 @@ const selectedOption = ref<string | null>(null);
 const submitted = ref<boolean>(false);
 const emit = defineEmits(["nextQuestion", "skipQuestion", "updateCount"]);
 
+const getOptionDetails = () => {
+  return Object.entries(optionsList).map(([key, value]) => {
+    const isSelected = selectedOption.value === key;
+    const optionClassValue = optionClass(key, optionsList);
+    return {
+      key: key,
+      class: optionClassValue,
+      checked: isSelected,
+    };
+  });
+};
+
 const submitAnswer = () => {
   submitted.value = true;
+  const optionDetails = getOptionDetails();
+  optionDetails.forEach((detail) => {
+    if (detail.checked && detail.class === "correct ignore-hover") {
+      emit("updateCount");
+    }
+  });
 };
 
 const nextQuestion = () => {
@@ -73,17 +91,11 @@ const optionClass = (key: string, optionsList: MCQOptions[]) => {
     return isSelected ? "selected" : "";
   }
 
-  const resultClass = option.optionCorrect
+  return option.optionCorrect
     ? "correct ignore-hover"
     : isSelected
       ? "wrong ignore-hover"
       : "ignore-hover";
-  // Increment if class is correct
-  console.log(resultClass, isSelected);
-  if (resultClass === "correct ignore-hover" && isSelected) {
-    emit("updateCount");
-  }
-  return resultClass;
 };
 </script>
 

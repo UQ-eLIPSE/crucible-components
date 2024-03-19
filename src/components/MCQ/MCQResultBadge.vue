@@ -1,6 +1,7 @@
 <template>
   <div class="mcq-result">
-    <span class="correct-result">{{ correctQuiz }}</span> /
+    Score:
+    <span class="correct-result">{{ correctQuiz }}</span> out of
     <span class="workquiz">{{ workQuiz }}</span>
   </div>
 </template>
@@ -9,3 +10,15 @@
 import { MCQResult } from "@/types/MCQ";
 const { correctQuiz, workQuiz } = defineProps<MCQResult>();
 </script>
+
+<style scoped>
+.mcq-result {
+  background-color: green;
+  color: white;
+  padding: 4px 8px;
+  text-align: center;
+  border-radius: 5px;
+  width: fit-content;
+  margin: auto;
+}
+</style>
