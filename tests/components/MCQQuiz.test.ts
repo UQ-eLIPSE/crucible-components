@@ -85,13 +85,9 @@ describe("MCQQuiz.vue", () => {
       await mcqBtn.trigger("click");
       await mcqBtn.trigger("click");
     }
+    // assert for number of quiz with first option is true
+    // based on the question-data.json, the result is 28
+    expect(wrapper.vm.count).toBe(28);
     expect(questionIsFullyDisplayed(wrapper)).toBe(false);
-  });
-
-  it("increments count when updateCount event is emitted", async () => {
-    const mcqQuestionWrapper = wrapper.findComponent({ name: "MCQQuestion" });
-    mcqQuestionWrapper.vm.$emit("updateCount");
-    // Check if count is incremented
-    expect(wrapper.vm.count).toBe(1);
   });
 });

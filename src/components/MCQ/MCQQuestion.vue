@@ -53,11 +53,16 @@ const skipQuestion = () => {
   emit("skipQuestion");
 };
 
-const resetQuestion = () => {
-  //counting triggered if correct option selected
-  if (correct_index === selectedOption.value) {
+//function to emit correct answer count
+const countCorrect = () => {
+  if (correct_index === selectedOption.value && submitted.value) {
+    console.log("check"); //Todo: delete when merge to develop
     emit("updateCount");
   }
+};
+
+const resetQuestion = () => {
+  countCorrect();
   submitted.value = false;
   selectedOption.value = null;
 };
@@ -78,7 +83,8 @@ const optionClass = (key: string, optionsList: MCQOptions[]) => {
   if (!submitted.value) {
     return isSelected ? "selected" : "";
   }
-  // get the correct option index(key) in the List after submit(submitted.value = true)
+  // get the correct option index(key) in the List
+  // after submit(submitted.value = true)
   if (option.optionCorrect) {
     correct_index = key;
   }
