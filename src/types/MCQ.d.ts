@@ -24,3 +24,8 @@ export interface MCQRadioOption {
   option: MCQOptions;
   submitted: boolean;
 }
+
+export interface MCQResult {
+  correctQuiz: number;
+  workQuiz: number;
+}

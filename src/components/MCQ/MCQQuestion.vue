@@ -35,7 +35,7 @@ import MCQButton from "./MCQButton.vue";
 const { statement, optionsList } = defineProps<MCQuestion>();
 const selectedOption = ref<string | null>(null);
 const submitted = ref<boolean>(false);
-const emit = defineEmits(["nextQuestion", "skipQuestion"]);
+const emit = defineEmits(["nextQuestion", "skipQuestion", "updateCount"]);
 
 const submitAnswer = () => {
   submitted.value = true;
@@ -73,11 +73,17 @@ const optionClass = (key: string, optionsList: MCQOptions[]) => {
     return isSelected ? "selected" : "";
   }
 
-  return option.optionCorrect
+  const resultClass = option.optionCorrect
     ? "correct ignore-hover"
     : isSelected
       ? "wrong ignore-hover"
       : "ignore-hover";
+  // Increment if class is correct
+  console.log(resultClass, isSelected);
+  if (resultClass === "correct ignore-hover" && isSelected) {
+    emit("updateCount");
+  }
+  return resultClass;
 };
 </script>
 
