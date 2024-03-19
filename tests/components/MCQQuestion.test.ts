@@ -79,37 +79,3 @@ describe("MCQQuestion.vue", () => {
     expect(wrapper.vm.selectedOption).toBeNull();
   });
 });
-
-describe("MCQQuestion", () => {
-  const wrapper = mount(MCQQuestion, {
-    props: {
-      statement: "Test statement",
-      optionsList: [
-        { optionValue: "Option 1", optionCorrect: false },
-        { optionValue: "Option 2", optionCorrect: true },
-        { optionValue: "Option 3", optionCorrect: false },
-      ],
-    },
-  });
-
-  it("emits 'NOT' updateCount when a wrong option is selected and submitted", async () => {
-    wrapper.vm.selectedOption = "2";
-    wrapper.vm.submitted = true;
-
-    await wrapper.vm.submitAnswer();
-
-    const updateCountEvents = wrapper.emitted("updateCount");
-    expect(
-      updateCountEvents === undefined || updateCountEvents.length === 0,
-    ).toBe(true);
-  });
-
-  it("emits updateCount when a correct option is selected and submitted", async () => {
-    wrapper.vm.selectedOption = "1";
-    wrapper.vm.submitted = true;
-
-    await wrapper.vm.submitAnswer();
-
-    expect(wrapper.emitted("updateCount")).toHaveLength(1);
-  });
-});

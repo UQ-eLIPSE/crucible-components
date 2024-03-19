@@ -87,4 +87,11 @@ describe("MCQQuiz.vue", () => {
     }
     expect(questionIsFullyDisplayed(wrapper)).toBe(false);
   });
+
+  it("increments count when updateCount event is emitted", async () => {
+    const mcqQuestionWrapper = wrapper.findComponent({ name: "MCQQuestion" });
+    mcqQuestionWrapper.vm.$emit("updateCount");
+    // Check if count is incremented
+    expect(wrapper.vm.count).toBe(1);
+  });
 });

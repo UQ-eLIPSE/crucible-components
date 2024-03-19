@@ -37,26 +37,10 @@ const selectedOption = ref<string | null>(null);
 const submitted = ref<boolean>(false);
 const emit = defineEmits(["nextQuestion", "skipQuestion", "updateCount"]);
 
-const getOptionDetails = () => {
-  return Object.entries(optionsList).map(([key, value]) => {
-    const isSelected = selectedOption.value === key;
-    const optionClassValue = optionClass(key, optionsList);
-    return {
-      key: key,
-      class: optionClassValue,
-      checked: isSelected,
-    };
-  });
-};
+let correct_index: string; // used to track correct option index(key) in a optionList
 
 const submitAnswer = () => {
   submitted.value = true;
-  const optionDetails = getOptionDetails();
-  optionDetails.forEach((detail) => {
-    if (detail.checked && detail.class === "correct ignore-hover") {
-      emit("updateCount");
-    }
-  });
 };
 
 const nextQuestion = () => {
@@ -70,6 +54,10 @@ const skipQuestion = () => {
 };
 
 const resetQuestion = () => {
+  //counting triggered if correct option selected
+  if (correct_index === selectedOption.value) {
+    emit("updateCount");
+  }
   submitted.value = false;
   selectedOption.value = null;
 };
@@ -90,7 +78,10 @@ const optionClass = (key: string, optionsList: MCQOptions[]) => {
   if (!submitted.value) {
     return isSelected ? "selected" : "";
   }
-
+  // get the correct option index(key) in the List after submit(submitted.value = true)
+  if (option.optionCorrect) {
+    correct_index = key;
+  }
   return option.optionCorrect
     ? "correct ignore-hover"
     : isSelected
