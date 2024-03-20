@@ -24,7 +24,6 @@ export const useQuizStore = defineStore("questionsQueue", {
     },
     incrementStat(questionId: string, stat: Stat) {
       const questionIndex = statIndex(questionId, this.quizStats);
-      console.log("Index: ", questionIndex);
       this.quizStats[questionIndex][stat]++;
     },
     enqueueQuestion(question: MCQuestion) {

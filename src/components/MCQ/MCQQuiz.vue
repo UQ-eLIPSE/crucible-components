@@ -6,9 +6,12 @@
     :_id="currentQuestion._id"
     @next-question="nextQuestion"
     @skip-question="skipQuestion"
-    @update-count="count += 1"
   />
-  <MCQStatus v-if="!currentQuestion" :correct-quiz="0" :work-quiz="questions" />
+  <MCQStatus
+    v-if="!currentQuestion"
+    :quiz-status="questionsQueue.quizStats"
+    :work-quiz="questionsQueue.quizStats.length"
+  />
   <div v-if="!currentQuestion">You are done! Please refresh this page.</div>
 </template>
 
@@ -19,12 +22,9 @@ import type { MCQuestion } from "@type/MCQ.d.ts";
 import MCQStatus from "./MCQStatus.vue";
 import { useQuizStore } from "@/store/QuizStore";
 
-const { questions } = defineProps<{ questions: number }>();
-
 const currentQuestion = ref<MCQuestion | undefined>();
 
 const questionsQueue = useQuizStore();
-const count = ref(0);
 
 onMounted(() => {
   nextQuestion();
@@ -35,8 +35,6 @@ const skipQuestion = () => {
   nextQuestion();
 };
 
-const nextQuestion = () => {
-  console.log(questionsQueue.quizStats);
-  currentQuestion.value = questionsQueue.dequeueQuestion();
-};
+const nextQuestion = () =>
+  (currentQuestion.value = questionsQueue.dequeueQuestion());
 </script>

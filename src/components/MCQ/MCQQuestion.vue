@@ -7,7 +7,7 @@
       v-for="[key, value] in Object.entries(optionsList)"
       :key="key"
       class="mcq-option"
-      :class="optionClass(key, optionsList, _id)"
+      :class="optionClass(key, optionsList)"
       @click="selectOption(key)"
     >
       <MCQOption
@@ -40,15 +40,13 @@ const { statement, optionsList, _id } = defineProps<MCQuestion>();
 const selectedOption = ref<string | null>(null);
 const correct_index = ref<string | null>(null);
 const submitted = ref<boolean>(false);
-const emit = defineEmits(["nextQuestion", "skipQuestion", "updateCount"]);
-
-// let correct_index: string; // used to track correct option index(key) in a optionList
+const emit = defineEmits(["nextQuestion", "skipQuestion"]);
 
 const submitAnswer = () => {
   submitted.value = true;
 };
 
-const nextQuestion = (_id: any) => {
+const nextQuestion = (_id: { $oid: string }) => {
   resetQuestion(_id);
   emit("nextQuestion");
 };
@@ -59,15 +57,17 @@ const skipQuestion = () => {
 };
 
 //function to emit correct answer count
-const countCorrect = (_id: any) => {
-  if (correct_index.value !== selectedOption.value && submitted.value) {
-    if (_id) {
-      statUpdate.incrementStat(_id?.$oid, "attempts");
-    }
+const countCorrect = (_id: { $oid: string }) => {
+  if (correct_index.value === selectedOption.value && submitted.value) {
+    statUpdate.incrementStat(_id.$oid, "correct");
+  } else if (correct_index.value !== selectedOption.value && submitted.value) {
+    statUpdate.incrementStat(_id.$oid, "attempts");
+  } else {
+    statUpdate.incrementStat(_id.$oid, "skipped");
   }
 };
 
-const resetQuestion = (_id: any) => {
+const resetQuestion = (_id: { $oid: string }) => {
   countCorrect(_id);
   submitted.value = false;
   selectedOption.value = null;
@@ -82,7 +82,7 @@ const selectOption = (key: string) => {
   }
 };
 
-const optionClass = (key: string, optionsList: MCQOptions[], _id: any) => {
+const optionClass = (key: string, optionsList: MCQOptions[]) => {
   const option = optionsList[parseInt(key)];
   const isSelected = selectedOption.value === key;
 
@@ -95,11 +95,6 @@ const optionClass = (key: string, optionsList: MCQOptions[], _id: any) => {
     correct_index.value = key;
   }
 
-  // if (_id && isSelected) {
-  //   console.log("passed id", _id.$oid);
-  //   statUpdate.incrementStat(_id?.$oid, "attempts");
-  // }
-  // console.log("question: ", _id);
   return option.optionCorrect
     ? "correct ignore-hover"
     : isSelected

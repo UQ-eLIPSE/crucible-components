@@ -18,7 +18,7 @@ const handleStartQuiz = (questionAmount: number) => {
 </script>
 
 <template>
-  <MCQQuiz v-if="quizStarted" :questions="quizQuestions" />
+  <MCQQuiz v-if="quizStarted" />
   <StartPage v-else @start-quiz="handleStartQuiz" />
 </template>
 
