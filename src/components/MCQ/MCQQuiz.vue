@@ -36,8 +36,7 @@ const skipQuestion = () => {
 };
 
 const nextQuestion = () => {
-  // console.log(questionsQueue.quizStats);
-  // console.log("curr id: ", currentQuestion.value?._id?.$oid);
+  console.log(questionsQueue.quizStats);
   currentQuestion.value = questionsQueue.dequeueQuestion();
 };
 </script>
