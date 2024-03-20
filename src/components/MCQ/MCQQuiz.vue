@@ -3,41 +3,41 @@
     v-if="currentQuestion"
     :statement="currentQuestion.statement"
     :options-list="currentQuestion.optionsList"
+    :_id="currentQuestion._id"
     @next-question="nextQuestion"
     @skip-question="skipQuestion"
     @update-count="count += 1"
   />
-  <MCQResultBadge
-    v-if="!currentQuestion"
-    :correct-quiz="count"
-    :work-quiz="questions.length"
-  />
+  <MCQStatus v-if="!currentQuestion" :correct-quiz="0" :work-quiz="questions" />
   <div v-if="!currentQuestion">You are done! Please refresh this page.</div>
 </template>
 
 <script setup lang="ts">
 import { onMounted, ref } from "vue";
 import MCQQuestion from "@components/MCQ/MCQQuestion.vue";
-import MCQResultBadge from "./MCQResultBadge.vue";
-import type { MCQuestion, MCQQuiz } from "@type/MCQ.d.ts";
+import type { MCQuestion } from "@type/MCQ.d.ts";
+import MCQStatus from "./MCQStatus.vue";
+import { useQuizStore } from "@/store/QuizStore";
 
-const { questions } = defineProps<MCQQuiz>();
+const { questions } = defineProps<{ questions: number }>();
+
 const currentQuestion = ref<MCQuestion | undefined>();
-const questionsQueue = ref<MCQuestion[]>([...questions]);
+
+const questionsQueue = useQuizStore();
 const count = ref(0);
 
 onMounted(() => {
   nextQuestion();
 });
-const enqueueQuestion = (question: MCQuestion) =>
-  questionsQueue.value.push(question);
-
-const dequeueQuestion = () => questionsQueue.value.shift();
 
 const skipQuestion = () => {
-  enqueueQuestion(currentQuestion.value as MCQuestion);
+  questionsQueue.enqueueQuestion(currentQuestion.value as MCQuestion);
   nextQuestion();
 };
 
-const nextQuestion = () => (currentQuestion.value = dequeueQuestion());
+const nextQuestion = () => {
+  // console.log(questionsQueue.quizStats);
+  // console.log("curr id: ", currentQuestion.value?._id?.$oid);
+  currentQuestion.value = questionsQueue.dequeueQuestion();
+};
 </script>

@@ -3,6 +3,7 @@ export interface MCQQuiz {
 }
 
 export interface MCQuestion {
+  _id?: { $oid: string }; //Todo: check if can remove question mark
   statement: string;
   tags?: string[];
   optionsList: MCQOptions[];
@@ -28,4 +29,11 @@ export interface MCQRadioOption {
 export interface MCQResult {
   correctQuiz: number;
   workQuiz: number;
+}
+
+export interface QuestionState {
+  question: MCQuestion;
+  correct: number;
+  skipped: number;
+  attempts: number;
 }

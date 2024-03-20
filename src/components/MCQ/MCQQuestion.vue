@@ -2,6 +2,7 @@
 <template>
   <div class="mcq-statement" v-html="statement" />
   <div class="mcq-list">
+    <!-- {{ _id?.$oid }} -->
     <div
       v-for="[key, value] in Object.entries(optionsList)"
       :key="key"
@@ -31,10 +32,13 @@ import { ref } from "vue";
 import type { MCQuestion, MCQOptions } from "@type/MCQ.d.ts";
 import MCQOption from "./MCQOption.vue";
 import MCQButton from "./MCQButton.vue";
+import { useQuizStore } from "@/store/QuizStore";
 
-const { statement, optionsList } = defineProps<MCQuestion>();
+const statUpdate = useQuizStore();
+
+const { statement, optionsList, _id } = defineProps<MCQuestion>();
 const selectedOption = ref<string | null>(null);
-const correct_index = ref<string | null>(null);
+// const correct_index = ref<string | null>(null);
 const submitted = ref<boolean>(false);
 const emit = defineEmits(["nextQuestion", "skipQuestion", "updateCount"]);
 
@@ -57,15 +61,18 @@ const skipQuestion = () => {
 };
 
 //function to emit correct answer count
-const countCorrect = () => {
-  if (correct_index.value === selectedOption.value && submitted.value) {
-    console.log("check"); //Todo: delete when merge to develop
-    emit("updateCount");
-  }
-};
+// const countCorrect = () => {
+//   if (correct_index.value !== selectedOption.value && submitted.value) {
+//     // console.log("check"); //Todo: delete when merge to develop
+//     // emit("updateCount");
+//     if (_id) {
+//       statUpdate.incrementStat(_id?.$oid, "attempts");
+//     }
+//   }
+// };
 
 const resetQuestion = () => {
-  countCorrect();
+  // countCorrect();
   submitted.value = false;
   selectedOption.value = null;
 };
@@ -88,9 +95,15 @@ const optionClass = (key: string, optionsList: MCQOptions[]) => {
   }
   // get the correct option index(key) in the List
   // after submit(submitted.value = true)
-  if (option.optionCorrect) {
-    correct_index.value = key;
+  // if (option.optionCorrect) {
+  //   correct_index.value = key;
+  // }
+
+  if (_id && isSelected) {
+    console.log("passed id", _id.$oid);
+    statUpdate.incrementStat(_id?.$oid, "attempts");
   }
+  // console.log("question: ", _id);
   return option.optionCorrect
     ? "correct ignore-hover"
     : isSelected

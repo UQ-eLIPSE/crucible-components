@@ -3,15 +3,22 @@ import { ref } from "vue";
 import MCQQuiz from "@components/MCQ/MCQQuiz.vue";
 import StartPage from "@components/StartPage.vue";
 import { getQuestionsRandomly } from "./components/QuestionStore";
-const quizQuestions = ref();
+import { useQuizStore } from "./store/QuizStore";
+
+const quizQuestions = ref(0);
+const questionsQueue = useQuizStore();
+const quizStarted = ref<boolean>(false);
 
 const handleStartQuiz = (questionAmount: number) => {
-  quizQuestions.value = getQuestionsRandomly(questionAmount);
+  const quizAmount = getQuestionsRandomly(questionAmount);
+  quizQuestions.value = quizAmount.length;
+  questionsQueue.initialiseQuiz(quizAmount);
+  quizStarted.value = true;
 };
 </script>
 
 <template>
-  <MCQQuiz v-if="quizQuestions" :questions="quizQuestions" />
+  <MCQQuiz v-if="quizStarted" :questions="quizQuestions" />
   <StartPage v-else @start-quiz="handleStartQuiz" />
 </template>
 
