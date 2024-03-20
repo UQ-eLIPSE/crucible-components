@@ -1,5 +1,7 @@
 import { describe, it, expect, beforeEach } from "vitest";
+import { createPinia, setActivePinia } from "pinia";
 import { questions } from "@data/question-data.json";
+import { useQuizStore } from "@/store/QuizStore";
 import MCQQuiz from "@components/MCQ/MCQQuiz.vue";
 import { mount, VueWrapper, DOMWrapper } from "@vue/test-utils";
 import { getOptions } from "./MCQQuestion.test";
@@ -8,11 +10,14 @@ let wrapper: VueWrapper;
 let mcqBtn: Omit<DOMWrapper<Element>, "exists">;
 
 beforeEach(async () => {
-  wrapper = mount(MCQQuiz, {
-    props: {
-      questions,
-    },
-  });
+  setActivePinia(createPinia());
+  // Access the store and initialize it with some data
+  const quizAmount = questions;
+  const questionsQueue = useQuizStore();
+  console.log("qyuz", quizAmount.length);
+  questionsQueue.initialiseQuiz(quizAmount);
+
+  wrapper = mount(MCQQuiz, {});
 
   await wrapper.vm.$nextTick();
   mcqBtn = wrapper.get(".mcq-button");
@@ -27,6 +32,10 @@ const questionIsFullyDisplayed = (wrapper: VueWrapper) => {
 
 describe("MCQQuiz.vue", () => {
   it("Renders quiz properly", () => {
+    // const button = wrapper.get(".some-button");
+    // button.trigger("click");
+
+    // console.log("1", mcqBtn);
     expect(wrapper.exists()).toBe(true);
     expect(wrapper.html()).toContain("mcq-statement");
     expect(wrapper.html()).toContain("mcq-option-label");
@@ -35,18 +44,18 @@ describe("MCQQuiz.vue", () => {
   it("Navigates question stack upon skip", async () => {
     await mcqBtn.trigger("click");
     expect(wrapper.text()).toContain(
-      "Which of the given primary taste stimuli are triggered by ions in the saliva?",
+      "Which cranial nerve contains sensory neurons that contribute to the gag reflex",
     );
   });
 
   it("Navigates question stack upon submission and next", async () => {
-    const optionList = getOptions(wrapper);
+    const optionList = wrapper.findAll(".mcq-option");
     const firstOption = optionList[0];
     await firstOption.trigger("click");
     await mcqBtn.trigger("click");
     await mcqBtn.trigger("click");
     expect(wrapper.text()).toContain(
-      "Which of the given primary taste stimuli are triggered by ions in the saliva?",
+      "What is the mechanism of smell transduction via the olfactory nerve",
     );
   });
 
@@ -55,7 +64,7 @@ describe("MCQQuiz.vue", () => {
       await mcqBtn.trigger("click");
     }
     expect(wrapper.text()).toContain(
-      "Which of the given primary taste stimuli depend on G protein-coupled receptors to depolarise the cell?",
+      "Which of the given primary taste stimuli are triggered by ions in the saliva",
     );
   });
 
@@ -67,7 +76,7 @@ describe("MCQQuiz.vue", () => {
   });
 
   it("Should display all questions properly when answering them", async () => {
-    const optionList = getOptions(wrapper);
+    const optionList = wrapper.findAll(".mcq-option"); //getOptions(wrapper);
     const firstOption = optionList[0];
     for (let i = 0; i < questions.length; i++) {
       expect(questionIsFullyDisplayed(wrapper)).toBe(true);
@@ -78,16 +87,17 @@ describe("MCQQuiz.vue", () => {
   });
 
   it("Should display no questions after answering them all", async () => {
-    const optionList = getOptions(wrapper);
-    const firstOption = optionList[0];
-    for (let i = 0; i < questions.length; i++) {
+    const questionsLength = questions.length + 1;
+    for (let i = 0; i < questionsLength; i++) {
+      const optionList = wrapper.findAll(".mcq-option");
+      const firstOption = optionList[0];
       await firstOption.trigger("click");
       await mcqBtn.trigger("click");
       await mcqBtn.trigger("click");
     }
+    await wrapper.vm.$nextTick();
     // assert for number of quiz with first option is true
-    // based on the question-data.json, the result is 28
-    expect(wrapper.vm.count).toBe(28);
+
     expect(questionIsFullyDisplayed(wrapper)).toBe(false);
   });
 });

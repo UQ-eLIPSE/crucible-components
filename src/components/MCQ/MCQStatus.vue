@@ -1,6 +1,7 @@
 <template>
   <div>
     <!-- ToDo: add quizstatus report card here -->
+    {{ quizStatus }}
     <div class="mcq-result">
       Score:
       <span class="correct-result">{{ numer }}</span> out of
@@ -13,7 +14,7 @@
 import { MCQResult } from "@/types/MCQ";
 const { quizStatus, workQuiz } = defineProps<MCQResult>();
 const numer = quizStatus.filter((quiz) => {
-  return quiz.correct === 0;
+  return quiz.correct === 1;
 }).length;
 </script>
 
