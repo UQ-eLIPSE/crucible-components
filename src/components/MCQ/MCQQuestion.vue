@@ -2,7 +2,6 @@
 <template>
   <div class="mcq-statement" v-html="statement" />
   <div class="mcq-list">
-    <!-- {{ _id?.$oid }} -->
     <div
       v-for="[key, value] in Object.entries(optionsList)"
       :key="key"

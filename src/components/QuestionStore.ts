@@ -16,7 +16,6 @@ export const shuffleArray = (array: MCQuestion[]) => {
 
 export const getQuestionsRandomly = (count: number) => {
   const allQuestions = getAllQuestions();
-  console.log("all", allQuestions.length);
   const shuffled = shuffleArray(allQuestions);
   return shuffled.slice(0, count);
 };

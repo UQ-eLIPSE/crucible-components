@@ -24,7 +24,18 @@ export const useQuizStore = defineStore("questionsQueue", {
     },
     incrementStat(questionId: string, stat: Stat) {
       const questionIndex = statIndex(questionId, this.quizStats);
-      this.quizStats[questionIndex][stat]++;
+      // MCQButton.test.ts line54 need the changes.
+      if (
+        this.quizStats[questionIndex] &&
+        Object.prototype.hasOwnProperty.call(
+          this.quizStats[questionIndex],
+          stat,
+        )
+      ) {
+        this.quizStats[questionIndex][stat]++;
+      } else {
+        console.error(`Stat ${stat} not found for question ${questionId}`);
+      }
     },
     enqueueQuestion(question: MCQuestion) {
       this.questionsQueue.push(question);

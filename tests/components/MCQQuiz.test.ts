@@ -1,10 +1,9 @@
 import { describe, it, expect, beforeEach } from "vitest";
 import { createPinia, setActivePinia } from "pinia";
-import { questions } from "@data/question-data.json";
 import { useQuizStore } from "@/store/QuizStore";
+import { questions } from "@data/question-data.json";
 import MCQQuiz from "@components/MCQ/MCQQuiz.vue";
 import { mount, VueWrapper, DOMWrapper } from "@vue/test-utils";
-import { getOptions } from "./MCQQuestion.test";
 
 let wrapper: VueWrapper;
 let mcqBtn: Omit<DOMWrapper<Element>, "exists">;
@@ -32,10 +31,6 @@ const questionIsFullyDisplayed = (wrapper: VueWrapper) => {
 
 describe("MCQQuiz.vue", () => {
   it("Renders quiz properly", () => {
-    // const button = wrapper.get(".some-button");
-    // button.trigger("click");
-
-    // console.log("1", mcqBtn);
     expect(wrapper.exists()).toBe(true);
     expect(wrapper.html()).toContain("mcq-statement");
     expect(wrapper.html()).toContain("mcq-option-label");

@@ -28,7 +28,6 @@ const questionsQueue = useQuizStore();
 
 onMounted(() => {
   nextQuestion();
-  console.log("onMonuted");
 });
 
 const skipQuestion = () => {
