@@ -14,7 +14,6 @@ const optionsList = questions[0].optionsList;
 
 beforeEach(() => {
   setActivePinia(createPinia());
-  // const questionsQueue = useQuizStore();
   const statUpdate = useQuizStore();
 
   wrapper = mount(MCQQuestion, {
