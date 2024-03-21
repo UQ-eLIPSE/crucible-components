@@ -33,12 +33,15 @@ export const useQuizStore = defineStore("questionsQueue", {
           stat,
         )
       ) {
-        // this.quizStats[questionIndex][stat]++;
+        // Add attempts
+        this.quizStats[questionIndex][stat]++;
+        // Check and Add Correct
         const correctIndex = this.quizStats[questionIndex].question.optionsList
           .map((e) => e.optionCorrect)
           .indexOf(true);
         Number(index) === Number(correctIndex) &&
           this.quizStats[questionIndex]["correct"]++;
+        // Input Option
         this.quizStats[questionIndex]["input"] =
           this.quizStats[questionIndex].question.optionsList[
             Number(index)

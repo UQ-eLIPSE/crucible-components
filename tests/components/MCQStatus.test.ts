@@ -39,7 +39,5 @@ describe("MCQStatus.vue", () => {
     mcqStatus = wrapper.find(".mcq-report");
 
     expect(mcqStatus.findAll(".quiz-statment").length).toBe(3);
-    // expect(mcqStatus.get(".quiz-status")).toBe(true);
-    // expect(mcqStatus.get(".quiz-correct-option")).toBe(true);
   });
 });
