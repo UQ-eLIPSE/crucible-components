@@ -1,6 +1,5 @@
 import { describe, it, expect, beforeEach } from "vitest";
 import { createPinia, setActivePinia } from "pinia";
-import { useQuizStore } from "@/store/QuizStore";
 import { questions } from "@data/question-data.json";
 import MCQQuestion from "@components/MCQ/MCQQuestion.vue";
 import { MCQuestion } from "@/types/MCQ";
