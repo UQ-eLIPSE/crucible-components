@@ -1,25 +1,36 @@
 <template>
-  <div class="report-card">
+  <div class="mcq-report">
     <!-- ToDo: add quizstatus report card here -->
     <table>
       <tr>
         <th>question</th>
         <th>correct option</th>
-        <th>chose option</th>
+        <th>your answer</th>
       </tr>
       <tr
         v-for="[key, value] in Object.entries(quizStatus)"
         :key="key"
-        class=".quiz-statment"
+        class="quiz-statment"
       >
-        <td>{{ value.question.statement }}</td>
-        <td>{{ value.question.optionsList }}</td>
-        <td>{{ value.correct }}</td>
+        <th>{{ value.question.statement }}</th>
+        <td>
+          <span
+            v-for="[key, value] in Object.entries(value.question.optionsList)"
+            :key="key"
+          >
+            <span v-if="value.optionCorrect">{{
+              value.optionValue
+            }}</span></span
+          >
+        </td>
+        <td>
+          {{ value.input }}
+        </td>
       </tr>
     </table>
     <div class="mcq-result">
       Score:
-      <span class="correct-result">{{ numer }}</span> out of
+      <span class="correct-result">{{ correctQuizNum }}</span> out of
       <span class="workquiz">{{ workQuiz }}</span>
     </div>
   </div>
@@ -28,18 +39,17 @@
 <script setup lang="ts">
 import { MCQResult } from "@/types/MCQ";
 const { quizStatus, workQuiz } = defineProps<MCQResult>();
-const numer = quizStatus.filter((quiz) => {
-  console.log(quiz);
+const correctQuizNum = quizStatus.filter((quiz) => {
   return quiz.correct === 1;
 }).length;
 </script>
 
 <style scoped>
-.report-card {
+.mcq-report {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;
   margin: auto;
-  width: 60vh;
+  width: 70vh;
   height: 60vh;
 }
 
@@ -62,7 +72,7 @@ tr:nth-child(even) {
   background-color: #f2f2f2;
 }
 
-.report-card:hover {
+.mcq-report:hover {
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 
