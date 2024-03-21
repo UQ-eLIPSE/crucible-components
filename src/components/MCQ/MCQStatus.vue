@@ -1,6 +1,5 @@
 <template>
   <div class="mcq-report">
-    <!-- ToDo: add quizstatus report card here -->
     <table>
       <tr>
         <th>question</th>
@@ -25,8 +24,8 @@
             }}</span></span
           >
         </td>
-        <td>
-          {{ value.input }}
+        <td :class="value.correct === 1 ? 'correct-answer' : 'wrong-answer'">
+          {{ value.input }}{{ value.correct }}
         </td>
       </tr>
     </table>
@@ -87,5 +86,13 @@ tr:nth-child(even) {
   width: fit-content;
   margin: auto;
   margin-bottom: 5px;
+}
+
+.correct-answer {
+  color: green;
+}
+
+.wrong-answer {
+  color: rgb(251, 3, 3);
 }
 </style>
