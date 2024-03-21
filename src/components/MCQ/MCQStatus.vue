@@ -52,14 +52,20 @@ const correctQuizNum = quizStatus.filter((quiz) => {
   margin: auto;
   width: 70vh;
   height: 60vh;
+  padding: 10px;
+}
+
+.mcq-report:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 
 table {
+  display: block;
   border-collapse: collapse;
   border-spacing: 0;
   width: 100%;
-  border: 1px solid #ddd;
   padding: 1em;
+  margin-top: 3em;
   margin-bottom: 2em;
 }
 
@@ -73,15 +79,12 @@ tr:nth-child(even) {
   background-color: #f2f2f2;
 }
 
-.mcq-report:hover {
-  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
-}
-
 .mcq-result {
   background-color: green;
   color: white;
   padding: 4px 8px;
   text-align: center;
+  border: 1px solid #7e7e7e;
   border-radius: 5px;
   width: fit-content;
   margin: auto;
