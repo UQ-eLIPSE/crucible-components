@@ -94,6 +94,6 @@ describe("MCQQuiz.vue", () => {
 
     const score = wrapper.get(".correct-result");
     // assert for number of quiz with first option is true
-    expect(score.text()).toBe("28");
+    expect(score.text()).toBe("24.35 %");
   });
 });

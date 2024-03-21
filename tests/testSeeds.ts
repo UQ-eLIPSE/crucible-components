@@ -1,4 +1,4 @@
-export const data_test = [
+export const dataTest = [
   {
     question: {
       statement:
@@ -15,7 +15,7 @@ export const data_test = [
     correct: 1,
     skipped: 0,
     attempts: 0,
-    input: "",
+    selectedValue: "",
   },
   {
     question: {
@@ -32,7 +32,7 @@ export const data_test = [
     correct: 0,
     skipped: 0,
     attempts: 1,
-    input: "",
+    selectedValue: "",
   },
   {
     question: {
@@ -50,6 +50,6 @@ export const data_test = [
     correct: 0,
     skipped: 0,
     attempts: 1,
-    input: "",
+    selectedValue: "",
   },
 ];

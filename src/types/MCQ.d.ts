@@ -36,5 +36,5 @@ export interface QuestionState {
   correct: number;
   skipped: number;
   attempts: number;
-  input: string;
+  selectedValue: string;
 }

@@ -1,7 +1,6 @@
 import { describe, it, expect, beforeEach } from "vitest";
 import { questions } from "@data/question-data.json";
 import { createPinia, setActivePinia } from "pinia";
-import { useQuizStore } from "@/store/QuizStore";
 import MCQQuestion from "@components/MCQ/MCQQuestion.vue";
 import { DOMWrapper, mount, VueWrapper } from "@vue/test-utils";
 import { getOptions } from "./MCQQuestion.test";
@@ -14,7 +13,6 @@ const optionsList = questions[0].optionsList;
 
 beforeEach(() => {
   setActivePinia(createPinia());
-  const statUpdate = useQuizStore();
 
   wrapper = mount(MCQQuestion, {
     props: {

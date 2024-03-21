@@ -54,14 +54,8 @@ const skipQuestion = () => {
   emit("skipQuestion");
 };
 
-//function to emit correct answer count
-const trackQuizStatus = (_id: { $oid: string }) => {
-  statUpdate.incrementStat(
-    _id.$oid,
-    "attempts",
-    selectedOption.value ? selectedOption.value : "",
-  );
-};
+const trackQuizStatus = (_id: { $oid: string }) =>
+  statUpdate.incrementStat(_id.$oid, "attempts", selectedOption.value || "");
 
 const resetQuestion = (_id: { $oid: string }) => {
   trackQuizStatus(_id);

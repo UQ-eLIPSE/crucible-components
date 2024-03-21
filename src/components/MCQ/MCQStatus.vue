@@ -25,14 +25,16 @@
           >
         </td>
         <td :class="value.correct === 1 ? 'correct-answer' : 'wrong-answer'">
-          {{ value.input }}{{ value.correct }}
+          {{ value.selectedValue }}
         </td>
       </tr>
     </table>
     <div class="mcq-result">
-      Score:
-      <span class="correct-result">{{ correctQuizNum }}</span> out of
-      <span class="workquiz">{{ workQuiz }}</span>
+      <span class="correct-result">{{ correctQuizNumPercent }} %</span>
+      <br />
+      <span class="workquiz"
+        >{{ correctQuizNum }} out of {{ workQuiz }} Quiz</span
+      >
     </div>
   </div>
 </template>
@@ -43,6 +45,7 @@ const { quizStatus, workQuiz } = defineProps<MCQResult>();
 const correctQuizNum = quizStatus.filter((quiz) => {
   return quiz.correct === 1;
 }).length;
+const correctQuizNumPercent = ((correctQuizNum * 100) / workQuiz).toFixed(2);
 </script>
 
 <style scoped>
@@ -73,6 +76,10 @@ th,
 td {
   text-align: left;
   padding: 8px;
+}
+
+th {
+  text-transform: capitalize;
 }
 
 tr:nth-child(even) {
