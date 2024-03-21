@@ -1,7 +1,6 @@
 <template>
   <div>
     <!-- ToDo: add quizstatus report card here -->
-    {{ quizStatus }}
     <div class="mcq-result">
       Score:
       <span class="correct-result">{{ numer }}</span> out of

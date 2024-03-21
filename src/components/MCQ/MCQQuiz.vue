@@ -35,6 +35,8 @@ const skipQuestion = () => {
   nextQuestion();
 };
 
-const nextQuestion = () =>
-  (currentQuestion.value = questionsQueue.dequeueQuestion());
+const nextQuestion = () => {
+  console.log(questionsQueue.quizStats);
+  currentQuestion.value = questionsQueue.dequeueQuestion();
+};
 </script>

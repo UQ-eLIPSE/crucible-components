@@ -37,7 +37,7 @@ const statUpdate = useQuizStore();
 
 const { statement, optionsList, _id } = defineProps<MCQuestion>();
 const selectedOption = ref<string | null>(null);
-const correct_index = ref<string | null>(null);
+const correctOptionIndex = ref<string | null>(null);
 const submitted = ref<boolean>(false);
 const emit = defineEmits(["nextQuestion", "skipQuestion"]);
 
@@ -55,11 +55,13 @@ const skipQuestion = () => {
   emit("skipQuestion");
 };
 
-//function to emit correct answer count
-const countCorrect = (_id: { $oid: string }) => {
-  if (correct_index.value === selectedOption.value && submitted.value) {
+const trackQuizStatus = (_id: { $oid: string }) => {
+  if (correctOptionIndex.value === selectedOption.value && submitted.value) {
     statUpdate.incrementStat(_id.$oid, "correct");
-  } else if (correct_index.value !== selectedOption.value && submitted.value) {
+  } else if (
+    correctOptionIndex.value !== selectedOption.value &&
+    submitted.value
+  ) {
     statUpdate.incrementStat(_id.$oid, "attempts");
   } else {
     statUpdate.incrementStat(_id.$oid, "skipped");
@@ -67,7 +69,7 @@ const countCorrect = (_id: { $oid: string }) => {
 };
 
 const resetQuestion = (_id: { $oid: string }) => {
-  countCorrect(_id);
+  trackQuizStatus(_id);
   submitted.value = false;
   selectedOption.value = null;
 };
@@ -91,7 +93,7 @@ const optionClass = (key: string, optionsList: MCQOptions[]) => {
   // get the correct option index(key) in the List
   // after submit(submitted.value = true)
   if (option.optionCorrect) {
-    correct_index.value = key;
+    correctOptionIndex.value = key;
   }
 
   return option.optionCorrect

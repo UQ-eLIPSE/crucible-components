@@ -5,7 +5,7 @@ import StartPage from "@components/StartPage.vue";
 
 describe("StartPage.vue", () => {
   it("renders App component", () => {
-    const wrapper = mount(StartPage, {});
+    const wrapper = mount(StartPage);
     expect(wrapper.exists()).toBe(true);
   });
 

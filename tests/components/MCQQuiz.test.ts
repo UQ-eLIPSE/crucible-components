@@ -17,7 +17,7 @@ describe("MCQQuiz.vue", () => {
 
     questionsQueue.initialiseQuiz(quizAmount);
 
-    wrapper = mount(MCQQuiz, {});
+    wrapper = mount(MCQQuiz);
 
     await wrapper.vm.$nextTick();
     mcqBtn = wrapper.get(".mcq-button");
