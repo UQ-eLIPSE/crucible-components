@@ -15,8 +15,10 @@
         <th>{{ value.question.statement }}</th>
         <td>
           <span
-            v-for="[key, element] in Object.entries(value.question.optionsList)"
-            :key="key"
+            v-for="[index, element] in Object.entries(
+              value.question.optionsList,
+            )"
+            :key="index"
           >
             <span v-if="element.optionCorrect">{{
               element.optionValue
