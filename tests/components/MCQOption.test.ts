@@ -5,6 +5,7 @@ import { mount, VueWrapper, DOMWrapper } from "@vue/test-utils";
 import { getOptions } from "./MCQQuestion.test";
 
 let wrapper: VueWrapper;
+const _id = questions[0]._id;
 const statement = questions[0].statement;
 const optionsList = questions[0].optionsList;
 let mcqBtn: Omit<DOMWrapper<Element>, "exists">;
@@ -12,6 +13,7 @@ let mcqBtn: Omit<DOMWrapper<Element>, "exists">;
 beforeEach(() => {
   wrapper = mount(MCQQuestion, {
     props: {
+      _id,
       statement,
       optionsList,
     },

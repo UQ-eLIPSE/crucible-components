@@ -3,6 +3,7 @@ export interface MCQQuiz {
 }
 
 export interface MCQuestion {
+  _id: { $oid: string };
   statement: string;
   tags?: string[];
   optionsList: MCQOptions[];
@@ -23,4 +24,17 @@ export interface MCQRadioOption {
   checked: boolean;
   option: MCQOptions;
   submitted: boolean;
+}
+
+export interface MCQResult {
+  quizStatus: QuestionState[];
+  workQuiz: number;
+}
+
+export interface QuestionState {
+  question: MCQuestion;
+  correct: number;
+  skipped: number;
+  attempts: number;
+  selectedValue: string;
 }

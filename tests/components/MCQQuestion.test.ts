@@ -1,16 +1,21 @@
 import { describe, it, expect, beforeEach } from "vitest";
+import { createPinia, setActivePinia } from "pinia";
 import { questions } from "@data/question-data.json";
 import MCQQuestion from "@components/MCQ/MCQQuestion.vue";
 import { MCQuestion } from "@/types/MCQ";
 import { mount, VueWrapper } from "@vue/test-utils";
 
 let wrapper: VueWrapper;
+const _id = questions[0]._id;
 const statement = questions[0].statement;
 const optionsList = questions[0].optionsList;
 
-beforeEach(() => {
+beforeEach(async () => {
+  setActivePinia(createPinia());
+
   wrapper = mount(MCQQuestion, {
     props: {
+      _id,
       statement,
       optionsList,
     },
@@ -36,13 +41,17 @@ describe("MCQQuestion.vue", () => {
   });
 
   it("Renders component with no options", () => {
-    const optionList = optionMount({ statement, optionsList: [] });
+    const optionList = optionMount({ _id, statement, optionsList: [] });
     expect(optionList.length).toBe(0);
   });
 
   it("Renders component with one option", () => {
     const singleOption = [{ optionValue: "Option A", optionCorrect: true }];
-    const optionList = optionMount({ statement, optionsList: singleOption });
+    const optionList = optionMount({
+      _id,
+      statement,
+      optionsList: singleOption,
+    });
     expect(optionList.length).toBe(1);
     expect(optionList[0].text()).toBe(singleOption[0].optionValue);
   });
