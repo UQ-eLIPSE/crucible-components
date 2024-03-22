@@ -14,7 +14,7 @@
             class="quiz-statment"
           >
             <td
-              style="font-style: italic"
+              style="font-style: italic; width: 25em"
               v-html="value.question.statement"
             ></td>
             <td style="font-weight: bold; color: green">
@@ -72,8 +72,8 @@ const correctQuizNumPercent = ((correctQuizNum * 100) / workQuiz).toFixed(0);
 <style scoped>
 .report-container {
   position: relative;
-  width: 60vw;
-  height: 50vh;
+  width: 50em;
+  height: 30em;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -84,7 +84,7 @@ const correctQuizNumPercent = ((correctQuizNum * 100) / workQuiz).toFixed(0);
   transition: 0.3s;
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
   width: 100%;
-  height: 500px;
+  height: 30em;
   padding-bottom: 0px;
   overflow-y: auto;
   align-self: flex-start;
