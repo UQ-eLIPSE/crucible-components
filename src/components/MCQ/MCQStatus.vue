@@ -17,7 +17,7 @@
               style="font-style: italic"
               v-html="value.question.statement"
             ></td>
-            <td>
+            <td style="font-weight: bold; color: green">
               <span
                 v-for="[index, element] in Object.entries(
                   value.question.optionsList,
@@ -126,6 +126,7 @@ tr:nth-child(even) {
   padding: 4px 8px;
   text-align: left;
   width: fit-content;
+  font-weight: bolder;
 }
 
 .correct-answer {
