@@ -31,7 +31,7 @@
     - name: Compress client code
       shell: |
         rm -f client.tar.gz && \
-        tar --exclude=node_modules --exclude=yarn.lock --exclude=tests --exclude=.husky --exclude=.github -czvf client.tar.gz .
+        tar --exclude=node_modules --exclude=yarn.lock --exclude=tests --exclude=.husky --exclude=.github --exclude=.git -czvf client.tar.gz .
       delegate_to: localhost
 
     - name: Transfer client code
