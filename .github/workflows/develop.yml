@@ -49,7 +49,7 @@ jobs:
 
       - name: Run Ansible Playbook to deploy
         run: |
-          ansible-playbook -i inventory.ini deploy-crucible.yml
+          ansible-playbook -i inventory.ini deploy-crucible.yml -vvv
         env:
           ANSIBLE_HOST_KEY_CHECKING: False
           PROXY_JUMP_USER: ${{ secrets.PROXY_JUMP_USER }}
