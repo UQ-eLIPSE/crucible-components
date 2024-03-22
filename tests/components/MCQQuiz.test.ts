@@ -89,11 +89,13 @@ describe("MCQQuiz.vue", () => {
       await mcqBtn.trigger("click");
       await mcqBtn.trigger("click");
     }
+
     await wrapper.vm.$nextTick();
+
     expect(questionIsFullyDisplayed(wrapper)).toBe(false);
 
-    const score = wrapper.get(".correct-result");
-    // assert for number of quiz with first option is true
-    expect(score.text()).toBe("24.35 %");
+    expect(wrapper.get(".score").text()).toBe(
+      "⌛ Result: 28 out of 115 - (24 %)",
+    );
   });
 });

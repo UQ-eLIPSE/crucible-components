@@ -12,7 +12,9 @@
     :quiz-status="questionsQueue.quizStats"
     :work-quiz="questionsQueue.quizStats.length"
   />
-  <div v-if="!currentQuestion">You are done! Please refresh this page.</div>
+  <button v-if="!currentQuestion" class="btn-relocate" @click="refreshPage">
+    End
+  </button>
 </template>
 
 <script setup lang="ts">
@@ -38,4 +40,20 @@ const skipQuestion = () => {
 const nextQuestion = () => {
   currentQuestion.value = questionsQueue.dequeueQuestion();
 };
+
+const refreshPage = () => window.location.reload();
 </script>
+
+<style>
+.btn-relocate {
+  background-color: green;
+  color: white;
+  padding: 4px 8px;
+  text-align: center;
+  border: 1px solid #7e7e7e;
+  border-radius: 5px;
+  width: fit-content;
+  margin: auto;
+  margin-bottom: 5px;
+}
+</style>

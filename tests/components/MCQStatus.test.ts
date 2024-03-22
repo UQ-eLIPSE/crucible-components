@@ -30,8 +30,9 @@ describe("MCQStatus.vue", () => {
   it("Renders Score properly", () => {
     expect(wrapper.exists()).toBe(true);
     mcqResult = wrapper.find(".mcq-result");
-    expect(mcqResult.get(".correct-result").text()).toBe("33.33 %");
-    expect(mcqResult.get(".workquiz").text()).toBe("1 out of 3 Quiz");
+    expect(mcqResult.get(".score").text()).toBe(
+      "⌛ Result: 1 out of 3 - (33 %)",
+    );
   });
 
   it("Renders Quiz Status properly", () => {
