@@ -71,23 +71,27 @@ const correctQuizNumPercent = ((correctQuizNum * 100) / workQuiz).toFixed(0);
 
 <style scoped>
 .report-container {
+  position: relative;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   width: 60vw;
   height: 70vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
 }
 .mcq-report {
   position: relative;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;
   width: 100%;
-  height: 100%;
+  height: 500px;
+  /* min-height: 400px;
+  max-height: 800px; */
   padding-bottom: 0px;
-  overflow: scroll;
+  overflow-y: auto;
+  align-self: flex-start;
 }
 
-.mcq-report:hover {
+.report-container:hover {
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 .mcq-result {
