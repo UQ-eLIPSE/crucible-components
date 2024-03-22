@@ -49,18 +49,6 @@ jobs:
 
       - name: Run Ansible Playbook to deploy
         run: |
-          ansible-playbook -i inventory.ini deploy-prism.yml -e 'update_prism=true generate_compressed_build=true'
+          ansible-playbook -i inventory.ini deploy-crucible.yml
         env:
           ANSIBLE_HOST_KEY_CHECKING: False
-
-      - name: Run Ansible Playbook to cypress test
-        run: |
-          ansible-playbook -i inventory.ini cypress-prism.yml
-        env:
-          ANSIBLE_HOST_KEY_CHECKING: False
-
-      - name: Upload Cypress Test Results
-        uses: actions/upload-artifact@v2
-        with:
-          name: cypress-results
-          path: ${{ github.workspace }}/client/tmp/cypress-results
