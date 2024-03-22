@@ -16,9 +16,9 @@
       register: crucible_dir
 
     - name: Remove /root/crucible if it exists
-      file:
-        path: /root/crucible
-        state: absent
+      command: rm -rf /root/crucible
+      args:
+        removes: /root/crucible
       when: crucible_dir.stat.exists
 
     - name: Create /root/crucible if it does not exist
