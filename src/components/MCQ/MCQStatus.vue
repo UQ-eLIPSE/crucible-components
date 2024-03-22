@@ -14,7 +14,7 @@
             class="quiz-statment"
           >
             <td
-              style="font-style: italic; width: 25em"
+              style="font-style: italic; width: 23em"
               v-html="value.question.statement"
             ></td>
             <td style="font-weight: bold; color: green">
@@ -35,8 +35,10 @@
                 :class="value.correct === 1 ? 'correct-answer' : 'wrong-answer'"
                 v-html="
                   value.correct === 1
-                    ? '<p> &#10004; &nbsp;</p> '
-                    : '<p> &#10008; &nbsp;</p> ' + value.selectedValue
+                    ? '<p> &#10004;</p> '
+                    : '<p> &#10008;</p> ' +
+                      '<span> &nbsp; &nbsp </span>' +
+                      value.selectedValue
                 "
               ></span>
             </td>
@@ -75,7 +77,7 @@ const correctQuizNumPercent = ((correctQuizNum * 100) / workQuiz).toFixed(0);
   width: 50em;
   height: 30em;
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
   justify-content: flex-start;
   margin-bottom: 1em;
 }
@@ -91,12 +93,13 @@ const correctQuizNumPercent = ((correctQuizNum * 100) / workQuiz).toFixed(0);
 }
 
 .mcq-result {
-  float: right;
-  color: rgb(1, 118, 185);
+  float: left;
+  color: rgb(1, 131, 206);
   padding: 4px 8px;
   text-align: left;
   width: fit-content;
   font-weight: bolder;
+  font-size: larger;
 }
 
 table {
@@ -105,18 +108,22 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
   width: 100%;
-  margin: auto;
+  height: 100%;
 }
 
 td {
   text-align: left;
-  padding: 8px;
-  margin: 5px;
+  padding: 0px 10px 0px 10px;
 }
 td span {
   display: flex;
   align-items: center;
 }
+span p {
+  text-align: left;
+  margin-left: 25px;
+}
+
 th {
   top: 0;
   padding: 8px;
@@ -136,14 +143,5 @@ tr:nth-child(even) {
 
 .wrong-answer {
   color: rgb(251, 3, 3);
-}
-
-.check {
-  height: 50px;
-  width: 18px;
-  border-bottom: 10px solid green;
-  border-right: 10px solid green;
-  transform: rotate(45deg);
-  margin: 20px;
 }
 </style>

@@ -46,9 +46,10 @@ const refreshPage = () => window.location.reload();
 
 <style>
 .btn-relocate {
+  float: right;
   background-color: green;
   color: white;
-  padding: 4px 8px;
+  padding: 6px 12px;
   text-align: center;
   border: 1px solid #7e7e7e;
   border-radius: 5px;
