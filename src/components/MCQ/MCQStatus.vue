@@ -83,6 +83,7 @@ const correctQuizNumPercent = ((correctQuizNum * 100) / workQuiz).toFixed(0);
   height: 80%;
   padding: 10px;
   padding-top: 0px;
+  padding-bottom: 0px;
   overflow: scroll;
 }
 
@@ -96,12 +97,13 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
   width: 100%;
-  margin-bottom: 2em;
+  margin: auto;
 }
 
 td {
   text-align: left;
   padding: 8px;
+  margin: 5px;
 }
 
 th {
