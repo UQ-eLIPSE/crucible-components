@@ -44,13 +44,15 @@
         </table>
       </div>
     </div>
-    <div class="mcq-result">
-      <span class="score"
-        >&#8987; Result: {{ correctQuizNum }} out of {{ workQuiz }} - ({{
-          correctQuizNumPercent
-        }}
-        %)</span
-      >
+    <div>
+      <div class="mcq-result">
+        <span class="score"
+          >&#8987; Result: {{ correctQuizNum }} out of {{ workQuiz }} - ({{
+            correctQuizNumPercent
+          }}
+          %)</span
+        >
+      </div>
     </div>
   </div>
 </template>
@@ -69,26 +71,32 @@ const correctQuizNumPercent = ((correctQuizNum * 100) / workQuiz).toFixed(0);
 
 <style scoped>
 .report-container {
-  position: relative;
-  height: 80vh;
+  width: 60vw;
+  height: 70vh;
   display: flex;
   flex-direction: column;
+  justify-content: center;
 }
 .mcq-report {
   position: relative;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;
-  margin: auto;
-  width: 70vw;
-  height: 80%;
-  padding: 10px;
-  padding-top: 0px;
+  width: 100%;
+  height: 100%;
   padding-bottom: 0px;
   overflow: scroll;
 }
 
 .mcq-report:hover {
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+.mcq-result {
+  float: right;
+  color: rgb(1, 118, 185);
+  padding: 4px 8px;
+  text-align: left;
+  width: fit-content;
+  font-weight: bolder;
 }
 
 table {
@@ -120,18 +128,6 @@ th {
 
 tr:nth-child(even) {
   background-color: #f2f2f2;
-}
-
-.mcq-result {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  float: right;
-  color: rgb(1, 118, 185);
-  padding: 4px 8px;
-  text-align: left;
-  width: fit-content;
-  font-weight: bolder;
 }
 
 .correct-answer {
