@@ -75,7 +75,7 @@ const correctQuizNumPercent = ((correctQuizNum * 100) / workQuiz).toFixed(0);
   width: 50em;
   height: 30em;
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
   justify-content: flex-start;
   margin-bottom: 1em;
 }
@@ -91,12 +91,13 @@ const correctQuizNumPercent = ((correctQuizNum * 100) / workQuiz).toFixed(0);
 }
 
 .mcq-result {
-  float: right;
-  color: rgb(1, 118, 185);
+  float: left;
+  color: rgb(1, 131, 206);
   padding: 4px 8px;
   text-align: left;
   width: fit-content;
   font-weight: bolder;
+  font-size: larger;
 }
 
 table {
