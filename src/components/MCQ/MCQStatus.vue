@@ -84,8 +84,6 @@ const correctQuizNumPercent = ((correctQuizNum * 100) / workQuiz).toFixed(0);
   transition: 0.3s;
   width: 100%;
   height: 500px;
-  /* min-height: 400px;
-  max-height: 800px; */
   padding-bottom: 0px;
   overflow-y: auto;
   align-self: flex-start;
