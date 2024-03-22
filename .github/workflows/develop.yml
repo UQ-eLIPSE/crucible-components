@@ -52,3 +52,4 @@ jobs:
           ansible-playbook -i inventory.ini deploy-crucible.yml
         env:
           ANSIBLE_HOST_KEY_CHECKING: False
+          PROXY_JUMP_USER: ${{ secrets.PROXY_JUMP_USER }}
