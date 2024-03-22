@@ -113,7 +113,7 @@ table {
 
 td {
   text-align: left;
-  /* padding: 8px; */
+  padding-left: 5px;
 }
 td span {
   display: flex;
