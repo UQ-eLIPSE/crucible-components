@@ -14,7 +14,7 @@
             class="quiz-statment"
           >
             <td
-              style="font-style: italic; width: 25em"
+              style="font-style: italic; width: 23em"
               v-html="value.question.statement"
             ></td>
             <td style="font-weight: bold; color: green">
