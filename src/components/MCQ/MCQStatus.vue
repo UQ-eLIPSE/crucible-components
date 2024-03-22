@@ -72,12 +72,12 @@ const correctQuizNumPercent = ((correctQuizNum * 100) / workQuiz).toFixed(0);
 <style scoped>
 .report-container {
   position: relative;
-  /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); */
   width: 60vw;
   height: 70vh;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  margin-bottom: 1em;
 }
 .mcq-report {
   position: relative;
