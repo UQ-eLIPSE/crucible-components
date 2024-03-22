@@ -73,7 +73,7 @@ const correctQuizNumPercent = ((correctQuizNum * 100) / workQuiz).toFixed(0);
 .report-container {
   position: relative;
   width: 60vw;
-  height: 70vh;
+  height: 50vh;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
