@@ -82,6 +82,7 @@ const correctQuizNumPercent = ((correctQuizNum * 100) / workQuiz).toFixed(0);
 .mcq-report {
   position: relative;
   transition: 0.3s;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
   width: 100%;
   height: 500px;
   padding-bottom: 0px;
@@ -89,9 +90,6 @@ const correctQuizNumPercent = ((correctQuizNum * 100) / workQuiz).toFixed(0);
   align-self: flex-start;
 }
 
-.report-container:hover {
-  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
-}
 .mcq-result {
   float: right;
   color: rgb(1, 118, 185);
