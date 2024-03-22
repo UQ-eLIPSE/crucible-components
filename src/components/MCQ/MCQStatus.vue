@@ -35,8 +35,8 @@
                 :class="value.correct === 1 ? 'correct-answer' : 'wrong-answer'"
                 v-html="
                   value.correct === 1
-                    ? '&#10004;'
-                    : '&#10008;' + value.selectedValue
+                    ? '<p> &#10004; &nbsp;</p> '
+                    : '<p> &#10008; &nbsp;</p> ' + value.selectedValue
                 "
               ></span>
             </td>
@@ -105,7 +105,10 @@ td {
   padding: 8px;
   margin: 5px;
 }
-
+td span {
+  display: flex;
+  align-items: center;
+}
 th {
   top: 0;
   padding: 8px;
