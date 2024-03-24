@@ -1,10 +1,11 @@
-name: Deploy to UAT
+name: Deploy Script
 
 on:
   workflow_dispatch: # This allows manual triggering of the workflow
   push:
     branches:
       - develop
+      - main
 
 jobs:
   deploy:
@@ -37,7 +38,11 @@ jobs:
 
       - name: Set inventory
         run: |
-          echo "${{ vars.UAT_INVENTORY }}" > inventory.ini
+          if [[ "${{ github.ref }}" == "refs/heads/develop" ]]; then
+            echo "${{ vars.UAT_INVENTORY }}" > inventory.ini
+          else
+            echo "${{ vars.INVENTORY }}" > inventory.ini
+          fi
 
       - name: Display modified inventory file (for verification)
         run: cat inventory.ini
