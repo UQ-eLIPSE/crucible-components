@@ -9,29 +9,20 @@
     - name: End play if already deployed
       meta: end_host
       when: hostvars[inventory_hostname]['deployed'] | default(false) | bool
-    
-    - name: Check if /root/crucible exists
-      stat:
-        path: /root/crucible
-      register: crucible_dir
 
     - name: Remove /root/crucible if it exists
       command: rm -rf /root/crucible
-      args:
-        removes: /root/crucible
-      when: crucible_dir.stat.exists
 
-    - name: Create /root/crucible if it does not exist
+    - name: Create /root/crucible
       file:
         path: /root/crucible
         state: directory
-      when: not crucible_dir.stat.exists
-
 
     - name: Compress client code
       shell: |
+        rsync -av --exclude=node_modules --exclude=yarn.lock --exclude=tests --exclude=.husky --exclude=.github --exclude=.git . client/ && \
         rm -f client.tar.gz && \
-        tar --exclude=node_modules --exclude=yarn.lock --exclude=tests --exclude=.husky --exclude=.github --exclude=.git -czvf client.tar.gz .
+        tar -czvf client.tar.gz client
       delegate_to: localhost
 
     - name: Transfer client code
@@ -44,7 +35,7 @@
 
     - name: Create client
       shell: |
-        cd /root/crucible/ && \
+        cd /root/crucible/client && \
         yarn && \
         yarn build && \
         rm -rf /var/www/client && \
