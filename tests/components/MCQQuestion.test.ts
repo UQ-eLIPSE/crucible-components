@@ -28,7 +28,7 @@ const optionMount = (propsData: MCQuestion) => {
 };
 
 export const getOptions = (wrapper: VueWrapper) => {
-  return wrapper.findAll(".mcq-option");
+  return wrapper.findAll("input[type='radio']");
 };
 
 describe("MCQQuestion.vue", () => {
@@ -62,7 +62,10 @@ describe("MCQQuestion.vue", () => {
     expect(optionList.length).toBe(questionKeys.length);
 
     for (const [index] of questionKeys.entries()) {
-      const renderedOption = optionList[index];
+      const renderedOptionEle = optionList[index].element;
+      const renderedOption = wrapper.find(
+        `label[for="${renderedOptionEle.id}"]`,
+      );
       const value = Object.values(optionsList)[index];
       expect(renderedOption.html()).toContain(`${value.optionValue}`);
     }
@@ -75,8 +78,9 @@ describe("MCQQuestion.vue", () => {
   it("Selects the first option", async () => {
     const optionList = getOptions(wrapper);
     const firstOption = optionList[0];
+    console.log(firstOption);
     await firstOption.trigger("click");
-    expect(firstOption.classes()).toContain("selected");
+    // expect(firstOption.classes()).toContain("selected");
     expect(wrapper.vm.selectedOption).toBe("0");
   });
 

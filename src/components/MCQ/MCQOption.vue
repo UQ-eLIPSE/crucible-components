@@ -3,6 +3,7 @@
   <input
     :id="'option-' + optionKey"
     :key="optionKey"
+    test-id="radio_options"
     type="radio"
     name="options"
     :checked="checked"
