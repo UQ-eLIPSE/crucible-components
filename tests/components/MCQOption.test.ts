@@ -25,14 +25,20 @@ beforeEach(() => {
 describe("MCQOption.vue", () => {
   it("Adds correct class when option is selected", async () => {
     const optionList = getOptions(wrapper);
-    const selectedOptionEle = optionList[2].element;
-    const selectedOption = wrapper.find(`label[for="${selectedOptionEle.id}"]`);
-
-    await selectedOption.trigger("click");
-    expect(selectedOption.html()).toContain(optionsList[2].optionValue);
+    const selectedOption = optionList[2];
+    await selectedOption?.trigger("click");
     expect(selectedOption.element.parentElement?.className).toContain(
       "selected",
     );
+    expect(selectedOption.element.parentElement?.innerHTML).toContain(
+      optionsList[2].optionValue,
+    );
+  });
+
+  it("Adds correct class when option box is selected", async () => {
+    const selectedOptionWrapper = wrapper.findAll(".mcq-option")[2];
+    await selectedOptionWrapper?.trigger("click");
+    expect(selectedOptionWrapper.classes()).toContain("selected");
   });
 
   it("Allows selection clearing", async () => {
