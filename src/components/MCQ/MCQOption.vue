@@ -3,11 +3,12 @@
   <input
     :id="'option-' + optionKey"
     :key="optionKey"
+    test-id="radio_options"
     type="radio"
-    disabled="true"
     name="options"
     :checked="checked"
     :class="submitted && 'ignore-hover'"
+    @click="update()"
   />
   <label
     :key="optionKey"
@@ -20,6 +21,8 @@
 <script setup lang="ts">
 import type { MCQRadioOption } from "@type/MCQ.d.ts";
 const { optionKey, checked, option, submitted } = defineProps<MCQRadioOption>();
+const emit = defineEmits(["selectOption"]);
+const update = () => emit("selectOption");
 </script>
 
 <style scoped>

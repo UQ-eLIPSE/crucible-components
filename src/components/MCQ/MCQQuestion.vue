@@ -7,13 +7,13 @@
       :key="key"
       class="mcq-option"
       :class="optionClass(key, optionsList)"
-      @click="selectOption(key)"
     >
       <MCQOption
         :option-key="key"
         :checked="selectedOption === key"
         :option="value"
         :submitted="submitted"
+        @select-option="selectOption(key)"
       />
     </div>
   </div>
