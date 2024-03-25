@@ -3,11 +3,13 @@
   <input
     :id="'option-' + optionKey"
     :key="optionKey"
+    test-id="radio_options"
     type="radio"
     name="options"
     :checked="checked"
     :class="submitted && 'ignore-hover'"
     @click="update()"
+    @click.stop
   />
   <label
     :key="optionKey"
