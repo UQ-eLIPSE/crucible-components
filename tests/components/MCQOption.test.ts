@@ -25,10 +25,14 @@ beforeEach(() => {
 describe("MCQOption.vue", () => {
   it("Adds correct class when option is selected", async () => {
     const optionList = getOptions(wrapper);
-    const selectedOption = optionList[2];
+    const selectedOptionEle = optionList[2].element;
+    const selectedOption = wrapper.find(`label[for="${selectedOptionEle.id}"]`);
+
     await selectedOption.trigger("click");
     expect(selectedOption.html()).toContain(optionsList[2].optionValue);
-    expect(selectedOption.classes()).toContain("selected");
+    expect(selectedOption.element.parentElement?.className).toContain(
+      "selected",
+    );
   });
 
   it("Allows selection clearing", async () => {
@@ -44,7 +48,7 @@ describe("MCQOption.vue", () => {
     const correctOption = optionList[0];
     await correctOption.trigger("click");
     await mcqBtn.trigger("click");
-    expect(correctOption.classes()).toContain("correct");
+    expect(correctOption.element.parentElement?.className).toContain("correct");
   });
 
   it("Adds both correct and wrong classes when submit is pressed for the wrong option", async () => {
@@ -53,8 +57,8 @@ describe("MCQOption.vue", () => {
     const correctOption = optionList[0];
     await wrongOption.trigger("click");
     await mcqBtn.trigger("click");
-    expect(wrongOption.classes()).toContain("wrong");
-    expect(correctOption.classes()).toContain("correct");
+    expect(wrongOption.element.parentElement?.className).toContain("wrong");
+    expect(correctOption.element.parentElement?.className).toContain("correct");
   });
 
   it("Adds ignore-hover classe when upon wrong submission", async () => {

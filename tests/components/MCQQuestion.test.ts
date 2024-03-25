@@ -78,9 +78,9 @@ describe("MCQQuestion.vue", () => {
   it("Selects the first option", async () => {
     const optionList = getOptions(wrapper);
     const firstOption = optionList[0];
-    console.log(firstOption);
     await firstOption.trigger("click");
-    // expect(firstOption.classes()).toContain("selected");
+    const parentEle = firstOption.element.parentElement?.className;
+    expect(parentEle).toContain("selected");
     expect(wrapper.vm.selectedOption).toBe("0");
   });
 

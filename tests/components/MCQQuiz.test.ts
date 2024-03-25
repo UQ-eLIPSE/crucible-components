@@ -4,6 +4,7 @@ import { useQuizStore } from "@/store/QuizStore";
 import { questions } from "@data/question-data.json";
 import MCQQuiz from "@components/MCQ/MCQQuiz.vue";
 import { mount, VueWrapper, DOMWrapper } from "@vue/test-utils";
+import { getOptions } from "./MCQQuestion.test";
 
 let wrapper: VueWrapper;
 let mcqBtn: Omit<DOMWrapper<Element>, "exists">;
@@ -44,7 +45,7 @@ describe("MCQQuiz.vue", () => {
   });
 
   it("Navigates question stack upon submission and next", async () => {
-    const optionList = wrapper.findAll(".mcq-option");
+    const optionList = getOptions(wrapper);
     const firstOption = optionList[0];
     await firstOption.trigger("click");
     await mcqBtn.trigger("click");
@@ -71,7 +72,7 @@ describe("MCQQuiz.vue", () => {
   });
 
   it("Should display all questions properly when answering them", async () => {
-    const optionList = wrapper.findAll(".mcq-option"); //getOptions(wrapper);
+    const optionList = getOptions(wrapper);
     const firstOption = optionList[0];
     for (let i = 0; i < questions.length; i++) {
       expect(questionIsFullyDisplayed(wrapper)).toBe(true);
@@ -83,7 +84,7 @@ describe("MCQQuiz.vue", () => {
 
   it("Should display no questions after answering them all, and display the correct Score", async () => {
     for (let i = 0; i < questions.length; i++) {
-      const optionList = wrapper.findAll(".mcq-option");
+      const optionList = getOptions(wrapper);
       const firstOption = optionList[0];
       await firstOption.trigger("click");
       await mcqBtn.trigger("click");
