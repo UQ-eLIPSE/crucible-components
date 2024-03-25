@@ -9,6 +9,7 @@
     :checked="checked"
     :class="submitted && 'ignore-hover'"
     @click="update()"
+    @click.stop
   />
   <label
     :key="optionKey"
