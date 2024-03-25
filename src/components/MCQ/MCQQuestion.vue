@@ -75,7 +75,6 @@ const selectOption = (key: string) => {
 const optionClass = (key: string, optionsList: MCQOptions[]) => {
   const option = optionsList[parseInt(key)];
   const isSelected = selectedOption.value === key;
-
   if (!submitted.value) {
     return isSelected ? "selected" : "";
   }
