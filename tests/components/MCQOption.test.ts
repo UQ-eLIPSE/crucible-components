@@ -5,6 +5,7 @@ import { mount, VueWrapper, DOMWrapper } from "@vue/test-utils";
 import { getOptions } from "./MCQQuestion.test";
 
 let wrapper: VueWrapper;
+const _id = questions[0]._id;
 const statement = questions[0].statement;
 const optionsList = questions[0].optionsList;
 let mcqBtn: Omit<DOMWrapper<Element>, "exists">;
@@ -12,6 +13,7 @@ let mcqBtn: Omit<DOMWrapper<Element>, "exists">;
 beforeEach(() => {
   wrapper = mount(MCQQuestion, {
     props: {
+      _id,
       statement,
       optionsList,
     },
@@ -24,9 +26,19 @@ describe("MCQOption.vue", () => {
   it("Adds correct class when option is selected", async () => {
     const optionList = getOptions(wrapper);
     const selectedOption = optionList[2];
-    await selectedOption.trigger("click");
-    expect(selectedOption.html()).toContain(optionsList[2].optionValue);
-    expect(selectedOption.classes()).toContain("selected");
+    await selectedOption?.trigger("click");
+    expect(selectedOption.element.parentElement?.className).toContain(
+      "selected",
+    );
+    expect(selectedOption.element.parentElement?.innerHTML).toContain(
+      optionsList[2].optionValue,
+    );
+  });
+
+  it("Adds correct class when option box is selected", async () => {
+    const selectedOptionWrapper = wrapper.findAll(".mcq-option")[2];
+    await selectedOptionWrapper?.trigger("click");
+    expect(selectedOptionWrapper.classes()).toContain("selected");
   });
 
   it("Allows selection clearing", async () => {
@@ -42,7 +54,7 @@ describe("MCQOption.vue", () => {
     const correctOption = optionList[0];
     await correctOption.trigger("click");
     await mcqBtn.trigger("click");
-    expect(correctOption.classes()).toContain("correct");
+    expect(correctOption.element.parentElement?.className).toContain("correct");
   });
 
   it("Adds both correct and wrong classes when submit is pressed for the wrong option", async () => {
@@ -51,8 +63,8 @@ describe("MCQOption.vue", () => {
     const correctOption = optionList[0];
     await wrongOption.trigger("click");
     await mcqBtn.trigger("click");
-    expect(wrongOption.classes()).toContain("wrong");
-    expect(correctOption.classes()).toContain("correct");
+    expect(wrongOption.element.parentElement?.className).toContain("wrong");
+    expect(correctOption.element.parentElement?.className).toContain("correct");
   });
 
   it("Adds ignore-hover classe when upon wrong submission", async () => {

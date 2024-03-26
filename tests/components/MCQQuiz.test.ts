@@ -1,4 +1,6 @@
 import { describe, it, expect, beforeEach } from "vitest";
+import { createPinia, setActivePinia } from "pinia";
+import { useQuizStore } from "@/store/QuizStore";
 import { questions } from "@data/question-data.json";
 import MCQQuiz from "@components/MCQ/MCQQuiz.vue";
 import { mount, VueWrapper, DOMWrapper } from "@vue/test-utils";
@@ -7,25 +9,28 @@ import { getOptions } from "./MCQQuestion.test";
 let wrapper: VueWrapper;
 let mcqBtn: Omit<DOMWrapper<Element>, "exists">;
 
-beforeEach(async () => {
-  wrapper = mount(MCQQuiz, {
-    props: {
-      questions,
-    },
+describe("MCQQuiz.vue", () => {
+  beforeEach(async () => {
+    setActivePinia(createPinia());
+    // Access the store and initialize it with some data
+    const quizAmount = [...questions];
+    const questionsQueue = useQuizStore();
+
+    questionsQueue.initialiseQuiz(quizAmount);
+
+    wrapper = mount(MCQQuiz, {});
+
+    await wrapper.vm.$nextTick();
+    mcqBtn = wrapper.get(".mcq-button");
   });
 
-  await wrapper.vm.$nextTick();
-  mcqBtn = wrapper.get(".mcq-button");
-});
+  const questionIsFullyDisplayed = (wrapper: VueWrapper) => {
+    const statementExists = wrapper.find(".mcq-statement").exists();
+    const optionsListExists = wrapper.find(".mcq-list").exists();
+    const buttonExists = wrapper.find(".mcq-button").exists();
+    return statementExists && optionsListExists && buttonExists;
+  };
 
-const questionIsFullyDisplayed = (wrapper: VueWrapper) => {
-  const statementExists = wrapper.find(".mcq-statement").exists();
-  const optionsListExists = wrapper.find(".mcq-list").exists();
-  const buttonExists = wrapper.find(".mcq-button").exists();
-  return statementExists && optionsListExists && buttonExists;
-};
-
-describe("MCQQuiz.vue", () => {
   it("Renders quiz properly", () => {
     expect(wrapper.exists()).toBe(true);
     expect(wrapper.html()).toContain("mcq-statement");
@@ -77,14 +82,21 @@ describe("MCQQuiz.vue", () => {
     }
   });
 
-  it("Should display no questions after answering them all", async () => {
-    const optionList = getOptions(wrapper);
-    const firstOption = optionList[0];
+  it("Should display no questions after answering them all, and display the correct Score", async () => {
     for (let i = 0; i < questions.length; i++) {
+      const optionList = getOptions(wrapper);
+      const firstOption = optionList[0];
       await firstOption.trigger("click");
       await mcqBtn.trigger("click");
       await mcqBtn.trigger("click");
     }
+
+    await wrapper.vm.$nextTick();
+
     expect(questionIsFullyDisplayed(wrapper)).toBe(false);
+
+    expect(wrapper.get(".score").text()).toBe(
+      "⌛ Result: 28 out of 115 - (24 %)",
+    );
   });
 });

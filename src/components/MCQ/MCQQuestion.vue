@@ -14,6 +14,7 @@
         :checked="selectedOption === key"
         :option="value"
         :submitted="submitted"
+        @select-option="selectOption(key)"
       />
     </div>
   </div>
@@ -21,7 +22,7 @@
     :submitted="submitted"
     :selected-option="selectedOption"
     @submit-answer="submitAnswer"
-    @next-question="nextQuestion"
+    @next-question="nextQuestion(_id)"
     @skip-question="skipQuestion"
   />
 </template>
@@ -31,8 +32,11 @@ import { ref } from "vue";
 import type { MCQuestion, MCQOptions } from "@type/MCQ.d.ts";
 import MCQOption from "./MCQOption.vue";
 import MCQButton from "./MCQButton.vue";
+import { useQuizStore } from "@/store/QuizStore";
 
-const { statement, optionsList } = defineProps<MCQuestion>();
+const statUpdate = useQuizStore();
+
+const { statement, optionsList, _id } = defineProps<MCQuestion>();
 const selectedOption = ref<string | null>(null);
 const submitted = ref<boolean>(false);
 const emit = defineEmits(["nextQuestion", "skipQuestion"]);
@@ -41,17 +45,21 @@ const submitAnswer = () => {
   submitted.value = true;
 };
 
-const nextQuestion = () => {
-  resetQuestion();
+const nextQuestion = (_id: { $oid: string }) => {
+  resetQuestion(_id);
   emit("nextQuestion");
 };
 
 const skipQuestion = () => {
-  resetQuestion();
+  resetQuestion(_id);
   emit("skipQuestion");
 };
 
-const resetQuestion = () => {
+const trackQuizStatus = (_id: { $oid: string }) =>
+  statUpdate.incrementStat(_id.$oid, "attempts", selectedOption.value || "");
+
+const resetQuestion = (_id: { $oid: string }) => {
+  trackQuizStatus(_id);
   submitted.value = false;
   selectedOption.value = null;
 };
@@ -68,7 +76,6 @@ const selectOption = (key: string) => {
 const optionClass = (key: string, optionsList: MCQOptions[]) => {
   const option = optionsList[parseInt(key)];
   const isSelected = selectedOption.value === key;
-
   if (!submitted.value) {
     return isSelected ? "selected" : "";
   }

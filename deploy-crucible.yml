@@ -1,0 +1,49 @@
+- name: Develop zone
+  hosts: newzone
+  tasks:
+    - name: Check if already deployed
+      debug:
+        msg: "Host {{ inventory_hostname }} is already deployed."
+      when: hostvars[inventory_hostname]['deployed'] | default(false) | bool
+
+    - name: End play if already deployed
+      meta: end_host
+      when: hostvars[inventory_hostname]['deployed'] | default(false) | bool
+
+    - name: Remove /root/crucible if it exists
+      command: rm -rf /root/crucible
+
+    - name: Create /root/crucible
+      file:
+        path: /root/crucible
+        state: directory
+
+    - name: Compress client code
+      shell: |
+        rsync -av --exclude=node_modules --exclude=yarn.lock --exclude=tests --exclude=.husky --exclude=.github --exclude=.git . client/ && \
+        rm -f client.tar.gz && \
+        tar -czvf client.tar.gz client
+      delegate_to: localhost
+
+    - name: Transfer client code
+      copy:
+        src: client.tar.gz
+        dest: /root/crucible
+
+    - name: Uncompress the file in the remote instance
+      command: tar -xzf /root/crucible/client.tar.gz -C /root/crucible/
+
+    - name: Create client
+      shell: |
+        cd /root/crucible/client && \
+        yarn && \
+        yarn build && \
+        rm -rf /var/www/client && \
+        mkdir /var/www/client && \
+        cp -R dist/ /var/www/client/
+
+
+    - name: Restart Nginx service
+      systemd:
+        name: nginx
+        state: restarted

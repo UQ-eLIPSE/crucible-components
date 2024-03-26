@@ -5,16 +5,12 @@ import StartPage from "@components/StartPage.vue";
 
 describe("StartPage.vue", () => {
   it("renders App component", () => {
-    const wrapper = mount(StartPage, {
-      props: { questions },
-    });
+    const wrapper = mount(StartPage, {});
     expect(wrapper.exists()).toBe(true);
   });
 
   it("renders start button", () => {
-    const wrapper = mount(StartPage, {
-      props: { questions },
-    });
+    const wrapper = mount(StartPage, {});
     expect(wrapper.find("button").text()).toBe("Start");
   });
 
