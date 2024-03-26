@@ -10,6 +10,8 @@ export interface MCQuestion {
   link: string;
 }
 
+export interface MCQuestionProp extends Omit<MCQuestion, "tags" | "link"> {}
+
 export interface MCQOptions {
   optionValue: string;
   optionCorrect?: boolean;
