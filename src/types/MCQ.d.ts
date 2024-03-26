@@ -7,7 +7,7 @@ export interface MCQuestion {
   statement: string;
   tags?: string[];
   optionsList: MCQOptions[];
-  link?: string;
+  link: string;
 }
 
 export interface MCQOptions {

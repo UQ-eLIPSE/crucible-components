@@ -29,14 +29,18 @@
 
 <script setup lang="ts">
 import { ref } from "vue";
-import type { MCQuestion, MCQOptions } from "@type/MCQ.d.ts";
+import type { MCQOptions } from "@type/MCQ.d.ts";
 import MCQOption from "./MCQOption.vue";
 import MCQButton from "./MCQButton.vue";
 import { useQuizStore } from "@/store/QuizStore";
 
 const statUpdate = useQuizStore();
 
-const { statement, optionsList, _id } = defineProps<MCQuestion>();
+const { statement, optionsList, _id } = defineProps<{
+  statement: string;
+  optionsList: MCQOptions[];
+  _id: { $oid: string };
+}>();
 const selectedOption = ref<string | null>(null);
 const submitted = ref<boolean>(false);
 const emit = defineEmits(["nextQuestion", "skipQuestion"]);
