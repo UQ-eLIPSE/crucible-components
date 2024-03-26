@@ -38,8 +38,8 @@
                 :class="value.correct === 1 ? 'correct-answer' : 'wrong-answer'"
                 v-html="
                   value.correct === 1
-                    ? '<p> &#10004;</p> '
-                    : '<p> &#10008;</p> ' +
+                    ? '<span> &#10004;</span> '
+                    : '<span> &#10008;</span> ' +
                       '<span> &nbsp; &nbsp </span>' +
                       value.selectedValue
                 "
