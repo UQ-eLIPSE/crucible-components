@@ -15,6 +15,7 @@
     :key="optionKey"
     :for="'option-' + optionKey"
     :class="submitted ? 'mcq-option-label ignore-hover' : 'mcq-option-label'"
+    @click="update()"
     v-html="option.optionValue"
   />
 </template>
