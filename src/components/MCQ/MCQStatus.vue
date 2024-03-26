@@ -13,10 +13,13 @@
             :key="key"
             class="quiz-statment"
           >
-            <td
-              style="font-style: italic; width: 23em"
-              v-html="value.question.statement"
-            ></td>
+            <td style="font-style: italic; width: 23em">
+              <a
+                :href="value.question.link"
+                target="_blank"
+                v-html="value.question.statement"
+              ></a>
+            </td>
             <td style="font-weight: bold; color: green">
               <span
                 v-for="[index, element] in Object.entries(
