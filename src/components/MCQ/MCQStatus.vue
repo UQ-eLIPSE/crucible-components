@@ -3,49 +3,55 @@
     <div class="mcq-report">
       <div class="table-container">
         <table>
-          <tr>
-            <th>question</th>
-            <th>correct option</th>
-            <th>your answer</th>
-          </tr>
-          <tr
-            v-for="[key, value] in Object.entries(quizStatus)"
-            :key="key"
-            class="quiz-statment"
-          >
-            <td style="font-style: italic; width: 23em">
-              <a
-                :href="value.question.link"
-                target="_blank"
-                v-html="value.question.statement"
-              ></a>
-            </td>
-            <td style="font-weight: bold; color: green">
-              <span
-                v-for="[index, element] in Object.entries(
-                  value.question.optionsList,
-                )"
-                :key="index"
-              >
+          <thead>
+            <tr>
+              <th>question</th>
+              <th>correct option</th>
+              <th>your answer</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr
+              v-for="[key, value] in Object.entries(quizStatus)"
+              :key="key"
+              class="quiz-statment"
+            >
+              <td class="question-row">
+                <a
+                  :href="value.question.link"
+                  target="_blank"
+                  v-html="value.question.statement"
+                ></a>
+              </td>
+              <td class="answer-row">
                 <span
-                  v-if="element.optionCorrect"
-                  v-html="element.optionValue"
-                ></span
-              ></span>
-            </td>
-            <td>
-              <span
-                :class="value.correct === 1 ? 'correct-answer' : 'wrong-answer'"
-                v-html="
-                  value.correct === 1
-                    ? '<span> &#10004;</span> '
-                    : '<span> &#10008;</span> ' +
-                      '<span> &nbsp; &nbsp </span>' +
-                      value.selectedValue
-                "
-              ></span>
-            </td>
-          </tr>
+                  v-for="[index, element] in Object.entries(
+                    value.question.optionsList,
+                  )"
+                  :key="index"
+                >
+                  <span
+                    v-if="element.optionCorrect"
+                    v-html="element.optionValue"
+                  ></span
+                ></span>
+              </td>
+              <td class="answer-row">
+                <span
+                  :class="
+                    value.correct === 1 ? 'correct-answer' : 'wrong-answer'
+                  "
+                  v-html="
+                    value.correct === 1
+                      ? '<span> &#10004;</span> '
+                      : '<span> &#10008;</span> ' +
+                        '<span> &nbsp; &nbsp </span>' +
+                        value.selectedValue
+                  "
+                ></span>
+              </td>
+            </tr>
+          </tbody>
         </table>
       </div>
     </div>
@@ -106,8 +112,8 @@ const correctQuizNumPercent = ((correctQuizNum * 100) / workQuiz).toFixed(0);
 }
 
 table {
-  position: absolute;
-  top: 0;
+  table-layout: fixed;
+  margin: 0;
   border-collapse: collapse;
   border-spacing: 0;
   width: 100%;
@@ -115,12 +121,12 @@ table {
 }
 
 td {
-  text-align: left;
-  padding: 0px 10px 0px 10px;
+  text-align: center;
 }
 td span {
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 span p {
   text-align: left;
@@ -128,12 +134,10 @@ span p {
 }
 
 th {
-  top: 0;
   padding: 8px;
-  position: sticky;
-  position: -webkit-sticky;
   text-transform: capitalize;
   background-color: #7e7e7e;
+  color: white;
 }
 
 tr:nth-child(even) {
@@ -146,5 +150,13 @@ tr:nth-child(even) {
 
 .wrong-answer {
   color: rgb(251, 3, 3);
+}
+
+.question-row {
+  font-style: italic;
+}
+.answer-row {
+  font-weight: bold;
+  color: green;
 }
 </style>
