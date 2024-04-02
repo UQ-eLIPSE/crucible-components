@@ -5,7 +5,7 @@ export interface MCQQuiz {
 export interface MCQuestion {
   _id: { $oid: string };
   statement: string;
-  tags?: string[];
+  tags: tags[];
   optionsList: MCQOptions[];
   link: string;
 }
@@ -40,4 +40,10 @@ export interface QuestionState {
   skipped: number;
   attempts: number;
   selectedValue: string;
+}
+
+export interface tags {
+  course: string;
+  subject: string;
+  system: string;
 }
