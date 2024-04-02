@@ -1,6 +1,11 @@
 {
   "questions": [
       {
+          "tags": {
+            "course": "VETS2011",
+            "subject": "Physiology",
+            "system": "Neurophysiology"
+          },
           "statement": "Which of the given primary taste stimuli depend on G protein-coupled receptors to depolarise the cell?",
           "optionsList": [
               {
@@ -27,6 +32,11 @@
           "link": "https://vetshub.uqcloud.net/resource/5a0ba18d34cc363763e05e99/61a9ae14e04e3d5bffb26ef7/62142eee64c71f1df2110cf5/6242d73f64c71f1df2110ded/6242d7a264c71f1df2110df0"
       },
       {
+          "tags": {
+            "course": "VETS2011",
+            "subject": "Physiology",
+            "system": "Neurophysiology"
+          },
           "statement": "Which of the given primary taste stimuli are triggered by ions in the saliva?",
           "optionsList": [
               {
@@ -53,6 +63,11 @@
           "link": "https://vetshub.uqcloud.net/resource/5a0ba18d34cc363763e05e99/61a9ae14e04e3d5bffb26ef7/62142eee64c71f1df2110cf5/6242d73f64c71f1df2110ded/6242d7a264c71f1df2110df0"
       },
       {
+          "tags": {
+            "course": "VETS2011",
+            "subject": "Physiology",
+            "system": "Neurophysiology"
+          },
           "statement": "Which cranial nerve contains sensory neurons that contribute to the gag reflex?",
           "optionsList": [
               {
@@ -79,6 +94,11 @@
           "link": "https://vetshub.uqcloud.net/resource/5a0ba18d34cc363763e05e99/61a9ae14e04e3d5bffb26ef7/62142eee64c71f1df2110cf5/6242d73f64c71f1df2110ded/6242d7a264c71f1df2110df0"
       },
       {
+          "tags": {
+            "course": "VETS2011",
+            "subject": "Physiology",
+            "system": "Neurophysiology"
+          },
           "statement": "Binding of an odorant to an odorant receptor on olfactory cells results in which of the following?",
           "optionsList": [
               {
@@ -105,6 +125,11 @@
           "link": "https://vetshub.uqcloud.net/resource/5a0ba18d34cc363763e05e99/61a9ae14e04e3d5bffb26ef7/62142eee64c71f1df2110cf5/6242d73f64c71f1df2110ded/6242d7a864c71f1df2110df1"
       },
       {
+          "tags": {
+            "course": "VETS2011",
+            "subject": "Physiology",
+            "system": "Neurophysiology"
+          },
           "statement": "What is the mechanism of smell transduction via the olfactory nerve?",
           "optionsList": [
               {
@@ -131,6 +156,11 @@
           "link": "https://vetshub.uqcloud.net/resource/5a0ba18d34cc363763e05e99/61a9ae14e04e3d5bffb26ef7/62142eee64c71f1df2110cf5/6242d73f64c71f1df2110ded/6242d7a864c71f1df2110df1"
       },
       {
+          "tags": {
+            "course": "VETS2011",
+            "subject": "Physiology",
+            "system": "Neurophysiology"
+          },
           "statement": "<p>The membrane potential is due to:</p>",
           "optionsList": [
               {
@@ -153,6 +183,11 @@
           "link": "https://vetshub.uqcloud.net/resource/5a0ba18d34cc363763e05e99/61a9ae14e04e3d5bffb26ef7/62142eee64c71f1df2110cf5/62142f2764c71f1df2110cf7/6214301b64c71f1df2110cfd"
       },
       {
+          "tags": {
+            "course": "VETS2011",
+            "subject": "Physiology",
+            "system": "Neurophysiology"
+          },
           "statement": "<p>Which part of a neuron receives information from surrounding cells?</p>",
           "optionsList": [
               {
@@ -183,6 +218,11 @@
           "link": "https://vetshub.uqcloud.net/resource/5a0ba18d34cc363763e05e99/61a9ae14e04e3d5bffb26ef7/62142eee64c71f1df2110cf5/62142f2764c71f1df2110cf7/6214301b64c71f1df2110cfd"
       },
       {
+          "tags": {
+            "course": "VETS2011",
+            "subject": "Physiology",
+            "system": "Neurophysiology"
+          },
           "statement": "<p>Action potentials are transmitted along which part of a neuron?</p>",
           "optionsList": [
               {
@@ -213,6 +253,11 @@
           "link": "https://vetshub.uqcloud.net/resource/5a0ba18d34cc363763e05e99/61a9ae14e04e3d5bffb26ef7/62142eee64c71f1df2110cf5/62142f2764c71f1df2110cf7/6214301b64c71f1df2110cfd"
       },
       {
+          "tags": {
+            "course": "VETS2011",
+            "subject": "Physiology",
+            "system": "Neurophysiology"
+          },
           "statement": "<p>The resting membrane potential of a mammalian neuron is:</p>",
           "optionsList": [
               {
@@ -239,6 +284,11 @@
           "link": "https://vetshub.uqcloud.net/resource/5a0ba18d34cc363763e05e99/61a9ae14e04e3d5bffb26ef7/62142eee64c71f1df2110cf5/62142f2764c71f1df2110cf7/6214301b64c71f1df2110cfd"
       },
       {
+          "tags": {
+            "course": "VETS2011",
+            "subject": "Physiology",
+            "system": "Neurophysiology"
+          },
           "statement": "<p>Which of the following statements regarding action potentials is TRUE?</p>",
           "optionsList": [
               {
@@ -269,6 +319,11 @@
           "link": "https://vetshub.uqcloud.net/resource/5a0ba18d34cc363763e05e99/61a9ae14e04e3d5bffb26ef7/62142eee64c71f1df2110cf5/62142f2764c71f1df2110cf7/6214407964c71f1df2110d03"
       },
       {
+          "tags": {
+            "course": "VETS2011",
+            "subject": "Physiology",
+            "system": "Neurophysiology"
+          },
           "statement": "<p>Which of the following would NOT be possible occurrences when signal build-up occurs?</p>",
           "optionsList": [
               {
@@ -295,6 +350,11 @@
           "link": "https://vetshub.uqcloud.net/resource/5a0ba18d34cc363763e05e99/61a9ae14e04e3d5bffb26ef7/62142eee64c71f1df2110cf5/62142f2764c71f1df2110cf7/6214407964c71f1df2110d03"
       },
       {
+          "tags": {
+            "course": "VETS2011",
+            "subject": "Physiology",
+            "system": "Neurophysiology"
+          },
           "statement": "<p>When is it impossible to generate an action potential?</p>",
           "optionsList": [
               {
@@ -325,6 +385,11 @@
           "link": "https://vetshub.uqcloud.net/resource/5a0ba18d34cc363763e05e99/61a9ae14e04e3d5bffb26ef7/62142eee64c71f1df2110cf5/62142f2764c71f1df2110cf7/6214407964c71f1df2110d03"
       },
       {
+          "tags": {
+            "course": "VETS2011",
+            "subject": "Physiology",
+            "system": "Neurophysiology"
+          },
           "statement": "<p>What happens when an IPSP is generated after EPSP?</p>",
           "optionsList": [
               {
@@ -355,6 +420,11 @@
           "link": "https://vetshub.uqcloud.net/resource/5a0ba18d34cc363763e05e99/61a9ae14e04e3d5bffb26ef7/62142eee64c71f1df2110cf5/62142f2764c71f1df2110cf7/6214407964c71f1df2110d03"
       },
       {
+          "tags": {
+            "course": "VETS2011",
+            "subject": "Physiology",
+            "system": "Neurophysiology"
+          },
           "statement": "<p>What is the term used to describe an action potential that &ldquo;jumps&rdquo; from one node of Ranvier to another?</p>",
           "optionsList": [
               {
@@ -381,6 +451,11 @@
           "link": "https://vetshub.uqcloud.net/resource/5a0ba18d34cc363763e05e99/61a9ae14e04e3d5bffb26ef7/62142eee64c71f1df2110cf5/62142f2764c71f1df2110cf7/6214407964c71f1df2110d03"
       },
       {
+          "tags": {
+            "course": "VETS2011",
+            "subject": "Physiology",
+            "system": "Neurophysiology"
+          },
           "statement": "<p>What happens when the membrane potential goes below &minus;70 mV?</p>",
           "optionsList": [
               {
@@ -411,6 +486,11 @@
           "link": "https://vetshub.uqcloud.net/resource/5a0ba18d34cc363763e05e99/61a9ae14e04e3d5bffb26ef7/62142eee64c71f1df2110cf5/62142f2764c71f1df2110cf7/6214407964c71f1df2110d03"
       },
       {
+          "tags": {
+            "course": "VETS2011",
+            "subject": "Physiology",
+            "system": "Neurophysiology"
+          },
           "statement": "<p>Which of the following types of glial cells myelinate neurons in the peripheral nervous system?</p>",
           "optionsList": [
               {
@@ -437,6 +517,11 @@
           "link": "https://vetshub.uqcloud.net/resource/5a0ba18d34cc363763e05e99/61a9ae14e04e3d5bffb26ef7/62142eee64c71f1df2110cf5/62142f2764c71f1df2110cf7/6214413464c71f1df2110d07"
       },
       {
+          "tags": {
+            "course": "VETS2011",
+            "subject": "Physiology",
+            "system": "Neurophysiology"
+          },
           "statement": "<p>Which of the following is an attribute of ependymal cells?</p>",
           "optionsList": [
               {
@@ -467,6 +552,11 @@
           "link": "https://vetshub.uqcloud.net/resource/5a0ba18d34cc363763e05e99/61a9ae14e04e3d5bffb26ef7/62142eee64c71f1df2110cf5/62142f2764c71f1df2110cf7/6214413464c71f1df2110d07"
       },
       {
+          "tags": {
+            "course": "VETS2011",
+            "subject": "Physiology",
+            "system": "Neurophysiology"
+          },
           "statement": "<p>Which of the following statements is TRUE?</p>",
           "optionsList": [
               {
@@ -493,6 +583,11 @@
           "link": "https://vetshub.uqcloud.net/resource/5a0ba18d34cc363763e05e99/61a9ae14e04e3d5bffb26ef7/62142eee64c71f1df2110cf5/62183be064c71f1df2110d0f/62183d3a64c71f1df2110d15"
       },
       {
+          "tags": {
+            "course": "VETS2011",
+            "subject": "Physiology",
+            "system": "Neurophysiology"
+          },
           "statement": "<p>During chemical neurotransmission, Ca<sup>2+</sup>&nbsp;ions are necessary for:</p>",
           "optionsList": [
               {
@@ -519,6 +614,11 @@
           "link": "https://vetshub.uqcloud.net/resource/5a0ba18d34cc363763e05e99/61a9ae14e04e3d5bffb26ef7/62142eee64c71f1df2110cf5/62183be064c71f1df2110d0f/62183d3a64c71f1df2110d15"
       },
       {
+          "tags": {
+            "course": "VETS2011",
+            "subject": "Physiology",
+            "system": "Neurophysiology"
+          },
           "statement": "<p>Depending on the pre-synaptic neurotransmitter released and the post-synaptic receptor activated, the post-synaptic membrane can either be depolarised or hyperpolarised. Which of the following statements is FALSE?</p>",
           "optionsList": [
               {
@@ -545,6 +645,11 @@
           "link": "https://vetshub.uqcloud.net/resource/5a0ba18d34cc363763e05e99/61a9ae14e04e3d5bffb26ef7/62142eee64c71f1df2110cf5/62183be064c71f1df2110d0f/62183d5a64c71f1df2110d16"
       },
       {
+          "tags": {
+            "course": "VETS2011",
+            "subject": "Physiology",
+            "system": "Neurophysiology"
+          },
           "statement": "&gamma;-aminobutyric acid (GABA) is a rapidly acting neurotransmitter. You would expect the response on the post-synaptic membrane to be:",
           "optionsList": [
               {
@@ -571,6 +676,11 @@
           "link": "https://vetshub.uqcloud.net/resource/5a0ba18d34cc363763e05e99/61a9ae14e04e3d5bffb26ef7/62142eee64c71f1df2110cf5/62183be064c71f1df2110d0f/62183d5a64c71f1df2110d16"
       },
       {
+          "tags": {
+            "course": "VETS2011",
+            "subject": "Physiology",
+            "system": "Neurophysiology"
+          },
           "statement": "Nicotine (mimics acetylcholine) can bind to nicotinic cholinergic receptors. You would expect the response on the post-synaptic membrane to be:",
           "optionsList": [
               {
@@ -597,6 +707,11 @@
           "link": "https://vetshub.uqcloud.net/resource/5a0ba18d34cc363763e05e99/61a9ae14e04e3d5bffb26ef7/62142eee64c71f1df2110cf5/62183be064c71f1df2110d0f/62183d5a64c71f1df2110d16"
       },
       {
+          "tags": {
+            "course": "VETS2011",
+            "subject": "Physiology",
+            "system": "Neurophysiology"
+          },
           "statement": "<p>Which of the following statements is TRUE with regard to the termination of the synaptic action at the neuromuscular junction?</p>",
           "optionsList": [
               {
@@ -623,6 +738,11 @@
           "link": "https://vetshub.uqcloud.net/resource/5a0ba18d34cc363763e05e99/61a9ae14e04e3d5bffb26ef7/62142eee64c71f1df2110cf5/62183be064c71f1df2110d0f/62183d7064c71f1df2110d17"
       },
       {
+          "tags": {
+            "course": "VETS2011",
+            "subject": "Physiology",
+            "system": "Neurophysiology"
+          },
           "statement": "<p>At the neuromuscular junction, Ca<sup>2+</sup>&nbsp;ions are necessary for:</p>",
           "optionsList": [
               {
@@ -653,6 +773,11 @@
           "link": "https://vetshub.uqcloud.net/resource/5a0ba18d34cc363763e05e99/61a9ae14e04e3d5bffb26ef7/62142eee64c71f1df2110cf5/62183be064c71f1df2110d0f/62183d7064c71f1df2110d17"
       },
       {
+          "tags": {
+            "course": "VETS2011",
+            "subject": "Physiology",
+            "system": "Neurophysiology"
+          },
           "statement": "<p>Which of the following statements is INCORRECT?</p>",
           "optionsList": [
               {
@@ -679,6 +804,11 @@
           "link": "https://vetshub.uqcloud.net/resource/5a0ba18d34cc363763e05e99/61a9ae14e04e3d5bffb26ef7/62142eee64c71f1df2110cf5/62183bee64c71f1df2110d10/621846c064c71f1df2110d23"
       },
       {
+          "tags": {
+            "course": "VETS2011",
+            "subject": "Physiology",
+            "system": "Neurophysiology"
+          },
           "statement": "<p>Which of the following statements regarding the process of co-activation is FALSE?</p>",
           "optionsList": [
               {
@@ -705,6 +835,11 @@
           "link": "https://vetshub.uqcloud.net/resource/5a0ba18d34cc363763e05e99/61a9ae14e04e3d5bffb26ef7/62142eee64c71f1df2110cf5/62183bee64c71f1df2110d10/621846c064c71f1df2110d23"
       },
       {
+          "tags": {
+            "course": "VETS2011",
+            "subject": "Physiology",
+            "system": "Neurophysiology"
+          },
           "statement": "<p>Which of the following statements regarding Golgi tendon organs is FALSE?</p>",
           "optionsList": [
               {
@@ -731,6 +866,11 @@
           "link": "https://vetshub.uqcloud.net/resource/5a0ba18d34cc363763e05e99/61a9ae14e04e3d5bffb26ef7/62142eee64c71f1df2110cf5/62183bee64c71f1df2110d10/621846c064c71f1df2110d23"
       },
       {
+          "tags": {
+            "course": "VETS2011",
+            "subject": "Physiology",
+            "system": "Neurophysiology"
+          },
           "statement": "<p>What class of muscle nerve fibre associated with muscle spindles provides sensory input regarding the amount the muscle has stretched?</p>",
           "optionsList": [
               {
@@ -761,6 +901,11 @@
           "link": "https://vetshub.uqcloud.net/resource/5a0ba18d34cc363763e05e99/61a9ae14e04e3d5bffb26ef7/62142eee64c71f1df2110cf5/62183bee64c71f1df2110d10/621846c064c71f1df2110d23"
       },
       {
+          "tags": {
+            "course": "VETS2011",
+            "subject": "Physiology",
+            "system": "Neurophysiology"
+          },
           "statement": "<p>What class of muscle nerve fibre associated with muscle spindles fires quickly, and responds to a change in length?</p>",
           "optionsList": [
               {
@@ -791,6 +936,11 @@
           "link": "https://vetshub.uqcloud.net/resource/5a0ba18d34cc363763e05e99/61a9ae14e04e3d5bffb26ef7/62142eee64c71f1df2110cf5/62183bee64c71f1df2110d10/621846c064c71f1df2110d23"
       },
       {
+          "tags": {
+            "course": "VETS2011",
+            "subject": "Physiology",
+            "system": "Neurophysiology"
+          },
           "statement": "<p>Tension is sensed by the Golgi tendon organ. Which of the following statements describes what happens next?</p>",
           "optionsList": [
               {
@@ -817,6 +967,11 @@
           "link": "https://vetshub.uqcloud.net/resource/5a0ba18d34cc363763e05e99/61a9ae14e04e3d5bffb26ef7/62142eee64c71f1df2110cf5/62183bee64c71f1df2110d10/621846c064c71f1df2110d23"
       },
       {
+          "tags": {
+            "course": "VETS2011",
+            "subject": "Physiology",
+            "system": "Neurophysiology"
+          },
           "statement": "<p>Which of the following statements best describes the pain withdrawal reflex?</p>",
           "optionsList": [
               {
@@ -843,6 +998,11 @@
           "link": "https://vetshub.uqcloud.net/resource/5a0ba18d34cc363763e05e99/61a9ae14e04e3d5bffb26ef7/62142eee64c71f1df2110cf5/62183bee64c71f1df2110d10/621846cd64c71f1df2110d24"
       },
       {
+          "tags": {
+            "course": "VETS2011",
+            "subject": "Physiology",
+            "system": "Neurophysiology"
+          },
           "statement": "<p>A gross skeletal muscle belly can be instructed (by the central nervous system) to contract more forcefully by:</p>",
           "optionsList": [
               {
@@ -873,6 +1033,11 @@
           "link": "https://vetshub.uqcloud.net/resource/5a0ba18d34cc363763e05e99/61a9ae14e04e3d5bffb26ef7/62142eee64c71f1df2110cf5/62183bee64c71f1df2110d10/621846db64c71f1df2110d25"
       },
       {
+          "tags": {
+            "course": "VETS2011",
+            "subject": "Physiology",
+            "system": "Neurophysiology"
+          },
           "statement": "Which mechanoreceptors are rapidly adapting and responsive to light touch?",
           "optionsList": [
               {
@@ -899,6 +1064,11 @@
           "link": "https://vetshub.uqcloud.net/resource/5a0ba18d34cc363763e05e99/61a9ae14e04e3d5bffb26ef7/62142eee64c71f1df2110cf5/62183bf664c71f1df2110d11/6218483164c71f1df2110d2f"
       },
       {
+          "tags": {
+            "course": "VETS2011",
+            "subject": "Physiology",
+            "system": "Neurophysiology"
+          },
           "statement": "Which of the following sensations are perceived by Merkel cells?",
           "optionsList": [
               {
@@ -929,6 +1099,11 @@
           "link": "https://vetshub.uqcloud.net/resource/5a0ba18d34cc363763e05e99/61a9ae14e04e3d5bffb26ef7/62142eee64c71f1df2110cf5/62183bf664c71f1df2110d11/6218483164c71f1df2110d2f"
       },
       {
+          "tags": {
+            "course": "VETS2011",
+            "subject": "Physiology",
+            "system": "Neurophysiology"
+          },
           "statement": "Which mechanoreceptors sense vibration?",
           "optionsList": [
               {
@@ -959,6 +1134,11 @@
           "link": "https://vetshub.uqcloud.net/resource/5a0ba18d34cc363763e05e99/61a9ae14e04e3d5bffb26ef7/62142eee64c71f1df2110cf5/62183bf664c71f1df2110d11/6218483164c71f1df2110d2f"
       },
       {
+          "tags": {
+            "course": "VETS2011",
+            "subject": "Physiology",
+            "system": "Neurophysiology"
+          },
           "statement": "Which of the following receptors respond to stretch and have a wide receptive field?",
           "optionsList": [
               {
@@ -989,6 +1169,11 @@
           "link": "https://vetshub.uqcloud.net/resource/5a0ba18d34cc363763e05e99/61a9ae14e04e3d5bffb26ef7/62142eee64c71f1df2110cf5/62183bf664c71f1df2110d11/6218483164c71f1df2110d2f"
       },
       {
+          "tags": {
+            "course": "VETS2011",
+            "subject": "Physiology",
+            "system": "Neurophysiology"
+          },
           "statement": "<p>Peripheral sensitisation of the nociceptors decreases the pain threshold. Which of the following substances sensitises the nociceptor endings?</p>",
           "optionsList": [
               {
@@ -1015,6 +1200,11 @@
           "link": "https://vetshub.uqcloud.net/resource/5a0ba18d34cc363763e05e99/61a9ae14e04e3d5bffb26ef7/62142eee64c71f1df2110cf5/62183bf664c71f1df2110d11/6218484164c71f1df2110d30"
       },
       {
+          "tags": {
+            "course": "VETS2011",
+            "subject": "Physiology",
+            "system": "Neurophysiology"
+          },
           "statement": "<p>Which of the following statements regarding <strong>secondary</strong> hyperalgesia is FALSE?</p>",
           "optionsList": [
               {
@@ -1041,6 +1231,11 @@
           "link": "https://vetshub.uqcloud.net/resource/5a0ba18d34cc363763e05e99/61a9ae14e04e3d5bffb26ef7/62142eee64c71f1df2110cf5/62183bf664c71f1df2110d11/6218484164c71f1df2110d30"
       },
       {
+          "tags": {
+            "course": "VETS2011",
+            "subject": "Physiology",
+            "system": "Neurophysiology"
+          },
           "statement": "<p>Sensory nerve afferents can release substances that can cause pain. Which of the following substances would be the most likely to be derived from a sensory nerve?</p>",
           "optionsList": [
               {
@@ -1067,6 +1262,11 @@
           "link": "https://vetshub.uqcloud.net/resource/5a0ba18d34cc363763e05e99/61a9ae14e04e3d5bffb26ef7/62142eee64c71f1df2110cf5/62183bf664c71f1df2110d11/6218484164c71f1df2110d30"
       },
       {
+          "tags": {
+            "course": "VETS2011",
+            "subject": "Physiology",
+            "system": "Neurophysiology"
+          },
           "statement": "<p>Which of the following processes is the cerebral cortex NOT involved in?</p>",
           "optionsList": [
               {
@@ -1097,6 +1297,11 @@
           "link": "https://vetshub.uqcloud.net/resource/5a0ba18d34cc363763e05e99/61a9ae14e04e3d5bffb26ef7/62142eee64c71f1df2110cf5/62183bfc64c71f1df2110d12/62184c2564c71f1df2110d37"
       },
       {
+          "tags": {
+            "course": "VETS2011",
+            "subject": "Physiology",
+            "system": "Neurophysiology"
+          },
           "statement": "Which sensory pathway does NOT pass through the thalamus?",
           "optionsList": [
               {
@@ -1127,6 +1332,11 @@
           "link": "https://vetshub.uqcloud.net/resource/5a0ba18d34cc363763e05e99/61a9ae14e04e3d5bffb26ef7/62142eee64c71f1df2110cf5/62183bfc64c71f1df2110d12/62184c2564c71f1df2110d37"
       },
       {
+          "tags": {
+            "course": "VETS2011",
+            "subject": "Physiology",
+            "system": "Neurophysiology"
+          },
           "statement": "Where in the cortex does language comprehension take place?",
           "optionsList": [
               {
@@ -1157,6 +1367,11 @@
           "link": "https://vetshub.uqcloud.net/resource/5a0ba18d34cc363763e05e99/61a9ae14e04e3d5bffb26ef7/62142eee64c71f1df2110cf5/62183bfc64c71f1df2110d12/62184c2564c71f1df2110d37"
       },
       {
+          "tags": {
+            "course": "VETS2011",
+            "subject": "Physiology",
+            "system": "Neurophysiology"
+          },
           "statement": "Which part of the cortex is responsible for visual processing?",
           "optionsList": [
               {
@@ -1187,6 +1402,11 @@
           "link": "https://vetshub.uqcloud.net/resource/5a0ba18d34cc363763e05e99/61a9ae14e04e3d5bffb26ef7/62142eee64c71f1df2110cf5/62183bfc64c71f1df2110d12/62184c2564c71f1df2110d37"
       },
       {
+          "tags": {
+            "course": "VETS2011",
+            "subject": "Physiology",
+            "system": "Neurophysiology"
+          },
           "statement": "The limbic system is the part of the brain involved in which of the following?",
           "optionsList": [
               {
@@ -1213,6 +1433,11 @@
           "link": "https://vetshub.uqcloud.net/resource/5a0ba18d34cc363763e05e99/61a9ae14e04e3d5bffb26ef7/62142eee64c71f1df2110cf5/62183bfc64c71f1df2110d12/62184c2564c71f1df2110d37"
       },
       {
+          "tags": {
+            "course": "VETS2011",
+            "subject": "Physiology",
+            "system": "Neurophysiology"
+          },
           "statement": "<p>A client calls because their dog is getting more and more fearful when walking in their neighbourhood, where there&rsquo;s a lot of road traffic. Last week, a car back-fired noisily in the driveway, right next to the dog. What is this an example of?</p>",
           "optionsList": [
               {
@@ -1239,6 +1464,11 @@
           "link": "https://vetshub.uqcloud.net/resource/5a0ba18d34cc363763e05e99/61a9ae14e04e3d5bffb26ef7/62142eee64c71f1df2110cf5/62183bfc64c71f1df2110d12/62184c3564c71f1df2110d38"
       },
       {
+          "tags": {
+            "course": "VETS2011",
+            "subject": "Physiology",
+            "system": "Neurophysiology"
+          },
           "statement": "An animal trainer forms an association between a signal and the desired response by re-enforcing when this is achieved. For example, if a dog is barking at everyone that walks past a house, the trainer might start associating the word &ldquo;speak&rdquo; with the act of barking, by saying it every time the behaviour occurs. They then reinforce this with a treat. What is this an example of?",
           "optionsList": [
               {
@@ -1265,6 +1495,11 @@
           "link": "https://vetshub.uqcloud.net/resource/5a0ba18d34cc363763e05e99/61a9ae14e04e3d5bffb26ef7/62142eee64c71f1df2110cf5/62183bfc64c71f1df2110d12/62184c3564c71f1df2110d38"
       },
       {
+          "tags": {
+            "course": "VETS2011",
+            "subject": "Physiology",
+            "system": "Neurophysiology"
+          },
           "statement": "<p>Which of the following is NOT a feature of habituation?</p>",
           "optionsList": [
               {
@@ -1291,6 +1526,11 @@
           "link": "https://vetshub.uqcloud.net/resource/5a0ba18d34cc363763e05e99/61a9ae14e04e3d5bffb26ef7/62142eee64c71f1df2110cf5/62183bfc64c71f1df2110d12/62184c3564c71f1df2110d38"
       },
       {
+          "tags": {
+            "course": "VETS2011",
+            "subject": "Physiology",
+            "system": "Neurophysiology"
+          },
           "statement": "<p>During short-term sensitisation of a stimulus/response pathway, which neurotransmitter is released from the axon terminal of the facilitating interneuron?</p>",
           "optionsList": [
               {
@@ -1317,6 +1557,11 @@
           "link": "https://vetshub.uqcloud.net/resource/5a0ba18d34cc363763e05e99/61a9ae14e04e3d5bffb26ef7/62142eee64c71f1df2110cf5/62183bfc64c71f1df2110d12/62184c4564c71f1df2110d39"
       },
       {
+          "tags": {
+            "course": "VETS2011",
+            "subject": "Physiology",
+            "system": "Neurophysiology"
+          },
           "statement": "<p>Long-term sensitisation of a stimulus/response pathway will facilitate learning. Which of the following is NOT a feature of this process?</p>",
           "optionsList": [
               {
@@ -1343,6 +1588,11 @@
           "link": "https://vetshub.uqcloud.net/resource/5a0ba18d34cc363763e05e99/61a9ae14e04e3d5bffb26ef7/62142eee64c71f1df2110cf5/62183bfc64c71f1df2110d12/62184c4564c71f1df2110d39"
       },
       {
+          "tags": {
+            "course": "VETS2011",
+            "subject": "Physiology",
+            "system": "Neurophysiology"
+          },
           "statement": "<p>Long-term memories are&nbsp;stored in which part of the brain?</p>",
           "optionsList": [
               {
@@ -1369,6 +1619,11 @@
           "link": "https://vetshub.uqcloud.net/resource/5a0ba18d34cc363763e05e99/61a9ae14e04e3d5bffb26ef7/62142eee64c71f1df2110cf5/62183bfc64c71f1df2110d12/62184c4564c71f1df2110d39"
       },
       {
+          "tags": {
+            "course": "VETS2011",
+            "subject": "Physiology",
+            "system": "Neurophysiology"
+          },
           "statement": "<p>Where does the calcium bind in the thin filament?</p>",
           "optionsList": [
               {
@@ -1399,6 +1654,11 @@
           "link": "https://vetshub.uqcloud.net/resource/5a0ba18d34cc363763e05e99/61a9ae14e04e3d5bffb26ef7/62142eee64c71f1df2110cf5/62183c0264c71f1df2110d13/6218633464c71f1df2110d4c"
       },
       {
+          "tags": {
+            "course": "VETS2011",
+            "subject": "Physiology",
+            "system": "Neurophysiology"
+          },
           "statement": "<p>Which of the following is NOT a part of the thin filament?</p>",
           "optionsList": [
               {
@@ -1429,6 +1689,11 @@
           "link": "https://vetshub.uqcloud.net/resource/5a0ba18d34cc363763e05e99/61a9ae14e04e3d5bffb26ef7/62142eee64c71f1df2110cf5/62183c0264c71f1df2110d13/6218633464c71f1df2110d4c"
       },
       {
+          "tags": {
+            "course": "VETS2011",
+            "subject": "Physiology",
+            "system": "Neurophysiology"
+          },
           "statement": "Which of the following is activated by membrane depolarisation within the T-tubule of a skeletal myocyte?",
           "optionsList": [
               {
@@ -1459,6 +1724,11 @@
           "link": "https://vetshub.uqcloud.net/resource/5a0ba18d34cc363763e05e99/61a9ae14e04e3d5bffb26ef7/62142eee64c71f1df2110cf5/62183c0264c71f1df2110d13/6218634464c71f1df2110d4d"
       },
       {
+          "tags": {
+            "course": "VETS2011",
+            "subject": "Physiology",
+            "system": "Neurophysiology"
+          },
           "statement": "Which neurotransmitter is responsible for the initiation of skeletal muscle contraction?",
           "optionsList": [
               {
@@ -1489,6 +1759,11 @@
           "link": "https://vetshub.uqcloud.net/resource/5a0ba18d34cc363763e05e99/61a9ae14e04e3d5bffb26ef7/62142eee64c71f1df2110cf5/62183c0264c71f1df2110d13/6218634464c71f1df2110d4d"
       },
       {
+          "tags": {
+            "course": "VETS2011",
+            "subject": "Physiology",
+            "system": "Neurophysiology"
+          },
           "statement": "Which of the following allows for Ca<sup>2+</sup> to re-enter the sarcoplasmic reticulum and terminate the muscle contraction?",
           "optionsList": [
               {
@@ -1515,6 +1790,11 @@
           "link": "https://vetshub.uqcloud.net/resource/5a0ba18d34cc363763e05e99/61a9ae14e04e3d5bffb26ef7/62142eee64c71f1df2110cf5/62183c0264c71f1df2110d13/6218634464c71f1df2110d4d"
       },
       {
+          "tags": {
+            "course": "VETS2011",
+            "subject": "Physiology",
+            "system": "Neurophysiology"
+          },
           "statement": "<p>Which of the following is NOT a step in the muscle contraction process?</p>",
           "optionsList": [
               {
@@ -1545,6 +1825,11 @@
           "link": "https://vetshub.uqcloud.net/resource/5a0ba18d34cc363763e05e99/61a9ae14e04e3d5bffb26ef7/62142eee64c71f1df2110cf5/62183c0264c71f1df2110d13/6218635864c71f1df2110d4e"
       },
       {
+          "tags": {
+            "course": "VETS2011",
+            "subject": "Physiology",
+            "system": "Neurophysiology"
+          },
           "statement": "<p>Which of the following molecules is bound to myosin when the myosin head binds to the actin site?</p>",
           "optionsList": [
               {
@@ -1575,6 +1860,11 @@
           "link": "https://vetshub.uqcloud.net/resource/5a0ba18d34cc363763e05e99/61a9ae14e04e3d5bffb26ef7/62142eee64c71f1df2110cf5/62183c0264c71f1df2110d13/6218635864c71f1df2110d4e"
       },
       {
+          "tags": {
+            "course": "VETS2011",
+            "subject": "Physiology",
+            "system": "Neurophysiology"
+          },
           "statement": "Which of the following contributes to planning movement?",
           "optionsList": [
               {
@@ -1601,6 +1891,11 @@
           "link": "https://vetshub.uqcloud.net/resource/5a0ba18d34cc363763e05e99/61a9ae14e04e3d5bffb26ef7/62142eee64c71f1df2110cf5/62183c0264c71f1df2110d13/6218636964c71f1df2110d4f"
       },
       {
+          "tags": {
+            "course": "VETS2011",
+            "subject": "Physiology",
+            "system": "Neurophysiology"
+          },
           "statement": "What is the brainstem&rsquo;s involvement in locomotion?",
           "optionsList": [
               {
@@ -1627,6 +1922,11 @@
           "link": "https://vetshub.uqcloud.net/resource/5a0ba18d34cc363763e05e99/61a9ae14e04e3d5bffb26ef7/62142eee64c71f1df2110cf5/62183c0264c71f1df2110d13/6218636964c71f1df2110d4f"
       },
       {
+          "tags": {
+            "course": "VETS2011",
+            "subject": "Physiology",
+            "system": "Neurophysiology"
+          },
           "statement": "Which of the following tracts provides sensory information from muscles to the CNS?",
           "optionsList": [
               {
@@ -1653,6 +1953,11 @@
           "link": "https://vetshub.uqcloud.net/resource/5a0ba18d34cc363763e05e99/61a9ae14e04e3d5bffb26ef7/62142eee64c71f1df2110cf5/62183c0264c71f1df2110d13/6218637d64c71f1df2110d50"
       },
       {
+          "tags": {
+            "course": "VETS2011",
+            "subject": "Physiology",
+            "system": "Neurophysiology"
+          },
           "statement": "The corticospinal tract has many functions. Which of the following is the MOST important function?",
           "optionsList": [
               {
@@ -1679,6 +1984,11 @@
           "link": "https://vetshub.uqcloud.net/resource/5a0ba18d34cc363763e05e99/61a9ae14e04e3d5bffb26ef7/62142eee64c71f1df2110cf5/62183c0264c71f1df2110d13/6218637d64c71f1df2110d50"
       },
       {
+          "tags": {
+            "course": "VETS2011",
+            "subject": "Physiology",
+            "system": "Neurophysiology"
+          },
           "statement": "The corticobulbar tract is responsible for innervating muscles of the:",
           "optionsList": [
               {
@@ -1701,6 +2011,11 @@
           "link": "https://vetshub.uqcloud.net/resource/5a0ba18d34cc363763e05e99/61a9ae14e04e3d5bffb26ef7/62142eee64c71f1df2110cf5/62183c0264c71f1df2110d13/6218637d64c71f1df2110d50"
       },
       {
+          "tags": {
+            "course": "VETS2011",
+            "subject": "Physiology",
+            "system": "Neurophysiology"
+          },
           "statement": "Which of the following statements regarding lower motor neurons is FALSE?",
           "optionsList": [
               {
@@ -1727,6 +2042,11 @@
           "link": "https://vetshub.uqcloud.net/resource/5a0ba18d34cc363763e05e99/61a9ae14e04e3d5bffb26ef7/62142eee64c71f1df2110cf5/62183c0264c71f1df2110d13/6218637d64c71f1df2110d50"
       },
       {
+          "tags": {
+            "course": "VETS2011",
+            "subject": "Physiology",
+            "system": "Neurophysiology"
+          },
           "statement": "When the right forelimb is moved, where in the brain does the signal originate?",
           "optionsList": [
               {
@@ -1753,6 +2073,11 @@
           "link": "https://vetshub.uqcloud.net/resource/5a0ba18d34cc363763e05e99/61a9ae14e04e3d5bffb26ef7/62142eee64c71f1df2110cf5/62183c0264c71f1df2110d13/6218637d64c71f1df2110d50"
       },
       {
+          "tags": {
+            "course": "VETS2011",
+            "subject": "Physiology",
+            "system": "Neurophysiology"
+          },
           "statement": "Which of the following pathways is responsible for controlling the movement of limb muscles?",
           "optionsList": [
               {
@@ -1779,6 +2104,11 @@
           "link": "https://vetshub.uqcloud.net/resource/5a0ba18d34cc363763e05e99/61a9ae14e04e3d5bffb26ef7/62142eee64c71f1df2110cf5/62183c0264c71f1df2110d13/6218637d64c71f1df2110d50"
       },
       {
+          "tags": {
+            "course": "VETS2011",
+            "subject": "Physiology",
+            "system": "Neurophysiology"
+          },
           "statement": "<p>Which of the following statements regarding the basal ganglia is FALSE?</p>",
           "optionsList": [
               {
@@ -1805,6 +2135,11 @@
           "link": "https://vetshub.uqcloud.net/resource/5a0ba18d34cc363763e05e99/61a9ae14e04e3d5bffb26ef7/62142eee64c71f1df2110cf5/62183c0264c71f1df2110d13/6218639064c71f1df2110d51"
       },
       {
+          "tags": {
+            "course": "VETS2011",
+            "subject": "Physiology",
+            "system": "Neurophysiology"
+          },
           "statement": "<p>Which of the following is NOT a function of the basal ganglia?</p>",
           "optionsList": [
               {
@@ -1831,6 +2166,11 @@
           "link": "https://vetshub.uqcloud.net/resource/5a0ba18d34cc363763e05e99/61a9ae14e04e3d5bffb26ef7/62142eee64c71f1df2110cf5/62183c0264c71f1df2110d13/6218639064c71f1df2110d51"
       },
       {
+          "tags": {
+            "course": "VETS2011",
+            "subject": "Physiology",
+            "system": "Neurophysiology"
+          },
           "statement": "<p>Which of the following is considered a normal intraocular pressure in a dog?</p>",
           "optionsList": [
               {
@@ -1861,6 +2201,11 @@
           "link": "https://vetshub.uqcloud.net/resource/5a0ba18d34cc363763e05e99/61a9ae14e04e3d5bffb26ef7/62142eee64c71f1df2110cf5/62183c0764c71f1df2110d14/621eb55d64c71f1df2110d53"
       },
       {
+          "tags": {
+            "course": "VETS2011",
+            "subject": "Physiology",
+            "system": "Neurophysiology"
+          },
           "statement": "<p>Into which chamber of the eye does the ciliary body secrete fluid?</p>",
           "optionsList": [
               {
@@ -1887,6 +2232,11 @@
           "link": "https://vetshub.uqcloud.net/resource/5a0ba18d34cc363763e05e99/61a9ae14e04e3d5bffb26ef7/62142eee64c71f1df2110cf5/62183c0764c71f1df2110d14/621eb55d64c71f1df2110d53"
       },
       {
+          "tags": {
+            "course": "VETS2011",
+            "subject": "Physiology",
+            "system": "Neurophysiology"
+          },
           "statement": "<p>What is a blind spot in the eye?</p>",
           "optionsList": [
               {
@@ -1917,6 +2267,11 @@
           "link": "https://vetshub.uqcloud.net/resource/5a0ba18d34cc363763e05e99/61a9ae14e04e3d5bffb26ef7/62142eee64c71f1df2110cf5/62183c0764c71f1df2110d14/621eb55d64c71f1df2110d53"
       },
       {
+          "tags": {
+            "course": "VETS2011",
+            "subject": "Physiology",
+            "system": "Neurophysiology"
+          },
           "statement": "<p>Which of the following regions of the eye has the highest number of cone cells?</p>",
           "optionsList": [
               {
@@ -1947,6 +2302,11 @@
           "link": "https://vetshub.uqcloud.net/resource/5a0ba18d34cc363763e05e99/61a9ae14e04e3d5bffb26ef7/62142eee64c71f1df2110cf5/62183c0764c71f1df2110d14/621eb55d64c71f1df2110d53"
       },
       {
+          "tags": {
+            "course": "VETS2011",
+            "subject": "Physiology",
+            "system": "Neurophysiology"
+          },
           "statement": "<p>In which sequence does light enter and course through the eye?</p>",
           "optionsList": [
               {
@@ -1977,6 +2337,11 @@
           "link": "https://vetshub.uqcloud.net/resource/5a0ba18d34cc363763e05e99/61a9ae14e04e3d5bffb26ef7/62142eee64c71f1df2110cf5/62183c0764c71f1df2110d14/621eb57364c71f1df2110d54"
       },
       {
+          "tags": {
+            "course": "VETS2011",
+            "subject": "Physiology",
+            "system": "Neurophysiology"
+          },
           "statement": "<p>The structure in the eye responsible for the greatest refraction of light is the:</p>",
           "optionsList": [
               {
@@ -2003,6 +2368,11 @@
           "link": "https://vetshub.uqcloud.net/resource/5a0ba18d34cc363763e05e99/61a9ae14e04e3d5bffb26ef7/62142eee64c71f1df2110cf5/62183c0764c71f1df2110d14/621eb57364c71f1df2110d54"
       },
       {
+          "tags": {
+            "course": "VETS2011",
+            "subject": "Physiology",
+            "system": "Neurophysiology"
+          },
           "statement": "<p>What acts as an aperture to restrict light entry into the eye?</p>",
           "optionsList": [
               {
@@ -2033,6 +2403,11 @@
           "link": "https://vetshub.uqcloud.net/resource/5a0ba18d34cc363763e05e99/61a9ae14e04e3d5bffb26ef7/62142eee64c71f1df2110cf5/62183c0764c71f1df2110d14/621eb57364c71f1df2110d54"
       },
       {
+          "tags": {
+            "course": "VETS2011",
+            "subject": "Physiology",
+            "system": "Neurophysiology"
+          },
           "statement": "<p>Which of the following would cause the lens to relax?</p>",
           "optionsList": [
               {
@@ -2063,6 +2438,11 @@
           "link": "https://vetshub.uqcloud.net/resource/5a0ba18d34cc363763e05e99/61a9ae14e04e3d5bffb26ef7/62142eee64c71f1df2110cf5/62183c0764c71f1df2110d14/621eb57364c71f1df2110d54"
       },
       {
+          "tags": {
+            "course": "VETS2011",
+            "subject": "Physiology",
+            "system": "Neurophysiology"
+          },
           "statement": "<p>In an eye that is longer than normal, how is the image focussed incorrectly?</p>",
           "optionsList": [
               {
@@ -2089,6 +2469,11 @@
           "link": "https://vetshub.uqcloud.net/resource/5a0ba18d34cc363763e05e99/61a9ae14e04e3d5bffb26ef7/62142eee64c71f1df2110cf5/62183c0764c71f1df2110d14/621eb58864c71f1df2110d55"
       },
       {
+          "tags": {
+            "course": "VETS2011",
+            "subject": "Physiology",
+            "system": "Neurophysiology"
+          },
           "statement": "<p>Birds&nbsp;can tell relative distances using one eye. What method of depth perception do they use to do this?</p>",
           "optionsList": [
               {
@@ -2111,6 +2496,11 @@
           "link": "https://vetshub.uqcloud.net/resource/5a0ba18d34cc363763e05e99/61a9ae14e04e3d5bffb26ef7/62142eee64c71f1df2110cf5/62183c0764c71f1df2110d14/621eb58864c71f1df2110d55"
       },
       {
+          "tags": {
+            "course": "VETS2011",
+            "subject": "Physiology",
+            "system": "Neurophysiology"
+          },
           "statement": "<p>A dog with emmetropia will have:</p>",
           "optionsList": [
               {
@@ -2137,6 +2527,11 @@
           "link": "https://vetshub.uqcloud.net/resource/5a0ba18d34cc363763e05e99/61a9ae14e04e3d5bffb26ef7/62142eee64c71f1df2110cf5/62183c0764c71f1df2110d14/621eb58864c71f1df2110d55"
       },
       {
+          "tags": {
+            "course": "VETS2011",
+            "subject": "Physiology",
+            "system": "Neurophysiology"
+          },
           "statement": "<p>Where are specialised photoreceptor response elements located in photoreceptor cells?</p>",
           "optionsList": [
               {
@@ -2167,6 +2562,11 @@
           "link": "https://vetshub.uqcloud.net/resource/5a0ba18d34cc363763e05e99/61a9ae14e04e3d5bffb26ef7/62142eee64c71f1df2110cf5/62183c0764c71f1df2110d14/621eb5aa64c71f1df2110d56"
       },
       {
+          "tags": {
+            "course": "VETS2011",
+            "subject": "Physiology",
+            "system": "Neurophysiology"
+          },
           "statement": "<p>Sunlight changes the retinal component rhodopsin into which of the following configurations?</p>",
           "optionsList": [
               {
@@ -2193,6 +2593,11 @@
           "link": "https://vetshub.uqcloud.net/resource/5a0ba18d34cc363763e05e99/61a9ae14e04e3d5bffb26ef7/62142eee64c71f1df2110cf5/62183c0764c71f1df2110d14/621eb5aa64c71f1df2110d56"
       },
       {
+          "tags": {
+            "course": "VETS2011",
+            "subject": "Physiology",
+            "system": "Neurophysiology"
+          },
           "statement": "<p>Which of the following will contribute to the hyperpolarisation of the photoreceptor membrane?</p>",
           "optionsList": [
               {
@@ -2223,6 +2628,11 @@
           "link": "https://vetshub.uqcloud.net/resource/5a0ba18d34cc363763e05e99/61a9ae14e04e3d5bffb26ef7/62142eee64c71f1df2110cf5/62183c0764c71f1df2110d14/621eb5aa64c71f1df2110d56"
       },
       {
+          "tags": {
+            "course": "VETS2011",
+            "subject": "Physiology",
+            "system": "Neurophysiology"
+          },
           "statement": "<p>What happens when light photons reach the retina?</p>",
           "optionsList": [
               {
@@ -2253,6 +2663,11 @@
           "link": "https://vetshub.uqcloud.net/resource/5a0ba18d34cc363763e05e99/61a9ae14e04e3d5bffb26ef7/62142eee64c71f1df2110cf5/62183c0764c71f1df2110d14/621eb5aa64c71f1df2110d56"
       },
       {
+          "tags": {
+            "course": "VETS2011",
+            "subject": "Physiology",
+            "system": "Neurophysiology"
+          },
           "statement": "<p>When a dog sees an object in the distance and stares at it, which of the following is NOT a component of how they process the visual information to determine what it is?</p>",
           "optionsList": [
               {
@@ -2279,6 +2694,11 @@
           "link": "https://vetshub.uqcloud.net/resource/5a0ba18d34cc363763e05e99/61a9ae14e04e3d5bffb26ef7/62142eee64c71f1df2110cf5/62183c0764c71f1df2110d14/621eb5bb64c71f1df2110d57"
       },
       {
+          "tags": {
+            "course": "VETS2011",
+            "subject": "Physiology",
+            "system": "Neurophysiology"
+          },
           "statement": "In which part of the ear does amplification of sound occur?",
           "optionsList": [
               {
@@ -2309,6 +2729,11 @@
           "link": "https://vetshub.uqcloud.net/resource/5a0ba18d34cc363763e05e99/61a9ae14e04e3d5bffb26ef7/62142eee64c71f1df2110cf5/6232abf264c71f1df2110d81/6232ac0d64c71f1df2110d82"
       },
       {
+          "tags": {
+            "course": "VETS2011",
+            "subject": "Physiology",
+            "system": "Neurophysiology"
+          },
           "statement": "Which muscle dampens soundwaves when it contracts?",
           "optionsList": [
               {
@@ -2335,6 +2760,11 @@
           "link": "https://vetshub.uqcloud.net/resource/5a0ba18d34cc363763e05e99/61a9ae14e04e3d5bffb26ef7/62142eee64c71f1df2110cf5/6232abf264c71f1df2110d81/6232ac0d64c71f1df2110d82"
       },
       {
+          "tags": {
+            "course": "VETS2011",
+            "subject": "Physiology",
+            "system": "Neurophysiology"
+          },
           "statement": "Which chamber of the cochlea houses the Organ of Corti?",
           "optionsList": [
               {
@@ -2365,6 +2795,11 @@
           "link": "https://vetshub.uqcloud.net/resource/5a0ba18d34cc363763e05e99/61a9ae14e04e3d5bffb26ef7/62142eee64c71f1df2110cf5/6232abf264c71f1df2110d81/6232ac0d64c71f1df2110d82"
       },
       {
+          "tags": {
+            "course": "VETS2011",
+            "subject": "Physiology",
+            "system": "Neurophysiology"
+          },
           "statement": "A high pitch (<em>i.e.</em>, 12 kHz) sound stimulates hair cells closest to which cochlear-related structure?",
           "optionsList": [
               {
@@ -2391,6 +2826,11 @@
           "link": "https://vetshub.uqcloud.net/resource/5a0ba18d34cc363763e05e99/61a9ae14e04e3d5bffb26ef7/62142eee64c71f1df2110cf5/6232abf264c71f1df2110d81/6232ac1a64c71f1df2110d83"
       },
       {
+          "tags": {
+            "course": "VETS2011",
+            "subject": "Physiology",
+            "system": "Neurophysiology"
+          },
           "statement": "Which ion enters hair cells after membrane depolarisation?",
           "optionsList": [
               {
@@ -2421,6 +2861,11 @@
           "link": "https://vetshub.uqcloud.net/resource/5a0ba18d34cc363763e05e99/61a9ae14e04e3d5bffb26ef7/62142eee64c71f1df2110cf5/6232abf264c71f1df2110d81/6232ac1a64c71f1df2110d83"
       },
       {
+          "tags": {
+            "course": "VETS2011",
+            "subject": "Physiology",
+            "system": "Neurophysiology"
+          },
           "statement": "At the auditory nerve synapse level, depolarisation of the pre-synaptic membrane causes calcium influx which results in the release of which of the following substances from the synaptic vesicles?",
           "optionsList": [
               {
@@ -2451,6 +2896,11 @@
           "link": "https://vetshub.uqcloud.net/resource/5a0ba18d34cc363763e05e99/61a9ae14e04e3d5bffb26ef7/62142eee64c71f1df2110cf5/6232abf264c71f1df2110d81/6232ac1a64c71f1df2110d83"
       },
       {
+          "tags": {
+            "course": "VETS2011",
+            "subject": "Physiology",
+            "system": "Neurophysiology"
+          },
           "statement": "Which structure senses soundwave frequency?",
           "optionsList": [
               {
@@ -2477,6 +2927,11 @@
           "link": "https://vetshub.uqcloud.net/resource/5a0ba18d34cc363763e05e99/61a9ae14e04e3d5bffb26ef7/62142eee64c71f1df2110cf5/6232abf264c71f1df2110d81/6232ac1a64c71f1df2110d83"
       },
       {
+          "tags": {
+            "course": "VETS2011",
+            "subject": "Physiology",
+            "system": "Neurophysiology"
+          },
           "statement": "Which of the following fluids in the ear has the highest potassium concentration?",
           "optionsList": [
               {
@@ -2503,6 +2958,11 @@
           "link": "https://vetshub.uqcloud.net/resource/5a0ba18d34cc363763e05e99/61a9ae14e04e3d5bffb26ef7/62142eee64c71f1df2110cf5/6232abf264c71f1df2110d81/6232ac1a64c71f1df2110d83"
       },
       {
+          "tags": {
+            "course": "VETS2011",
+            "subject": "Physiology",
+            "system": "Neurophysiology"
+          },
           "statement": "Which of the following occurs during rotation of the head?",
           "optionsList": [
               {
@@ -2533,6 +2993,11 @@
           "link": "https://vetshub.uqcloud.net/resource/5a0ba18d34cc363763e05e99/61a9ae14e04e3d5bffb26ef7/62142eee64c71f1df2110cf5/6232abf264c71f1df2110d81/6232ac2c64c71f1df2110d84"
       },
       {
+          "tags": {
+            "course": "VETS2011",
+            "subject": "Physiology",
+            "system": "Neurophysiology"
+          },
           "statement": "The hair cells get bent in one direction due to the presence of which of the following substances?",
           "optionsList": [
               {
@@ -2563,6 +3028,11 @@
           "link": "https://vetshub.uqcloud.net/resource/5a0ba18d34cc363763e05e99/61a9ae14e04e3d5bffb26ef7/62142eee64c71f1df2110cf5/6232abf264c71f1df2110d81/6232ac2c64c71f1df2110d84"
       },
       {
+          "tags": {
+            "course": "VETS2011",
+            "subject": "Physiology",
+            "system": "Neurophysiology"
+          },
           "statement": "Which of the following is produced when hair cells are bent toward the kinocilium?",
           "optionsList": [
               {
@@ -2593,6 +3063,11 @@
           "link": "https://vetshub.uqcloud.net/resource/5a0ba18d34cc363763e05e99/61a9ae14e04e3d5bffb26ef7/62142eee64c71f1df2110cf5/6232abf264c71f1df2110d81/6232ac2c64c71f1df2110d84"
       },
       {
+          "tags": {
+            "course": "VETS2011",
+            "subject": "Physiology",
+            "system": "Neurophysiology"
+          },
           "statement": "Which of the following is NOT a part of the vestibular system?",
           "optionsList": [
               {
@@ -2619,6 +3094,11 @@
           "link": "https://vetshub.uqcloud.net/resource/5a0ba18d34cc363763e05e99/61a9ae14e04e3d5bffb26ef7/62142eee64c71f1df2110cf5/6232abf264c71f1df2110d81/6232ac2c64c71f1df2110d84"
       },
       {
+          "tags": {
+            "course": "VETS2011",
+            "subject": "Physiology",
+            "system": "Neurophysiology"
+          },
           "statement": "<p>Which of the following can be a normal physiological process, as well as a pathologic one?</p>",
           "optionsList": [
               {
@@ -2645,6 +3125,11 @@
           "link": "https://vetshub.uqcloud.net/resource/5a0ba18d34cc363763e05e99/61a9ae14e04e3d5bffb26ef7/62142eee64c71f1df2110cf5/6232abf264c71f1df2110d81/6237a6c664c71f1df2110d8f"
       },
       {
+          "tags": {
+            "course": "VETS2011",
+            "subject": "Physiology",
+            "system": "Neurophysiology"
+          },
           "statement": "Where are the autonomic ganglia of the parasympathetic nervous system predominantly located?",
           "optionsList": [
               {
@@ -2671,6 +3156,11 @@
           "link": "https://vetshub.uqcloud.net/resource/5a0ba18d34cc363763e05e99/61a9ae14e04e3d5bffb26ef7/62142eee64c71f1df2110cf5/623bbfad64c71f1df2110dad/623bc22d64c71f1df2110dae"
       },
       {
+          "tags": {
+            "course": "VETS2011",
+            "subject": "Physiology",
+            "system": "Neurophysiology"
+          },
           "statement": "What receptor is used in the autonomic ganglia in the parasympathetic nervous system to transduce their signals to the post-ganglionic nerve fibre?",
           "optionsList": [
               {
@@ -2697,6 +3187,11 @@
           "link": "https://vetshub.uqcloud.net/resource/5a0ba18d34cc363763e05e99/61a9ae14e04e3d5bffb26ef7/62142eee64c71f1df2110cf5/623bbfad64c71f1df2110dad/623bc22d64c71f1df2110dae"
       },
       {
+          "tags": {
+            "course": "VETS2011",
+            "subject": "Physiology",
+            "system": "Neurophysiology"
+          },
           "statement": "Which of the following statements is TRUE regarding the length of the nerves in the parasympathetic nervous system?",
           "optionsList": [
               {
@@ -2723,6 +3218,11 @@
           "link": "https://vetshub.uqcloud.net/resource/5a0ba18d34cc363763e05e99/61a9ae14e04e3d5bffb26ef7/62142eee64c71f1df2110cf5/623bbfad64c71f1df2110dad/623bc22d64c71f1df2110dae"
       },
       {
+          "tags": {
+            "course": "VETS2011",
+            "subject": "Physiology",
+            "system": "Neurophysiology"
+          },
           "statement": "Acetylcholine released from preganglionic neurons binds to which of the following receptors in the sympathetic nervous system?",
           "optionsList": [
               {
@@ -2753,6 +3253,11 @@
           "link": "https://vetshub.uqcloud.net/resource/5a0ba18d34cc363763e05e99/61a9ae14e04e3d5bffb26ef7/62142eee64c71f1df2110cf5/623bbfad64c71f1df2110dad/623bc22d64c71f1df2110dae"
       },
       {
+          "tags": {
+            "course": "VETS2011",
+            "subject": "Physiology",
+            "system": "Neurophysiology"
+          },
           "statement": "Where are the autonomic ganglia of the sympathetic nervous system predominantly located?",
           "optionsList": [
               {
@@ -2775,6 +3280,11 @@
           "link": "https://vetshub.uqcloud.net/resource/5a0ba18d34cc363763e05e99/61a9ae14e04e3d5bffb26ef7/62142eee64c71f1df2110cf5/623bbfad64c71f1df2110dad/623bc35e64c71f1df2110daf"
       },
       {
+          "tags": {
+            "course": "VETS2011",
+            "subject": "Physiology",
+            "system": "Neurophysiology"
+          },
           "statement": "Which part of the central nervous system provides emotional input for the autonomic nervous system?",
           "optionsList": [
               {
@@ -2805,6 +3315,11 @@
           "link": "https://vetshub.uqcloud.net/resource/5a0ba18d34cc363763e05e99/61a9ae14e04e3d5bffb26ef7/62142eee64c71f1df2110cf5/623bbfad64c71f1df2110dad/623bc35e64c71f1df2110daf"
       },
       {
+          "tags": {
+            "course": "VETS2011",
+            "subject": "Physiology",
+            "system": "Neurophysiology"
+          },
           "statement": "Which part of the central nervous system is the main integration centre for the autonomic nervous system?",
           "optionsList": [
               {
@@ -2835,6 +3350,11 @@
           "link": "https://vetshub.uqcloud.net/resource/5a0ba18d34cc363763e05e99/61a9ae14e04e3d5bffb26ef7/62142eee64c71f1df2110cf5/623bbfad64c71f1df2110dad/623bc35e64c71f1df2110daf"
       },
       {
+          "tags": {
+            "course": "VETS2011",
+            "subject": "Physiology",
+            "system": "Neurophysiology"
+          },
           "statement": "In which part of the central nervous system is the respiratory centre located?",
           "optionsList": [
               {
@@ -2865,6 +3385,11 @@
           "link": "https://vetshub.uqcloud.net/resource/5a0ba18d34cc363763e05e99/61a9ae14e04e3d5bffb26ef7/62142eee64c71f1df2110cf5/623bbfad64c71f1df2110dad/623bc35e64c71f1df2110daf"
       },
       {
+          "tags": {
+            "course": "VETS2011",
+            "subject": "Physiology",
+            "system": "Neurophysiology"
+          },
           "statement": "Which of the following receptors in the sympathetic system increases the heart rate when engaged?",
           "optionsList": [
               {
@@ -2895,6 +3420,11 @@
           "link": "https://vetshub.uqcloud.net/resource/5a0ba18d34cc363763e05e99/61a9ae14e04e3d5bffb26ef7/62142eee64c71f1df2110cf5/623bbfad64c71f1df2110dad/623bc37364c71f1df2110db0"
       },
       {
+          "tags": {
+            "course": "VETS2011",
+            "subject": "Physiology",
+            "system": "Neurophysiology"
+          },
           "statement": "Which of the following nerves is an important component of the parasympathetic nervous system?",
           "optionsList": [
               {
@@ -2925,6 +3455,11 @@
           "link": "https://vetshub.uqcloud.net/resource/5a0ba18d34cc363763e05e99/61a9ae14e04e3d5bffb26ef7/62142eee64c71f1df2110cf5/623bbfad64c71f1df2110dad/623bc37364c71f1df2110db0"
       },
       {
+          "tags": {
+            "course": "VETS2011",
+            "subject": "Physiology",
+            "system": "Neurophysiology"
+          },
           "statement": "Which of the following receptors induces vasoconstriction of blood vessels in the skin when engaged?",
           "optionsList": [
               {
@@ -2955,6 +3490,11 @@
           "link": "https://vetshub.uqcloud.net/resource/5a0ba18d34cc363763e05e99/61a9ae14e04e3d5bffb26ef7/62142eee64c71f1df2110cf5/623bbfad64c71f1df2110dad/623bc37364c71f1df2110db0"
       },
       {
+          "tags": {
+            "course": "VETS2011",
+            "subject": "Physiology",
+            "system": "Neurophysiology"
+          },
           "statement": "Which of the following receptors of the sympathetic system induces bronchiole dilation in the lungs when engaged?",
           "optionsList": [
               {
@@ -2985,6 +3525,11 @@
           "link": "https://vetshub.uqcloud.net/resource/5a0ba18d34cc363763e05e99/61a9ae14e04e3d5bffb26ef7/62142eee64c71f1df2110cf5/623bbfad64c71f1df2110dad/623bc37364c71f1df2110db0"
       },
       {
+          "tags": {
+            "course": "VETS2011",
+            "subject": "Physiology",
+            "system": "Neurophysiology"
+          },
           "statement": "Which of the following receptors in the sympathetic system contracts sphincters in the GI tract, slowing the passage of food?",
           "optionsList": [
               {
@@ -3015,6 +3560,11 @@
           "link": "https://vetshub.uqcloud.net/resource/5a0ba18d34cc363763e05e99/61a9ae14e04e3d5bffb26ef7/62142eee64c71f1df2110cf5/623bbfad64c71f1df2110dad/623bc38064c71f1df2110db1"
       },
       {
+          "tags": {
+            "course": "VETS2011",
+            "subject": "Physiology",
+            "system": "Neurophysiology"
+          },
           "statement": "Which of the following receptors in the sympathetic system contracts the radial muscle in the iris, and what is its effect on the pupil?",
           "optionsList": [
               {
@@ -3045,6 +3595,11 @@
           "link": "https://vetshub.uqcloud.net/resource/5a0ba18d34cc363763e05e99/61a9ae14e04e3d5bffb26ef7/62142eee64c71f1df2110cf5/623bbfad64c71f1df2110dad/623bc38064c71f1df2110db1"
       },
       {
+          "tags": {
+            "course": "VETS2011",
+            "subject": "Physiology",
+            "system": "Neurophysiology"
+          },
           "statement": "Which of the following receptors in the parasympathetic system contracts the circular sphincter muscle in the iris, and what is its effect on the pupil?",
           "optionsList": [
               {
@@ -3071,6 +3626,11 @@
           "link": "https://vetshub.uqcloud.net/resource/5a0ba18d34cc363763e05e99/61a9ae14e04e3d5bffb26ef7/62142eee64c71f1df2110cf5/623bbfad64c71f1df2110dad/623bc38064c71f1df2110db1"
       },
       {
+          "tags": {
+            "course": "VETS2011",
+            "subject": "Physiology",
+            "system": "Neurophysiology"
+          },
           "statement": "In a racehorse,&nbsp;which of the following receptors in the sympathetic system increases the production of sweat?",
           "optionsList": [
               {
@@ -3101,6 +3661,11 @@
           "link": "https://vetshub.uqcloud.net/resource/5a0ba18d34cc363763e05e99/61a9ae14e04e3d5bffb26ef7/62142eee64c71f1df2110cf5/623bbfad64c71f1df2110dad/623bc38064c71f1df2110db1"
       },
       {
+          "tags": {
+            "course": "VETS2011",
+            "subject": "Physiology",
+            "system": "Neurophysiology"
+          },
           "statement": "<p>Which of the following structures is NOT a site where signal integration takes place?</p>",
           "optionsList": [
               {
@@ -3127,6 +3692,11 @@
           "link": "https://vetshub.uqcloud.net/resource/5a0ba18d34cc363763e05e99/61a9ae14e04e3d5bffb26ef7/62142eee64c71f1df2110cf5/62183bee64c71f1df2110d10/64005d36e322761352e0f0bf"
       },
       {
+          "tags": {
+            "course": "VETS2011",
+            "subject": "Physiology",
+            "system": "Neurophysiology"
+          },
           "statement": "<p>Which of the following is a characteristic of a reflex?</p>",
           "optionsList": [
               {
@@ -3153,6 +3723,11 @@
           "link": "https://vetshub.uqcloud.net/resource/5a0ba18d34cc363763e05e99/61a9ae14e04e3d5bffb26ef7/62142eee64c71f1df2110cf5/62183bee64c71f1df2110d10/64005d36e322761352e0f0bf"
       },
       {
+          "tags": {
+            "course": "VETS2011",
+            "subject": "Physiology",
+            "system": "Neurophysiology"
+          },
           "statement": "<p>Which of the following statements about grey matter is TRUE?</p>",
           "optionsList": [
               {
