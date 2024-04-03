@@ -71,6 +71,7 @@ async function main() {
 
   const resourcesLinksLogs = path.resolve(LOGS_PATH);
   await fs.writeFile(resourcesLinksLogs, "Link\n"); // header
+  if (!badLinks) return console.info("No bad links. Done.");
   badLinks.forEach(async ({ link }) => {
     await logError(resourcesLinksLogs, `${link}`);
   });
