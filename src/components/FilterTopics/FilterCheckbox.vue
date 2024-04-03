@@ -5,6 +5,7 @@
       type="checkbox"
       :name="category"
       :value="topic"
+      @change="onChange"
     />
     <label :for="`${category}-${topic}-checkbox`">{{ topic }}</label>
   </div>
@@ -15,6 +16,12 @@ import { defineProps } from "vue";
 import { FilterOption } from "@/types/FilterTopic";
 
 const { category, topic } = defineProps<FilterOption>();
+const emit = defineEmits(["checked"]);
+
+const onChange = (event: Event) => {
+  const target = event.target as HTMLInputElement;
+  emit("checked", { category, topic });
+};
 </script>
 
 <style scoped>
