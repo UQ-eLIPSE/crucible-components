@@ -8,11 +8,19 @@ import { useQuizStore } from "./store/QuizStore";
 const quizQuestions = ref(0);
 const questionsQueue = useQuizStore();
 const quizStarted = ref<boolean>(false);
+const quizMode = ref<string>("Tutor");
 
-const handleStartQuiz = (questionAmount: number) => {
+const handleStartQuiz = ({
+  questionAmount,
+  mode,
+}: {
+  questionAmount: number;
+  mode: string;
+}) => {
   const quizAmount = getQuestionsRandomly(questionAmount);
   quizQuestions.value = quizAmount.length;
-  questionsQueue.initialiseQuiz(quizAmount);
+  questionsQueue.initialiseQuiz(quizAmount, mode);
+  console.log(quizMode.value);
   quizStarted.value = true;
 };
 </script>

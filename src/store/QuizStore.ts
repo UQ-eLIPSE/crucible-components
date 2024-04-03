@@ -2,6 +2,7 @@ import { MCQuestion, QuestionState } from "@/types/MCQ";
 import { defineStore } from "pinia";
 
 type Stat = "correct" | "skipped" | "attempts" | "selectedValue";
+type QuizMode = string;
 const statIndex = (questionId: string, quizStats: QuestionState[]) =>
   quizStats.findIndex((quizStat) => quizStat.question._id?.$oid === questionId);
 
@@ -10,11 +11,13 @@ export const useQuizStore = defineStore("questionsQueue", {
     return {
       questionsQueue: [] as MCQuestion[],
       quizStats: [] as QuestionState[],
+      quizMode: "" as QuizMode,
     };
   },
   actions: {
-    initialiseQuiz(questions: MCQuestion[]) {
+    initialiseQuiz(questions: MCQuestion[], mode: QuizMode = "default") {
       this.questionsQueue = questions;
+      this.quizMode = mode;
       this.quizStats = questions.map((question) => ({
         question,
         correct: 0,
