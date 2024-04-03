@@ -43,19 +43,24 @@ async function logError(errorLog, message) {
   await fs.appendFile(errorLog, message + "\n");
 }
 
-// If length are too much, can use the trialTimes parameter
-// i.e. retryValidation(badLinks, length / 10)
+/**
+ * Sometimes multiple retries in validation of links is required since there
+ * are too many links. This retries all the bad ones depending on the trialTimes
+ * provided.
+ *
+ * If length are too long, can use the trialTimes parameter
+ * i.e. retryValidation(badLinks, badLinks.length / 10)
+ */
 const retryValidation = async (badLinks, trialTimes = 3) => {
+  if (!badLinks.length) return console.info("No need to retry validation");
+
   let n = 0;
-  while (n <= trialTimes) {
-    console.log("Retrying...", ++n);
-    console.log("Number of badlinks:", badLinks.length);
-    if (badLinks.length !== 0) {
-      badLinks = await validateQuizLink(badLinks);
-    } else {
-      break;
-    }
+  while (n <= trialTimes && badLinks.length) {
+    console.info("Retrying...", ++n);
+    console.info("Testing number of badlinks:", badLinks.length);
+    badLinks = await validateQuizLink(badLinks);
   }
+
   return badLinks;
 };
 
@@ -70,4 +75,5 @@ async function main() {
     await logError(resourcesLinksLogs, `${link}`);
   });
 }
+
 main();
