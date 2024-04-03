@@ -4,7 +4,6 @@ import { useQuizStore } from "@/store/QuizStore";
 import MCQStatus from "@/components/MCQ/MCQStatus.vue";
 import { mount, VueWrapper, DOMWrapper } from "@vue/test-utils";
 import { QuestionState } from "@/types/MCQ";
-import { questions } from "@data/question-data.json";
 import { dataTest } from "../testSeeds";
 
 let wrapper: VueWrapper;
@@ -13,17 +12,10 @@ let mcqStatus: DOMWrapper<Element>;
 
 beforeEach(async () => {
   setActivePinia(createPinia());
-  const quizAmount = questions.slice(0, 3);
-  const questionsQueue = useQuizStore();
-  questionsQueue.initialiseQuiz([...quizAmount]);
+  const quizStore = useQuizStore();
   const quizStatus: QuestionState[] = dataTest;
-  const workQuiz = dataTest.length;
-  wrapper = mount(MCQStatus, {
-    props: {
-      quizStatus,
-      workQuiz,
-    },
-  });
+  quizStore.$state.quizStats = quizStatus;
+  wrapper = mount(MCQStatus);
 });
 
 describe("MCQStatus.vue", () => {
