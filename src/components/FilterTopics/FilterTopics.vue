@@ -1,5 +1,9 @@
 <template>
   <div>Filter Topics</div>
+  <h3>
+    Currently selected topics
+    {{ numberOfSelectedTopics.valueOf() }}
+  </h3>
   <form>
     <div class="filter-category-wrapper">
       <FilterCheckbox
@@ -21,6 +25,7 @@ import { sampleTopics } from "../../../data/Filter_Topics";
 
 // retrieve api data here or through state management and replace sampleTopics
 const checkedTopics = ref<FilterOption[]>(sampleTopics);
+const numberOfSelectedTopics = ref<number>(0);
 
 const onChecked = (event: Event): void => {
   if (!(event.target instanceof HTMLInputElement))
@@ -28,15 +33,12 @@ const onChecked = (event: Event): void => {
 
   const target = event.target;
 
-  const topic = sampleTopics.find(
+  const topic = checkedTopics.value.find(
     (topic) => topic.topic === target.value && topic.category === target.name,
   );
   if (topic) {
     topic.selected = target.checked;
-    console.log(
-      "checked topics",
-      checkedTopics.value.filter((topic) => topic.selected),
-    );
+    numberOfSelectedTopics.value += target.checked ? 1 : -1;
     return;
   }
 
@@ -51,4 +53,3 @@ const onChecked = (event: Event): void => {
   gap: 0.25rem;
 }
 </style>
-../../../data/Filter_Topics
