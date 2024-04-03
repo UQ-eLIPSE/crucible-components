@@ -17,23 +17,31 @@
 import { ref } from "vue";
 import FilterCheckbox from "./FilterCheckbox.vue";
 import { FilterOption } from "@/types/FilterTopic";
-const checkedTopics = ref<FilterOption[]>([]);
+import { sampleTopics } from "../../../data/Filter_Topics";
 
-const sampleTopics: FilterOption[] = [
-  { category: "physiology", topic: "neurophysiology" },
-  { category: "physiology", topic: "cardiophysiology" },
-];
+// retrieve api data here or through state management and replace sampleTopics
+const checkedTopics = ref<FilterOption[]>(sampleTopics);
 
-const onChecked = (topic: FilterOption) => {
-  const index = checkedTopics.value.findIndex(
-    (checkedTopic) => checkedTopic.topic === topic.topic,
+const onChecked = (event: Event): void => {
+  if (!(event.target instanceof HTMLInputElement))
+    return console.error("Trying to click on non-input element");
+
+  const target = event.target;
+
+  const topic = sampleTopics.find(
+    (topic) => topic.topic === target.value && topic.category === target.name,
   );
-  index === -1
-    ? checkedTopics.value.push(topic)
-    : checkedTopics.value.splice(index, 1);
-};
+  if (topic) {
+    topic.selected = target.checked;
+    console.log(
+      "checked topics",
+      checkedTopics.value.filter((topic) => topic.selected),
+    );
+    return;
+  }
 
-console.log(checkedTopics.value);
+  console.error("Can't find checked topic");
+};
 </script>
 
 <style scoped>
@@ -43,3 +51,4 @@ console.log(checkedTopics.value);
   gap: 0.25rem;
 }
 </style>
+../../../data/Filter_Topics
