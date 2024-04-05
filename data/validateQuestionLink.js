@@ -4,8 +4,8 @@ import path from "path";
 
 // Run this script and check logs/broken-links-logs.csv for broken links
 
-const STATUS_SUCCESS = 200;
-const LOGS_PATH = "../logs/broken-links-logs.csv";
+const statusSuccess = 200;
+const logsPath = "../logs/broken-links-logs.csv";
 
 // The input param is the link to be validated on.
 export const validateURLResponse = async (input) => {
@@ -14,7 +14,7 @@ export const validateURLResponse = async (input) => {
 
     const status = response.status;
 
-    return status === STATUS_SUCCESS;
+    return status === statusSuccess;
   } catch (error) {
     console.error(
       `An error occured while accessing "${input}". \nError: ${error}`,
@@ -68,7 +68,7 @@ async function main() {
 
   badLinks = await retryValidation(badLinks);
 
-  const resourcesLinksLogs = path.resolve(LOGS_PATH);
+  const resourcesLinksLogs = path.resolve(logsPath);
   await fs.writeFile(resourcesLinksLogs, "Link\n"); // header
   if (!badLinks) return console.info("No bad links. Done.");
   badLinks.forEach(async ({ link }) => {
