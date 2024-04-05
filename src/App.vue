@@ -20,7 +20,6 @@ const handleStartQuiz = ({
   const quizAmount = getQuestionsRandomly(questionAmount);
   quizQuestions.value = quizAmount.length;
   questionsQueue.initialiseQuiz(quizAmount, mode);
-  console.log(quizMode.value);
   quizStarted.value = true;
 };
 </script>
