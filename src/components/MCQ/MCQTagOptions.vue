@@ -18,10 +18,13 @@
 <script setup lang="ts">
 import type { SelectedTags } from "@/types/MCQ";
 import { getUniquePropertyValues } from "../QuestionStore";
-import { getAllQuestions } from "../DataAccessLayer";
+import { getAllQuestions, getDummyQuestions } from "../DataAccessLayer";
 import FilterCheckbox from "../FilterCheckbox.vue";
 import { ref } from "vue";
-const tagSet = getAllQuestions().flatMap((question) => question.tags);
+
+// const tagSet = getAllQuestions().flatMap((question) => question.tags);
+const tagSet = getDummyQuestions().flatMap((question) => question.tags);
+
 const filterSet: SelectedTags = getUniquePropertyValues(tagSet);
 
 const selectedTags = ref<SelectedTags>({
