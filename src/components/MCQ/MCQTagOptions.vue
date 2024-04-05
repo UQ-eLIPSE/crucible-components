@@ -22,7 +22,7 @@ import { getAllQuestions } from "../DataAccessLayer";
 import FilterCheckbox from "../FilterCheckbox.vue";
 import { ref } from "vue";
 const tagSet = getAllQuestions().flatMap((question) => question.tags);
-const filterSet = getUniquePropertyValues(tagSet);
+const filterSet: SelectedTags = getUniquePropertyValues(tagSet);
 
 const selectedTags = ref<SelectedTags>({
   course: [],
@@ -58,10 +58,6 @@ label {
 @media screen and (max-width: 768px) {
   .filter {
     text-align: center;
-  }
-  .filter-options {
-    text-align: left;
-    margin-left: 20vw;
   }
 }
 </style>
