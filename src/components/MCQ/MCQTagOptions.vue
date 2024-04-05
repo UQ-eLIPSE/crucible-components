@@ -22,8 +22,11 @@ import { getAllQuestions, getDummyQuestions } from "../DataAccessLayer";
 import FilterCheckbox from "../FilterCheckbox.vue";
 import { ref } from "vue";
 
-// const tagSet = getAllQuestions().flatMap((question) => question.tags);
-const tagSet = getDummyQuestions().flatMap((question) => question.tags);
+const { dummyData } = defineProps<{ dummyData?: boolean }>();
+
+const tagSet = dummyData
+  ? getDummyQuestions(true).flatMap((question) => question.tags)
+  : getAllQuestions().flatMap((question) => question.tags);
 
 const filterSet: SelectedTags = getUniquePropertyValues(tagSet);
 
