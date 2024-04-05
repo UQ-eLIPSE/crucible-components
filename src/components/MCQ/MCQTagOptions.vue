@@ -22,10 +22,11 @@ import { getAllQuestions, getDummyQuestions } from "../DataAccessLayer";
 import FilterCheckbox from "../FilterCheckbox.vue";
 import { ref } from "vue";
 
-const { dummyData } = defineProps<{ dummyData?: boolean }>();
+// If dummy data is not provided as a prop, the getAllQuestions() will be used from DAL instead
+const { dummyData } = defineProps<{ dummyData?: { random: boolean } }>();
 
 const tagSet = dummyData
-  ? getDummyQuestions(true).flatMap((question) => question.tags)
+  ? getDummyQuestions(dummyData.random).flatMap((question) => question.tags)
   : getAllQuestions().flatMap((question) => question.tags);
 
 const filterSet: SelectedTags = getUniquePropertyValues(tagSet);
