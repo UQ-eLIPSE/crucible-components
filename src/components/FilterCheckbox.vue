@@ -26,7 +26,6 @@ const { category, topics } = defineProps<{
 }>();
 
 const emit = defineEmits(["checked"]);
-
 const onChecked = (event: Event) => {
   if (!(event.target instanceof HTMLInputElement))
     return console.error("Trying to click on non-input element");
