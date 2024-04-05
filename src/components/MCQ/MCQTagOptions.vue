@@ -23,6 +23,7 @@ import FilterCheckbox from "../FilterCheckbox.vue";
 import { ref } from "vue";
 const tagSet = getAllQuestions().flatMap((question) => question.tags);
 const filterSet: SelectedTags = getUniquePropertyValues(tagSet);
+const emit = defineEmits(["update:selectedTags"]);
 
 const selectedTags = ref<SelectedTags>({
   course: [],
@@ -39,6 +40,7 @@ const modifySelectedTags = (
     : selectedTags.value[category].filter(
         (selectedTopic) => selectedTopic !== topic,
       );
+  emit("update:selectedTags", selectedTags.value);
 };
 </script>
 

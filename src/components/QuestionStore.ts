@@ -1,4 +1,4 @@
-import { MCQuestion, tags } from "@/types/MCQ";
+import { MCQuestion, SelectedTags, tags } from "@/types/MCQ";
 import { getAllQuestions } from "./DataAccessLayer";
 
 /**
@@ -14,9 +14,11 @@ export const shuffleArray = (array: MCQuestion[]) => {
   return array;
 };
 
-export const getQuestionsRandomly = (count: number) => {
-  const allQuestions = getAllQuestions();
-  const shuffled = shuffleArray(allQuestions);
+export const getQuestionsRandomly = (
+  count: number,
+  questions: MCQuestion[],
+) => {
+  const shuffled = shuffleArray(questions);
   return shuffled.slice(0, count);
 };
 
@@ -42,11 +44,16 @@ export function getUniquePropertyValues(tagProps: tags[]) {
 
 export function filterQuestionsByTags(
   questions: MCQuestion[],
-  filterTags: tags,
+  selectedTags: SelectedTags,
 ): MCQuestion[] {
   return questions.filter((question) => {
-    return Object.entries(filterTags).every(([key, value]) => {
-      return question.tags[key as keyof tags] === value;
-    });
+    return (
+      (selectedTags.course.length === 0 ||
+        selectedTags.course.includes(question.tags.course)) &&
+      (selectedTags.subject.length === 0 ||
+        selectedTags.subject.includes(question.tags.subject)) &&
+      (selectedTags.system.length === 0 ||
+        selectedTags.system.includes(question.tags.system))
+    );
   });
 }
