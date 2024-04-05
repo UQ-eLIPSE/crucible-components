@@ -9,7 +9,7 @@
       <FilterCheckbox
         :category="category"
         :topics="valueKeys"
-        @checked="onChecked"
+        @checked="modifySelectedTags"
       />
     </div>
   </div>
@@ -41,22 +41,13 @@ const selectedTags = ref<SelectedTags>({
   system: [],
 });
 
-const onChecked = (event: Event): void => {
-  if (!(event.target instanceof HTMLInputElement))
-    return console.error("Trying to click on non-input element");
-
-  const target = event.target;
-
-  const category = target.name as keyof SelectedTags;
-  const topic = target.value;
-
-  if (target.checked) {
-    selectedTags.value[category].push(topic);
-  } else {
-    selectedTags.value[category] = selectedTags.value[category].filter(
-      (t) => t !== topic,
-    );
-  }
+const modifySelectedTags = (
+  isChecked: boolean,
+  { category, topic }: { category: keyof SelectedTags; topic: string },
+): void => {
+  selectedTags.value[category] = isChecked
+    ? [...selectedTags.value[category], topic]
+    : selectedTags.value[category].filter((t) => t !== topic);
 };
 </script>
 
