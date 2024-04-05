@@ -21,8 +21,12 @@ describe("MCQTagOptions.vue", () => {
   it("Returns an empty array when input is empty", () => {
     const tags = [];
 
-    const uniqueCourses = getUniquePropertyValues(tags, "course");
-    expect(uniqueCourses).toEqual([]);
+    const uniqueCourses = getUniquePropertyValues(tags);
+    expect(uniqueCourses).toEqual({
+      course: [],
+      subject: [],
+      system: [],
+    });
   });
 
   it("returns unique values for a given property", () => {
@@ -32,13 +36,11 @@ describe("MCQTagOptions.vue", () => {
       { course: "VETS2012", subject: "Physiology", system: "Neurophysiology" },
     ];
 
-    const uniqueCourses = getUniquePropertyValues(tags, "course");
-    expect(uniqueCourses).toEqual(["VETS2011", "VETS2012"]);
-
-    const uniqueSubjects = getUniquePropertyValues(tags, "subject");
-    expect(uniqueSubjects).toEqual(["Physiology", "Anatomy"]);
-
-    const uniqueSystems = getUniquePropertyValues(tags, "system");
-    expect(uniqueSystems).toEqual(["Neurophysiology", "Cardiovascular"]);
+    const uniqueCourses = getUniquePropertyValues(tags);
+    expect(uniqueCourses).toEqual({
+      course: ["VETS2011", "VETS2012"],
+      subject: ["Physiology", "Anatomy"],
+      system: ["Neurophysiology", "Cardiovascular"],
+    });
   });
 });

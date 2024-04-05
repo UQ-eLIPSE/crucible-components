@@ -20,22 +20,10 @@
 </template>
 
 <script setup lang="ts">
-import type { tags } from "@/types/MCQ";
 import { getAllQuestions } from "../DataAccessLayer";
-function getUniquePropertyValues(
-  array: tags[],
-  property: "course" | "subject" | "system",
-) {
-  return [...new Set(array.map((item) => item[property]))];
-}
-
+import { getUniquePropertyValues } from "../QuestionStore";
 const tagSet = getAllQuestions().flatMap((question) => question.tags);
-
-const filterSet = {
-  course: getUniquePropertyValues(tagSet, "course"),
-  subject: getUniquePropertyValues(tagSet, "subject"),
-  system: getUniquePropertyValues(tagSet, "system"),
-};
+const filterSet = getUniquePropertyValues(tagSet);
 </script>
 
 <style>
