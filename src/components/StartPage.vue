@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>VetCloud Smart Quiz</h1>
-    <MCQTagOptions />
+    <MCQTagOptions :dummy-data="{ random: false }" />
     <div class="tags-display">
       <div class="tag-container course">
         <p class="tag-text">VETS2011</p>
