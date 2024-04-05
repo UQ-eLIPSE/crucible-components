@@ -108,10 +108,10 @@ test("Filter questions by a specific course, subject, and system", () => {
   expect(filteredQuestions.length).equal(2);
   expect(
     filteredQuestions.every(
-      (q) =>
-        q.tags.course === "VETS2011" &&
-        q.tags.subject === "Physiology" &&
-        q.tags.system === "Neurophysiology",
+      (question) =>
+        question.tags.course === "VETS2011" &&
+        question.tags.subject === "Physiology" &&
+        question.tags.system === "Neurophysiology",
     ),
   ).toBe(true);
 });
@@ -125,7 +125,9 @@ test("Filter questions by course and subject, expecting multiple results", () =>
   expect(filteredQuestions.length).equal(3);
   expect(
     filteredQuestions.every(
-      (q) => q.tags.course === "VETS2011" && q.tags.subject === "Physiology",
+      (question) =>
+        question.tags.course === "VETS2011" &&
+        question.tags.subject === "Physiology",
     ),
   ).toBe(true);
 });
