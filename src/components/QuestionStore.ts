@@ -39,3 +39,14 @@ export function getUniquePropertyValues(tagProps: tags[]) {
     system: [...uniqueValues.system],
   };
 }
+
+export function filterQuestionsByTags(
+  questions: MCQuestion[],
+  filterTags: tags,
+): MCQuestion[] {
+  return questions.filter((question) => {
+    return Object.entries(filterTags).every(([key, value]) => {
+      return question.tags[key as keyof tags] === value;
+    });
+  });
+}
