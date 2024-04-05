@@ -1,8 +1,11 @@
 <template>
   <div>
     <h1>VetCloud Smart Quiz</h1>
+    <MCQTagOptions />
     <div class="tags-display">
-      <div class="tag-container course"><p class="tag-text">VETS2011</p></div>
+      <div class="tag-container course">
+        <p class="tag-text">VETS2011</p>
+      </div>
       <div class="arrow"></div>
       <div class="tag-container subject">
         <p class="tag-text">Physiology</p>
@@ -31,6 +34,7 @@
 
 <script setup lang="ts">
 import { ref } from "vue";
+import MCQTagOptions from "@components/MCQ/MCQTagOptions.vue";
 const questionAmount = ref<number>(0);
 const emit = defineEmits(["start-quiz"]);
 
