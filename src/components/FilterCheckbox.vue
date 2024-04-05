@@ -1,19 +1,28 @@
 <template>
   <ul>
     <li
-      v-for="[key, val] in Object.entries(topics)"
-      :key="key"
+      v-for="[idx, topic] in Object.entries(topics)"
+      :key="idx"
       class="filter-options"
     >
-      <input type="checkbox" />
-      <label>{{ val }} </label>
+      <input
+        :id="`${category}-${topic}-checkbox`"
+        type="checkbox"
+        :name="category"
+        :value="topic"
+        @change="emit('checked', $event)"
+      />
+      <label :for="`${category}-${topic}-checkbox`">{{ topic }}</label>
     </li>
   </ul>
 </template>
 
 <script setup lang="ts">
 import { defineProps } from "vue";
-const { topics } = defineProps<{ topics: string[] }>();
+const { category, topics } = defineProps<{
+  category: string;
+  topics: string[];
+}>();
 
 const emit = defineEmits(["checked"]);
 </script>
