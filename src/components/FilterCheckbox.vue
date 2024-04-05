@@ -37,6 +37,10 @@ const onChecked = (event: Event) => {
 </script>
 
 <style scoped>
+ul {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
 @media screen and (max-width: 768px) {
   .filter-options {
     text-align: left;
