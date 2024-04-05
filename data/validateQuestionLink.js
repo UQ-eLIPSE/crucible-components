@@ -25,18 +25,17 @@ export const validateURLResponse = async (input) => {
 
 const validateQuizLink = async (linkList) => {
   console.info("validating links...", linkList.length);
-  const badLinks = [];
-
-  await Promise.all(
+  const badLinks = await Promise.all(
     linkList.map(async ({ link }, idx) => {
       const result = await validateURLResponse(link);
       if (!result) {
         console.error("Found invalid link:", link, "at index", idx);
-        badLinks.push({ link });
+        return { link };
       }
+      return null;
     }),
   );
-  return badLinks;
+  return badLinks.filter((link) => link);
 };
 
 async function logError(errorLog, message) {
