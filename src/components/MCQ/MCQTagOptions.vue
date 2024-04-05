@@ -16,24 +16,13 @@
 </template>
 
 <script setup lang="ts">
-import type { tags, SelectedTags } from "@/types/MCQ";
+import type { SelectedTags } from "@/types/MCQ";
+import { getUniquePropertyValues } from "../QuestionStore";
 import { getAllQuestions } from "../DataAccessLayer";
 import FilterCheckbox from "../FilterCheckbox.vue";
 import { ref } from "vue";
-function getUniquePropertyValues(
-  array: tags[],
-  property: "course" | "subject" | "system",
-) {
-  return [...new Set(array.map((item) => item[property]))];
-}
-
 const tagSet = getAllQuestions().flatMap((question) => question.tags);
-
-const filterSet = {
-  course: getUniquePropertyValues(tagSet, "course"),
-  subject: getUniquePropertyValues(tagSet, "subject"),
-  system: getUniquePropertyValues(tagSet, "system"),
-};
+const filterSet = getUniquePropertyValues(tagSet);
 
 const selectedTags = ref<SelectedTags>({
   course: [],
