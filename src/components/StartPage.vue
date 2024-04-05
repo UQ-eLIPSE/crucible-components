@@ -39,14 +39,9 @@
 
 <script setup lang="ts">
 import { ref } from "vue";
-import { watch } from "vue";
 const questionAmount = ref<number>(0);
 const selectedMode = ref<string>("Tutor");
 const emit = defineEmits(["start-quiz"]);
-
-watch(selectedMode, (newValue, oldValue) => {
-  console.log(`Mode changed from ${oldValue} to ${newValue}`);
-});
 
 const startQuiz = () => {
   emit("start-quiz", {
