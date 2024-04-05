@@ -15,7 +15,7 @@ export const useQuizStore = defineStore("questionsQueue", {
     };
   },
   actions: {
-    initialiseQuiz(questions: MCQuestion[], mode: QuizMode = "default") {
+    initialiseQuiz(questions: MCQuestion[], mode: QuizMode = "Tutor") {
       this.questionsQueue = questions;
       this.quizMode = mode;
       this.quizStats = questions.map((question) => ({
