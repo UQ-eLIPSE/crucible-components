@@ -1,4 +1,4 @@
-import { MCQuestion } from "@/types/MCQ";
+import { MCQuestion, tags } from "@/types/MCQ";
 import { getAllQuestions } from "./DataAccessLayer";
 
 /**
@@ -18,4 +18,11 @@ export const getQuestionsRandomly = (count: number) => {
   const allQuestions = getAllQuestions();
   const shuffled = shuffleArray(allQuestions);
   return shuffled.slice(0, count);
+};
+
+export const getUniquePropertyValues = (
+  array: tags[],
+  property: "course" | "subject" | "system",
+) => {
+  return [...new Set(array.map((item) => item[property]))];
 };

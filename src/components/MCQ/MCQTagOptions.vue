@@ -1,17 +1,18 @@
 <template>
-  <div v-for="[key, value] in Object.entries(tags)" :key="key">
-    <div>{{ tags }}</div>
+  <div class="filter">
     <div
-      v-for="[index, valueKeys] in Object.keys(value)"
+      v-for="[index, valueKeys] in Object.entries(filterSet)"
       :key="index"
       class="category"
     >
-      <h2>{{ valueKeys }}</h2>
+      <h2>{{ index }}</h2>
       <ul>
-        <li>
-          <input id="anatomy" type="checkbox" /><label for="anatomy"
-            >Anatomy <span class="badge">17</span></label
-          >
+        <li
+          v-for="[key, val] in Object.entries(valueKeys)"
+          :key="key"
+          class="filter-options"
+        >
+          <input type="checkbox" /><label>{{ val }} </label>
         </li>
       </ul>
     </div>
@@ -19,32 +20,46 @@
 </template>
 
 <script setup lang="ts">
-import { useQuizStore } from "@/store/QuizStore";
-const quizStore = useQuizStore();
-const tags = quizStore.questionsQueue.map((question) => question.tags);
+import type { tags } from "@/types/MCQ";
+import { getAllQuestions } from "../DataAccessLayer";
+function getUniquePropertyValues(
+  array: tags[],
+  property: "course" | "subject" | "system",
+) {
+  return [...new Set(array.map((item) => item[property]))];
+}
+
+const tagSet = getAllQuestions().flatMap((question) => question.tags);
+
+const filterSet = {
+  course: getUniquePropertyValues(tagSet, "course"),
+  subject: getUniquePropertyValues(tagSet, "subject"),
+  system: getUniquePropertyValues(tagSet, "system"),
+};
 </script>
 
 <style>
+.filter {
+  text-align: left;
+  text-transform: capitalize;
+}
 .category {
   margin-bottom: 20px;
 }
-
-/* Style the list items */
-.category ul li {
+li {
   list-style-type: none;
 }
-
-/* Style the checkbox labels */
-.category ul li label {
+label {
   cursor: pointer;
-  /* Add other styles as needed */
 }
 
-/* Style the badge */
-.badge {
-  background-color: purple;
-  color: white;
-  border-radius: 10px;
-  padding: 5px;
+@media screen and (max-width: 768px) {
+  .filter {
+    text-align: center;
+  }
+  .filter-options {
+    text-align: left;
+    margin-left: 20vw;
+  }
 }
 </style>
