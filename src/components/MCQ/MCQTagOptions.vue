@@ -36,7 +36,9 @@ const modifySelectedTags = (
 ): void => {
   selectedTags.value[category] = isChecked
     ? [...selectedTags.value[category], topic]
-    : selectedTags.value[category].filter((t) => t !== topic);
+    : selectedTags.value[category].filter(
+        (selectedTopic) => selectedTopic !== topic,
+      );
 };
 </script>
 

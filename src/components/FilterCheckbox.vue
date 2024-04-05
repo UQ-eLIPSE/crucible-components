@@ -18,7 +18,6 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps } from "vue";
 import { SelectedTags } from "@/types/MCQ";
 const { category, topics } = defineProps<{
   category: string;
