@@ -1,29 +1,45 @@
 <template>
   <div class="filter">
     <div
-      v-for="[index, valueKeys] in Object.entries(filterSet)"
-      :key="index"
+      v-for="[category, valueKeys] in Object.entries(filterSet)"
+      :key="category"
       class="category"
     >
-      <h2>{{ index }}</h2>
-      <ul>
-        <li
-          v-for="[key, val] in Object.entries(valueKeys)"
-          :key="key"
-          class="filter-options"
-        >
-          <input type="checkbox" /><label>{{ val }} </label>
-        </li>
-      </ul>
+      <h2>{{ category }}</h2>
+      <FilterCheckbox
+        :category="category"
+        :topics="valueKeys"
+        @checked="modifySelectedTags"
+      />
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { getAllQuestions } from "../DataAccessLayer";
+import type { SelectedTags } from "@/types/MCQ";
 import { getUniquePropertyValues } from "../QuestionStore";
+import { getAllQuestions } from "../DataAccessLayer";
+import FilterCheckbox from "../FilterCheckbox.vue";
+import { ref } from "vue";
 const tagSet = getAllQuestions().flatMap((question) => question.tags);
-const filterSet = getUniquePropertyValues(tagSet);
+const filterSet: SelectedTags = getUniquePropertyValues(tagSet);
+
+const selectedTags = ref<SelectedTags>({
+  course: [],
+  subject: [],
+  system: [],
+});
+
+const modifySelectedTags = (
+  isChecked: boolean,
+  { category, topic }: { category: keyof SelectedTags; topic: string },
+): void => {
+  selectedTags.value[category] = isChecked
+    ? [...selectedTags.value[category], topic]
+    : selectedTags.value[category].filter(
+        (selectedTopic) => selectedTopic !== topic,
+      );
+};
 </script>
 
 <style>
@@ -44,10 +60,6 @@ label {
 @media screen and (max-width: 768px) {
   .filter {
     text-align: center;
-  }
-  .filter-options {
-    text-align: left;
-    margin-left: 20vw;
   }
 }
 </style>

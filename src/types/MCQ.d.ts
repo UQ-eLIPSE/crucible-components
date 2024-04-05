@@ -47,3 +47,9 @@ export interface tags {
   subject: string;
   system: string;
 }
+
+export interface SelectedTags {
+  course: string[];
+  subject: string[];
+  system: string[];
+}

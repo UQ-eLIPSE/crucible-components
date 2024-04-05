@@ -22,9 +22,9 @@ export const getQuestionsRandomly = (count: number) => {
 
 export function getUniquePropertyValues(tagProps: tags[]) {
   const uniqueValues = {
-    course: new Set(),
-    subject: new Set(),
-    system: new Set(),
+    course: new Set<string>(),
+    subject: new Set<string>(),
+    system: new Set<string>(),
   };
 
   for (const item of tagProps) {
