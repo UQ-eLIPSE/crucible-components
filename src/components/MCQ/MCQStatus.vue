@@ -63,7 +63,6 @@
 </template>
 
 <script setup lang="ts">
-import { MCQResult } from "@/types/MCQ";
 import { useQuizStore } from "@/store/QuizStore";
 
 const questionsQueue = useQuizStore();
