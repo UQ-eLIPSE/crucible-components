@@ -4,6 +4,7 @@ import {
   getQuestionsRandomly,
   shuffleArray,
 } from "@components/QuestionStore";
+import { SelectedTags } from "@/types/MCQ";
 
 const questions = [
   {
@@ -67,17 +68,17 @@ vi.mock("@components/DataAccessLayer", () => {
 });
 
 test("Specify no questions and return with an empty array", () => {
-  const result = getQuestionsRandomly(0);
+  const result = getQuestionsRandomly(0, questions);
   expect(result).toEqual([]);
 });
 
 test("Specify questions more than provided", () => {
-  const result = getQuestionsRandomly(5);
+  const result = getQuestionsRandomly(5, questions);
   expect(result.length).toEqual(questions.length);
 });
 
 test("No question tags specified", () => {
-  const result = getQuestionsRandomly(7);
+  const result = getQuestionsRandomly(7, questions);
   expect(result).toEqual(questions);
 });
 
@@ -98,46 +99,51 @@ test("should not return the same array", () => {
   expect(shuffled).to.not.deep.equal(questions);
 });
 
-test("Filter questions by a specific course, subject, and system", () => {
-  const filterTags = {
-    course: "VETS2011",
-    subject: "Physiology",
-    system: "Neurophysiology",
+test("Filter questions by a specific course, subject, and system, allowing multiple selections", () => {
+  const filterTags: SelectedTags = {
+    course: ["VETS2011"],
+    subject: ["Physiology"],
+    system: ["Neurophysiology", "Cardiovascular"],
   };
   const filteredQuestions = filterQuestionsByTags(questions, filterTags);
-  expect(filteredQuestions.length).equal(2);
+  expect(filteredQuestions.length).toBe(3);
   expect(
     filteredQuestions.every(
       (question) =>
         question.tags.course === "VETS2011" &&
         question.tags.subject === "Physiology" &&
-        question.tags.system === "Neurophysiology",
+        (question.tags.system === "Neurophysiology" ||
+          question.tags.system === "Cardiovascular"),
     ),
   ).toBe(true);
 });
 
-test("Filter questions by course and subject, expecting multiple results", () => {
-  const filterTags = {
-    course: "VETS2011",
-    subject: "Physiology",
+test("Filter questions by multiple courses and subjects", () => {
+  const filterTags: SelectedTags = {
+    course: ["VETS2011", "VETS2022"],
+    subject: ["Physiology", "Anatomy"],
+    system: [],
   };
   const filteredQuestions = filterQuestionsByTags(questions, filterTags);
-  expect(filteredQuestions.length).equal(3);
+  expect(filteredQuestions.length).toBe(4);
   expect(
     filteredQuestions.every(
       (question) =>
-        question.tags.course === "VETS2011" &&
-        question.tags.subject === "Physiology",
+        (question.tags.course === "VETS2011" ||
+          question.tags.course === "VETS2022") &&
+        (question.tags.subject === "Physiology" ||
+          question.tags.subject === "Anatomy"),
     ),
   ).toBe(true);
 });
 
-test("Filter questions with no matching tags, expecting empty array", () => {
-  const filterTags = {
-    course: "VETS4044",
-    subject: "Unknown",
+test("Filter questions with multiple selections but no matches", () => {
+  const filterTags: SelectedTags = {
+    course: ["VETS2022"],
+    subject: ["Unknown"],
+    system: ["Neurophysiology"],
   };
   const filteredQuestions = filterQuestionsByTags(questions, filterTags);
-  expect(filteredQuestions.length).equal(0);
+  expect(filteredQuestions.length).toBe(0);
   expect(filteredQuestions).toEqual([]);
 });
