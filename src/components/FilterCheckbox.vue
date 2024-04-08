@@ -44,7 +44,7 @@ ul {
 @media screen and (max-width: 768px) {
   .filter-options {
     text-align: left;
-    margin-left: 20vw;
+    display: flex;
   }
 }
 </style>
