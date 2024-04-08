@@ -36,7 +36,6 @@
 import { ref } from "vue";
 import MCQTagOptions from "@components/MCQ/MCQTagOptions.vue";
 import { useQuizStore } from "@/store/QuizStore";
-
 const questionAmount = ref<number>(0);
 const dummyDataProvided = ref<boolean>(false);
 const emit = defineEmits(["start-quiz"]);
