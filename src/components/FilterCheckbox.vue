@@ -48,7 +48,11 @@ const getQuestionsnumByTags = (
 ): string | null => {
   const currentSelectedTags = questionsQueue.getselectedtags();
 
-  if (currentSelectedTags[category]?.includes(topic)) {
+  if (
+    (currentSelectedTags[category as keyof SelectedTags] as string[])?.includes(
+      topic,
+    )
+  ) {
     return null;
   }
 
