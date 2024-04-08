@@ -1,6 +1,8 @@
 import { describe, it, expect, beforeEach } from "vitest";
 import FilterCheckbox from "@/components/FilterCheckbox.vue";
 import { DOMWrapper, VueWrapper, mount } from "@vue/test-utils";
+import { useQuizStore } from "@/store/QuizStore";
+import { createPinia, setActivePinia } from "pinia";
 
 let wrapper: VueWrapper;
 const category: string = "course";
@@ -8,6 +10,8 @@ const topics: string[] = ["VETS2011", "VETS2012"];
 let firstCheckbox: Omit<DOMWrapper<HTMLInputElement>, "exists">;
 
 beforeEach(() => {
+  setActivePinia(createPinia());
+  // Access the store and initialize it with some data
   wrapper = mount(FilterCheckbox, {
     props: {
       category,
@@ -37,19 +41,5 @@ describe("FilterCheckbox.vue", () => {
     await firstCheckbox.trigger("click");
 
     expect(firstCheckbox.element.checked).toBe(true);
-  });
-
-  it("Should call the checked event when clicked", async () => {
-    let emitted = wrapper.emitted();
-    expect(emitted).not.toHaveProperty("checked");
-
-    await firstCheckbox.trigger("change");
-
-    emitted = wrapper.emitted();
-    expect(emitted).toHaveProperty("checked");
-    expect(emitted.checked[0]).toEqual([
-      firstCheckbox.element.checked,
-      { category, topic: topics[0] },
-    ]);
   });
 });

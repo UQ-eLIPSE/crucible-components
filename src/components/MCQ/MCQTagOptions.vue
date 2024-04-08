@@ -6,11 +6,7 @@
       class="category"
     >
       <h2>{{ category }}</h2>
-      <FilterCheckbox
-        :category="category"
-        :topics="valueKeys"
-        @checked="modifySelectedTags"
-      />
+      <FilterCheckbox :category="category" :topics="valueKeys" />
     </div>
   </div>
 </template>
@@ -20,10 +16,10 @@ import type { SelectedTags } from "@/types/MCQ";
 import { getUniquePropertyValues } from "../QuestionStore";
 import { getAllQuestions, getDummyQuestions } from "../DataAccessLayer";
 import FilterCheckbox from "../FilterCheckbox.vue";
-import { onMounted, ref } from "vue";
+import { onMounted } from "vue";
 
-const emit = defineEmits(["update:selectedTags", "dummyDataStatus"]);
-// If dummy data is not provided as a prop, the getAllQuestions() will be used from DAL instead
+const emit = defineEmits(["dummyDataStatus"]);
+
 const { dummyData } = defineProps<{ dummyData?: { random: boolean } }>();
 
 const tagSet = dummyData
@@ -32,27 +28,9 @@ const tagSet = dummyData
 
 const filterSet: SelectedTags = getUniquePropertyValues(tagSet);
 
-const selectedTags = ref<SelectedTags>({
-  course: [],
-  subject: [],
-  system: [],
-});
-
 onMounted(() => {
   emit("dummyDataStatus", dummyData ? false : true);
 });
-
-const modifySelectedTags = (
-  isChecked: boolean,
-  { category, topic }: { category: keyof SelectedTags; topic: string },
-): void => {
-  selectedTags.value[category] = isChecked
-    ? [...selectedTags.value[category], topic]
-    : selectedTags.value[category].filter(
-        (selectedTopic) => selectedTopic !== topic,
-      );
-  emit("update:selectedTags", selectedTags.value);
-};
 </script>
 
 <style>

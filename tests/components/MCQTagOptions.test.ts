@@ -1,7 +1,12 @@
 import { mount } from "@vue/test-utils";
-import { describe, it, expect } from "vitest";
+import { describe, it, expect, beforeEach } from "vitest";
 import MCQTagOptions from "@/components/MCQ/MCQTagOptions.vue";
 import { getUniquePropertyValues } from "@/components/QuestionStore";
+import { createPinia, setActivePinia } from "pinia";
+
+beforeEach(() => {
+  setActivePinia(createPinia());
+});
 
 describe("MCQTagOptions.vue", () => {
   it("Renders filter options", () => {
