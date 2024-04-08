@@ -1,7 +1,11 @@
 <template>
   <div>
     <h1>VetCloud Smart Quiz</h1>
-    <MCQTagOptions :dummy-data="{ random: false }" />
+    <MCQTagOptions
+      :dummy-data="{ random: false }"
+      @update:selected-tags="handleSelectedTagsUpdate"
+      @dummy-data-status="handleDummyDataStatus"
+    />
     <div class="tags-display">
       <div class="tag-container course">
         <p class="tag-text">VETS2011</p>
@@ -37,6 +41,7 @@ import { ref } from "vue";
 import MCQTagOptions from "@components/MCQ/MCQTagOptions.vue";
 import { SelectedTags } from "@/types/MCQ";
 const questionAmount = ref<number>(0);
+const dummyDataProvided = ref<boolean>(false);
 const emit = defineEmits(["start-quiz"]);
 
 const selectedTags = ref<SelectedTags>({
@@ -49,10 +54,15 @@ const handleSelectedTagsUpdate = (updatedTags: SelectedTags) => {
   selectedTags.value = updatedTags;
 };
 
+const handleDummyDataStatus = (status: boolean) => {
+  dummyDataProvided.value = status;
+};
+
 const startQuiz = () => {
   emit("start-quiz", {
     questionAmount: questionAmount.value,
     selectedTags: selectedTags.value,
+    dummyBoolean: dummyDataProvided.value,
   });
 };
 </script>

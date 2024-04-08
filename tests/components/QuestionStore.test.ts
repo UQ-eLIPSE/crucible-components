@@ -139,7 +139,7 @@ test("Filter questions by multiple courses and subjects", () => {
 
 test("Filter questions with multiple selections but no matches", () => {
   const filterTags: SelectedTags = {
-    course: ["VETS4044"],
+    course: ["VETS2022"],
     subject: ["Unknown"],
     system: ["Neurophysiology"],
   };

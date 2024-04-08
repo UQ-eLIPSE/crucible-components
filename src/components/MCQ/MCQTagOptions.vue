@@ -20,8 +20,9 @@ import type { SelectedTags } from "@/types/MCQ";
 import { getUniquePropertyValues } from "../QuestionStore";
 import { getAllQuestions, getDummyQuestions } from "../DataAccessLayer";
 import FilterCheckbox from "../FilterCheckbox.vue";
-import { ref } from "vue";
+import { onMounted, ref } from "vue";
 
+const emit = defineEmits(["update:selectedTags", "dummyDataStatus"]);
 // If dummy data is not provided as a prop, the getAllQuestions() will be used from DAL instead
 const { dummyData } = defineProps<{ dummyData?: { random: boolean } }>();
 
@@ -30,12 +31,15 @@ const tagSet = dummyData
   : getAllQuestions().flatMap((question) => question.tags);
 
 const filterSet: SelectedTags = getUniquePropertyValues(tagSet);
-const emit = defineEmits(["update:selectedTags"]);
 
 const selectedTags = ref<SelectedTags>({
   course: [],
   subject: [],
   system: [],
+});
+
+onMounted(() => {
+  emit("dummyDataStatus", dummyData ? false : true);
 });
 
 const modifySelectedTags = (

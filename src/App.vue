@@ -8,7 +8,10 @@ import {
 } from "./components/QuestionStore";
 import { useQuizStore } from "./store/QuizStore";
 import { MCQuestion, SelectedTags } from "./types/MCQ";
-import { getAllQuestions } from "./components/DataAccessLayer";
+import {
+  getAllQuestions,
+  getDummyQuestions,
+} from "./components/DataAccessLayer";
 
 const quizQuestions = ref(0);
 const questionsQueue = useQuizStore();
@@ -17,11 +20,16 @@ const quizStarted = ref<boolean>(false);
 const handleStartQuiz = ({
   questionAmount,
   selectedTags,
+  dummyBoolean,
 }: {
   questionAmount: number;
   selectedTags: SelectedTags;
+  dummyBoolean: boolean;
 }) => {
-  const questions: MCQuestion[] = getAllQuestions();
+  const questions: MCQuestion[] = dummyBoolean
+    ? getAllQuestions()
+    : getDummyQuestions(false);
+  console.log(selectedTags);
   const filteredquestions: MCQuestion[] = filterQuestionsByTags(
     questions,
     selectedTags,
