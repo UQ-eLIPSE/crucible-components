@@ -38,9 +38,7 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import MCQTagOptions from "@components/MCQ/MCQTagOptions.vue";
-import { MCQuestion, SelectedTags } from "@/types/MCQ";
-import { getDummyQuestions } from "./DataAccessLayer";
-import { filterQuestionsByTags } from "./QuestionStore";
+import { SelectedTags } from "@/types/MCQ";
 const questionAmount = ref<number>(0);
 const dummyDataProvided = ref<boolean>(false);
 const emit = defineEmits(["start-quiz"]);
