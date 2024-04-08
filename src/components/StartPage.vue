@@ -53,12 +53,6 @@ const selectedTags = ref<SelectedTags>({
 
 const handleSelectedTagsUpdate = (updatedTags: SelectedTags) => {
   selectedTags.value = updatedTags;
-  const questions = getDummyQuestions(false);
-  const filteredquestions: MCQuestion[] = filterQuestionsByTags(
-    questions,
-    selectedTags.value,
-  );
-  console.log(filteredquestions.length);
 };
 
 const handleDummyDataStatus = (status: boolean) => {
