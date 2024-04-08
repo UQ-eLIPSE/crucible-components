@@ -1,3 +1,5 @@
+import { getAllQuestions } from "@/components/DataAccessLayer";
+import { filterQuestionsByTags } from "@/components/QuestionStore";
 import { MCQuestion, QuestionState } from "@/types/MCQ";
 import { SelectedTags } from "@/types/MCQ";
 import { defineStore } from "pinia";
@@ -19,6 +21,9 @@ export const useQuizStore = defineStore("questionsQueue", {
     };
   },
   actions: {
+    getquestionnumber() {
+      return filterQuestionsByTags(getAllQuestions(), this.selectedTags).length;
+    },
     setselectedTags(tags: SelectedTags) {
       this.selectedTags = tags;
     },
@@ -29,15 +34,11 @@ export const useQuizStore = defineStore("questionsQueue", {
       isChecked: boolean,
       { category, topic }: { category: keyof SelectedTags; topic: string },
     ) {
-      console.log(isChecked);
-      console.log("modify", category);
-      console.log("seleted Tags", this.selectedTags);
       this.selectedTags[category] = isChecked
         ? [...this.selectedTags[category], topic]
         : this.selectedTags[category].filter(
             (selectedTopic) => selectedTopic !== topic,
           );
-      console.log("this.selected", this.selectedTags);
     },
     initialiseQuiz(questions: MCQuestion[]) {
       this.questionsQueue = questions;

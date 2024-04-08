@@ -14,8 +14,12 @@
       />
       <label :for="`${category}-${topic}-checkbox`"
         >{{ topic }}
-        <span>{{ getQuestionsnumByTags(topic, category) }}</span></label
-      >
+        <span
+          v-if="getQuestionsnumByTags(topic, category) !== null"
+          class="question-number"
+          >{{ getQuestionsnumByTags(topic, category) }}</span
+        >
+      </label>
     </li>
   </ul>
 </template>
@@ -30,36 +34,52 @@ const { category, topics } = defineProps<{
   topics: string[];
 }>();
 const questionsQueue = useQuizStore();
-const emit = defineEmits(["checked"]);
 const onChecked = (event: Event) => {
   if (!(event.target instanceof HTMLInputElement))
     return console.error("Trying to click on non-input element");
 
   const category = event.target.name as keyof SelectedTags;
   const topic = event.target.value;
-  console.log("checked");
   questionsQueue.modifySelectedTags(event.target.checked, { category, topic });
 };
-const getQuestionsnumByTags = (topic: any, category: string) => {
-  console.log("0", category);
-  console.log("0", topic);
+const getQuestionsnumByTags = (
+  topic: string,
+  category: string,
+): string | null => {
+  const currentSelectedTags = questionsQueue.getselectedtags();
+
+  if (currentSelectedTags[category]?.includes(topic)) {
+    return null;
+  }
+
+  const modifiedSelectedTags = JSON.parse(
+    JSON.stringify(questionsQueue.getselectedtags()),
+  );
+
+  if (!modifiedSelectedTags[category].includes(topic)) {
+    modifiedSelectedTags[category].push(topic);
+  }
 
   return filterQuestionsByTags(
     getAllQuestions(),
-    questionsQueue.getselectedtags(),
-  ).filter((question) => {
-    if (category == "course") {
-      return question.tags.course == topic;
-    } else if (category == "subject") {
-      return question.tags.subject == topic;
-    } else if (category == "system") {
-      return question.tags.system == topic;
-    }
-  }).length;
+    modifiedSelectedTags,
+  ).length.toString();
 };
 </script>
 
 <style scoped>
+.question-number {
+  border-radius: 10px;
+  text-align: center;
+  background-color: #2a52be;
+  color: white;
+  padding: 4px 8px;
+  text-align: left;
+  width: fit-content;
+  font-weight: bolder;
+  font-size: small;
+}
+
 ul {
   display: grid;
   grid-template-columns: 1fr 1fr;

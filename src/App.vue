@@ -29,7 +29,6 @@ const handleStartQuiz = ({
   const questions: MCQuestion[] = dummyBoolean
     ? getAllQuestions()
     : getDummyQuestions(false);
-  console.log("selecte Tags", selectedTags);
   const filteredquestions: MCQuestion[] = filterQuestionsByTags(
     questions,
     selectedTags,
