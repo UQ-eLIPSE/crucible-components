@@ -12,18 +12,24 @@
         :value="topic"
         @change="onChecked($event)"
       />
-      <label :for="`${category}-${topic}-checkbox`">{{ topic }}</label>
+      <label :for="`${category}-${topic}-checkbox`"
+        >{{ topic }}
+        <span>{{ getQuestionsnumByTags(topic, category) }}</span></label
+      >
     </li>
   </ul>
 </template>
 
 <script setup lang="ts">
 import { SelectedTags } from "@/types/MCQ";
+import { useQuizStore } from "@/store/QuizStore";
+import { getAllQuestions } from "./DataAccessLayer";
+import { filterQuestionsByTags } from "./QuestionStore";
 const { category, topics } = defineProps<{
   category: string;
   topics: string[];
 }>();
-
+const questionsQueue = useQuizStore();
 const emit = defineEmits(["checked"]);
 const onChecked = (event: Event) => {
   if (!(event.target instanceof HTMLInputElement))
@@ -31,8 +37,25 @@ const onChecked = (event: Event) => {
 
   const category = event.target.name as keyof SelectedTags;
   const topic = event.target.value;
+  console.log("checked");
+  questionsQueue.modifySelectedTags(event.target.checked, { category, topic });
+};
+const getQuestionsnumByTags = (topic: any, category: string) => {
+  console.log("0", category);
+  console.log("0", topic);
 
-  emit("checked", event.target.checked, { category, topic });
+  return filterQuestionsByTags(
+    getAllQuestions(),
+    questionsQueue.getselectedtags(),
+  ).filter((question) => {
+    if (category == "course") {
+      return question.tags.course == topic;
+    } else if (category == "subject") {
+      return question.tags.subject == topic;
+    } else if (category == "system") {
+      return question.tags.system == topic;
+    }
+  }).length;
 };
 </script>
 
