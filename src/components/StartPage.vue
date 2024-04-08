@@ -2,7 +2,6 @@
   <div>
     <h1>VetCloud Smart Quiz</h1>
     <MCQTagOptions
-      :dummy-data="{ random: false }"
       @update:selected-tags="handleSelectedTagsUpdate"
       @dummy-data-status="handleDummyDataStatus"
     />
@@ -39,7 +38,9 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import MCQTagOptions from "@components/MCQ/MCQTagOptions.vue";
-import { SelectedTags } from "@/types/MCQ";
+import { MCQuestion, SelectedTags } from "@/types/MCQ";
+import { getDummyQuestions } from "./DataAccessLayer";
+import { filterQuestionsByTags } from "./QuestionStore";
 const questionAmount = ref<number>(0);
 const dummyDataProvided = ref<boolean>(false);
 const emit = defineEmits(["start-quiz"]);
@@ -52,6 +53,12 @@ const selectedTags = ref<SelectedTags>({
 
 const handleSelectedTagsUpdate = (updatedTags: SelectedTags) => {
   selectedTags.value = updatedTags;
+  const questions = getDummyQuestions(false);
+  const filteredquestions: MCQuestion[] = filterQuestionsByTags(
+    questions,
+    selectedTags.value,
+  );
+  console.log(filteredquestions.length);
 };
 
 const handleDummyDataStatus = (status: boolean) => {
