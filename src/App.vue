@@ -7,7 +7,7 @@ import {
   getQuestionsRandomly,
 } from "./components/QuestionStore";
 import { useQuizStore } from "./store/QuizStore";
-import { MCQuestion, SelectedTags } from "./types/MCQ";
+import { MCQuestion } from "./types/MCQ";
 import {
   getAllQuestions,
   getDummyQuestions,
@@ -17,19 +17,18 @@ const quizQuestions = ref(0);
 const questionsQueue = useQuizStore();
 const quizStarted = ref<boolean>(false);
 
+const selectedTags = questionsQueue.getselectedtags();
+
 const handleStartQuiz = ({
   questionAmount,
-  selectedTags,
   dummyBoolean,
 }: {
   questionAmount: number;
-  selectedTags: SelectedTags;
   dummyBoolean: boolean;
 }) => {
   const questions: MCQuestion[] = dummyBoolean
     ? getAllQuestions()
     : getDummyQuestions(false);
-  console.log(selectedTags);
   const filteredquestions: MCQuestion[] = filterQuestionsByTags(
     questions,
     selectedTags,

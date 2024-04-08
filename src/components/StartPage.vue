@@ -1,10 +1,7 @@
 <template>
   <div>
     <h1>VetCloud Smart Quiz</h1>
-    <MCQTagOptions
-      @update:selected-tags="handleSelectedTagsUpdate"
-      @dummy-data-status="handleDummyDataStatus"
-    />
+    <MCQTagOptions @dummy-data-status="handleDummyDataStatus" />
     <div class="tags-display">
       <div class="tag-container course">
         <p class="tag-text">VETS2011</p>
@@ -18,7 +15,7 @@
         <p class="tag-text">Neurophysiology</p>
       </div>
       <div class="tag-container questions-count">
-        <p class="tag-text">115</p>
+        <p class="tag-text">{{ questionsQueue.getquestionnumber() }}</p>
       </div>
     </div>
     <div>
@@ -38,20 +35,11 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import MCQTagOptions from "@components/MCQ/MCQTagOptions.vue";
-import { SelectedTags } from "@/types/MCQ";
+import { useQuizStore } from "@/store/QuizStore";
 const questionAmount = ref<number>(0);
 const dummyDataProvided = ref<boolean>(false);
 const emit = defineEmits(["start-quiz"]);
-
-const selectedTags = ref<SelectedTags>({
-  course: [],
-  subject: [],
-  system: [],
-});
-
-const handleSelectedTagsUpdate = (updatedTags: SelectedTags) => {
-  selectedTags.value = updatedTags;
-};
+const questionsQueue = useQuizStore();
 
 const handleDummyDataStatus = (status: boolean) => {
   dummyDataProvided.value = status;
@@ -60,7 +48,6 @@ const handleDummyDataStatus = (status: boolean) => {
 const startQuiz = () => {
   emit("start-quiz", {
     questionAmount: questionAmount.value,
-    selectedTags: selectedTags.value,
     dummyBoolean: dummyDataProvided.value,
   });
 };
