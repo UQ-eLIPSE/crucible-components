@@ -1,4 +1,4 @@
-import { getAllQuestions } from "@/components/DataAccessLayer";
+import { getQuestionsBasedOnEnv } from "@/components/DataAccessLayer";
 import { filterQuestionsByTags } from "@/components/QuestionStore";
 import { MCQuestion, QuestionState } from "@/types/MCQ";
 import { SelectedTags } from "@/types/MCQ";
@@ -22,7 +22,8 @@ export const useQuizStore = defineStore("questionsQueue", {
   },
   actions: {
     getquestionnumber() {
-      return filterQuestionsByTags(getAllQuestions(), this.selectedTags).length;
+      const questions = getQuestionsBasedOnEnv();
+      return filterQuestionsByTags(questions, this.selectedTags).length;
     },
     setselectedTags(tags: SelectedTags) {
       this.selectedTags = tags;

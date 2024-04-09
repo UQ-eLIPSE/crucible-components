@@ -32,7 +32,7 @@
 <script setup lang="ts">
 import { SelectedTags } from "@/types/MCQ";
 import { useQuizStore } from "@/store/QuizStore";
-import { getAllQuestions } from "./DataAccessLayer";
+import { getQuestionsBasedOnEnv } from "./DataAccessLayer";
 import { filterQuestionsByTags } from "./QuestionStore";
 const { category, topics } = defineProps<{
   category: string;
@@ -69,8 +69,10 @@ const getQuestionsnumByTags = (
     modifiedSelectedTags[category].push(topic);
   }
 
+  const questions = getQuestionsBasedOnEnv();
+
   return filterQuestionsByTags(
-    getAllQuestions(),
+    questions,
     modifiedSelectedTags,
   ).length.toString();
 };
@@ -101,7 +103,7 @@ ul {
 @media screen and (max-width: 768px) {
   .filter-options {
     text-align: left;
-    margin-left: 20vw;
+    display: flex;
   }
 }
 </style>

@@ -12,6 +12,8 @@ yarn install
 
 ### Compile and Hot-Reload for Development
 
+## set DUMY_DATA in .env file false for real question data otherwise dummy question data :
+
 ```sh
 yarn run dev
 ```
