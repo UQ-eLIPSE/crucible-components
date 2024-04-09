@@ -4,22 +4,27 @@
       v-for="[idx, topic] in Object.entries(topics)"
       :key="idx"
       class="filter-options"
+      :class="{ 'grey-out': getQuestionsnumByTags(topic, category) === '0' }"
     >
       <input
         :id="`${category}-${topic}-checkbox`"
         type="checkbox"
         :name="category"
         :value="topic"
+        :disabled="getQuestionsnumByTags(topic, category) === '0'"
         @change="onChecked($event)"
       />
       <label :for="`${category}-${topic}-checkbox`"
         >{{ topic }}
         <span
-          v-if="getQuestionsnumByTags(topic, category) !== null"
+          v-if="
+            getQuestionsnumByTags(topic, category) !== null &&
+            getQuestionsnumByTags(topic, category) !== '0'
+          "
           class="question-number"
           >{{ getQuestionsnumByTags(topic, category) }}</span
-        >
-      </label>
+        ></label
+      >
     </li>
   </ul>
 </template>
@@ -72,6 +77,11 @@ const getQuestionsnumByTags = (
 </script>
 
 <style scoped>
+.grey-out {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
 .question-number {
   border-radius: 10px;
   text-align: center;
