@@ -14,23 +14,14 @@
 <script setup lang="ts">
 import type { SelectedTags } from "@/types/MCQ";
 import { getUniquePropertyValues } from "../QuestionStore";
-import { getAllQuestions, getDummyQuestions } from "../DataAccessLayer";
+import { getQuestionsBasedOnEnv } from "../DataAccessLayer";
 import FilterCheckbox from "../FilterCheckbox.vue";
-import { onMounted } from "vue";
 
-const emit = defineEmits(["dummyDataStatus"]);
-
-const { dummyData } = defineProps<{ dummyData?: { random: boolean } }>();
-
-const tagSet = dummyData
-  ? getDummyQuestions(dummyData.random).flatMap((question) => question.tags)
-  : getAllQuestions().flatMap((question) => question.tags);
+// Access environment variable
+const questions = getQuestionsBasedOnEnv();
+const tagSet = questions.flatMap((question) => question.tags);
 
 const filterSet: SelectedTags = getUniquePropertyValues(tagSet);
-
-onMounted(() => {
-  emit("dummyDataStatus", dummyData ? false : true);
-});
 </script>
 
 <style>
