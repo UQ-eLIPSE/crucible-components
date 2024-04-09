@@ -12,8 +12,16 @@ yarn install
 
 ### Compile and Hot-Reload for Development
 
+## To use real question data :
+
 ```sh
 yarn run dev
+```
+
+## To use dummy question data :
+
+```sh
+yarn run dev --mode dev
 ```
 
 ### Type-Check, Compile and Minify for Production
