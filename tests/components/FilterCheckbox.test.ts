@@ -1,7 +1,6 @@
 import { describe, it, expect, beforeEach } from "vitest";
 import FilterCheckbox from "@/components/FilterCheckbox.vue";
 import { DOMWrapper, VueWrapper, mount } from "@vue/test-utils";
-import { useQuizStore } from "@/store/QuizStore";
 import { createPinia, setActivePinia } from "pinia";
 
 let wrapper: VueWrapper;
