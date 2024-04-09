@@ -12,16 +12,10 @@ yarn install
 
 ### Compile and Hot-Reload for Development
 
-## To use real question data :
+## set DUMY_DATA in .env file false for real question data otherwise dummy question data :
 
 ```sh
 yarn run dev
-```
-
-## To use dummy question data :
-
-```sh
-yarn run dev --mode dev
 ```
 
 ### Type-Check, Compile and Minify for Production
