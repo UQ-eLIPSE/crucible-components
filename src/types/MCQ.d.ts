@@ -12,7 +12,7 @@ export interface MCQQuiz {
 export interface MCQuestion {
   _id: { $oid: string };
   statement: string;
-  tags: tags[];
+  tags: tags;
   optionsList: MCQOptions[];
   link: string;
 }
@@ -53,4 +53,10 @@ export interface tags {
   course: string;
   subject: string;
   system: string;
+}
+
+export interface SelectedTags {
+  course: string[];
+  subject: string[];
+  system: string[];
 }

@@ -1,4 +1,7 @@
-import { MCQuestion, QuestionState, QuizMode } from "@/types/MCQ";
+import { MCQuestion, QuestionState, QuizMode, SelectedTags } from "@/types/MCQ";
+
+import { getQuestionsBasedOnEnv } from "@/components/DataAccessLayer";
+import { filterQuestionsByTags } from "@/components/QuestionStore";
 import { defineStore } from "pinia";
 
 type Stat = "correct" | "skipped" | "attempts" | "selectedValue";
@@ -11,9 +14,34 @@ export const useQuizStore = defineStore("questionsQueue", {
       questionsQueue: [] as MCQuestion[],
       quizStats: [] as QuestionState[],
       quizMode: "Tutor" as QuizMode,
+      selectedTags: {
+        course: [],
+        subject: [],
+        system: [],
+      } as SelectedTags,
     };
   },
   actions: {
+    getquestionnumber() {
+      const questions = getQuestionsBasedOnEnv();
+      return filterQuestionsByTags(questions, this.selectedTags).length;
+    },
+    setselectedTags(tags: SelectedTags) {
+      this.selectedTags = tags;
+    },
+    getselectedtags() {
+      return this.selectedTags;
+    },
+    modifySelectedTags(
+      isChecked: boolean,
+      { category, topic }: { category: keyof SelectedTags; topic: string },
+    ) {
+      this.selectedTags[category] = isChecked
+        ? [...this.selectedTags[category], topic]
+        : this.selectedTags[category].filter(
+            (selectedTopic) => selectedTopic !== topic,
+          );
+    },
     initialiseQuiz(questions: MCQuestion[], mode: QuizMode) {
       this.questionsQueue = questions;
       this.quizMode = mode;
