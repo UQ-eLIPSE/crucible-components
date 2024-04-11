@@ -1,6 +1,8 @@
+type QuizMode = "Timed" | "Tutor";
+
 export interface StartQuizConfig {
   questionAmount: number;
-  mode: "Timed" | "Tutor";
+  mode: QuizMode;
 }
 
 export interface MCQQuiz {
