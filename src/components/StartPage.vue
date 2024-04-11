@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="start-page-container">
     <h1>VetCloud Smart Quiz</h1>
     <MCQTagOptions />
     <div class="quiz-config-container">
@@ -96,5 +96,15 @@ const checkMax = () => {
 }
 .tag-text {
   margin: 0px;
+}
+
+.start-page-container {
+  background: linear-gradient(145deg, #ffffff, #e1e1e1);
+  /* background: #fafafa; */
+  padding: 1.5rem;
+  border-radius: 50px;
+  box-shadow:
+    43px 55px 87px #b8b8b8,
+    -43px -55px 87px #ffffff;
 }
 </style>
