@@ -1,3 +1,8 @@
+export interface StartQuizConfig {
+  questionAmount: number;
+  mode: "Timed" | "Tutor";
+}
+
 export interface MCQQuiz {
   questions: MCQuestion[];
 }

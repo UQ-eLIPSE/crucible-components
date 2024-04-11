@@ -4,19 +4,14 @@ import MCQQuiz from "@components/MCQ/MCQQuiz.vue";
 import StartPage from "@components/StartPage.vue";
 import { getQuestionsRandomly } from "./components/QuestionStore";
 import { useQuizStore } from "./store/QuizStore";
+import { StartQuizConfig } from "./types/MCQ";
 
 const quizQuestions = ref(0);
 const questionsQueue = useQuizStore();
 const quizStarted = ref<boolean>(false);
 const quizMode = ref<string>("Tutor");
 
-const handleStartQuiz = ({
-  questionAmount,
-  mode,
-}: {
-  questionAmount: number;
-  mode: string;
-}) => {
+const handleStartQuiz = ({ questionAmount, mode }: StartQuizConfig) => {
   const quizAmount = getQuestionsRandomly(questionAmount);
   quizQuestions.value = quizAmount.length;
   questionsQueue.initialiseQuiz(quizAmount, mode);
