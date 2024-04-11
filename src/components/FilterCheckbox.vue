@@ -35,13 +35,14 @@ const { category, topics } = defineProps<{
   topics: string[];
 }>();
 const questionsQueue = useQuizStore();
-const topicsArray = Object.entries(topics);
+
 const questionsNumByTags = computed(() =>
-  topicsArray.map(([idx, topic]) => {
+  Object.entries(topics).map(([idx, topic]) => {
     const num = getQuestionsnumByTags(topic, category);
     return { idx, topic, num };
   }),
 );
+
 const onChecked = (event: Event) => {
   if (!(event.target instanceof HTMLInputElement))
     return console.error("Trying to click on non-input element");
@@ -50,6 +51,7 @@ const onChecked = (event: Event) => {
   const topic = event.target.value;
   questionsQueue.modifySelectedTags(event.target.checked, { category, topic });
 };
+
 const getQuestionsnumByTags = (
   topic: string,
   category: string,
