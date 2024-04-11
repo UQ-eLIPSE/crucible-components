@@ -1,3 +1,10 @@
+type QuizMode = "Timed" | "Tutor";
+
+export interface StartQuizConfig {
+  questionAmount: number;
+  mode: QuizMode;
+}
+
 export interface MCQQuiz {
   questions: MCQuestion[];
 }
@@ -5,7 +12,7 @@ export interface MCQQuiz {
 export interface MCQuestion {
   _id: { $oid: string };
   statement: string;
-  tags?: string[];
+  tags: tags;
   optionsList: MCQOptions[];
   link: string;
 }
@@ -40,4 +47,16 @@ export interface QuestionState {
   skipped: number;
   attempts: number;
   selectedValue: string;
+}
+
+export interface tags {
+  course: string;
+  subject: string;
+  system: string;
+}
+
+export interface SelectedTags {
+  course: string[];
+  subject: string[];
+  system: string[];
 }

@@ -1,8 +1,11 @@
 <template>
   <div>
     <h1>VetCloud Smart Quiz</h1>
+    <MCQTagOptions />
     <div class="tags-display">
-      <div class="tag-container course"><p class="tag-text">VETS2011</p></div>
+      <div class="tag-container course">
+        <p class="tag-text">VETS2011</p>
+      </div>
       <div class="arrow"></div>
       <div class="tag-container subject">
         <p class="tag-text">Physiology</p>
@@ -12,7 +15,7 @@
         <p class="tag-text">Neurophysiology</p>
       </div>
       <div class="tag-container questions-count">
-        <p class="tag-text">115</p>
+        <p class="tag-text">{{ questionsQueue.getquestionnumber() }}</p>
       </div>
     </div>
     <div>
@@ -25,21 +28,37 @@
         min="1"
       />
     </div>
+    <div>
+      <label for="mode-select">Select mode:</label>
+      <select id="mode-select" v-model="selectedMode">
+        <option value="Tutor">Tutor mode</option>
+        <option value="Timed">Timed mode</option>
+      </select>
+    </div>
+
     <button class="start-button" @click="startQuiz">Start</button>
   </div>
 </template>
 
 <script setup lang="ts">
 import { ref } from "vue";
+import MCQTagOptions from "@components/MCQ/MCQTagOptions.vue";
+import { useQuizStore } from "@/store/QuizStore";
 const questionAmount = ref<number>(0);
+const selectedMode = ref<string>("Tutor");
 const emit = defineEmits(["start-quiz"]);
+const questionsQueue = useQuizStore();
 
 const startQuiz = () => {
-  emit("start-quiz", questionAmount.value);
+  emit("start-quiz", {
+    questionAmount: questionAmount.value,
+    mode: selectedMode.value,
+  });
 };
 </script>
 
 <style scoped>
+#mode-select,
 #question-amount,
 #question-tag {
   margin-left: 5px;

@@ -76,6 +76,11 @@ const selectOption = (key: string) => {
 const optionClass = (key: string, optionsList: MCQOptions[]) => {
   const option = optionsList[parseInt(key)];
   const isSelected = selectedOption.value === key;
+
+  if (statUpdate.quizMode === "Timed" && submitted.value) {
+    return isSelected ? "selected ignore-hover" : "ignore-hover";
+  }
+
   if (!submitted.value) {
     return isSelected ? "selected" : "";
   }
