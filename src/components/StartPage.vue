@@ -28,6 +28,14 @@
         min="1"
       />
     </div>
+    <div>
+      <label for="mode-select">Select mode:</label>
+      <select id="mode-select" v-model="selectedMode">
+        <option value="Tutor">Tutor mode</option>
+        <option value="Timed">Timed mode</option>
+      </select>
+    </div>
+
     <button class="start-button" @click="startQuiz">Start</button>
   </div>
 </template>
@@ -37,17 +45,20 @@ import { ref } from "vue";
 import MCQTagOptions from "@components/MCQ/MCQTagOptions.vue";
 import { useQuizStore } from "@/store/QuizStore";
 const questionAmount = ref<number>(0);
+const selectedMode = ref<string>("Tutor");
 const emit = defineEmits(["start-quiz"]);
 const questionsQueue = useQuizStore();
 
 const startQuiz = () => {
   emit("start-quiz", {
     questionAmount: questionAmount.value,
+    mode: selectedMode.value,
   });
 };
 </script>
 
 <style scoped>
+#mode-select,
 #question-amount,
 #question-tag {
   margin-left: 5px;

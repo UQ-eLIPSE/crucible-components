@@ -7,6 +7,7 @@ import {
   getQuestionsRandomly,
 } from "./components/QuestionStore";
 import { useQuizStore } from "./store/QuizStore";
+import { StartQuizConfig } from "./types/MCQ";
 import { MCQuestion } from "./types/MCQ";
 import { getQuestionsBasedOnEnv } from "./components/DataAccessLayer";
 
@@ -14,9 +15,9 @@ const quizQuestions = ref(0);
 const questionsQueue = useQuizStore();
 const quizStarted = ref<boolean>(false);
 
-const selectedTags = questionsQueue.getselectedtags();
+const handleStartQuiz = ({ questionAmount, mode }: StartQuizConfig) => {
+  const selectedTags = questionsQueue.getselectedtags();
 
-const handleStartQuiz = ({ questionAmount }: { questionAmount: number }) => {
   const questions = getQuestionsBasedOnEnv();
   const filteredquestions: MCQuestion[] = filterQuestionsByTags(
     questions,
@@ -24,7 +25,7 @@ const handleStartQuiz = ({ questionAmount }: { questionAmount: number }) => {
   );
   const quizAmount = getQuestionsRandomly(questionAmount, filteredquestions);
   quizQuestions.value = quizAmount.length;
-  questionsQueue.initialiseQuiz(quizAmount);
+  questionsQueue.initialiseQuiz(quizAmount, mode);
   quizStarted.value = true;
 };
 </script>
