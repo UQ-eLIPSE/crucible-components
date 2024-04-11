@@ -9,7 +9,6 @@ import { StartQuizConfig } from "./types/MCQ";
 const quizQuestions = ref(0);
 const questionsQueue = useQuizStore();
 const quizStarted = ref<boolean>(false);
-const quizMode = ref<string>("Tutor");
 
 const handleStartQuiz = ({ questionAmount, mode }: StartQuizConfig) => {
   const quizAmount = getQuestionsRandomly(questionAmount);
