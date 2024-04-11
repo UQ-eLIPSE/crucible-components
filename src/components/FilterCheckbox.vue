@@ -1,29 +1,24 @@
 <template>
   <ul>
     <li
-      v-for="[idx, topic] in Object.entries(topics)"
+      v-for="{ idx, num, topic } in questionsNumByTags"
       :key="idx"
       class="filter-options"
-      :class="{ 'grey-out': getQuestionsnumByTags(topic, category) === '0' }"
+      :class="{ 'grey-out': num === '0' }"
     >
       <input
         :id="`${category}-${topic}-checkbox`"
         type="checkbox"
         :name="category"
         :value="topic"
-        :disabled="getQuestionsnumByTags(topic, category) === '0'"
+        :disabled="num === '0'"
         @change="onChecked($event)"
       />
       <label :for="`${category}-${topic}-checkbox`"
         >{{ topic }}
-        <span
-          v-if="
-            getQuestionsnumByTags(topic, category) !== null &&
-            getQuestionsnumByTags(topic, category) !== '0'
-          "
-          class="question-number"
-          >{{ getQuestionsnumByTags(topic, category) }}</span
-        ></label
+        <span v-if="num !== null && num !== '0'" class="question-number">{{
+          num
+        }}</span></label
       >
     </li>
   </ul>
@@ -34,11 +29,19 @@ import { SelectedTags } from "@/types/MCQ";
 import { useQuizStore } from "@/store/QuizStore";
 import { getQuestionsBasedOnEnv } from "./DataAccessLayer";
 import { filterQuestionsByTags } from "./QuestionStore";
+import { computed } from "vue";
 const { category, topics } = defineProps<{
   category: string;
   topics: string[];
 }>();
 const questionsQueue = useQuizStore();
+const topicsArray = Object.entries(topics);
+const questionsNumByTags = computed(() =>
+  topicsArray.map(([idx, topic]) => {
+    const num = getQuestionsnumByTags(topic, category);
+    return { idx, topic, num };
+  }),
+);
 const onChecked = (event: Event) => {
   if (!(event.target instanceof HTMLInputElement))
     return console.error("Trying to click on non-input element");
