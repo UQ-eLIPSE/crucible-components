@@ -2,40 +2,36 @@
   <div>
     <h1>VetCloud Smart Quiz</h1>
     <MCQTagOptions />
-    <div class="tags-display">
-      <div class="tag-container course">
-        <p class="tag-text">VETS2011</p>
-      </div>
-      <div class="arrow"></div>
-      <div class="tag-container subject">
-        <p class="tag-text">Physiology</p>
-      </div>
-      <div class="arrow"></div>
-      <div class="tag-container system">
-        <p class="tag-text">Neurophysiology</p>
-      </div>
-      <div class="tag-container questions-count">
-        <p class="tag-text">{{ questionsQueue.getquestionnumber() }}</p>
+    <div class="quiz-config-container">
+      <div class="question-config-container">
+        <p class="tag-text">
+          Maximum possible questions: {{ questionsQueue.getquestionnumber() }}
+        </p>
+        <div class="question-amount-container">
+          <label for="question-amount">Select the amount of questions:</label>
+          <input
+            id="question-amount"
+            v-model.number="questionAmount"
+            type="number"
+            placeholder="Question amount"
+            min="1"
+            :max="questionsQueue.getquestionnumber()"
+            @input="checkMax"
+          />
+        </div>
+        <p v-if="showMaxMsg" class="show-max-msg">
+          Cannot select more than
+          {{ questionsQueue.getquestionnumber() }} questions.
+        </p>
+        <div>
+          <label for="mode-select">Select mode:</label>
+          <select id="mode-select" v-model="selectedMode">
+            <option value="Tutor">Tutor mode</option>
+            <option value="Timed">Timed mode</option>
+          </select>
+        </div>
       </div>
     </div>
-    <div>
-      <label for="question-amount">Select the amount of questions:</label>
-      <input
-        id="question-amount"
-        v-model.number="questionAmount"
-        type="number"
-        placeholder="Question amount"
-        min="1"
-      />
-    </div>
-    <div>
-      <label for="mode-select">Select mode:</label>
-      <select id="mode-select" v-model="selectedMode">
-        <option value="Tutor">Tutor mode</option>
-        <option value="Timed">Timed mode</option>
-      </select>
-    </div>
-
     <button class="start-button" @click="startQuiz">Start</button>
   </div>
 </template>
@@ -46,6 +42,9 @@ import MCQTagOptions from "@components/MCQ/MCQTagOptions.vue";
 import { useQuizStore } from "@/store/QuizStore";
 const questionAmount = ref<number>(0);
 const selectedMode = ref<string>("Tutor");
+const showMaxMsg = ref<boolean>(false);
+const showMaxMsgDelay = 3000;
+const showMaxMsgTimeoutId = ref<number | null>(null);
 const emit = defineEmits(["start-quiz"]);
 const questionsQueue = useQuizStore();
 
@@ -55,22 +54,44 @@ const startQuiz = () => {
     mode: selectedMode.value,
   });
 };
+
+const checkMax = () => {
+  if (showMaxMsgTimeoutId.value) {
+    clearTimeout(showMaxMsgTimeoutId.value);
+  }
+  if (questionAmount.value > questionsQueue.getquestionnumber()) {
+    questionAmount.value = questionsQueue.getquestionnumber();
+    showMaxMsg.value = true;
+    showMaxMsgTimeoutId.value = window.setTimeout(() => {
+      showMaxMsg.value = false;
+    }, showMaxMsgDelay);
+  }
+};
 </script>
 
 <style scoped>
 #mode-select,
-#question-amount,
-#question-tag {
-  margin-left: 5px;
-  margin-bottom: 5%;
+#question-amount {
+  margin-left: 0.5rem;
 }
+
+.question-config-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  text-align: left;
+  padding-left: 40px;
+  margin-bottom: 40px;
+}
+
+.show-max-msg {
+  color: red;
+  margin: 0.15rem 0;
+}
+
 .start-button {
   color: #ffffff;
   background-color: #2a52be;
-}
-.questions-count {
-  margin: 20px;
-  background-color: lightgoldenrodyellow;
 }
 .course {
   background-color: lightblue;
@@ -81,36 +102,14 @@ const startQuiz = () => {
 .system {
   background-color: lightgreen;
 }
-.tag-container {
-  border-radius: 10px;
-  padding: 10px;
-  text-align: center;
-}
 .tag-text {
   margin: 0px;
-}
-.tags-display {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 20px;
-}
-.arrow {
-  width: 0;
-  height: 0;
-  border-top: 5px solid transparent;
-  border-bottom: 5px solid transparent;
-  border-left: 10px solid black;
-  margin: 5px;
 }
 @media screen and (max-width: 768px) {
   .tags-display {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-  }
-  .arrow {
-    transform: rotate(90deg);
   }
 }
 </style>
