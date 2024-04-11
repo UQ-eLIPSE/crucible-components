@@ -122,6 +122,8 @@ table {
 
 td {
   text-align: center;
+  padding: 0.75rem 1rem;
+  line-height: 1.25;
 }
 td span {
   display: flex;
