@@ -2,15 +2,27 @@
 import { ref } from "vue";
 import MCQQuiz from "@components/MCQ/MCQQuiz.vue";
 import StartPage from "@components/StartPage.vue";
-import { getQuestionsRandomly } from "./components/QuestionStore";
+import {
+  filterQuestionsByTags,
+  getQuestionsRandomly,
+} from "./components/QuestionStore";
 import { useQuizStore } from "./store/QuizStore";
+import { MCQuestion } from "./types/MCQ";
+import { getQuestionsBasedOnEnv } from "./components/DataAccessLayer";
 
 const quizQuestions = ref(0);
 const questionsQueue = useQuizStore();
 const quizStarted = ref<boolean>(false);
 
-const handleStartQuiz = (questionAmount: number) => {
-  const quizAmount = getQuestionsRandomly(questionAmount);
+const selectedTags = questionsQueue.getselectedtags();
+
+const handleStartQuiz = ({ questionAmount }: { questionAmount: number }) => {
+  const questions = getQuestionsBasedOnEnv();
+  const filteredquestions: MCQuestion[] = filterQuestionsByTags(
+    questions,
+    selectedTags,
+  );
+  const quizAmount = getQuestionsRandomly(questionAmount, filteredquestions);
   quizQuestions.value = quizAmount.length;
   questionsQueue.initialiseQuiz(quizAmount);
   quizStarted.value = true;

@@ -63,9 +63,13 @@
 </template>
 
 <script setup lang="ts">
-import { MCQResult } from "@/types/MCQ";
+import { useQuizStore } from "@/store/QuizStore";
 
-const { quizStatus, workQuiz } = defineProps<MCQResult>();
+const questionsQueue = useQuizStore();
+
+const quizStatus = questionsQueue.quizStats;
+
+const workQuiz = questionsQueue.quizStats.length;
 
 const correctQuizNum = quizStatus.filter((quiz) => {
   return quiz.correct === 1;

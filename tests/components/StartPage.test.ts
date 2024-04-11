@@ -1,7 +1,12 @@
-import { describe, it, expect } from "vitest";
+import { describe, it, expect, beforeEach } from "vitest";
 import { mount } from "@vue/test-utils";
 import { questions } from "@data/question-data.json";
 import StartPage from "@components/StartPage.vue";
+import { createPinia, setActivePinia } from "pinia";
+
+beforeEach(() => {
+  setActivePinia(createPinia());
+});
 
 describe("StartPage.vue", () => {
   it("renders App component", () => {
