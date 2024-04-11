@@ -40,7 +40,7 @@
 import { ref } from "vue";
 import MCQTagOptions from "@components/MCQ/MCQTagOptions.vue";
 import { useQuizStore } from "@/store/QuizStore";
-const questionAmount = ref<number>(0);
+const questionAmount = ref<number>(1);
 const selectedMode = ref<string>("Tutor");
 const showMaxMsg = ref<boolean>(false);
 const showMaxMsgDelay = 3000;
@@ -92,15 +92,7 @@ const checkMax = () => {
 .start-button {
   color: #ffffff;
   background-color: #2a52be;
-}
-.course {
-  background-color: lightblue;
-}
-.subject {
-  background-color: lightcoral;
-}
-.system {
-  background-color: lightgreen;
+  cursor: pointer;
 }
 .tag-text {
   margin: 0px;
