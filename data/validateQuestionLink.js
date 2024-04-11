@@ -32,19 +32,30 @@ export const validateURLResponse = async (input) => {
   }
 };
 
-const validateQuizLink = async (linkList) => {
-  console.info("validating links...", linkList.length);
-  const badLinks = await Promise.all(
-    linkList.map(async ({ link }, idx) => {
+const validateQuizLink = async (
+  linkList,
+  concurrencyLimit = 10,
+  waitResponse = 500,
+) => {
+  const badLinks = [];
+  const queueLinks = [...linkList];
+
+  const processLink = async (queueLinks) => {
+    while (queueLinks.length > 0) {
+      const { link, index } = queueLinks.shift();
       const result = await validateURLResponse(link);
       if (!result) {
-        console.error("Found invalid link:", link, "at index", idx);
-        return { link };
+        console.error("Found invalid link:", link, "at index", index);
+        badLinks.push({ link });
       }
-      return null;
-    }),
+      await new Promise((resolve) => setTimeout(resolve, waitResponse));
+    }
+  };
+  const workers = Array.from({ length: concurrencyLimit }, () =>
+    processLink(queueLinks),
   );
-  return badLinks.filter((link) => link);
+  await Promise.all(workers);
+  return badLinks;
 };
 
 async function logError(errorLog, message) {
