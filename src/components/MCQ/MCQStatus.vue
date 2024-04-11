@@ -127,7 +127,7 @@ tr th {
 
 td {
   text-align: center;
-  padding: 0.25rem 1rem;
+  padding: 0.5rem 1rem;
   line-height: 1.25;
 }
 td span {
