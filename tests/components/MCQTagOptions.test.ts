@@ -20,7 +20,7 @@ describe("MCQTagOptions.vue", () => {
       },
     });
 
-    expect(wrapper.findAll(".filter-options").length).toBe(3);
+    expect(wrapper.findAll(".category").length).toBe(3);
   });
 
   it("Returns an empty array when input is empty", () => {
