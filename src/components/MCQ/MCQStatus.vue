@@ -99,6 +99,7 @@ const correctQuizNumPercent = ((correctQuizNum * 100) / workQuiz).toFixed(0);
   padding-bottom: 0px;
   overflow-y: auto;
   align-self: flex-start;
+  border-radius: 1rem;
 }
 
 .mcq-result {
