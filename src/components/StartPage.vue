@@ -97,11 +97,4 @@ const checkMax = () => {
 .tag-text {
   margin: 0px;
 }
-@media screen and (max-width: 768px) {
-  .tags-display {
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-}
 </style>
