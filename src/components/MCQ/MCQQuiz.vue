@@ -52,5 +52,6 @@ const refreshPage = () => window.location.reload();
   width: fit-content;
   margin: auto;
   margin-bottom: 5px;
+  cursor: pointer;
 }
 </style>
