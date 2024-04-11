@@ -53,10 +53,12 @@ export interface tags {
   course: string;
   subject: string;
   system: string;
+  animal: string;
 }
 
 export interface SelectedTags {
   course: string[];
   subject: string[];
   system: string[];
+  animal: string[];
 }

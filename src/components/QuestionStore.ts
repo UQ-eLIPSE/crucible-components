@@ -26,18 +26,21 @@ export function getUniquePropertyValues(tagProps: tags[]) {
     course: new Set<string>(),
     subject: new Set<string>(),
     system: new Set<string>(),
+    animal: new Set<string>(),
   };
 
   for (const item of tagProps) {
     uniqueValues.course.add(item.course);
     uniqueValues.subject.add(item.subject);
     uniqueValues.system.add(item.system);
+    uniqueValues.animal.add(item.animal);
   }
 
   return {
     course: [...uniqueValues.course],
     subject: [...uniqueValues.subject],
     system: [...uniqueValues.system],
+    animal: [...uniqueValues.animal],
   };
 }
 
@@ -52,7 +55,9 @@ export function filterQuestionsByTags(
       (selectedTags.subject.length === 0 ||
         selectedTags.subject.includes(question.tags.subject)) &&
       (selectedTags.system.length === 0 ||
-        selectedTags.system.includes(question.tags.system))
+        selectedTags.system.includes(question.tags.system)) &&
+      (selectedTags.animal.length === 0 ||
+        selectedTags.animal.includes(question.tags.animal))
     );
   });
 }
