@@ -121,9 +121,13 @@ table {
   height: 100%;
 }
 
+tr th {
+  padding: 0.75rem;
+}
+
 td {
   text-align: center;
-  padding: 0.75rem 1rem;
+  padding: 0.25rem 1rem;
   line-height: 1.25;
 }
 td span {
@@ -158,6 +162,17 @@ tr:nth-child(even) {
 .question-row {
   font-style: italic;
 }
+
+.question-row > a {
+  text-underline-offset: 0.15rem;
+  transition: color 0.3s ease;
+}
+
+.question-row:hover > a:hover,
+.question-row > a:focus {
+  color: #0056b3;
+}
+
 .answer-row {
   font-weight: bold;
   color: green;
