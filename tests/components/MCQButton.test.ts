@@ -1,4 +1,4 @@
-import { describe, it, expect, beforeEach } from "vitest";
+import { describe, it, expect, beforeEach, vi } from "vitest";
 import { questions } from "@data/question-data.json";
 import { createPinia, setActivePinia } from "pinia";
 import MCQQuestion from "@components/MCQ/MCQQuestion.vue";
@@ -65,5 +65,11 @@ describe("MCQButton.vue", () => {
     await option.trigger("click");
     expect(mcqBtn.classes()).toContain("skip");
     expect(mcqBtn.text()).toBe("Skip");
+  });
+
+  it("Should not be able to skip on the last question", async () => {
+    expect(mcqBtn.classes()).toContain("skip");
+    expect(mcqBtn.text()).toBe("Skip");
+    expect(Object.keys(mcqBtn.attributes())).toContain("disabled");
   });
 });
