@@ -101,6 +101,7 @@ const getQuestionsnumByTags = (
   width: fit-content;
   font-weight: bolder;
   font-size: small;
+  margin-left: 2px;
 }
 
 ul {
@@ -122,7 +123,7 @@ ul {
     flex-wrap: wrap;
     gap: 0.25rem;
     margin: 0;
-    padding-left: clamp(10px, 5vw, 40px);
+    padding-left: clamp(10px, 5vw, 20px);
   }
   ul label {
     font-size: 0.85rem;
@@ -130,6 +131,9 @@ ul {
   ul input {
     width: 8px;
     height: 8px;
+  }
+  .question-number {
+    font-size: smaller;
   }
 }
 </style>
