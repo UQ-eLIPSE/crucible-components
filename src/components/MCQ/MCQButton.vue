@@ -45,10 +45,14 @@ const modifyButtonAndEmit = (
 const getButtonClassAndText = (
   submittedValue: boolean,
   selectedOptionValue: string | null,
-) =>
-  !submittedValue && selectedOptionValue
+) => {
+  if (submittedValue && selectedOptionValue) {
+    return { class: "next", text: "Next" };
+  }
+  return !submittedValue && selectedOptionValue
     ? { class: "submit", text: "Submit" }
     : { class: buttonClass.value, text: buttonText.value };
+};
 </script>
 
 <style scoped>

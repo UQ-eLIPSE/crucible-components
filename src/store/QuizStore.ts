@@ -64,8 +64,8 @@ export const useQuizStore = defineStore("questionsQueue", {
       if (this.quizStats[questionIndex]) {
         this.quizStats[questionIndex][stat]++;
 
-        if (selectedOptionValue === "" || selectedOptionValue === null) {
-          this.quizStats[questionIndex]["selectedValue"] = "Skipped";
+        if (selectedOptionValue === "-1") {
+          this.quizStats[questionIndex]["selectedValue"] = "Time out";
           return;
         }
 
