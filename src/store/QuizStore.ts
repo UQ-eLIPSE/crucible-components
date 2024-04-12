@@ -66,7 +66,7 @@ export const useQuizStore = defineStore("questionsQueue", {
         this.quizStats[questionIndex][stat]++;
 
         if (selectedOptionValue === "-1") {
-          this.quizStats[questionIndex]["selectedValue"] = "Time out";
+          this.quizStats[questionIndex]["selectedValue"] = "Reached Time Limit";
           return;
         }
 
