@@ -1,4 +1,4 @@
-import { describe, it, expect, beforeEach, vi } from "vitest";
+import { describe, it, expect, beforeEach } from "vitest";
 import { questions } from "@data/question-data.json";
 import { createPinia, setActivePinia } from "pinia";
 import MCQQuestion from "@components/MCQ/MCQQuestion.vue";
