@@ -37,7 +37,6 @@ describe("MCQQuestion.vue", () => {
   });
 
   it("Renders component with statement", () => {
-    console.log(statement);
     expect(wrapper.get(".mcq-statement").html()).toContain(statement);
   });
 
