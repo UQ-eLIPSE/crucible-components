@@ -29,14 +29,21 @@
             <option value="Tutor">Tutor mode</option>
             <option value="Timed">Timed mode</option>
           </select>
+        </div>
+        <div
+          v-if="selectedMode.valueOf() === 'Timed'"
+          class="time-limit-container"
+        >
+          <label for="time-limit">Maximum time per questions:</label>
           <input
-            v-if="selectedMode.valueOf() === 'Timed'"
             id="time-limit"
             v-model.number="timeLimit"
             type="number"
             placeholder="i.e. 60 seconds"
             min="5"
+            max="300"
           />
+          <span>seconds</span>
         </div>
       </div>
     </div>
@@ -116,5 +123,11 @@ const checkMax = () => {
   box-shadow:
     43px 55px 87px #b8b8b8,
     -43px -55px 87px #ffffff;
+}
+
+.time-limit-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 </style>
