@@ -107,4 +107,24 @@ const checkMax = () => {
     43px 55px 87px #b8b8b8,
     -43px -55px 87px #ffffff;
 }
+
+@media screen and (max-width: 768px) {
+  h1 {
+    font-size: 1.5rem;
+  }
+  .question-config-container {
+    font-size: 0.85rem;
+  }
+  .question-amount-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .question-amount-container input {
+    align-self: center;
+  }
+  #question-amount {
+    margin-left: 0;
+  }
+}
 </style>
