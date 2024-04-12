@@ -109,10 +109,14 @@ ul {
 }
 @media screen and (max-width: 768px) {
   .filter-options {
-    /* text-align: left; */
+    text-align: left;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+  }
+  ul {
+    display: flex;
+    flex-wrap: wrap;
   }
 }
 </style>
