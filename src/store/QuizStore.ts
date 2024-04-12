@@ -19,7 +19,7 @@ export const useQuizStore = defineStore("questionsQueue", {
         system: [],
         animal: [],
       } as SelectedTags,
-      timeLimit: 0,
+      timeLimit: 60, // default time limit 1 min per qs
     };
   },
   actions: {
