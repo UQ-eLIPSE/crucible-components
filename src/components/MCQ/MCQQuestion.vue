@@ -1,6 +1,6 @@
 <!-- eslint-disable vue/no-v-html -->
 <template>
-  <h3>Time left: {{ timeLeft }}</h3>
+  <h3 v-if="statUpdate.quizMode === 'Timed'">Time left: {{ timeLeft }}</h3>
   <div class="mcq-statement" v-html="statement" />
   <div class="mcq-list">
     <div
@@ -44,19 +44,15 @@ const emit = defineEmits(["nextQuestion", "skipQuestion"]);
 
 let timeoutId: number | null = null;
 let intervalId: number | null = null;
-const timeLeft = ref(2);
+const timeLeft = ref(statUpdate.getTimeLimit());
 
 const resetTimer = () => {
-  if (timeoutId) {
-    clearTimeout(timeoutId);
-  }
-  if (intervalId) {
-    clearInterval(intervalId);
-  }
+  timeoutId && clearTimeout(timeoutId);
+  intervalId && clearInterval(intervalId);
 };
 
 const startTimer = () => {
-  timeLeft.value = 2;
+  timeLeft.value = statUpdate.getTimeLimit();
 
   intervalId = window.setInterval(() => {
     timeLeft.value--;
@@ -65,7 +61,7 @@ const startTimer = () => {
     selectedOption.value = "-1";
     submitAnswer();
     return;
-  }, 2000);
+  }, statUpdate.getTimeLimit() * 1000);
 };
 
 const submitAnswer = () => {
@@ -74,12 +70,10 @@ const submitAnswer = () => {
 };
 
 onBeforeMount(() => {
-  // if (statUpdate.quizMode === "Timed") {
-  //   resetTimer();
-  //   startTimer();
-  // }
-  resetTimer();
-  startTimer();
+  if (statUpdate.quizMode === "Timed") {
+    resetTimer();
+    startTimer();
+  }
 });
 
 onBeforeUnmount(() => {
@@ -88,14 +82,20 @@ onBeforeUnmount(() => {
 
 const nextQuestion = (_id: { $oid: string }) => {
   resetQuestion(_id);
-  resetTimer();
   emit("nextQuestion");
-  startTimer();
+  if (statUpdate.quizMode === "Timed") {
+    resetTimer();
+    startTimer();
+  }
 };
 
 const skipQuestion = () => {
   resetQuestion(_id);
   emit("skipQuestion");
+  if (statUpdate.quizMode === "Timed") {
+    resetTimer();
+    startTimer();
+  }
 };
 
 const trackQuizStatus = (_id: { $oid: string }) =>

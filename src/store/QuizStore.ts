@@ -19,6 +19,7 @@ export const useQuizStore = defineStore("questionsQueue", {
         system: [],
         animal: [],
       } as SelectedTags,
+      timeLimit: 0,
     };
   },
   actions: {
@@ -91,6 +92,12 @@ export const useQuizStore = defineStore("questionsQueue", {
     },
     dequeueQuestion() {
       return this.questionsQueue.shift();
+    },
+    getTimeLimit() {
+      return this.timeLimit;
+    },
+    setTimeLimit(seconds: number) {
+      this.timeLimit = seconds;
     },
   },
 });

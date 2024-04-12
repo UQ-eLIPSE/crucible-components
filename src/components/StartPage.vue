@@ -29,6 +29,14 @@
             <option value="Tutor">Tutor mode</option>
             <option value="Timed">Timed mode</option>
           </select>
+          <input
+            v-if="selectedMode.valueOf() === 'Timed'"
+            id="time-limit"
+            v-model.number="timeLimit"
+            type="number"
+            placeholder="i.e. 60 seconds"
+            min="5"
+          />
         </div>
       </div>
     </div>
@@ -42,6 +50,7 @@ import MCQTagOptions from "@components/MCQ/MCQTagOptions.vue";
 import { useQuizStore } from "@/store/QuizStore";
 const questionAmount = ref<number>(1);
 const selectedMode = ref<string>("Tutor");
+const timeLimit = ref<number>(60);
 const showMaxMsg = ref<boolean>(false);
 const showMaxMsgDelay = 3000;
 const showMaxMsgTimeoutId = ref<number | null>(null);
@@ -52,6 +61,7 @@ const startQuiz = () => {
   emit("start-quiz", {
     questionAmount: questionAmount.value,
     mode: selectedMode.value,
+    timeLimit,
   });
 };
 
