@@ -27,6 +27,7 @@
   <MCQButton
     :submitted="submitted"
     :selected-option="selectedOption"
+    :hide-skip="remainingQuestions <= 1"
     @submit-answer="submitAnswer"
     @next-question="nextQuestion(_id)"
     @skip-question="skipQuestion"
@@ -46,6 +47,7 @@ const { statement, optionsList, _id } = defineProps<MCQuestionProp>();
 const selectedOption = ref<string | null>(null);
 const submitted = ref<boolean>(false);
 const emit = defineEmits(["nextQuestion", "skipQuestion"]);
+const remainingQuestions = ref<number>(statUpdate.getRemainingQuestions());
 
 // timer stuff if in "Timed" quizmode
 let timeoutId: number | null = null;
@@ -92,6 +94,7 @@ onBeforeUnmount(() => {
 
 const nextQuestion = (_id: { $oid: string }) => {
   resetQuestion(_id);
+  remainingQuestions.value = statUpdate.getRemainingQuestions();
   emit("nextQuestion");
   performTimerActions();
 };

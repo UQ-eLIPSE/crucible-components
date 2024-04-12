@@ -28,6 +28,7 @@ export interface MCQOptions {
 export interface MCQButton {
   submitted: boolean;
   selectedOption: string | null;
+  hideSkip: boolean;
 }
 
 export interface MCQRadioOption {
