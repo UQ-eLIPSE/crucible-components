@@ -1,5 +1,6 @@
 <!-- eslint-disable vue/no-v-html -->
 <template>
+  <h3>Time left: {{ timeLeft }}</h3>
   <div class="mcq-statement" v-html="statement" />
   <div class="mcq-list">
     <div
@@ -28,7 +29,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
+import { onBeforeMount, ref, watch } from "vue";
 import type { MCQuestionProp, MCQOptions } from "@type/MCQ.d.ts";
 import MCQOption from "./MCQOption.vue";
 import MCQButton from "./MCQButton.vue";
@@ -41,13 +42,45 @@ const selectedOption = ref<string | null>(null);
 const submitted = ref<boolean>(false);
 const emit = defineEmits(["nextQuestion", "skipQuestion"]);
 
+let timeoutId: number | null = null;
+let intervalId: number | null = null;
+const timeLeft = ref(2);
+
+const resetTimer = () => {
+  console.log("submitted value", submitted.value);
+  if (timeoutId) {
+    console.log("timeoutid", timeoutId);
+    clearTimeout(timeoutId);
+  }
+  if (intervalId) {
+    clearInterval(intervalId);
+  }
+
+  timeLeft.value = 2;
+
+  timeoutId = window.setTimeout(() => {
+    selectedOption.value = "";
+    nextQuestion(_id);
+  }, 2000);
+
+  intervalId = window.setInterval(() => {
+    timeLeft.value--;
+  }, 1000);
+};
+
 const submitAnswer = () => {
   submitted.value = true;
+  if (timeoutId) {
+    clearTimeout(timeoutId);
+  }
 };
+
+onBeforeMount(resetTimer);
 
 const nextQuestion = (_id: { $oid: string }) => {
   resetQuestion(_id);
   emit("nextQuestion");
+  resetTimer();
 };
 
 const skipQuestion = () => {
