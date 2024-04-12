@@ -19,6 +19,7 @@ export const useQuizStore = defineStore("questionsQueue", {
         system: [],
         animal: [],
       } as SelectedTags,
+      timeLimit: 60, // default time limit 1 min per qs
     };
   },
   actions: {
@@ -64,6 +65,11 @@ export const useQuizStore = defineStore("questionsQueue", {
       if (this.quizStats[questionIndex]) {
         this.quizStats[questionIndex][stat]++;
 
+        if (selectedOptionValue === "-1") {
+          this.quizStats[questionIndex]["selectedValue"] = "Reached Time Limit";
+          return;
+        }
+
         // Check and Add Correct
         const correctOptionIndex = this.quizStats[
           questionIndex
@@ -86,6 +92,12 @@ export const useQuizStore = defineStore("questionsQueue", {
     },
     dequeueQuestion() {
       return this.questionsQueue.shift();
+    },
+    getTimeLimit() {
+      return this.timeLimit;
+    },
+    setTimeLimit(seconds: number) {
+      this.timeLimit = seconds;
     },
   },
 });

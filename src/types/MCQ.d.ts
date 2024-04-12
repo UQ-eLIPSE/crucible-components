@@ -3,6 +3,7 @@ type QuizMode = "Timed" | "Tutor";
 export interface StartQuizConfig {
   questionAmount: number;
   mode: QuizMode;
+  timeLimit: number;
 }
 
 export interface MCQQuiz {
