@@ -101,22 +101,39 @@ const getQuestionsnumByTags = (
   width: fit-content;
   font-weight: bolder;
   font-size: small;
+  margin-left: 2px;
 }
 
 ul {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  gap: 0.5rem 1rem;
 }
 @media screen and (max-width: 768px) {
   .filter-options {
     text-align: left;
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    align-items: center;
   }
   ul {
     display: flex;
+    flex-direction: column;
+    text-align: left;
     flex-wrap: wrap;
+    gap: 0.25rem;
+    margin: 0;
+    padding-left: clamp(10px, 5vw, 20px);
+  }
+  ul label {
+    font-size: 0.85rem;
+  }
+  ul input {
+    width: 8px;
+    height: 8px;
+  }
+  .question-number {
+    font-size: smaller;
   }
 }
 </style>

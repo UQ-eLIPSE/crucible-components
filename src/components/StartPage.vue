@@ -130,4 +130,28 @@ const checkMax = () => {
   align-items: center;
   gap: 0.5rem;
 }
+@media screen and (max-width: 768px) {
+  h1 {
+    font-size: 1.5rem;
+  }
+  .question-config-container {
+    font-size: 0.85rem;
+  }
+  .question-amount-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .question-amount-container input {
+    align-self: center;
+  }
+  #question-amount {
+    margin-left: 0;
+  }
+
+  .question-config-container {
+    --responsive-padding-left: clamp(10px, 5vw, 20px);
+    padding-left: var(--responsive-padding-left);
+  }
+}
 </style>
