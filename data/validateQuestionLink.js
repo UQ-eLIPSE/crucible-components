@@ -42,7 +42,7 @@ const validateQuizLink = async (
 
   const processLink = async (queueLinks) => {
     while (queueLinks.length > 0) {
-      const { link, index } = queueLinks.shift();
+      const { link, index } = queueLinks.pop();
       const result = await validateURLResponse(link);
       if (!result) {
         console.error("Found invalid link:", link, "at index", index);
