@@ -15,7 +15,7 @@
         @change="onChecked($event)"
       />
       <label :for="`${category}-${topic}-checkbox`">
-        {{ topic }}
+        {{ topic === "Exercise" ? topic : topic + " System" }}
         <span v-if="num !== null && num !== '0'" class="question-number">{{
           num
         }}</span></label
@@ -109,10 +109,14 @@ ul {
 }
 @media screen and (max-width: 768px) {
   .filter-options {
-    /* text-align: left; */
+    text-align: left;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+  }
+  ul {
+    display: flex;
+    flex-wrap: wrap;
   }
 }
 </style>
