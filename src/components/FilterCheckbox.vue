@@ -14,8 +14,8 @@
         :disabled="num === '0'"
         @change="onChecked($event)"
       />
-      <label :for="`${category}-${topic}-checkbox`"
-        >{{ topic }}
+      <label :for="`${category}-${topic}-checkbox`">
+        {{ topic }}
         <span v-if="num !== null && num !== '0'" class="question-number">{{
           num
         }}</span></label
@@ -37,10 +37,12 @@ const { category, topics } = defineProps<{
 const questionsQueue = useQuizStore();
 
 const questionsNumByTags = computed(() =>
-  Object.entries(topics).map(([idx, topic]) => {
-    const num = getQuestionsnumByTags(topic, category);
-    return { idx, topic, num };
-  }),
+  Object.entries(topics)
+    .map(([idx, topic]) => {
+      const num = getQuestionsnumByTags(topic, category);
+      return { idx, topic, num };
+    })
+    .filter(({ topic }) => topic !== undefined),
 );
 
 const onChecked = (event: Event) => {
@@ -107,8 +109,10 @@ ul {
 }
 @media screen and (max-width: 768px) {
   .filter-options {
-    text-align: left;
+    /* text-align: left; */
     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
   }
 }
 </style>

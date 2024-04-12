@@ -17,6 +17,7 @@ export const useQuizStore = defineStore("questionsQueue", {
         course: [],
         subject: [],
         system: [],
+        animal: [],
       } as SelectedTags,
     };
   },

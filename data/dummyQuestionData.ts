@@ -57,6 +57,7 @@ const generateRandomData = () => {
       course: getRandomItem(courses),
       subject: getRandomItem(subjects),
       system: getRandomItem(systems),
+      animal: getRandomItem(["Dog", "Cat", "Horse", "Cow", "Pig"]),
     },
     statement: `Placeholder statement ${i + 1}`,
     optionsList: [
@@ -88,6 +89,7 @@ const generateStaticData = () => {
           course,
           subject,
           system,
+          animal: "Horse",
         },
         statement: `Placeholder statement ${idCounter}`,
         optionsList: [
