@@ -15,7 +15,7 @@
         @change="onChecked($event)"
       />
       <label :for="`${category}-${topic}-checkbox`">
-        {{ topic }}
+        {{ topic === "Exercise" ? topic : topic + " System" }}
         <span v-if="num !== null && num !== '0'" class="question-number">{{
           num
         }}</span></label
