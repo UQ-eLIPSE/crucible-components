@@ -40,6 +40,7 @@ describe("FilterCheckbox.vue", () => {
   });
 
   it("Should be checked when clicked", async () => {
+    console.log(firstCheckbox);
     await firstCheckbox.trigger("click");
 
     expect(firstCheckbox.element.checked).toBe(true);

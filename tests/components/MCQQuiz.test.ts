@@ -40,7 +40,7 @@ describe("MCQQuiz.vue", () => {
   it("Navigates question stack upon skip", async () => {
     await mcqBtn.trigger("click");
     expect(wrapper.text()).toContain(
-      "Which of the given primary taste stimuli are triggered by ions in the saliva?",
+      "Action potentials are transmitted along which part of a neuron?AxonPre-synaptic terminalCell bodyDendriteMyelinSkip",
     );
   });
 
@@ -51,7 +51,7 @@ describe("MCQQuiz.vue", () => {
     await mcqBtn.trigger("click");
     await mcqBtn.trigger("click");
     expect(wrapper.text()).toContain(
-      "Which of the given primary taste stimuli are triggered by ions in the saliva?",
+      "Action potentials are transmitted along which part of a neuron?AxonPre-synaptic terminalCell bodyDendriteMyelinSkip",
     );
   });
 
@@ -60,7 +60,7 @@ describe("MCQQuiz.vue", () => {
       await mcqBtn.trigger("click");
     }
     expect(wrapper.text()).toContain(
-      "Which of the given primary taste stimuli depend on G protein-coupled receptors to depolarise the cell?",
+      "Which part of a neuron receives information from surrounding cells?AxonPre-synaptic terminalCell bodyDendriteMyelinSkip",
     );
   });
 
@@ -96,7 +96,7 @@ describe("MCQQuiz.vue", () => {
     expect(questionIsFullyDisplayed(wrapper)).toBe(false);
 
     expect(wrapper.get(".score").text()).toBe(
-      "⌛ Result: 28 out of 115 - (24 %)",
+      "⌛ Result: 92 out of 373 - (25 %)",
     );
   });
 });

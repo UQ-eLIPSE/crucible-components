@@ -13,6 +13,7 @@ const questions = [
       course: "VETS2011",
       subject: "Physiology",
       system: "Neurophysiology",
+      animal: "Horse",
     },
     optionsList: [
       { optionValue: "Answer A Q1", optionCorrect: false },
@@ -26,6 +27,7 @@ const questions = [
       course: "VETS2022",
       subject: "Anatomy",
       system: "Musculoskeletal",
+      animal: "Horse",
     },
     optionsList: [
       { optionValue: "Answer A Q2", optionCorrect: false },
@@ -39,6 +41,7 @@ const questions = [
       course: "VETS2011",
       subject: "Physiology",
       system: "Cardiovascular",
+      animal: "Horse",
     },
     optionsList: [
       { optionValue: "Answer A Q3", optionCorrect: true },
@@ -52,6 +55,7 @@ const questions = [
       course: "VETS2011",
       subject: "Physiology",
       system: "Neurophysiology",
+      animal: "Horse",
     },
     optionsList: [
       { optionValue: "Answer A Q4", optionCorrect: true },
@@ -104,6 +108,7 @@ test("Filter questions by a specific course, subject, and system, allowing multi
     course: ["VETS2011"],
     subject: ["Physiology"],
     system: ["Neurophysiology", "Cardiovascular"],
+    animal: ["Horse"],
   };
   const filteredQuestions = filterQuestionsByTags(questions, filterTags);
   expect(filteredQuestions.length).toBe(3);
@@ -123,6 +128,7 @@ test("Filter questions by multiple courses and subjects", () => {
     course: ["VETS2011", "VETS2022"],
     subject: ["Physiology", "Anatomy"],
     system: [],
+    animal: [],
   };
   const filteredQuestions = filterQuestionsByTags(questions, filterTags);
   expect(filteredQuestions.length).toBe(4);
