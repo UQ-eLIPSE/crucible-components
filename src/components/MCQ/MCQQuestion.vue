@@ -1,8 +1,11 @@
 <!-- eslint-disable vue/no-v-html -->
 <template>
-  <h3 v-if="statUpdate.quizMode === 'Timed'">
-    Time left: {{ timeLeft }} seconds
-  </h3>
+  <div v-if="statUpdate.quizMode === 'Timed'">
+    <h3 v-if="timeLeft">Time left: {{ timeLeft }} seconds</h3>
+    <h3 v-else class="time-up-msg">
+      Time's up! Let's move on to the next question.
+    </h3>
+  </div>
   <div class="mcq-statement" v-html="statement" />
   <div class="mcq-list">
     <div
@@ -60,6 +63,7 @@ const startTimer = () => {
   intervalId = window.setInterval(() => {
     timeLeft.value--;
   }, 1000);
+
   timeoutId = window.setTimeout(() => {
     selectedOption.value = "-1";
     submitAnswer();
@@ -175,5 +179,9 @@ const optionClass = (key: string, optionsList: MCQOptions[]) => {
 .mcq-option.correct {
   background-color: #dff0d8;
   color: #3c763d;
+}
+
+.time-up-msg {
+  color: rgb(248, 75, 75);
 }
 </style>
