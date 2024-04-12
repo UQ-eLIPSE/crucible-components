@@ -40,11 +40,9 @@ label {
 }
 
 @media screen and (max-width: 768px) {
-  .filter {
-    /* text-align: center; */
-  }
   .category > h2 {
-    padding-left: clamp(10px, 5vw, 18px);
+    --responsive-padding-left: clamp(10px, 5vw, 18px);
+    padding-left: var(--responsive-padding-left);
     font-size: 1.25rem;
     margin-inline: clamp(0.1rem, 1.5vw, 0.25rem);
     margin-bottom: 0.5rem;

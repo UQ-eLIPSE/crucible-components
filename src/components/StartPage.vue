@@ -126,5 +126,10 @@ const checkMax = () => {
   #question-amount {
     margin-left: 0;
   }
+
+  .question-config-container {
+    --responsive-padding-left: clamp(10px, 5vw, 20px);
+    padding-left: var(--responsive-padding-left);
+  }
 }
 </style>
