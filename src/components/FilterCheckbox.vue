@@ -15,7 +15,11 @@
         @change="onChecked($event)"
       />
       <label :for="`${category}-${topic}-checkbox`">
-        {{ topic === "Exercise" ? topic : topic + " System" }}
+        {{
+          topic === "Neurophysiology" || topic === "Respiratory"
+            ? topic + " System"
+            : topic
+        }}
         <span v-if="num !== null && num !== '0'" class="question-number">{{
           num
         }}</span></label
