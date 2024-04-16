@@ -51,7 +51,7 @@ describe("MCQOption.vue", () => {
 
   it("Adds correct class when submit is pressed for the correct option", async () => {
     const optionList = getOptions(wrapper);
-    const correctOption = optionList[3];
+    const correctOption = optionList[2];
     await correctOption.trigger("click");
     await mcqBtn.trigger("click");
     expect(correctOption.element.parentElement?.className).toContain("correct");
@@ -60,7 +60,7 @@ describe("MCQOption.vue", () => {
   it("Adds both correct and wrong classes when submit is pressed for the wrong option", async () => {
     const optionList = getOptions(wrapper);
     const wrongOption = optionList[1];
-    const correctOption = optionList[3];
+    const correctOption = optionList[2];
     await wrongOption.trigger("click");
     await mcqBtn.trigger("click");
     expect(wrongOption.element.parentElement?.className).toContain("wrong");
