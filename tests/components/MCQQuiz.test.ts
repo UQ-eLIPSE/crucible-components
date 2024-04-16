@@ -40,7 +40,7 @@ describe("MCQQuiz.vue", () => {
   it("Navigates question stack upon skip", async () => {
     await mcqBtn.trigger("click");
     expect(wrapper.text()).toContain(
-      "Action potentials are transmitted along which part of a neuron?AxonPre-synaptic terminalCell bodyDendriteMyelinSkip",
+      "What happens when an IPSP is generated after EPSP?The membrane is more depolarisedThe effect of the subthreshold is enhancedAction potential",
     );
   });
 
@@ -51,7 +51,7 @@ describe("MCQQuiz.vue", () => {
     await mcqBtn.trigger("click");
     await mcqBtn.trigger("click");
     expect(wrapper.text()).toContain(
-      "Action potentials are transmitted along which part of a neuron?AxonPre-synaptic terminalCell bodyDendriteMyelinSkip",
+      "What happens when an IPSP is generated after EPSP?The membrane is more depolarisedThe effect of the subthreshold is enhancedAction potential is reachedA threshold event takes placeThe membrane is hyperpolarisedSkip",
     );
   });
 
@@ -60,7 +60,7 @@ describe("MCQQuiz.vue", () => {
       await mcqBtn.trigger("click");
     }
     expect(wrapper.text()).toContain(
-      "Which part of a neuron receives information from surrounding cells?AxonPre-synaptic terminalCell bodyDendriteMyelinSkip",
+      "Which of the following statements regarding action potentials is TRUE?Multiple depolarising events minimises the chance of action potential generationReaching the subthreshold level does not stimulate the post-synaptic",
     );
   });
 
@@ -96,7 +96,7 @@ describe("MCQQuiz.vue", () => {
     expect(questionIsFullyDisplayed(wrapper)).toBe(false);
 
     expect(wrapper.get(".score").text()).toBe(
-      "⌛ Result: 92 out of 373 - (25 %)",
+      "⌛ Result: 45 out of 185 - (24 %)",
     );
   });
 });
