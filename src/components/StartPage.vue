@@ -34,7 +34,7 @@
           v-if="selectedMode.valueOf() === 'Timed'"
           class="time-limit-container"
         >
-          <label for="time-limit">Maximum time per questions:</label>
+          <label for="time-limit">Maximum time per question:</label>
           <input
             id="time-limit"
             v-model.number="timeLimit"
@@ -117,7 +117,6 @@ const checkMax = () => {
 
 .start-page-container {
   background: linear-gradient(145deg, #ffffff, #e1e1e1);
-  /* background: #fafafa; */
   padding: 1.5rem;
   border-radius: 50px;
   box-shadow:
