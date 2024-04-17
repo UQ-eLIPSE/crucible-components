@@ -18,10 +18,11 @@
 import { useQuizStore } from "@/store/QuizStore";
 import MCQQuestion from "@components/MCQ/MCQQuestion.vue";
 import MCQStatus from "./MCQStatus.vue";
-import { onBeforeMount, onBeforeUnmount, onMounted, ref } from "vue";
+import { onBeforeMount, onMounted, ref } from "vue";
 import { MCQuestion } from "@/types/MCQ";
 
 const oneSecond = 1000;
+const timeoutTag = "-1"; // Marks a question as timed out in quiz store
 
 const questionsQueue = useQuizStore();
 const currentQuestion = ref<MCQuestion | undefined>();
@@ -58,13 +59,10 @@ const resetTimer = () => {
 const startTimer = () => {
   timeLeft.value = questionsQueue.timeLimit;
 
-  intervalId = window.setInterval(() => {
-    if (!timeLeft.value) {
-      resetTimer();
-      return;
-    }
-    timeLeft.value--;
-  }, oneSecond);
+  const decrementTimer = () =>
+    !timeLeft.value ? skipToEnd() : timeLeft.value--;
+
+  intervalId = window.setInterval(decrementTimer, oneSecond);
 
   timeoutId = window.setTimeout(() => {}, questionsQueue.timeLimit * oneSecond);
 };
@@ -78,15 +76,27 @@ onBeforeMount(() => {
   performTimerActions();
 });
 
-onBeforeUnmount(() => {
-  resetTimer();
-});
-
 // A function that converts seconds to MM:SS format
 const formatSecondsToMinutes = (time: number) => {
   const minutes = Math.floor(time / 60);
   const seconds = time % 60;
   return `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
+};
+
+const skipToEnd = () => {
+  resetTimer();
+  const markQuestionAsTimedOut = (currQuestionId: string) =>
+    questionsQueue.incrementStat(currQuestionId, "attempts", timeoutTag);
+
+  markQuestionAsTimedOut(currentQuestion.value?._id.$oid ?? "");
+
+  while ((currentQuestion.value = questionsQueue.dequeueQuestion())) {
+    markQuestionAsTimedOut(currentQuestion.value._id.$oid);
+  }
+
+  alert("Time's up! Quiz has ended.");
+
+  return nextQuestion();
 };
 </script>
 

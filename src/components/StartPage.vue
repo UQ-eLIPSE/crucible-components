@@ -40,7 +40,7 @@
             v-model.number="timeLimit"
             type="number"
             placeholder="i.e. 60 seconds"
-            min="5"
+            min="1"
             max="300"
           />
           <span>seconds</span>
