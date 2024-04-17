@@ -16,8 +16,8 @@
 <script setup lang="ts">
 import { ref, defineProps } from "vue";
 import { useQuizStore } from "@/store/QuizStore";
-// Define the props expected from the parent
 
+// Define the props expected from the parent component
 defineProps<{
   options: Array<{
     value: number;
