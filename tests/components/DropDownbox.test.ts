@@ -1,8 +1,7 @@
 import { describe, it, expect, beforeEach, vi } from "vitest";
-import { mount, VueWrapper, DOMWrapper } from "@vue/test-utils";
+import { mount, VueWrapper } from "@vue/test-utils";
 import { createPinia, setActivePinia } from "pinia";
 import { useQuizStore } from "@/store/QuizStore";
-import { mount } from "@vue/test-utils";
 import DropDownbox from "@/components/DropDownbox.vue"; // Ensure the import is correct
 
 describe("DropDownbox", () => {
