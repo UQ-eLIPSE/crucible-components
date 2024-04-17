@@ -17,11 +17,7 @@ const questionsQueue = useQuizStore();
 const quizStarted = ref<boolean>(false);
 const quizMode = ref<QuizMode>("Tutor");
 
-const handleStartQuiz = ({
-  questionAmount,
-  mode,
-  timeLimit,
-}: StartQuizConfig) => {
+const handleStartQuiz = ({ questionAmount, mode }: StartQuizConfig) => {
   const selectedTags = questionsQueue.getselectedtags();
 
   const questions = getQuestionsBasedOnEnv();
@@ -33,11 +29,6 @@ const handleStartQuiz = ({
   quizQuestions.value = quizAmount.length;
   questionsQueue.initialiseQuiz(quizAmount, mode);
   quizStarted.value = true;
-  quizMode.value = mode;
-
-  if (mode === "Timed") {
-    questionsQueue.setTimeLimit(timeLimit * quizAmount.length);
-  }
 };
 </script>
 
