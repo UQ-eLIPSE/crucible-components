@@ -1,5 +1,5 @@
 <template>
-  <h3>Time left: {{ formatSecondsToMinutes(timeLeft) }}</h3>
+  <h3 v-if="timeLeft">Time left: {{ formatSecondsToMinutes(timeLeft) }}</h3>
   <MCQQuiz />
 </template>
 
