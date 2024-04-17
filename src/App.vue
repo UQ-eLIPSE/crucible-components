@@ -8,14 +8,13 @@ import {
   getQuestionsRandomly,
 } from "./components/QuestionStore";
 import { useQuizStore } from "./store/QuizStore";
-import { QuizMode, StartQuizConfig } from "./types/MCQ";
+import { StartQuizConfig } from "./types/MCQ";
 import { MCQuestion } from "./types/MCQ";
 import { getQuestionsBasedOnEnv } from "./components/DataAccessLayer";
 
 const quizQuestions = ref(0);
 const questionsQueue = useQuizStore();
 const quizStarted = ref<boolean>(false);
-const quizMode = ref<QuizMode>("Tutor");
 
 const handleStartQuiz = ({ questionAmount, mode }: StartQuizConfig) => {
   const selectedTags = questionsQueue.getselectedtags();
@@ -33,8 +32,10 @@ const handleStartQuiz = ({ questionAmount, mode }: StartQuizConfig) => {
 </script>
 
 <template>
-  <MCQQuiz v-if="quizStarted && quizMode === 'Tutor'" />
-  <MCQTimedQuiz v-else-if="quizStarted && quizMode === 'Timed'" />
+  <MCQQuiz v-if="quizStarted && questionsQueue.quizMode === 'Tutor'" />
+  <MCQTimedQuiz
+    v-else-if="quizStarted && questionsQueue.quizMode === 'Timed'"
+  />
   <StartPage v-else @start-quiz="handleStartQuiz" />
 </template>
 

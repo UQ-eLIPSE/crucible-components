@@ -32,9 +32,7 @@ function handleChange(event: Event) {
   const target = event.target as HTMLSelectElement;
   if (target.value) {
     timeLimit.value = parseFloat(target.value) * 60;
-    questionsQueue.setTimeLimit(
-      timeLimit.value * questionsQueue.getquestionnumber(),
-    );
+    questionsQueue.setTimeLimit(timeLimit.value);
   }
 }
 </script>

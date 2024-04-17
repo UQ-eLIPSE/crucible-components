@@ -30,6 +30,7 @@ const currentQuestion = ref<MCQuestion | undefined>();
 let timeoutId: number | null = null;
 let intervalId: number | null = null;
 const timeLeft = ref(questionsQueue.timeLimit);
+console.log(timeLeft);
 
 onMounted(() => {
   nextQuestion();
