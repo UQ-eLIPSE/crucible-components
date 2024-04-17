@@ -1,6 +1,6 @@
 <template>
   <div class="dropdown">
-    <label for="optionName">{{ optionName }}</label>
+    <label for="optionName">{{ optionName }}: &nbsp; </label>
     <select id="optionName" name="optionName" @change="handleChange">
       <option value="">--Please choose an option--</option>
       <option
