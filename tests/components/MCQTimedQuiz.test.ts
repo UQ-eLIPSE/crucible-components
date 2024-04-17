@@ -79,6 +79,7 @@ describe("MCQTimedQuiz.vue", () => {
     });
   });
 
+  // TODO: compartmentalise the end button and segment this into its own test.
   it("End quiz button exists after time has run out", async () => {
     const mockResponse = vi.fn();
     Object.defineProperty(window, "location", {
