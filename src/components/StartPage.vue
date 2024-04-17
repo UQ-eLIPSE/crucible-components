@@ -68,7 +68,7 @@ const startQuiz = () => {
   emit("start-quiz", {
     questionAmount: questionAmount.value,
     mode: selectedMode.value,
-    timeLimit,
+    timeLimit: timeLimit.value,
   });
 };
 

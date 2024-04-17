@@ -1,5 +1,5 @@
 <template>
-  <h3>Time left: {{ timeLeft }}</h3>
+  <h3>Time left: {{ formatSecondsToMinutes(timeLeft) }}</h3>
   <MCQQuiz />
 </template>
 
@@ -43,6 +43,13 @@ onBeforeMount(() => {
 onBeforeUnmount(() => {
   resetTimer();
 });
+
+// A function that converts seconds to MM:SS format
+const formatSecondsToMinutes = (time: number) => {
+  const minutes = Math.floor(time / 60);
+  const seconds = time % 60;
+  return `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
+};
 </script>
 
 <style></style>

@@ -35,7 +35,9 @@ const handleStartQuiz = ({
   quizStarted.value = true;
   quizMode.value = mode;
 
-  questionsQueue.setTimeLimit(timeLimit);
+  if (mode === "Timed") {
+    questionsQueue.setTimeLimit(timeLimit * quizAmount.length);
+  }
 };
 </script>
 
