@@ -80,6 +80,23 @@ describe("MCQTimedQuiz.vue", () => {
   });
 
   it("End quiz button exists after time has run out", async () => {
+    const mockResponse = vi.fn();
+    Object.defineProperty(window, "location", {
+      value: {
+        hash: {
+          endsWith: mockResponse,
+          includes: mockResponse,
+        },
+        assign: mockResponse,
+      },
+      writable: true,
+    });
+
+    Object.defineProperty(window.location, "reload", {
+      value: mockResponse,
+      writable: true,
+    });
+
     expect(wrapper.find(".btn-relocate").exists()).toBe(false);
     expect(questionIsFullyDisplayed(wrapper)).toBe(true);
 
@@ -87,8 +104,10 @@ describe("MCQTimedQuiz.vue", () => {
     const endQuizBtn = wrapper.find(".btn-relocate");
     expect(endQuizBtn.exists()).toBe(true);
     expect(endQuizBtn.text()).toEqual("End");
-
-    await endQuizBtn.trigger("click");
     expect(questionIsFullyDisplayed(wrapper)).toBe(false);
+
+    expect(window.location.reload).not.toHaveBeenCalled();
+    await endQuizBtn.trigger("click");
+    expect(window.location.reload).toHaveBeenCalled();
   });
 });
