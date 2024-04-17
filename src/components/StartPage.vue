@@ -110,7 +110,6 @@ const checkMax = () => {
 
 .start-page-container {
   background: linear-gradient(145deg, #ffffff, #e1e1e1);
-  /* background: #fafafa; */
   padding: 1.5rem;
   border-radius: 50px;
   box-shadow:
