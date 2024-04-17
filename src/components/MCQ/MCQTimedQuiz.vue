@@ -35,6 +35,11 @@ onMounted(() => {
   nextQuestion();
 });
 
+onBeforeMount(() => {
+  resetTimer();
+  startTimer();
+});
+
 const nextQuestion = () =>
   (currentQuestion.value = questionsQueue.dequeueQuestion());
 
@@ -66,15 +71,6 @@ const startTimer = () => {
 
   timeoutId = window.setTimeout(() => {}, questionsQueue.timeLimit * oneSecond);
 };
-
-const performTimerActions = () => {
-  resetTimer();
-  startTimer();
-};
-
-onBeforeMount(() => {
-  performTimerActions();
-});
 
 // A function that converts seconds to MM:SS format
 const formatSecondsToMinutes = (time: number) => {
