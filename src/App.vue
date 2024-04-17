@@ -1,19 +1,21 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import MCQQuiz from "@components/MCQ/MCQQuiz.vue";
+import MCQTimedQuiz from "@components/MCQ/MCQTimedQuiz.vue";
 import StartPage from "@components/StartPage.vue";
 import {
   filterQuestionsByTags,
   getQuestionsRandomly,
 } from "./components/QuestionStore";
 import { useQuizStore } from "./store/QuizStore";
-import { StartQuizConfig } from "./types/MCQ";
+import { QuizMode, StartQuizConfig } from "./types/MCQ";
 import { MCQuestion } from "./types/MCQ";
 import { getQuestionsBasedOnEnv } from "./components/DataAccessLayer";
 
 const quizQuestions = ref(0);
 const questionsQueue = useQuizStore();
 const quizStarted = ref<boolean>(false);
+const quizMode = ref<QuizMode>("Tutor");
 
 const handleStartQuiz = ({
   questionAmount,
@@ -31,13 +33,15 @@ const handleStartQuiz = ({
   quizQuestions.value = quizAmount.length;
   questionsQueue.initialiseQuiz(quizAmount, mode);
   quizStarted.value = true;
+  quizMode.value = mode;
 
   questionsQueue.setTimeLimit(timeLimit);
 };
 </script>
 
 <template>
-  <MCQQuiz v-if="quizStarted" />
+  <MCQQuiz v-if="quizStarted && quizMode === 'Tutor'" />
+  <MCQTimedQuiz v-else-if="quizStarted && quizMode === 'Timed'" />
   <StartPage v-else @start-quiz="handleStartQuiz" />
 </template>
 
