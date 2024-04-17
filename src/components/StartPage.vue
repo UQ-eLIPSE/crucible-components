@@ -30,21 +30,13 @@
             <option value="Timed">Timed mode</option>
           </select>
         </div>
-        <div
-          v-if="selectedMode.valueOf() === 'Timed'"
-          class="time-limit-container"
-        >
-          <label for="time-limit">Maximum time per questions:</label>
-          <input
-            id="time-limit"
-            v-model.number="timeLimit"
-            type="number"
-            placeholder="i.e. 60 seconds"
-            min="5"
-            max="300"
-          />
-          <span>seconds</span>
-        </div>
+        <DropDownbox
+          :options="[
+            { value: 1.5, label: 'Time Option 1', unit: 'minutes' },
+            { value: 1, label: 'Time Option 2', unit: 'minutes' },
+          ]"
+          :option-name="'Choose time limit'"
+        />
       </div>
     </div>
     <button class="start-button" @click="startQuiz">Start</button>
@@ -54,10 +46,11 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import MCQTagOptions from "@components/MCQ/MCQTagOptions.vue";
+import DropDownbox from "./DropDownbox.vue";
 import { useQuizStore } from "@/store/QuizStore";
 const questionAmount = ref<number>(1);
 const selectedMode = ref<string>("Tutor");
-const timeLimit = ref<number>(60);
+
 const showMaxMsg = ref<boolean>(false);
 const showMaxMsgDelay = 3000;
 const showMaxMsgTimeoutId = ref<number | null>(null);
@@ -68,7 +61,6 @@ const startQuiz = () => {
   emit("start-quiz", {
     questionAmount: questionAmount.value,
     mode: selectedMode.value,
-    timeLimit,
   });
 };
 
