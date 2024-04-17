@@ -33,8 +33,8 @@
         <DropDownbox
           v-if="selectedMode === 'Timed'"
           :options="[
-            { value: 1.5, label: 'Time Option 1', unit: 'minutes' },
-            { value: 1, label: 'Time Option 2', unit: 'minutes' },
+            { value: 1.5, label: 'Time Option 1', unit: 'Min.' },
+            { value: 1, label: 'Time Option 2', unit: 'Min.' },
           ]"
           :option-name="'Time per Question'"
         />
