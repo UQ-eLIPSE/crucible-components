@@ -1,11 +1,5 @@
 <!-- eslint-disable vue/no-v-html -->
 <template>
-  <div v-if="statUpdate.quizMode === 'Timed'">
-    <h3 v-if="timeLeft">Time left: {{ timeLeft }} seconds</h3>
-    <h3 v-else class="time-up-msg">
-      Time's up! Let's move on to the next question.
-    </h3>
-  </div>
   <div class="mcq-statement" v-html="statement" />
   <div class="mcq-list">
     <div
@@ -34,7 +28,7 @@
 </template>
 
 <script setup lang="ts">
-import { onBeforeMount, onBeforeUnmount, ref } from "vue";
+import { ref } from "vue";
 import type { MCQuestionProp, MCQOptions } from "@type/MCQ.d.ts";
 import MCQOption from "./MCQOption.vue";
 import MCQButton from "./MCQButton.vue";
@@ -47,59 +41,18 @@ const selectedOption = ref<string | null>(null);
 const submitted = ref<boolean>(false);
 const emit = defineEmits(["nextQuestion", "skipQuestion"]);
 
-// timer stuff if in "Timed" quizmode
-let timeoutId: number | null = null;
-let intervalId: number | null = null;
-const timeLeft = ref(statUpdate.getTimeLimit());
-
-const resetTimer = () => {
-  timeoutId && clearTimeout(timeoutId);
-  intervalId && clearInterval(intervalId);
-};
-
-const startTimer = () => {
-  timeLeft.value = statUpdate.getTimeLimit();
-
-  intervalId = window.setInterval(() => {
-    timeLeft.value--;
-  }, 1000);
-
-  timeoutId = window.setTimeout(() => {
-    selectedOption.value = "-1";
-    submitAnswer();
-  }, statUpdate.getTimeLimit() * 1000);
-};
-
 const submitAnswer = () => {
   submitted.value = true;
-  resetTimer();
 };
-
-const performTimerActions = () => {
-  if (statUpdate.quizMode !== "Timed") return;
-
-  resetTimer();
-  startTimer();
-};
-
-onBeforeMount(() => {
-  performTimerActions();
-});
-
-onBeforeUnmount(() => {
-  resetTimer();
-});
 
 const nextQuestion = (_id: { $oid: string }) => {
   resetQuestion(_id);
   emit("nextQuestion");
-  performTimerActions();
 };
 
 const skipQuestion = () => {
   resetQuestion(_id);
   emit("skipQuestion");
-  performTimerActions();
 };
 
 const trackQuizStatus = (_id: { $oid: string }) =>
