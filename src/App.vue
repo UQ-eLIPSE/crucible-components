@@ -27,6 +27,11 @@ const handleStartQuiz = ({ questionAmount, mode }: StartQuizConfig) => {
   const quizAmount = getQuestionsRandomly(questionAmount, filteredquestions);
   quizQuestions.value = quizAmount.length;
   questionsQueue.initialiseQuiz(quizAmount, mode);
+
+  // Scale current time limit by the number of questions
+  mode === "Timed" &&
+    questionsQueue.setTimeLimit(questionAmount * questionsQueue.timeLimit);
+
   quizStarted.value = true;
 };
 </script>

@@ -30,7 +30,6 @@ const currentQuestion = ref<MCQuestion | undefined>();
 let timeoutId: number | null = null;
 let intervalId: number | null = null;
 const timeLeft = ref(questionsQueue.timeLimit);
-console.log(timeLeft);
 
 onMounted(() => {
   nextQuestion();
@@ -65,8 +64,10 @@ const resetTimer = () => {
 const startTimer = () => {
   timeLeft.value = questionsQueue.timeLimit;
 
-  const decrementTimer = () =>
-    !timeLeft.value ? skipToEnd() : timeLeft.value--;
+  const decrementTimer = () => {
+    if (!currentQuestion.value) return resetTimer();
+    return !timeLeft.value ? skipToEnd() : timeLeft.value--;
+  };
 
   intervalId = window.setInterval(decrementTimer, oneSecond);
 
