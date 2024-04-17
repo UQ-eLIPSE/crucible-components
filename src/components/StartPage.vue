@@ -35,7 +35,7 @@
             { value: 1.5, label: 'Time Option 1', unit: 'minutes' },
             { value: 1, label: 'Time Option 2', unit: 'minutes' },
           ]"
-          :option-name="'Choose time limit'"
+          :option-name="'Time per Question'"
         />
       </div>
     </div>
