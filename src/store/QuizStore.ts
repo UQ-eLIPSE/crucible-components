@@ -99,5 +99,8 @@ export const useQuizStore = defineStore("questionsQueue", {
     setTimeLimit(seconds: number) {
       this.timeLimit = seconds;
     },
+    getRemainingQuestions() {
+      return this.questionsQueue.length;
+    },
   },
 });
