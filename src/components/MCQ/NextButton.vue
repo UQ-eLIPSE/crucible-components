@@ -15,13 +15,11 @@ const handleButtonClick = () => {
   if (buttonName === "next question") {
     modifyButtonAndEmit("nextQuestion");
   } else {
-    console.log("prev question");
     modifyButtonAndEmit("prevQuestion");
   }
 };
 
 const modifyButtonAndEmit = (event: "nextQuestion" | "prevQuestion") => {
-  console.log("emit", event);
   emit(event);
 };
 </script>

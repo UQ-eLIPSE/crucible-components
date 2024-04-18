@@ -59,12 +59,11 @@ export const useQuizStore = defineStore("questionsQueue", {
     incrementStat(
       questionId: string,
       stat: Stat,
-      selectedOptionValue: string = "",
+      selectedOptionValue: string | undefined,
     ) {
-      console.log("questionId", questionId);
       const questionIndex = statIndex(questionId, this.quizStats);
       // Add attempts
-      if (this.quizStats[questionIndex]) {
+      if (this.quizStats[questionIndex] && selectedOptionValue !== undefined) {
         this.quizStats[questionIndex][stat]++;
 
         if (selectedOptionValue === "-1") {
@@ -80,42 +79,38 @@ export const useQuizStore = defineStore("questionsQueue", {
           .indexOf(true);
 
         if (Number(selectedOptionValue) === Number(correctOptionIndex)) {
-          this.quizStats[questionIndex]["correct"]++;
+          this.quizStats[questionIndex]["correct"] = 1;
         } else {
-          this.quizStats[questionIndex]["correct"] > 0 &&
-            this.quizStats[questionIndex]["correct"]--;
+          this.quizStats[questionIndex]["correct"] = 0;
         }
 
         // Input Option
         this.quizStats[questionIndex]["selectedValue"] =
-          this.quizStats[questionIndex].question.optionsList[
-            Number(selectedOptionValue)
-          ].optionValue;
+          selectedOptionValue !== undefined
+            ? this.quizStats[questionIndex].question.optionsList[
+                Number(selectedOptionValue)
+              ].optionValue
+            : "";
       }
     },
     pushToHistoryStack(question: MCQuestion) {
       this.questionsStack.push(question);
     },
-    popFromHistoryStack() {
-      return this.questionsStack.pop();
-    },
     enqueueQuestion(question: MCQuestion) {
-      console.log("stack length4", this.questionsStack.length);
-      console.log("enqueue");
       this.questionsQueue.push(question);
     },
     dequeueQuestion() {
       while (this.questionsQueue.length > 0) {
-        this.pushToHistoryStack(this.questionsQueue.shift() as MCQuestion);
-        return [...this.questionsStack].pop();
+        const firstQuestion = this.questionsQueue.shift() as MCQuestion;
+        this.pushToHistoryStack(firstQuestion);
+        return firstQuestion;
       }
       return this.questionsQueue.shift();
     },
     removeFromLastHistory() {
-      const lastQuestion = this.questionsStack.pop();
-
-      this.questionsQueue.unshift(lastQuestion as MCQuestion);
-      return lastQuestion;
+      if (this.questionsStack.length < 1) return;
+      this.questionsQueue.unshift(this.questionsStack.pop() as MCQuestion);
+      return this.questionsStack[this.questionsStack.length - 1];
     },
     getTimeLimit() {
       return this.timeLimit;

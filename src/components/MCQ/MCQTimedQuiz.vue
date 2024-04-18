@@ -10,8 +10,6 @@
   />
 
   <MCQStatus v-if="!currentQuestion" />
-  <!-- <button @click="preQuestionhandler">Prev</button>
-  <button @click="nextQuestionhandler">next</button> -->
   <button v-if="!currentQuestion" class="btn-relocate" @click="refreshPage">
     End
   </button>
@@ -35,7 +33,7 @@ let intervalId: number | null = null;
 const timeLeft = ref(questionsQueue.timeLimit);
 
 onMounted(() => {
-  nextQuestion();
+  nextQuestionhandler();
 });
 
 onBeforeMount(() => {
@@ -43,29 +41,11 @@ onBeforeMount(() => {
   startTimer();
 });
 const prevQuestionHandler = () => {
-  console.log("stack length3", questionsQueue.questionsStack.length);
-  if (questionsQueue.questionsStack.length > 0) {
-    currentQuestion.value = questionsQueue.removeFromLastHistory();
-  } else {
-    return currentQuestion.value;
-  }
+  currentQuestion.value =
+    questionsQueue.removeFromLastHistory() ?? currentQuestion.value;
 };
-const nextQuestionhandler = () => {
-  nextQuestion();
-};
-const nextQuestion = () =>
+const nextQuestionhandler = () =>
   (currentQuestion.value = questionsQueue.dequeueQuestion());
-
-// const skipQuestion = () => {
-//   if (!currentQuestion.value) {
-//     console.error(
-//       "Attempting to skip a question when no remaining questions are available.",
-//     );
-//     return;
-//   }
-//   questionsQueue.enqueueQuestion(currentQuestion.value as MCQuestion);
-//   nextQuestion();
-// };
 
 const refreshPage = () => window.location.reload();
 
@@ -107,7 +87,7 @@ const skipToEnd = () => {
 
   alert("Time's up! Quiz has ended.");
 
-  return nextQuestion();
+  return nextQuestionhandler();
 };
 </script>
 
