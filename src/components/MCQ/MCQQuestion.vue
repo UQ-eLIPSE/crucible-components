@@ -22,6 +22,7 @@
     v-if="statUpdate.quizMode === 'Tutor'"
     :submitted="submitted"
     :selected-option="selectedOption"
+    :hide-skip="remainingQuestions <= 1"
     @submit-answer="submitAnswer"
     @next-question="nextQuestion(_id)"
     @skip-question="skipQuestion"
@@ -53,7 +54,9 @@ const statUpdate = useQuizStore();
 const { statement, optionsList, _id } = defineProps<MCQuestionProp>();
 const selectedOption = ref<string | null>(null);
 const submitted = ref<boolean>(false);
+
 const emit = defineEmits(["nextQuestion", "skipQuestion", "prevQuestion"]);
+const remainingQuestions = ref<number>(statUpdate.getRemainingQuestions());
 
 const submitAnswer = () => {
   submitted.value = true;
@@ -65,6 +68,7 @@ const timedNextQuestion = (_id: { $oid: string }) => {
 };
 const nextQuestion = (_id: { $oid: string }) => {
   resetQuestion(_id);
+  remainingQuestions.value = statUpdate.getRemainingQuestions();
   emit("nextQuestion");
 };
 
