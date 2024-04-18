@@ -19,11 +19,24 @@
     </div>
   </div>
   <MCQButton
+    v-if="statUpdate.quizMode === 'Tutor'"
     :submitted="submitted"
     :selected-option="selectedOption"
     @submit-answer="submitAnswer"
     @next-question="nextQuestion(_id)"
     @skip-question="skipQuestion"
+  />
+
+  <NextButton
+    v-if="statUpdate.quizMode === 'Timed'"
+    :button-name="'next question'"
+    @next-question="timedNextQuestion(_id)"
+  />
+
+  <NextButton
+    v-if="statUpdate.quizMode === 'Timed'"
+    :button-name="'prev question'"
+    @prev-question="prevQuestion()"
   />
 </template>
 
@@ -32,21 +45,27 @@ import { ref } from "vue";
 import type { MCQuestionProp, MCQOptions } from "@type/MCQ.d.ts";
 import MCQOption from "./MCQOption.vue";
 import MCQButton from "./MCQButton.vue";
+import NextButton from "./NextButton.vue";
 import { useQuizStore } from "@/store/QuizStore";
 
 const statUpdate = useQuizStore();
-
 const { statement, optionsList, _id } = defineProps<MCQuestionProp>();
 const selectedOption = ref<string | null>(null);
 const submitted = ref<boolean>(false);
-const emit = defineEmits(["nextQuestion", "skipQuestion"]);
+const emit = defineEmits(["nextQuestion", "skipQuestion", "prevQuestion"]);
 
 const submitAnswer = () => {
   submitted.value = true;
+  console.log("submitted 2", submitted.value);
 };
+const timedNextQuestion = (_id: { $oid: string }) => {
+  trackQuizStatus(_id);
 
+  emit("nextQuestion");
+};
 const nextQuestion = (_id: { $oid: string }) => {
   resetQuestion(_id);
+
   emit("nextQuestion");
 };
 
@@ -63,23 +82,29 @@ const resetQuestion = (_id: { $oid: string }) => {
   submitted.value = false;
   selectedOption.value = null;
 };
+const prevQuestion = () => {
+  console.log("statUpdate.quizMode", statUpdate.quizStats);
+  emit("prevQuestion");
+};
 
 // Only allow selection if the quiz is not submitted
 const selectOption = (key: string) => {
+  console.log(key);
   if (!submitted.value && selectedOption.value != key) {
     selectedOption.value = key;
   } else if (!submitted.value && selectedOption.value === key) {
     selectedOption.value = null;
   }
+  console.log("selection value", selectedOption.value);
 };
 
 const optionClass = (key: string, optionsList: MCQOptions[]) => {
   const option = optionsList[parseInt(key)];
   const isSelected = selectedOption.value === key;
 
-  if (statUpdate.quizMode === "Timed" && submitted.value) {
-    return isSelected ? "selected ignore-hover" : "ignore-hover";
-  }
+  // if (statUpdate.quizMode === "Timed" && submitted.value) {
+  //   return isSelected ? "selected ignore-hover" : "ignore-hover";
+  // }
 
   if (!submitted.value) {
     return isSelected ? "selected" : "";

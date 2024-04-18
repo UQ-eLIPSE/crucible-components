@@ -5,10 +5,13 @@
     :statement="currentQuestion.statement"
     :options-list="currentQuestion.optionsList"
     :_id="currentQuestion._id"
-    @next-question="nextQuestion"
-    @skip-question="skipQuestion"
+    @next-question="nextQuestionhandler"
+    @prev-question="prevQuestionHandler"
   />
+
   <MCQStatus v-if="!currentQuestion" />
+  <!-- <button @click="preQuestionhandler">Prev</button>
+  <button @click="nextQuestionhandler">next</button> -->
   <button v-if="!currentQuestion" class="btn-relocate" @click="refreshPage">
     End
   </button>
@@ -39,20 +42,30 @@ onBeforeMount(() => {
   resetTimer();
   startTimer();
 });
-
+const prevQuestionHandler = () => {
+  console.log("stack length3", questionsQueue.questionsStack.length);
+  if (questionsQueue.questionsStack.length > 0) {
+    currentQuestion.value = questionsQueue.removeFromLastHistory();
+  } else {
+    return currentQuestion.value;
+  }
+};
+const nextQuestionhandler = () => {
+  nextQuestion();
+};
 const nextQuestion = () =>
   (currentQuestion.value = questionsQueue.dequeueQuestion());
 
-const skipQuestion = () => {
-  if (!currentQuestion.value) {
-    console.error(
-      "Attempting to skip a question when no remaining questions are available.",
-    );
-    return;
-  }
-  questionsQueue.enqueueQuestion(currentQuestion.value as MCQuestion);
-  nextQuestion();
-};
+// const skipQuestion = () => {
+//   if (!currentQuestion.value) {
+//     console.error(
+//       "Attempting to skip a question when no remaining questions are available.",
+//     );
+//     return;
+//   }
+//   questionsQueue.enqueueQuestion(currentQuestion.value as MCQuestion);
+//   nextQuestion();
+// };
 
 const refreshPage = () => window.location.reload();
 

@@ -11,6 +11,7 @@ export const useQuizStore = defineStore("questionsQueue", {
   state: () => {
     return {
       questionsQueue: [] as MCQuestion[],
+      questionsStack: [] as MCQuestion[],
       quizStats: [] as QuestionState[],
       quizMode: "Tutor" as QuizMode,
       selectedTags: {
@@ -45,6 +46,7 @@ export const useQuizStore = defineStore("questionsQueue", {
     },
     initialiseQuiz(questions: MCQuestion[], mode: QuizMode) {
       this.questionsQueue = questions;
+      this.questionsStack = [];
       this.quizMode = mode;
       this.quizStats = questions.map((question) => ({
         question,
@@ -59,8 +61,8 @@ export const useQuizStore = defineStore("questionsQueue", {
       stat: Stat,
       selectedOptionValue: string = "",
     ) {
+      console.log("questionId", questionId);
       const questionIndex = statIndex(questionId, this.quizStats);
-
       // Add attempts
       if (this.quizStats[questionIndex]) {
         this.quizStats[questionIndex][stat]++;
@@ -77,8 +79,12 @@ export const useQuizStore = defineStore("questionsQueue", {
           .map((e) => e.optionCorrect)
           .indexOf(true);
 
-        Number(selectedOptionValue) === Number(correctOptionIndex) &&
+        if (Number(selectedOptionValue) === Number(correctOptionIndex)) {
           this.quizStats[questionIndex]["correct"]++;
+        } else {
+          this.quizStats[questionIndex]["correct"] > 0 &&
+            this.quizStats[questionIndex]["correct"]--;
+        }
 
         // Input Option
         this.quizStats[questionIndex]["selectedValue"] =
@@ -87,11 +93,29 @@ export const useQuizStore = defineStore("questionsQueue", {
           ].optionValue;
       }
     },
+    pushToHistoryStack(question: MCQuestion) {
+      this.questionsStack.push(question);
+    },
+    popFromHistoryStack() {
+      return this.questionsStack.pop();
+    },
     enqueueQuestion(question: MCQuestion) {
+      console.log("stack length4", this.questionsStack.length);
+      console.log("enqueue");
       this.questionsQueue.push(question);
     },
     dequeueQuestion() {
+      while (this.questionsQueue.length > 0) {
+        this.pushToHistoryStack(this.questionsQueue.shift() as MCQuestion);
+        return [...this.questionsStack].pop();
+      }
       return this.questionsQueue.shift();
+    },
+    removeFromLastHistory() {
+      const lastQuestion = this.questionsStack.pop();
+
+      this.questionsQueue.unshift(lastQuestion as MCQuestion);
+      return lastQuestion;
     },
     getTimeLimit() {
       return this.timeLimit;
