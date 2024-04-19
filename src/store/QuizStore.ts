@@ -83,15 +83,13 @@ export const useQuizStore = defineStore("questionsQueue", {
         } else {
           this.quizStats[questionIndex]["correct"] = 0;
         }
-
-        // Input Option
-        this.quizStats[questionIndex]["selectedValue"] =
-          selectedOptionValue !== undefined
-            ? this.quizStats[questionIndex].question.optionsList[
-                Number(selectedOptionValue)
-              ].optionValue
-            : "";
       }
+      this.quizStats[questionIndex]["selectedValue"] =
+        selectedOptionValue !== undefined
+          ? this.quizStats[questionIndex].question.optionsList[
+              Number(selectedOptionValue)
+            ].optionValue
+          : "";
     },
     pushToHistoryStack(question: MCQuestion) {
       this.questionsStack.push(question);
