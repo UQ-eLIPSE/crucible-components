@@ -30,6 +30,8 @@ const modifyButtonAndEmit = (event: "nextQuestion" | "prevQuestion") => {
   background-color: #7f7f7f;
   border-color: #c3e6cb;
   cursor: pointer;
+  font-size: 24px;
+  padding: 2px 10px;
 }
 .mcq-button:disabled {
   opacity: 50%;
