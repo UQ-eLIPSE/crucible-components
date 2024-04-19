@@ -12,7 +12,7 @@ const { buttonName } = defineProps<{ buttonName: String }>();
 const emit = defineEmits(["nextQuestion", "prevQuestion"]);
 
 const handleButtonClick = () => {
-  if (buttonName === "next question") {
+  if (buttonName !== "\u2190") {
     modifyButtonAndEmit("nextQuestion");
   } else {
     modifyButtonAndEmit("prevQuestion");

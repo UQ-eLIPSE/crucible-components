@@ -1,5 +1,12 @@
 <template>
   <h3 v-if="timeLeft">Time left: {{ formatSecondsToMinutes(timeLeft) }}</h3>
+  <h3>
+    Question {{ questionsQueue.questionsStack.length }} out of
+    {{
+      questionsQueue.questionsQueue.length +
+      questionsQueue.questionsStack.length
+    }}
+  </h3>
   <MCQQuestion
     v-if="currentQuestion"
     :statement="currentQuestion.statement"
