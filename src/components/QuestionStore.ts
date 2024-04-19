@@ -1,4 +1,4 @@
-import { MCQuestion, SelectedTags, tags } from "@/types/MCQ";
+import { MCQuestion, QuestionState, SelectedTags, tags } from "@/types/MCQ";
 
 /**
  * shuffleArray - Shuffles the array using Fisher-Yates algorithm
@@ -60,4 +60,18 @@ export function filterQuestionsByTags(
         selectedTags.animal.includes(question.tags.animal))
     );
   });
+}
+
+export function findSelectedOptionValue(
+  quizStats: QuestionState[],
+  questionIndex: number,
+  answer: string,
+): number | undefined {
+  const optionsList = quizStats[questionIndex].question.optionsList;
+  for (let i = 0; i < optionsList.length; i++) {
+    if (optionsList[i].optionValue === answer) {
+      return i; // This returns the index if the answer matches
+    }
+  }
+  return undefined; // Return undefined if no match is found
 }

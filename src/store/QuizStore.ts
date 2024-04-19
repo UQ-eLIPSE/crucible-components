@@ -4,7 +4,7 @@ import { filterQuestionsByTags } from "@/components/QuestionStore";
 import { defineStore } from "pinia";
 
 type Stat = "correct" | "skipped" | "attempts" | "selectedValue";
-const statIndex = (questionId: string, quizStats: QuestionState[]) =>
+export const statIndex = (questionId: string, quizStats: QuestionState[]) =>
   quizStats.findIndex((quizStat) => quizStat.question._id?.$oid === questionId);
 
 export const useQuizStore = defineStore("questionsQueue", {
