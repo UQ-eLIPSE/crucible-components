@@ -16,9 +16,9 @@ describe("MCQQuiz.vue", () => {
     const quizAmount = [...questions];
     const questionsQueue = useQuizStore();
 
-    questionsQueue.initialiseQuiz(quizAmount);
+    questionsQueue.initialiseQuiz(quizAmount, "Tutor");
 
-    wrapper = mount(MCQQuiz, {});
+    wrapper = mount(MCQQuiz);
 
     await wrapper.vm.$nextTick();
     mcqBtn = wrapper.get(".mcq-button");

@@ -14,7 +14,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import { ref, defineProps } from "vue";
+import { ref } from "vue";
 import { useQuizStore } from "@/store/QuizStore";
 
 // Define the props expected from the parent component

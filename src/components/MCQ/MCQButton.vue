@@ -1,6 +1,10 @@
 <template>
   <div>
     <button
+      :disabled="
+        hideSkip &&
+        getButtonClassAndText(submitted, selectedOption).class === 'skip'
+      "
       class="mcq-button"
       :class="getButtonClassAndText(submitted, selectedOption).class"
       @click="handleButtonClick(submitted, selectedOption)"
@@ -14,7 +18,7 @@
 import { ref } from "vue";
 import type { MCQButton } from "@type/MCQ.d.ts";
 
-const { submitted, selectedOption } = defineProps<MCQButton>();
+const { submitted, selectedOption, hideSkip } = defineProps<MCQButton>();
 const buttonClass = ref<string>("skip");
 const buttonText = ref<string>("Skip");
 const emit = defineEmits(["submitAnswer", "nextQuestion", "skipQuestion"]);

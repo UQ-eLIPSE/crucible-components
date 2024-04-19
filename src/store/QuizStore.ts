@@ -11,6 +11,7 @@ export const useQuizStore = defineStore("questionsQueue", {
   state: () => {
     return {
       questionsQueue: [] as MCQuestion[],
+      questionsStack: [] as MCQuestion[],
       quizStats: [] as QuestionState[],
       quizMode: "Tutor" as QuizMode,
       selectedTags: {
@@ -45,6 +46,7 @@ export const useQuizStore = defineStore("questionsQueue", {
     },
     initialiseQuiz(questions: MCQuestion[], mode: QuizMode) {
       this.questionsQueue = questions;
+      this.questionsStack = [];
       this.quizMode = mode;
       this.quizStats = questions.map((question) => ({
         question,
@@ -57,12 +59,11 @@ export const useQuizStore = defineStore("questionsQueue", {
     incrementStat(
       questionId: string,
       stat: Stat,
-      selectedOptionValue: string = "",
+      selectedOptionValue: string | undefined,
     ) {
       const questionIndex = statIndex(questionId, this.quizStats);
-
       // Add attempts
-      if (this.quizStats[questionIndex]) {
+      if (this.quizStats[questionIndex] && selectedOptionValue !== undefined) {
         this.quizStats[questionIndex][stat]++;
 
         if (selectedOptionValue === "-1") {
@@ -77,27 +78,48 @@ export const useQuizStore = defineStore("questionsQueue", {
           .map((e) => e.optionCorrect)
           .indexOf(true);
 
-        Number(selectedOptionValue) === Number(correctOptionIndex) &&
-          this.quizStats[questionIndex]["correct"]++;
+        if (Number(selectedOptionValue) === Number(correctOptionIndex)) {
+          this.quizStats[questionIndex]["correct"] = 1;
+        } else {
+          this.quizStats[questionIndex]["correct"] = 0;
+        }
 
         // Input Option
         this.quizStats[questionIndex]["selectedValue"] =
-          this.quizStats[questionIndex].question.optionsList[
-            Number(selectedOptionValue)
-          ].optionValue;
+          selectedOptionValue !== undefined
+            ? this.quizStats[questionIndex].question.optionsList[
+                Number(selectedOptionValue)
+              ].optionValue
+            : "";
       }
+    },
+    pushToHistoryStack(question: MCQuestion) {
+      this.questionsStack.push(question);
     },
     enqueueQuestion(question: MCQuestion) {
       this.questionsQueue.push(question);
     },
     dequeueQuestion() {
+      while (this.questionsQueue.length > 0) {
+        const firstQuestion = this.questionsQueue.shift() as MCQuestion;
+        this.pushToHistoryStack(firstQuestion);
+        return firstQuestion;
+      }
       return this.questionsQueue.shift();
+    },
+    removeFromLastHistory() {
+      if (this.questionsStack.length < 1) return;
+      this.questionsQueue.unshift(this.questionsStack.pop() as MCQuestion);
+      return this.questionsStack[this.questionsStack.length - 1];
     },
     getTimeLimit() {
       return this.timeLimit;
     },
     setTimeLimit(seconds: number) {
       this.timeLimit = seconds;
+    },
+    getRemainingQuestions() {
+      return this.questionsQueue.length;
     },
   },
 });
