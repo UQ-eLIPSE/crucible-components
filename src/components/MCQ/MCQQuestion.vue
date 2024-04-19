@@ -27,16 +27,19 @@
     @next-question="nextQuestion(_id)"
     @skip-question="skipQuestion"
   />
-  <div>
+  <div class="next-prev-question">
     <NextButton
       v-if="statUpdate.quizMode === 'Timed'"
-      :button-name="'next question'"
+      :button-name="
+        statUpdate.questionsQueue.length >= 1 ? '&#x2192;' : 'submit'
+      "
       @next-question="timedNextQuestion(_id)"
     />
-
     <NextButton
-      v-if="statUpdate.quizMode === 'Timed'"
-      :button-name="'prev question'"
+      v-if="
+        statUpdate.quizMode === 'Timed' && statUpdate.questionsStack.length > 1
+      "
+      :button-name="'&#x2190;'"
       @prev-question="prevQuestion()"
     />
   </div>
@@ -161,5 +164,11 @@ const optionClass = (key: string, optionsList: MCQOptions[]) => {
 
 .time-up-msg {
   color: rgb(248, 75, 75);
+}
+
+.next-prev-question {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
 }
 </style>
