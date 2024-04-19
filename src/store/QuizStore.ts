@@ -63,7 +63,8 @@ export const useQuizStore = defineStore("questionsQueue", {
     ) {
       const questionIndex = statIndex(questionId, this.quizStats);
       // Add attempts
-      if (this.quizStats[questionIndex] && selectedOptionValue !== undefined) {
+      if (!this.quizStats[questionIndex]) return;
+      if (selectedOptionValue !== undefined) {
         this.quizStats[questionIndex][stat]++;
 
         if (selectedOptionValue === "-1") {
