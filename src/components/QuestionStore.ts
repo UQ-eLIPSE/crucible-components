@@ -1,5 +1,4 @@
-import { MCQuestion } from "@/types/MCQ";
-import { getAllQuestions } from "./DataAccessLayer";
+import { MCQuestion, SelectedTags, tags } from "@/types/MCQ";
 
 /**
  * shuffleArray - Shuffles the array using Fisher-Yates algorithm
@@ -14,8 +13,51 @@ export const shuffleArray = (array: MCQuestion[]) => {
   return array;
 };
 
-export const getQuestionsRandomly = (count: number) => {
-  const allQuestions = getAllQuestions();
-  const shuffled = shuffleArray(allQuestions);
+export const getQuestionsRandomly = (
+  count: number,
+  questions: MCQuestion[],
+) => {
+  const shuffled = shuffleArray(questions);
   return shuffled.slice(0, count);
 };
+
+export function getUniquePropertyValues(tagProps: tags[]) {
+  const uniqueValues = {
+    course: new Set<string>(),
+    subject: new Set<string>(),
+    system: new Set<string>(),
+    animal: new Set<string>(),
+  };
+
+  for (const item of tagProps) {
+    uniqueValues.course.add(item.course);
+    uniqueValues.subject.add(item.subject);
+    uniqueValues.system.add(item.system);
+    uniqueValues.animal.add(item.animal);
+  }
+
+  return {
+    course: [...uniqueValues.course],
+    subject: [...uniqueValues.subject],
+    system: [...uniqueValues.system],
+    animal: [...uniqueValues.animal],
+  };
+}
+
+export function filterQuestionsByTags(
+  questions: MCQuestion[],
+  selectedTags: SelectedTags,
+): MCQuestion[] {
+  return questions.filter((question) => {
+    return (
+      (selectedTags.course.length === 0 ||
+        selectedTags.course.includes(question.tags.course)) &&
+      (selectedTags.subject.length === 0 ||
+        selectedTags.subject.includes(question.tags.subject)) &&
+      (selectedTags.system.length === 0 ||
+        selectedTags.system.includes(question.tags.system)) &&
+      (selectedTags.animal.length === 0 ||
+        selectedTags.animal.includes(question.tags.animal))
+    );
+  });
+}

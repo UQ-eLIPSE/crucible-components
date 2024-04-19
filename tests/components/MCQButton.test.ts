@@ -66,4 +66,10 @@ describe("MCQButton.vue", () => {
     expect(mcqBtn.classes()).toContain("skip");
     expect(mcqBtn.text()).toBe("Skip");
   });
+
+  it("Should not be able to skip on the last question", async () => {
+    expect(mcqBtn.classes()).toContain("skip");
+    expect(mcqBtn.text()).toBe("Skip");
+    expect(Object.keys(mcqBtn.attributes())).toContain("disabled");
+  });
 });

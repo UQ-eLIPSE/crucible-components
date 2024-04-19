@@ -7,11 +7,7 @@
     @next-question="nextQuestion"
     @skip-question="skipQuestion"
   />
-  <MCQStatus
-    v-if="!currentQuestion"
-    :quiz-status="questionsQueue.quizStats"
-    :work-quiz="questionsQueue.quizStats.length"
-  />
+  <MCQStatus v-if="!currentQuestion" />
   <button v-if="!currentQuestion" class="btn-relocate" @click="refreshPage">
     End
   </button>
@@ -56,5 +52,6 @@ const refreshPage = () => window.location.reload();
   width: fit-content;
   margin: auto;
   margin-bottom: 5px;
+  cursor: pointer;
 }
 </style>
