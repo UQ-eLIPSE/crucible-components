@@ -19,6 +19,7 @@
     </div>
   </div>
   <MCQButton
+    v-if="statUpdate.quizMode === 'Tutor'"
     :submitted="submitted"
     :selected-option="selectedOption"
     :hide-skip="remainingQuestions <= 1"
@@ -26,6 +27,19 @@
     @next-question="nextQuestion(_id)"
     @skip-question="skipQuestion"
   />
+  <div>
+    <NextButton
+      v-if="statUpdate.quizMode === 'Timed'"
+      :button-name="'next question'"
+      @next-question="timedNextQuestion(_id)"
+    />
+
+    <NextButton
+      v-if="statUpdate.quizMode === 'Timed'"
+      :button-name="'prev question'"
+      @prev-question="prevQuestion()"
+    />
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -33,20 +47,25 @@ import { ref } from "vue";
 import type { MCQuestionProp, MCQOptions } from "@type/MCQ.d.ts";
 import MCQOption from "./MCQOption.vue";
 import MCQButton from "./MCQButton.vue";
+import NextButton from "./NextButton.vue";
 import { useQuizStore } from "@/store/QuizStore";
 
 const statUpdate = useQuizStore();
-
 const { statement, optionsList, _id } = defineProps<MCQuestionProp>();
 const selectedOption = ref<string | null>(null);
 const submitted = ref<boolean>(false);
-const emit = defineEmits(["nextQuestion", "skipQuestion"]);
+
+const emit = defineEmits(["nextQuestion", "skipQuestion", "prevQuestion"]);
 const remainingQuestions = ref<number>(statUpdate.getRemainingQuestions());
 
 const submitAnswer = () => {
   submitted.value = true;
 };
-
+const timedNextQuestion = (_id: { $oid: string }) => {
+  trackQuizStatus(_id);
+  selectedOption.value = null;
+  emit("nextQuestion");
+};
 const nextQuestion = (_id: { $oid: string }) => {
   resetQuestion(_id);
   remainingQuestions.value = statUpdate.getRemainingQuestions();
@@ -59,12 +78,19 @@ const skipQuestion = () => {
 };
 
 const trackQuizStatus = (_id: { $oid: string }) =>
-  statUpdate.incrementStat(_id.$oid, "attempts", selectedOption.value || "");
+  statUpdate.incrementStat(
+    _id.$oid,
+    "attempts",
+    selectedOption.value ?? undefined,
+  );
 
 const resetQuestion = (_id: { $oid: string }) => {
   trackQuizStatus(_id);
   submitted.value = false;
   selectedOption.value = null;
+};
+const prevQuestion = () => {
+  emit("prevQuestion");
 };
 
 // Only allow selection if the quiz is not submitted
@@ -79,10 +105,6 @@ const selectOption = (key: string) => {
 const optionClass = (key: string, optionsList: MCQOptions[]) => {
   const option = optionsList[parseInt(key)];
   const isSelected = selectedOption.value === key;
-
-  if (statUpdate.quizMode === "Timed" && submitted.value) {
-    return isSelected ? "selected ignore-hover" : "ignore-hover";
-  }
 
   if (!submitted.value) {
     return isSelected ? "selected" : "";

@@ -16,7 +16,7 @@ describe("MCQTimedQuiz.vue", () => {
     const quizAmount = [...questions];
     questionsQueue = useQuizStore();
 
-    questionsQueue.initialiseQuiz(quizAmount);
+    questionsQueue.initialiseQuiz(quizAmount, "Timed");
 
     wrapper = mount(MCQTimedQuiz, {});
 
