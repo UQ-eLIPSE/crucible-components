@@ -16,6 +16,7 @@ export interface MCQuestion {
   tags: tags;
   optionsList: MCQOptions[];
   link: string;
+  className?: string;
 }
 
 export interface MCQuestionProp extends Omit<MCQuestion, "tags" | "link"> {}
