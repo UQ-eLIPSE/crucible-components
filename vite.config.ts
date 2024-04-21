@@ -16,6 +16,25 @@ export default defineConfig({
       "@type": fileURLToPath(new URL("./src/types", import.meta.url)),
     },
   },
+  build: {
+    lib: {
+      entry: "./src/ViewerPlugin.ts", // Update this path
+      name: "CrucibleComponent",
+      fileName: (format) => `crucible-component.${format}.js`,
+    },
+    rollupOptions: {
+      // make sure to externalize deps that shouldn't be bundled
+      // into your library
+      external: ["vue"],
+      output: {
+        // Provide global variables to use in the UMD build
+        // for externalized deps
+        globals: {
+          vue: "Vue",
+        },
+      },
+    },
+  },
   test: {
     include: ["tests/**/*.test.ts"],
     globals: true,

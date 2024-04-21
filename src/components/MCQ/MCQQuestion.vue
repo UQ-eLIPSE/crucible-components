@@ -6,7 +6,7 @@
       v-for="[key, value] in Object.entries(optionsList)"
       :key="key"
       class="mcq-option"
-      @click="selectOption(key, _id.$oid)"
+      @click="selectOption(key)"
     >
       <input
         :id="'option-' + key"
@@ -16,7 +16,7 @@
         name="options"
         :checked="selectedOption === key"
         :class="className"
-        @click="selectOption(key, _id.$oid)"
+        @click="selectOption(key)"
       />
       <label
         :for="'option-' + key"
@@ -30,10 +30,9 @@
 <script setup lang="ts">
 import type { MCQuestionProp } from "@type/MCQ.d.ts";
 
-const { statement, optionsList, className, _id } =
-  defineProps<MCQuestionProp>();
+const { statement, optionsList, className } = defineProps<MCQuestionProp>();
 const selectedQuestion = defineModel("selectedQuestion", {
-  type: String,
+  type: Boolean,
   default: null,
 });
 
@@ -41,9 +40,9 @@ const selectedOption = defineModel("selectedOption", {
   type: String,
   default: null,
 });
-const selectOption = (key: string, questionId: string) => {
+const selectOption = (key: string) => {
   selectedOption.value = key;
-  selectedQuestion.value = questionId;
+  selectedQuestion.value = true;
 };
 
 // const optionClass = (key: string, optionsList: MCQOptions[]) => {

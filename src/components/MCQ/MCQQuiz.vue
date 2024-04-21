@@ -2,37 +2,20 @@
   <MCQQuestion
     v-if="currentQuestion"
     v-model:selected-option="selectedOption"
+    v-model:selected-question="isSelected"
     :statement="currentQuestion.statement"
     :options-list="currentQuestion.optionsList"
-    :_id="currentQuestion._id"
     @next-question="nextQuestion"
     @skip-question="skipQuestion"
   />
-  <div class="next-prev-question">
+  <div v-if="currentQuestion" class="next-prev-question">
     <ButtonUi
       v-if="questionsQueue.quizMode === 'Tutor'"
       :button-name="buttonUi.buttonName"
       :button-fuc="buttonUi.buttonFunc"
-      @click="quizStateHandler"
       @next-question="nextQuestion()"
       @submit-answer="submitAnswer"
       @skip-question="skipQuestion"
-    />
-
-    <ButtonUi
-      v-if="questionsQueue.quizMode === 'Timed'"
-      :button-name="'&#x2192;'"
-      :button-fuc="'timedNextQuestion'"
-      @timed-next-question="timedNextQuestion()"
-    />
-    <ButtonUi
-      v-if="
-        questionsQueue.quizMode === 'Timed' &&
-        questionsQueue.questionsStack.length > 1
-      "
-      :button-fuc="'timedNextQuestion'"
-      :button-name="'&#x2190;'"
-      @prev-question="prevQuestion()"
     />
   </div>
   <MCQStatus v-if="!currentQuestion" />
@@ -51,6 +34,7 @@ import { useQuizStore } from "@/store/QuizStore";
 
 const currentQuestion = ref<MCQuestion | undefined>();
 const selectedOption = ref<string | null>(null);
+const isSelected = ref(false);
 
 const questionsQueue = useQuizStore();
 const buttonUi = ref<{ buttonName: string; buttonFunc: string }>({
@@ -63,18 +47,22 @@ const remainingQuestions = ref<number>(questionsQueue.getRemainingQuestions());
 onMounted(() => {
   nextQuestion();
 });
-
+watch(isSelected, (newIsSelected) => {
+  console.log("isSelected", isSelected.value);
+  if (quizState.value === "initial" && newIsSelected) quizState.value = "next";
+});
 watch(quizState, (newState) => {
   console.log("Quiz state changed", newState);
   switch (newState) {
     case "initial":
-      buttonUi.value.buttonName = "Start";
-      buttonUi.value.buttonFunc = "submit";
+      buttonUi.value.buttonName = "Skip";
+      buttonUi.value.buttonFunc = "skipQuestion";
       break;
     case "next":
       buttonUi.value.buttonName = "Next";
       buttonUi.value.buttonFunc = "nextQuestion";
       break;
+
     case "prev":
       buttonUi.value.buttonName = "Previous";
       buttonUi.value.buttonFunc = "prevQuestion";
@@ -86,21 +74,20 @@ watch(quizState, (newState) => {
     // Add more cases as necessary
   }
 });
-const quizStateHandler = () => {
-  console.log("Quiz state handler");
-  quizState.value = quizState.value !== "initial" ? "initial" : "submit";
-};
+// const quizStateHandler = () => {
+//   console.log("loading");
+//   // console.log("Quiz state handler");
+//   // quizState.value = quizState.value !== "initial" ? "initial" : "next";
+// };
 const submitAnswer = () => {
   // quizState.value = "initial";
   submitted.value = true;
 };
-const timedNextQuestion = () => {
-  if (currentQuestion.value) trackQuizStatus();
-  selectedOption.value = null;
-  currentQuestion.value = questionsQueue.dequeueQuestion();
-};
+
 const nextQuestion = () => {
-  quizState.value = "next";
+  isSelected.value = false;
+  quizState.value = "initial";
+  console.log("next clicked", quizState.value);
   resetQuestion();
   remainingQuestions.value = questionsQueue.getRemainingQuestions();
   currentQuestion.value = questionsQueue.dequeueQuestion();
@@ -108,9 +95,10 @@ const nextQuestion = () => {
 
 const skipQuestion = () => {
   // quizState.value = "next";
-  console.log("Skip question");
+  isSelected.value = false;
   resetQuestion();
   questionsQueue.enqueueQuestion(currentQuestion.value as MCQuestion);
+  console.log("Skip question", "isSelected", isSelected.value);
   nextQuestion();
 };
 
@@ -131,12 +119,8 @@ const trackQuizStatus = () => {
 
 const resetQuestion = () => {
   if (currentQuestion.value) trackQuizStatus();
-  submitted.value = false;
-  selectedOption.value = null;
-};
-const prevQuestion = () => {
-  currentQuestion.value =
-    questionsQueue.removeFromLastHistory() ?? currentQuestion.value;
+  // submitted.value = false;
+  // selectedOption.value = null;
 };
 
 // const skipQuestion = () => {

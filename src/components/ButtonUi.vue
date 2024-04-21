@@ -17,6 +17,7 @@ const emit = defineEmits([
   "submit",
   "save",
   "timedNextQuestion",
+  "skipQuestion",
 ]);
 
 const handleClick = (buttonFuc: string) => {
@@ -28,6 +29,7 @@ const handleClick = (buttonFuc: string) => {
       "submit",
       "save",
       "timedNextQuestion",
+      "skipQuestion",
     ].includes(buttonFuc)
   ) {
     emit(
@@ -36,7 +38,8 @@ const handleClick = (buttonFuc: string) => {
         | "prevQuestion"
         | "submit"
         | "save"
-        | "timedNextQuestion",
+        | "timedNextQuestion"
+        | "skipQuestion",
     );
   }
 };
