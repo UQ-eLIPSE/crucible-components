@@ -4,7 +4,7 @@ import { filterQuestionsByTags } from "@/components/QuestionStore";
 import { defineStore } from "pinia";
 
 type Stat = "correct" | "skipped" | "attempts" | "selectedValue";
-const statIndex = (questionId: string, quizStats: QuestionState[]) =>
+export const statIndex = (questionId: string, quizStats: QuestionState[]) =>
   quizStats.findIndex((quizStat) => quizStat.question._id?.$oid === questionId);
 
 export const useQuizStore = defineStore("questionsQueue", {
@@ -63,7 +63,8 @@ export const useQuizStore = defineStore("questionsQueue", {
     ) {
       const questionIndex = statIndex(questionId, this.quizStats);
       // Add attempts
-      if (this.quizStats[questionIndex] && selectedOptionValue !== undefined) {
+      if (!this.quizStats[questionIndex]) return;
+      if (selectedOptionValue !== undefined) {
         this.quizStats[questionIndex][stat]++;
 
         if (selectedOptionValue === "-1") {
@@ -83,15 +84,13 @@ export const useQuizStore = defineStore("questionsQueue", {
         } else {
           this.quizStats[questionIndex]["correct"] = 0;
         }
-
-        // Input Option
-        this.quizStats[questionIndex]["selectedValue"] =
-          selectedOptionValue !== undefined
-            ? this.quizStats[questionIndex].question.optionsList[
-                Number(selectedOptionValue)
-              ].optionValue
-            : "";
       }
+      this.quizStats[questionIndex]["selectedValue"] =
+        selectedOptionValue !== undefined
+          ? this.quizStats[questionIndex].question.optionsList[
+              Number(selectedOptionValue)
+            ].optionValue
+          : "";
     },
     pushToHistoryStack(question: MCQuestion) {
       this.questionsStack.push(question);
