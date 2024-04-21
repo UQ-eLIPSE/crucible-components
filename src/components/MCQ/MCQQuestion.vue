@@ -94,7 +94,6 @@ const resetQuestion = (_id: { $oid: string }) => {
   submitted.value = false;
   selectedOption.value = null;
 };
-
 const prevQuestion = () => {
   emit("prevQuestion");
 };

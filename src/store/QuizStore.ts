@@ -95,6 +95,7 @@ export const useQuizStore = defineStore("questionsQueue", {
     pushToHistoryStack(question: MCQuestion) {
       this.questionsStack.push(question);
     },
+
     enqueueQuestion(question: MCQuestion) {
       this.questionsQueue.push(question);
     },
