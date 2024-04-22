@@ -1,7 +1,7 @@
 import { DOMWrapper, VueWrapper, mount } from "@vue/test-utils";
 import { createPinia, setActivePinia } from "pinia";
 import { beforeEach, describe, expect, it, vi } from "vitest";
-import { questions } from "@data/question-data.json";
+import { questionsData as questions } from "../testSeeds";
 import { useQuizStore } from "@/store/QuizStore";
 import MCQTimedQuiz from "@/components/MCQ/MCQTimedQuiz.vue";
 
