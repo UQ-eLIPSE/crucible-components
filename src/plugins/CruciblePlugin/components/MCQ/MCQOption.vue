@@ -21,7 +21,7 @@
 </template>
 
 <script setup lang="ts">
-import type { MCQRadioOption } from "@/plugins/CruciblePlugin/types/MCQ";
+import type { MCQRadioOption } from "@type/MCQ.d.ts";
 const { optionKey, checked, option, submitted } = defineProps<MCQRadioOption>();
 const emit = defineEmits(["selectOption"]);
 const update = () => emit("selectOption");

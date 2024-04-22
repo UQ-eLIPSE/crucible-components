@@ -38,7 +38,7 @@ const handleStartQuiz = ({ questionAmount, mode }: StartQuizConfig) => {
   <MCQTimedQuiz
     v-else-if="quizStarted && questionsQueue.quizMode === 'Timed'"
   />
-  <StartPage v-else :link="'placeholder'" @start-quiz="handleStartQuiz" />
+  <StartPage v-else @start-quiz="handleStartQuiz" />
 </template>
 
 <style scoped>

@@ -1,6 +1,6 @@
 <template>
   <div class="start-page-container">
-    <h1>VetCloud Smart Quiz From: {{ link.link }}</h1>
+    <h1>VetCloud Smart Quiz</h1>
     <MCQTagOptions />
     <div class="quiz-config-container">
       <div class="question-config-container">
@@ -45,37 +45,18 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref } from "vue";
+import { ref } from "vue";
 import MCQTagOptions from "./MCQ/MCQTagOptions.vue";
 import DropDownbox from "./MCQ/DropDownbox.vue";
 import { useQuizStore } from "@/plugins/CruciblePlugin/store/QuizStore";
-const link = defineProps<{ link: String }>();
 const questionAmount = ref<number>(1);
 const selectedMode = ref<string>("Tutor");
-const questionAPI = ref<any>(null);
 
 const showMaxMsg = ref<boolean>(false);
 const showMaxMsgDelay = 3000;
 const showMaxMsgTimeoutId = ref<number | null>(null);
 const emit = defineEmits(["start-quiz"]);
 const questionsQueue = useQuizStore();
-
-onMounted(() => {
-  console.log("APIaddress", link);
-  console.log("questionAPI", questionAPI);
-  // questionAPI.value = async () => {
-  //   fetch(link as string)
-  //     .then((response) => response.json())
-  //     .then((data) => {
-  //       const questions = data.questions;
-  //       return questions;
-  //       // Rest of the code that uses the questions array
-  //     })
-  //     .catch((error) => {
-  //       console.error("Error fetching question data:", error);
-  //     });
-  // };
-});
 
 const startQuiz = () => {
   emit("start-quiz", {

@@ -16,7 +16,7 @@
 
 <script setup lang="ts">
 import { ref } from "vue";
-import type { MCQButton } from "@/plugins/CruciblePlugin/types/MCQ";
+import type { MCQButton } from "@type/MCQ.d.ts";
 
 const { submitted, selectedOption, hideSkip } = defineProps<MCQButton>();
 const buttonClass = ref<string>("skip");
