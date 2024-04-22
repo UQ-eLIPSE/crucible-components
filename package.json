@@ -8,9 +8,11 @@
       "import": "./dist/index.es.js",
       "require": "./dist/index.js"
     },
-    "./dist/style.css": "./dist/style.css"
+    "./dist/style.css": "./dist/css/style.css"
   },
-  "files":["dist"],
+  "files": [
+    "dist"
+  ],
   "type": "module",
   "scripts": {
     "prepare": "husky install",
