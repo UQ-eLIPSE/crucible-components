@@ -1,7 +1,16 @@
 {
   "name": "crucible-components",
-  "private": true,
   "version": "1.0.0",
+  "main": "./dist/index.js",
+  "module": "./dist/index.es.js",
+  "exports": {
+    ".": {
+      "import": "./dist/index.es.js",
+      "require": "./dist/index.js"
+    },
+    "./dist/style.css": "./dist/style.css"
+  },
+  "files":["dist"],
   "type": "module",
   "scripts": {
     "prepare": "husky install",
@@ -21,6 +30,7 @@
   },
   "dependencies": {
     "pinia": "^2.1.7",
+    "rollup-plugin-typescript2": "^0.36.0",
     "vue": "^3.3.11"
   },
   "devDependencies": {

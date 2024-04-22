@@ -2,5 +2,5 @@
   <CrucibleComponent />
 </template>
 <script setup lang="ts">
-// import CrucibleCompo from "./components/crucible-compo.vue";
+import CrucibleComponent from "./components/crucible-component.vue";
 </script>

@@ -20,7 +20,7 @@ export default defineConfig({
     lib: {
       entry: "./src/ViewerPlugin.ts", // Update this path
       name: "CrucibleComponent",
-      fileName: (format) => `crucible-component.${format}.js`,
+      fileName: (format) => `index.${format}.js`,
     },
     rollupOptions: {
       // make sure to externalize deps that shouldn't be bundled
