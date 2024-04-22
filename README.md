@@ -4,6 +4,10 @@ This is a project for creating crucible components that will be used as part of 
 
 Node version requirement: 20
 
+## Install Project as a package
+
+`yarn add https://github.com/UQ-eLIPSE/crucible-components.git#release-package`
+
 ## Project Setup
 
 ```sh
