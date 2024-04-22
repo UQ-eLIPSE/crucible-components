@@ -1,7 +1,7 @@
 import { mount } from "@vue/test-utils";
 import { describe, it, expect, beforeEach } from "vitest";
-import MCQTagOptions from "@/components/MCQ/MCQTagOptions.vue";
-import { getUniquePropertyValues } from "@/components/QuestionStore";
+import MCQTagOptions from "@/plugins/CruciblePlugin/components/MCQ/MCQTagOptions.vue";
+import { getUniquePropertyValues } from "@/plugins/CruciblePlugin/components/QuestionStore";
 import { createPinia, setActivePinia } from "pinia";
 
 beforeEach(() => {

@@ -1,9 +1,9 @@
 import { describe, it, expect, beforeEach } from "vitest";
 import { createPinia, setActivePinia } from "pinia";
-import { useQuizStore } from "@/store/QuizStore";
-import MCQStatus from "@/components/MCQ/MCQStatus.vue";
+import { useQuizStore } from "@/plugins/CruciblePlugin/store/QuizStore";
+import MCQStatus from "@/plugins/CruciblePlugin/components/MCQ/MCQStatus.vue";
 import { mount, VueWrapper, DOMWrapper } from "@vue/test-utils";
-import { QuestionState } from "@/types/MCQ";
+import { QuestionState } from "@/plugins/CruciblePlugin/types/MCQ";
 import { dataTest } from "../testSeeds";
 
 let wrapper: VueWrapper;

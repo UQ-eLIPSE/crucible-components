@@ -1,9 +1,9 @@
 import { DOMWrapper, VueWrapper, mount } from "@vue/test-utils";
 import { createPinia, setActivePinia } from "pinia";
 import { beforeEach, describe, expect, it, vi } from "vitest";
-import { questions } from "@data/question-data.json";
-import { useQuizStore } from "@/store/QuizStore";
-import MCQTimedQuiz from "@/components/MCQ/MCQTimedQuiz.vue";
+import { questionsData as questions } from "../testSeeds";
+import { useQuizStore } from "@/plugins/CruciblePlugin/store/QuizStore";
+import MCQTimedQuiz from "@/plugins/CruciblePlugin/components/MCQ/MCQTimedQuiz.vue";
 
 let wrapper: VueWrapper;
 let mcqBtn: Omit<DOMWrapper<Element>, "exists">;

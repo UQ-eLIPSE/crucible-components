@@ -1,8 +1,8 @@
 import { describe, it, expect, beforeEach } from "vitest";
 import { createPinia, setActivePinia } from "pinia";
-import { useQuizStore } from "@/store/QuizStore";
-import { questions } from "@data/question-data.json";
-import MCQQuiz from "@components/MCQ/MCQQuiz.vue";
+import { useQuizStore } from "@/plugins/CruciblePlugin/store/QuizStore";
+import { questionsData as questions } from "../testSeeds";
+import MCQQuiz from "@/plugins/CruciblePlugin/components/MCQ/MCQQuiz.vue";
 import { mount, VueWrapper, DOMWrapper } from "@vue/test-utils";
 import { getOptions } from "./MCQQuestion.test";
 
@@ -85,7 +85,7 @@ describe("MCQQuiz.vue", () => {
   it("Should display no questions after answering them all, and display the correct Score", async () => {
     for (let i = 0; i < questions.length; i++) {
       const optionList = getOptions(wrapper);
-      const firstOption = optionList[0];
+      const firstOption = optionList[2];
       await firstOption.trigger("click");
       await mcqBtn.trigger("click");
       await mcqBtn.trigger("click");
@@ -95,8 +95,6 @@ describe("MCQQuiz.vue", () => {
 
     expect(questionIsFullyDisplayed(wrapper)).toBe(false);
 
-    expect(wrapper.get(".score").text()).toBe(
-      "⌛ Result: 45 out of 185 - (24 %)",
-    );
+    expect(wrapper.get(".score").text()).toBe("⌛ Result: 2 out of 3 - (67 %)");
   });
 });
