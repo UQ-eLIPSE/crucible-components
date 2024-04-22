@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { ref } from "vue";
-import MCQQuiz from "@components/MCQ/MCQQuiz.vue";
-import MCQTimedQuiz from "@components/MCQ/MCQTimedQuiz.vue";
-import StartPage from "@components/StartPage.vue";
+import MCQQuiz from "./MCQ/MCQQuiz.vue";
+import MCQTimedQuiz from "./MCQ/MCQTimedQuiz.vue";
+import StartPage from "./StartPage.vue";
 import { filterQuestionsByTags, getQuestionsRandomly } from "./QuestionStore";
 import { useQuizStore } from "../store/QuizStore";
 import { StartQuizConfig } from "../types/MCQ";
@@ -38,7 +38,7 @@ const handleStartQuiz = ({ questionAmount, mode }: StartQuizConfig) => {
   <MCQTimedQuiz
     v-else-if="quizStarted && questionsQueue.quizMode === 'Timed'"
   />
-  <StartPage v-else @start-quiz="handleStartQuiz" />
+  <StartPage v-else :link="'placeholder'" @start-quiz="handleStartQuiz" />
 </template>
 
 <style scoped>

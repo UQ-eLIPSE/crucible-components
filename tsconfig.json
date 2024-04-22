@@ -24,10 +24,16 @@
       "@/*": ["./src/*"],
       "@components/*": ["./src/components/*"],
       "@data/*": ["./data/*"],
-      "@type/*": ["./src/types/*"],
-    }, 
+      "@type/*": ["src/plugins/CruciblePlugin/types/*"]
+    }
   },
-  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue", "tests/**/*.ts", "declarations.d.ts"],
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue",
+    "tests/**/*.ts",
+    "declarations.d.ts"
+  ],
   "exclude": ["tests/**/*.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

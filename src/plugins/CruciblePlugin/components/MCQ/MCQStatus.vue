@@ -69,7 +69,7 @@
 </template>
 
 <script setup lang="ts">
-import { useQuizStore } from "@/store/QuizStore";
+import { useQuizStore } from "@/plugins/CruciblePlugin/store/QuizStore";
 
 const questionsQueue = useQuizStore();
 

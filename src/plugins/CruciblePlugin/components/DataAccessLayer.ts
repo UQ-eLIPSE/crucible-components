@@ -1,6 +1,6 @@
-import { MCQuestion } from "@/types/MCQ";
-// import { questions } from "@data/question-data.json";
-import { generateDummyData } from "../../data/dummyQuestionData";
+import { MCQuestion } from "@/plugins/CruciblePlugin/types/MCQ";
+
+import { generateDummyData } from "../../../../data/dummyQuestionData";
 
 const questions: MCQuestion[] = [
   {

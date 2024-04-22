@@ -1,4 +1,8 @@
-import { MCQuestion, SelectedTags, tags } from "@/types/MCQ";
+import {
+  MCQuestion,
+  SelectedTags,
+  tags,
+} from "@/plugins/CruciblePlugin/types/MCQ";
 
 /**
  * shuffleArray - Shuffles the array using Fisher-Yates algorithm

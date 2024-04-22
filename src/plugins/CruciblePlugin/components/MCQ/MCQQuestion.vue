@@ -28,7 +28,7 @@
 </template>
 
 <script setup lang="ts">
-import type { MCQuestionProp } from "@type/MCQ.d.ts";
+import type { MCQuestionProp } from "@/plugins/CruciblePlugin/types/MCQ";
 
 const { statement, optionsList, className } = defineProps<MCQuestionProp>();
 const selectedQuestion = defineModel("selectedQuestion", {
@@ -44,22 +44,6 @@ const selectOption = (key: string) => {
   selectedOption.value = key;
   selectedQuestion.value = true;
 };
-
-// const optionClass = (key: string, optionsList: MCQOptions[]) => {
-//   // quizState.value = quizState.value !== "initial" ? "initial" : "submit";
-//   const option = optionsList[parseInt(key)];
-//   const isSelected = selectedOption.value === key;
-
-//   if (!submitted.value) {
-//     return isSelected ? "selected" : "";
-//   }
-
-//   return option.optionCorrect
-//     ? "correct ignore-hover"
-//     : isSelected
-//       ? "wrong ignore-hover"
-//       : "ignore-hover";
-// };
 </script>
 
 <style scoped>

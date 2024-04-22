@@ -26,11 +26,11 @@
 
 <script setup lang="ts">
 import { onMounted, ref, watch } from "vue";
-import MCQQuestion from "@components/MCQ/MCQQuestion.vue";
-import type { MCQuestion } from "@type/MCQ.d.ts";
+import MCQQuestion from "./MCQQuestion.vue";
+import type { MCQuestion } from "@/plugins/CruciblePlugin/types/MCQ";
 import MCQStatus from "./MCQStatus.vue";
-import ButtonUi from "../ButtonUi.vue";
-import { useQuizStore } from "@/store/QuizStore";
+import ButtonUi from "./ButtonUi.vue";
+import { useQuizStore } from "@/plugins/CruciblePlugin/store/QuizStore";
 
 const currentQuestion = ref<MCQuestion | undefined>();
 const selectedOption = ref<string | null>(null);

@@ -13,13 +13,15 @@ export default defineConfig({
         new URL("./src/components", import.meta.url),
       ),
       "@data": fileURLToPath(new URL("./data", import.meta.url)),
-      "@type": fileURLToPath(new URL("./src/types", import.meta.url)),
+      "@type": fileURLToPath(
+        new URL("./src/plugins/CruciblePlugin/types", import.meta.url),
+      ),
     },
   },
   build: {
     lib: {
-      entry: "./src/ViewerPlugin.ts", // Update this path
-      name: "CrucibleComponent",
+      entry: "./src/plugins/CruciblePlugin/ViewerPlugin.ts", // Update this path
+      name: "CruciblePlugin",
       fileName: (format) => `index.${format}.js`,
     },
     rollupOptions: {
@@ -32,9 +34,15 @@ export default defineConfig({
         globals: {
           vue: "Vue",
         },
+        // Ensuring CSS is bundled separately if needed
+        assetFileNames: (assetInfo) => {
+          if (assetInfo.name.endsWith(".css")) return "css/[name][extname]";
+          return "[name][extname]";
+        },
       },
     },
   },
+
   test: {
     include: ["tests/**/*.test.ts"],
     globals: true,

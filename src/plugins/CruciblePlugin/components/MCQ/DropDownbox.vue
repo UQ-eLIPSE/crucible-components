@@ -15,7 +15,7 @@
 </template>
 <script setup lang="ts">
 import { ref } from "vue";
-import { useQuizStore } from "@/store/QuizStore";
+import { useQuizStore } from "@/plugins/CruciblePlugin/store/QuizStore";
 
 // Define the props expected from the parent component
 defineProps<{

@@ -1,4 +1,4 @@
-import { tags, MCQuestion } from "@/types/MCQ";
+import { tags, MCQuestion } from "@/plugins/CruciblePlugin/types/MCQ";
 
 interface Option {
   optionValue: string;

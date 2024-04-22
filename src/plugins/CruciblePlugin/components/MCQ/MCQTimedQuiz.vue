@@ -23,11 +23,11 @@
 </template>
 
 <script setup lang="ts">
-import { useQuizStore } from "@/store/QuizStore";
-import MCQQuestion from "@components/MCQ/MCQQuestion.vue";
+import { useQuizStore } from "@/plugins/CruciblePlugin/store/QuizStore";
+import MCQQuestion from "./MCQQuestion.vue";
 import MCQStatus from "./MCQStatus.vue";
 import { onBeforeMount, onMounted, ref } from "vue";
-import { MCQuestion } from "@/types/MCQ";
+import { MCQuestion } from "@/plugins/CruciblePlugin/types/MCQ";
 
 const oneSecond = 1000;
 const timeoutTag = "-1"; // Marks a question as timed out in quiz store

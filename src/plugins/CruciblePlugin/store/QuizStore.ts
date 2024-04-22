@@ -1,6 +1,11 @@
-import { MCQuestion, QuestionState, QuizMode, SelectedTags } from "@/types/MCQ";
-import { getQuestionsBasedOnEnv } from "@/components/DataAccessLayer";
-import { filterQuestionsByTags } from "@/components/QuestionStore";
+import {
+  MCQuestion,
+  QuestionState,
+  QuizMode,
+  SelectedTags,
+} from "@/plugins/CruciblePlugin/types/MCQ";
+import { getQuestionsBasedOnEnv } from "@/plugins/CruciblePlugin/components/DataAccessLayer";
+import { filterQuestionsByTags } from "@/plugins/CruciblePlugin/components/QuestionStore";
 import { defineStore } from "pinia";
 
 type Stat = "correct" | "skipped" | "attempts" | "selectedValue";

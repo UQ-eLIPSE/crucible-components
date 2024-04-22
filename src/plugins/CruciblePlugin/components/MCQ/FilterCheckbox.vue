@@ -25,10 +25,10 @@
 </template>
 
 <script setup lang="ts">
-import { SelectedTags } from "@/types/MCQ";
-import { useQuizStore } from "@/store/QuizStore";
-import { getQuestionsBasedOnEnv } from "./DataAccessLayer";
-import { filterQuestionsByTags } from "./QuestionStore";
+import { SelectedTags } from "@/plugins/CruciblePlugin/types/MCQ";
+import { useQuizStore } from "@/plugins/CruciblePlugin/store/QuizStore";
+import { getQuestionsBasedOnEnv } from "../DataAccessLayer";
+import { filterQuestionsByTags } from "../QuestionStore";
 import { computed } from "vue";
 const { category, topics } = defineProps<{
   category: string;
