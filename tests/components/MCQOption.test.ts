@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeEach } from "vitest";
-import { questions } from "@data/question-data.json";
+import { questionsData as questions } from "../testSeeds";
 import MCQQuestion from "@components/MCQ/MCQQuestion.vue";
 import { mount, VueWrapper, DOMWrapper } from "@vue/test-utils";
 import { getOptions } from "./MCQQuestion.test";

@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeEach } from "vitest";
-import { questions } from "@data/question-data.json";
+import { questionsData as questions } from "../testSeeds";
 import { createPinia, setActivePinia } from "pinia";
 import MCQQuestion from "@components/MCQ/MCQQuestion.vue";
 import { DOMWrapper, mount, VueWrapper } from "@vue/test-utils";
