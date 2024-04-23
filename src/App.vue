@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { onMounted, ref } from "vue";
 import MCQQuiz from "@components/MCQ/MCQQuiz.vue";
 import MCQTimedQuiz from "@components/MCQ/MCQTimedQuiz.vue";
 import StartPage from "@components/StartPage.vue";
@@ -10,18 +10,30 @@ import {
 import { useQuizStore } from "./store/QuizStore";
 import { StartQuizConfig } from "./types/MCQ";
 import { MCQuestion } from "./types/MCQ";
-import { getQuestionsBasedOnEnv } from "./components/DataAccessLayer";
+import {
+  // getQuestionsBasedOnEnv,
+  getAllQuestionsFromApi,
+} from "./components/DataAccessLayer";
 
 const quizQuestions = ref(0);
 const questionsQueue = useQuizStore();
 const quizStarted = ref<boolean>(false);
+const questions = ref<MCQuestion[]>([]);
+
+onMounted(async () => {
+  const data = await getAllQuestionsFromApi();
+  if (!data) return;
+  questions.value = data;
+});
 
 const handleStartQuiz = ({ questionAmount, mode }: StartQuizConfig) => {
   const selectedTags = questionsQueue.getselectedtags();
+  if (!questions.value.length)
+    return alert("Trouble fetching questions, please try again later");
 
-  const questions = getQuestionsBasedOnEnv();
+  // const questions = getQuestionsBasedOnEnv();
   const filteredquestions: MCQuestion[] = filterQuestionsByTags(
-    questions,
+    questions.value,
     selectedTags,
   );
   const quizAmount = getQuestionsRandomly(questionAmount, filteredquestions);

@@ -1,8 +1,6 @@
-export interface apiResponse {
-  success: boolean;
-  payload: any;
-  message: string;
-}
+import { MCQuestion } from "@/types/MCQ";
+
+const window_api_url = import.meta.env.VITE_USE_API_URL;
 
 /**
  * Wrapper function for fetch that includes credentials: 'include' in the options
@@ -21,20 +19,20 @@ export async function fetchWithCredentials(
   return fetch(url, defaultOptions);
 }
 
-export default class NetworkCalls {
-  private static window_api_url = import.meta.env.VITE_USE_API_URL;
-
-  public static async getQuiz() {
+const getQuiz = async () => {
+  try {
     const resRaw = await fetchWithCredentials(
-      this.window_api_url + `/api/resource/getQuiz`,
+      window_api_url + `/api/resource/getQuiz`,
     );
 
-    const res: apiResponse = await resRaw.json();
+    const res = await resRaw.json();
 
-    if (!res.success) {
-      throw new Error(res.message);
-    }
-
-    return res.payload;
+    // TODO: add validation here
+    return res.questions as MCQuestion[];
+  } catch (err) {
+    console.error("An error occurred while fetching the quiz: ", err);
+    return [];
   }
-}
+};
+
+export default { getQuiz };
