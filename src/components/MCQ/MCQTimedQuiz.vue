@@ -1,12 +1,5 @@
 <template>
-  <h3 v-if="timeLeft">Time left: {{ formatSecondsToMinutes(timeLeft) }}</h3>
-  <h3>
-    Question {{ questionsQueue.questionsStack.length }} out of
-    {{
-      questionsQueue.questionsQueue.length +
-      questionsQueue.questionsStack.length
-    }}
-  </h3>
+  <MCQInfoPanel :time-left="timeLeft" />
   <MCQQuestion
     v-if="currentQuestion"
     :statement="currentQuestion.statement"
@@ -28,6 +21,7 @@ import MCQQuestion from "@components/MCQ/MCQQuestion.vue";
 import MCQStatus from "./MCQStatus.vue";
 import { onBeforeMount, onMounted, ref } from "vue";
 import { MCQuestion } from "@/types/MCQ";
+import MCQInfoPanel from "./MCQInfoPanel.vue";
 
 const oneSecond = 1000;
 const timeoutTag = "-1"; // Marks a question as timed out in quiz store
@@ -72,13 +66,6 @@ const startTimer = () => {
   intervalId = window.setInterval(decrementTimer, oneSecond);
 
   timeoutId = window.setTimeout(() => {}, questionsQueue.timeLimit * oneSecond);
-};
-
-// A function that converts seconds to MM:SS format
-const formatSecondsToMinutes = (time: number) => {
-  const minutes = Math.floor(time / 60);
-  const seconds = time % 60;
-  return `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
 };
 
 const skipToEnd = () => {
