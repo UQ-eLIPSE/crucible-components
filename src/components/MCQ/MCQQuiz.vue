@@ -1,4 +1,5 @@
 <template>
+  <MCQInfoPanel />
   <MCQQuestion
     v-if="currentQuestion"
     :statement="currentQuestion.statement"
@@ -19,6 +20,7 @@ import MCQQuestion from "@components/MCQ/MCQQuestion.vue";
 import type { MCQuestion } from "@type/MCQ.d.ts";
 import MCQStatus from "./MCQStatus.vue";
 import { useQuizStore } from "@/store/QuizStore";
+import MCQInfoPanel from "./MCQInfoPanel.vue";
 
 const currentQuestion = ref<MCQuestion | undefined>();
 
