@@ -1,18 +1,19 @@
 <template>
-  <MCQInfoPanel :time-left="timeLeft" />
-  <MCQQuestion
-    v-if="currentQuestion"
-    :statement="currentQuestion.statement"
-    :options-list="currentQuestion.optionsList"
-    :_id="currentQuestion._id"
-    @next-question="nextQuestionhandler"
-    @prev-question="prevQuestionHandler"
-  />
-
-  <MCQStatus v-if="!currentQuestion" />
-  <button v-if="!currentQuestion" class="btn-relocate" @click="refreshPage">
-    End
-  </button>
+  <main>
+    <MCQInfoPanel :time-left="timeLeft" />
+    <MCQQuestion
+      v-if="currentQuestion"
+      :statement="currentQuestion.statement"
+      :options-list="currentQuestion.optionsList"
+      :_id="currentQuestion._id"
+      @next-question="nextQuestionhandler"
+      @prev-question="prevQuestionHandler"
+    />
+    <MCQStatus v-if="!currentQuestion" />
+    <button v-if="!currentQuestion" class="btn-relocate" @click="refreshPage">
+      End
+    </button>
+  </main>
 </template>
 
 <script setup lang="ts">
@@ -86,6 +87,9 @@ const skipToEnd = () => {
 </script>
 
 <style>
+main {
+  width: 800px;
+}
 .btn-relocate {
   float: right;
   background-color: green;
@@ -98,5 +102,11 @@ const skipToEnd = () => {
   margin: auto;
   margin-bottom: 5px;
   cursor: pointer;
+}
+
+@media screen and (max-width: 1000px) {
+  main {
+    width: 100%;
+  }
 }
 </style>
