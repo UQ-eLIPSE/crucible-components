@@ -1,5 +1,5 @@
 <template>
-  <div class="dropdown">
+  <div :class="disabled ? 'dropdown input-disabled' : 'dropdown'">
     <label for="optionName">{{ optionName }}: &nbsp; </label>
     <select id="optionName" name="optionName" @change="handleChange">
       <option value="">--Please choose an option--</option>
@@ -25,9 +25,11 @@ defineProps<{
     unit: string;
   }>;
   optionName: string;
+  disabled: boolean;
 }>();
 const questionsQueue = useQuizStore();
 const timeLimit = ref(0);
+
 function handleChange(event: Event) {
   const target = event.target as HTMLSelectElement;
   if (target.value) {
@@ -36,3 +38,10 @@ function handleChange(event: Event) {
   }
 }
 </script>
+
+<style scoped>
+.input-disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}
+</style>

@@ -31,12 +31,13 @@
           </select>
         </div>
         <DropDownbox
-          v-if="selectedMode === 'Timed'"
           :options="[
             { value: 1.5, label: 'Time Option 1', unit: 'Min.' },
             { value: 1, label: 'Time Option 2', unit: 'Min.' },
           ]"
           :option-name="'Time per Question'"
+          :class="selectedMode === 'Timed' ? '' : 'input-disabled'"
+          :disabled="selectedMode !== 'Timed'"
         />
       </div>
     </div>
@@ -122,6 +123,12 @@ const checkMax = () => {
   align-items: center;
   gap: 0.5rem;
 }
+
+.input-disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
 @media screen and (max-width: 768px) {
   h1 {
     font-size: 1.5rem;
