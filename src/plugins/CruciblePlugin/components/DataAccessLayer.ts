@@ -1,89 +1,140 @@
 import { MCQuestion } from "@/plugins/CruciblePlugin/types/MCQ";
-
 import { generateDummyData } from "../../../../data/dummyQuestionData";
 
-const questions: MCQuestion[] = [
+const questions = [
   {
     tags: {
       course: "VETS2011",
       subject: "Physiology",
-      system: "Nervous System",
-      animal: "",
+      system: "Exercise",
+      animal: "Horse",
     },
     statement:
-      "<p>Which of the following statements regarding action potentials is TRUE?</p>",
+      "Which of the following is NOT a contributing factor to the performance capacity of horses?",
     optionsList: [
       {
-        optionValue:
-          "<p>Multiple depolarising events minimises the chance of action potential generation</p>",
+        optionValue: "Upper airway function",
         optionCorrect: false,
       },
       {
         optionValue:
-          "<p>Reaching the subthreshold level does not stimulate the post-synaptic membrane</p>",
+          "Increase in oxygen carrying capacity of blood due to splenic contraction",
         optionCorrect: false,
       },
       {
-        optionValue: "<p>Threshold event generates an action potential</p>",
+        optionValue: "Increase in maximum heart rate in response to training",
         optionCorrect: true,
       },
       {
         optionValue:
-          "<p>Reaching the subthreshold level is enough to generate an action potential</p>",
-        optionCorrect: false,
-      },
-      {
-        optionValue:
-          "<p>Depolarised synaptic membrane is more negative than the hyperpolarised membrane</p>",
+          "Enhanced oxidative enzymatic activity in response to training",
         optionCorrect: false,
       },
     ],
     _id: {
-      $oid: "6615c7fb49fbda0108a9ac0b",
+      $oid: "6539c0beeb2b18699ed87033",
     },
-
-    link: "https://vetshub.uqcloud.net/resource/5a0ba18d34cc363763e05e99/61a9ae14e04e3d5bffb26ef7/62142eee64c71f1df2110cf5/62142f2764c71f1df2110cf7/6214407964c71f1df2110d03",
+    label: "Placeholder label 1",
+    link: "https://vetshub.uqcloud.net/resource/5a0ba18d34cc363763e05e99/61a9ae14e04e3d5bffb26ef7/6290636464c71f1df2110ec9/6290792c64c71f1df2110ece",
   },
   {
     tags: {
       course: "VETS2011",
       subject: "Physiology",
-      system: "Nervous System",
-      animal: "horse",
+      system: "Exercise",
+      animal: "Horse",
     },
     statement:
-      "<p>Which of the following statements regarding action potentials is TRUE?</p>",
+      "Which of the following is NOT a muscular adaptation to training?",
     optionsList: [
       {
-        optionValue:
-          "<p>Multiple depolarising events minimises the chance of action potential generation</p>",
+        optionValue: "Increase in muscle capillary density",
         optionCorrect: false,
       },
       {
-        optionValue:
-          "<p>Reaching the subthreshold level does not stimulate the post-synaptic membrane</p>",
+        optionValue: "Increased density of mitochondria",
         optionCorrect: false,
       },
       {
-        optionValue: "<p>Threshold event generates an action potential</p>",
+        optionValue: "Enhanced oxidative enzymatic activity",
+        optionCorrect: false,
+      },
+      {
+        optionValue: "Decreased size of mitochondria",
+        optionCorrect: true,
+      },
+    ],
+    _id: {
+      $oid: "6539c0beeb2b18699ed87036",
+    },
+    label: "Placeholder label 1",
+    link: "https://vetshub.uqcloud.net/resource/5a0ba18d34cc363763e05e99/61a9ae14e04e3d5bffb26ef7/6290636464c71f1df2110ec9/6290792c64c71f1df2110ece",
+  },
+  {
+    tags: {
+      course: "VETS2011",
+      subject: "Physiology",
+      system: "Exercise",
+      animal: "Horse",
+    },
+    statement:
+      "Which of the following best describes in order from greatest to least, the aerobic contribution to overall energy production of these equine performance disciplines?",
+    optionsList: [
+      {
+        optionValue: "Endurance &gt; Thoroughbred racing &gt; Barrel racing",
         optionCorrect: true,
       },
       {
-        optionValue:
-          "<p>Reaching the subthreshold level is enough to generate an action potential</p>",
+        optionValue: "Barrel racing &gt; Thoroughbred racing &gt; Endurance",
         optionCorrect: false,
       },
       {
-        optionValue:
-          "<p>Depolarised synaptic membrane is more negative than the hyperpolarised membrane</p>",
+        optionValue: "Thoroughbred racing &gt; Barrel racing &gt; Endurance",
+        optionCorrect: false,
+      },
+      {
+        optionValue: "Endurance &gt; Barrel racing &gt; Thoroughbred racing",
         optionCorrect: false,
       },
     ],
     _id: {
-      $oid: "6615c7fb49fbda0108a9ac0b",
+      $oid: "6539c0beeb2b18699ed87035",
     },
-
-    link: "https://vetshub.uqcloud.net/resource/5a0ba18d34cc363763e05e99/61a9ae14e04e3d5bffb26ef7/62142eee64c71f1df2110cf5/62142f2764c71f1df2110cf7/6214407964c71f1df2110d03",
+    label: "Placeholder label 1",
+    link: "https://vetshub.uqcloud.net/resource/5a0ba18d34cc363763e05e99/61a9ae14e04e3d5bffb26ef7/6290636464c71f1df2110ec9/6290792c64c71f1df2110ece",
+  },
+  {
+    tags: {
+      course: "VETS2011",
+      subject: "Physiology",
+      system: "Exercise",
+      animal: "Horse",
+    },
+    statement:
+      "Which of the following does NOT cause a low arterial partial pressure of oxygen?",
+    optionsList: [
+      {
+        optionValue: "Hypoventilation",
+        optionCorrect: false,
+      },
+      {
+        optionValue: "V/Q mismatch",
+        optionCorrect: false,
+      },
+      {
+        optionValue: "Right-to-left shunt",
+        optionCorrect: false,
+      },
+      {
+        optionValue: "Decreased cardiac output",
+        optionCorrect: true,
+      },
+    ],
+    _id: {
+      $oid: "6539c0beeb2b18699ed87034",
+    },
+    label: "Placeholder label 1",
+    link: "https://vetshub.uqcloud.net/resource/5a0ba18d34cc363763e05e99/61a9ae14e04e3d5bffb26ef7/6290636464c71f1df2110ec9/6290792c64c71f1df2110ece",
   },
 ];
 

@@ -23,7 +23,7 @@
     "paths": {
       "@/*": ["./src/*"],
       "@components/*": ["./src/components/*"],
-      "@data/*": ["./data/*"],
+      "@data/*": ["data/*"],
       "@type/*": ["src/plugins/CruciblePlugin/types/*"]
     }
   },
