@@ -42,7 +42,7 @@ function isMCQOptions(obj: unknown): obj is MCQOptions {
   return (
     validate.isObject(obj) &&
     validate.isString(obj.optionValue) &&
-    (obj.optionCorrect === undefined || typeof obj.optionCorrect === "boolean")
+    (obj.optionCorrect === undefined || validate.isBoolean(obj.optionCorrect))
   );
 }
 
@@ -54,7 +54,7 @@ function isMCQuestion(obj: unknown): obj is MCQuestion {
     validate.isString(obj.statement) &&
     validate.isObject(obj.tags) &&
     validate.isArray(obj.optionsList, isMCQOptions) &&
-    typeof obj.link === "string"
+    validate.isString(obj.link)
   );
 }
 

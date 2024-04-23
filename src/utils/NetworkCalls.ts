@@ -1,6 +1,3 @@
-import { MCQuestion } from "@/types/MCQ";
-import NetworkGuard from "./NetworkGuard";
-
 const window_api_url = import.meta.env.VITE_USE_API_URL;
 
 /**
@@ -20,7 +17,7 @@ export async function fetchWithCredentials(
   return fetch(url, defaultOptions);
 }
 
-const getQuiz = async (): Promise<MCQuestion[]> => {
+const getQuiz = async () => {
   try {
     const resRaw = await fetchWithCredentials(
       window_api_url + `/api/resource/getQuiz`,
@@ -28,18 +25,10 @@ const getQuiz = async (): Promise<MCQuestion[]> => {
 
     const res = await resRaw.json();
 
-    if (NetworkGuard.isMCQuestionArray(res.questions))
-      return res.questions as MCQuestion[];
+    const { questions } = res;
+    if (!questions) throw new Error("No questions from response");
 
-    console.error(
-      "Invalid quiz data received from the server. Retrieved questions: ",
-      res.questions.length,
-    );
-    const totalQuestions = res.questions.filter(NetworkGuard.isMCQuestion);
-
-    console.info("Valid questions filtered: ", totalQuestions.length);
-
-    return totalQuestions as MCQuestion[];
+    return questions;
   } catch (err) {
     console.error("An error occurred while fetching the quiz: ", err);
     return [];
