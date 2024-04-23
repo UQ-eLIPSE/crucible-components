@@ -2,7 +2,6 @@
   <div :class="disabled ? 'dropdown input-disabled' : 'dropdown'">
     <label for="optionName">{{ optionName }}: &nbsp; </label>
     <select id="optionName" name="optionName" @change="handleChange">
-      <option value="">--Please choose an option--</option>
       <option
         v-for="option in options"
         :key="option.value"

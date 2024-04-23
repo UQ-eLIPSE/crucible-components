@@ -32,8 +32,8 @@
         </div>
         <DropDownbox
           :options="[
-            { value: 1.5, label: 'Time Option 1', unit: 'Min.' },
             { value: 1, label: 'Time Option 2', unit: 'Min.' },
+            { value: 1.5, label: 'Time Option 1', unit: 'Min.' },
           ]"
           :option-name="'Time per Question'"
           :class="selectedMode === 'Timed' ? '' : 'input-disabled'"
