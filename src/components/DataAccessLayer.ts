@@ -22,7 +22,7 @@ export const getAllQuestionsFromApi = async () => {
 
   if (NetworkGuard.isMCQuestionArray(allQuizzes)) return allQuizzes;
 
-  console.error(
+  console.warn(
     "Invalid quiz data received from the server. Retrieved questions: ",
     originalLength,
   );
@@ -31,7 +31,9 @@ export const getAllQuestionsFromApi = async () => {
     NetworkGuard.isMCQuestion,
   );
 
-  console.info("Valid questions filtered: ", totalQuestions.length);
+  console.info(
+    `Valid questions filtered: ${totalQuestions.length}\n${originalLength - totalQuestions.length} needs checking`,
+  );
 
   return totalQuestions;
 };
