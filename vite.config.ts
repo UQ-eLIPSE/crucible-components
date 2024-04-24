@@ -20,23 +20,15 @@ export default defineConfig({
   },
   build: {
     lib: {
-      entry: "./src/plugins/CruciblePlugin/ViewerPlugin.ts", // Update this path
+      entry: "./src/plugins/CruciblePlugin/ViewerPlugin.ts",
       name: "CruciblePlugin",
       fileName: (format) => `index.${format}.js`,
     },
     rollupOptions: {
-      // make sure to externalize deps that shouldn't be bundled
-      // into your library
       external: ["vue"],
       output: {
-        // Provide global variables to use in the UMD build
-        // for externalized deps
         globals: {
           vue: "Vue",
-        },
-        // Ensuring CSS is bundled separately if needed
-        assetFileNames: (assetInfo) => {
-          if (assetInfo.name.endsWith(".css")) return "assets/[name][extname]";
         },
       },
     },

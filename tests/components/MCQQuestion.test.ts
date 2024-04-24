@@ -4,6 +4,10 @@ import { questionsData as questions } from "../testSeeds";
 import MCQQuestion from "@/plugins/CruciblePlugin/components/MCQ/MCQQuestion.vue";
 import { MCQuestion } from "@/plugins/CruciblePlugin/types/MCQ";
 import { mount, VueWrapper } from "@vue/test-utils";
+import { useQuizStore } from "@/plugins/CruciblePlugin/store/QuizStore";
+import { QuestionState } from "@/plugins/CruciblePlugin/types/MCQ";
+import { dataTest } from "../testSeeds";
+import { findSelectedOptionValue } from "@/plugins/CruciblePlugin/components/QuestionStore";
 
 let wrapper: VueWrapper;
 const _id = questions[0]._id;
@@ -12,7 +16,9 @@ const optionsList = questions[0].optionsList;
 
 beforeEach(async () => {
   setActivePinia(createPinia());
-
+  const quizStore = useQuizStore();
+  const quizStatus: QuestionState[] = dataTest;
+  quizStore.$state.quizStats = quizStatus;
   wrapper = mount(MCQQuestion, {
     props: {
       _id,
@@ -90,5 +96,30 @@ describe("MCQQuestion.vue", () => {
     await firstOption.trigger("click");
     await firstOption.trigger("click");
     expect(wrapper.vm.selectedOption).toBeNull();
+  });
+});
+
+describe("findSelectedOptionValue", () => {
+  it("returns the correct index when the option value matches", () => {
+    const questionIndex = 0;
+    const answer = "<p>Hippocampus</p>";
+    const result = findSelectedOptionValue(dataTest, questionIndex, answer);
+    expect(result).toBe(2); // Index of the correct answer in optionsList
+  });
+
+  it("returns undefined when the option value does not match any option", () => {
+    const questionIndex = 0;
+    const answer = "<p>Not a real option</p>";
+    const result = findSelectedOptionValue(dataTest, questionIndex, answer);
+    expect(result).toBeUndefined();
+  });
+
+  it("returns undefined when the optionsList is empty", () => {
+    const questionIndex = 1;
+    const answer = "Any answer";
+    const modifiedData = JSON.parse(JSON.stringify(dataTest));
+    modifiedData[questionIndex].question.optionsList = [];
+    const result = findSelectedOptionValue(modifiedData, questionIndex, answer);
+    expect(result).toBeUndefined();
   });
 });

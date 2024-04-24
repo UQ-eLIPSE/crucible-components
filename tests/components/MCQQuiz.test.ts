@@ -40,7 +40,7 @@ describe("MCQQuiz.vue", () => {
   it("Navigates question stack upon skip", async () => {
     await mcqBtn.trigger("click");
     expect(wrapper.text()).toContain(
-      "What happens when an IPSP is generated after EPSP?The membrane is more depolarisedThe effect of the subthreshold is enhancedAction potential",
+      "What happens when an IPSP is generated after EPSP?The membrane is more depolarisedThe effect of the subthreshold is enhancedAction potential is reachedA threshold event takes placeThe membrane is hyperpolarisedSkip",
     );
   });
 
@@ -60,7 +60,7 @@ describe("MCQQuiz.vue", () => {
       await mcqBtn.trigger("click");
     }
     expect(wrapper.text()).toContain(
-      "Which of the following statements regarding action potentials is TRUE?Multiple depolarising events minimises the chance of action potential generationReaching the subthreshold level does not stimulate the post-synaptic",
+      "Which of the following statements regarding action potentials is TRUE?Multiple depolarising events minimises the chance of action potential generationReaching the subthreshold level does not stimulate the post-synaptic membraneThreshold event generates an action potentialReaching the subthreshold level is enough to generate an action potentialDepolarised synaptic membrane is more negative than the hyperpolarised membraneSkip",
     );
   });
 
