@@ -13,9 +13,7 @@ export const getDummyQuestions = (random = false) => {
 };
 
 export function getQuestionsBasedOnEnv() {
-  const useDummyData = import.meta.env.VITE_USE_DUMMY_DATA === "true";
-
-  return useDummyData ? getDummyQuestions(false) : getAllQuestions();
+  return getAllQuestions();
 }
 
 export const getAllQuestionsFromApi = async () => {

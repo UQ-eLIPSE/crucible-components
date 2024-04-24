@@ -10,7 +10,10 @@ import {
 import { useQuizStore } from "./store/QuizStore";
 import { StartQuizConfig } from "./types/MCQ";
 import { MCQuestion } from "./types/MCQ";
-import { getAllQuestionsFromApi } from "./components/DataAccessLayer";
+import {
+  getAllQuestionsFromApi,
+  getQuestionsBasedOnEnv,
+} from "./components/DataAccessLayer";
 
 const quizQuestions = ref(0);
 const questionsQueue = useQuizStore();
@@ -19,7 +22,10 @@ const questions = ref<MCQuestion[]>([]);
 
 onMounted(async () => {
   // Fetch quiz data from API
-  questions.value = await getAllQuestionsFromApi();
+  const useStatic = import.meta.env.VITE_USE_DUMMY_DATA === "false";
+  questions.value = useStatic
+    ? await getAllQuestionsFromApi()
+    : getQuestionsBasedOnEnv();
 });
 
 const handleStartQuiz = ({ questionAmount, mode }: StartQuizConfig) => {
