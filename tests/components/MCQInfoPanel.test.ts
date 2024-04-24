@@ -2,8 +2,8 @@ import { DOMWrapper, VueWrapper, mount } from "@vue/test-utils";
 import { createPinia, setActivePinia } from "pinia";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { questionsData as questions } from "../testSeeds";
-import { useQuizStore } from "@/store/QuizStore";
-import MCQInfoPanel from "@components/MCQ/MCQInfoPanel.vue";
+import { useQuizStore } from "@/plugins/CruciblePlugin/store/QuizStore";
+import MCQInfoPanel from "@/plugins/CruciblePlugin/components/MCQ/MCQInfoPanel.vue";
 
 describe("MCQInfoPanel.vue", () => {
   let wrapper: VueWrapper;

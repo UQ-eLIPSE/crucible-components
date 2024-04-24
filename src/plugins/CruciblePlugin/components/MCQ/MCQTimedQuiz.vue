@@ -22,7 +22,7 @@ import MCQQuestion from "./MCQQuestion.vue";
 import MCQStatus from "./MCQStatus.vue";
 import { onBeforeMount, onMounted, ref } from "vue";
 import { MCQuestion } from "../../types/MCQ";
-
+import MCQInfoPanel from "./MCQInfoPanel.vue";
 const oneSecond = 1000;
 const timeoutTag = "-1"; // Marks a question as timed out in quiz store
 

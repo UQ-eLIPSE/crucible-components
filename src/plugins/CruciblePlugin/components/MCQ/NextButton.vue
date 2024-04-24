@@ -24,7 +24,7 @@ const modifyButtonAndEmit = (event: "nextQuestion" | "prevQuestion") => {
 };
 </script>
 
-<style scoped>
+<style>
 .mcq-button {
   color: #ffffff;
   background-color: #7f7f7f;
