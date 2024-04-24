@@ -1,4 +1,4 @@
-import { effectScope as ze, ref as k, markRaw as F, hasInjectionContext as dt, inject as ft, getCurrentInstance as pt, toRaw as he, watch as Ue, reactive as ht, isRef as se, isReactive as ke, toRef as be, nextTick as Ce, computed as Oe, unref as w, getCurrentScope as mt, onScopeDispose as gt, toRefs as Ie, defineComponent as V, openBlock as h, createElementBlock as _, Fragment as A, normalizeClass as K, withModifiers as _t, createElementVNode as p, toDisplayString as $, renderList as X, createVNode as $e, createBlock as M, createCommentVNode as N, pushScopeId as Re, popScopeId as He, onMounted as Be, onBeforeMount as vt, createTextVNode as bt, withDirectives as Pe, vModelText as yt, vModelSelect as St } from "vue";
+import { effectScope as ze, ref as k, markRaw as F, hasInjectionContext as dt, inject as ft, getCurrentInstance as pt, toRaw as he, watch as Ue, reactive as ht, isRef as se, isReactive as ke, toRef as be, nextTick as Ce, computed as Oe, unref as w, getCurrentScope as mt, onScopeDispose as gt, toRefs as Ie, defineComponent as V, openBlock as h, createElementBlock as _, Fragment as A, normalizeClass as K, withModifiers as _t, createElementVNode as p, toDisplayString as $, renderList as X, createVNode as $e, createBlock as M, createCommentVNode as q, pushScopeId as Re, popScopeId as He, onMounted as Be, onBeforeMount as vt, createTextVNode as bt, withDirectives as Pe, vModelText as yt, vModelSelect as St } from "vue";
 var Fe = !1;
 function ue(e, n, t) {
   return Array.isArray(e) ? (e.length = Math.max(e.length, n), e.splice(n, 1, t), t) : (e[n] = t, t);
@@ -25,7 +25,7 @@ function Ot() {
 function $t() {
   return Ot() ? Se.now() : Date.now();
 }
-class qt {
+class Nt {
   constructor(n, t) {
     this.target = null, this.targetQueue = [], this.onQueue = [], this.plugin = n, this.hook = t;
     const o = {};
@@ -92,7 +92,7 @@ function We(e, n) {
   if (s && (o.__VUE_DEVTOOLS_PLUGIN_API_AVAILABLE__ || !a))
     s.emit(Tt, e, n);
   else {
-    const r = a ? new qt(t, s) : null;
+    const r = a ? new Nt(t, s) : null;
     (o.__VUE_DEVTOOLS_PLUGINS__ = o.__VUE_DEVTOOLS_PLUGINS__ || []).push({
       pluginDescriptor: t,
       setupFn: n,
@@ -118,10 +118,10 @@ var j;
   e.direct = "direct", e.patchObject = "patch object", e.patchFunction = "patch function";
 })(j || (j = {}));
 const me = typeof window < "u", oe = (process.env.NODE_ENV !== "production" || !1) && process.env.NODE_ENV !== "test" && me, Ve = typeof window == "object" && window.window === window ? window : typeof self == "object" && self.self === self ? self : typeof global == "object" && global.global === global ? global : typeof globalThis == "object" ? globalThis : { HTMLElement: null };
-function Nt(e, { autoBom: n = !1 } = {}) {
+function qt(e, { autoBom: n = !1 } = {}) {
   return n && /^\s*(?:text\/\S*|application\/xml|\S*\/\S*\+xml)\s*;.*charset\s*=\s*utf-8/i.test(e.type) ? new Blob(["\uFEFF", e], { type: e.type }) : e;
 }
-function qe(e, n, t) {
+function Ne(e, n, t) {
   const o = new XMLHttpRequest();
   o.open("GET", e), o.responseType = "blob", o.onload = function() {
     Xe(o.response, n, t);
@@ -159,7 +159,7 @@ const de = typeof navigator == "object" ? navigator : { userAgent: "" }, Ke = /M
 };
 function Qt(e, n = "download", t) {
   const o = document.createElement("a");
-  o.download = n, o.rel = "noopener", typeof e == "string" ? (o.href = e, o.origin !== location.origin ? Ye(o.href) ? qe(e, n, t) : (o.target = "_blank", le(o)) : le(o)) : (o.href = URL.createObjectURL(e), setTimeout(function() {
+  o.download = n, o.rel = "noopener", typeof e == "string" ? (o.href = e, o.origin !== location.origin ? Ye(o.href) ? Ne(e, n, t) : (o.target = "_blank", le(o)) : le(o)) : (o.href = URL.createObjectURL(e), setTimeout(function() {
     URL.revokeObjectURL(o.href);
   }, 4e4), setTimeout(function() {
     le(o);
@@ -168,7 +168,7 @@ function Qt(e, n = "download", t) {
 function Ct(e, n = "download", t) {
   if (typeof e == "string")
     if (Ye(e))
-      qe(e, n, t);
+      Ne(e, n, t);
     else {
       const o = document.createElement("a");
       o.href = e, o.target = "_blank", setTimeout(function() {
@@ -176,11 +176,11 @@ function Ct(e, n = "download", t) {
       });
     }
   else
-    navigator.msSaveOrOpenBlob(Nt(e, t), n);
+    navigator.msSaveOrOpenBlob(qt(e, t), n);
 }
 function It(e, n, t, o) {
   if (o = o || open("", "_blank"), o && (o.document.title = o.document.body.innerText = "downloading..."), typeof e == "string")
-    return qe(e, n, t);
+    return Ne(e, n, t);
   const s = e.type === "application/octet-stream", a = /constructor/i.test(String(Ve.HTMLElement)) || "safari" in Ve, r = /CriOS\/[\d]+/.test(navigator.userAgent);
   if ((r || s && a || Ke) && typeof FileReader < "u") {
     const i = new FileReader();
@@ -201,7 +201,7 @@ function T(e, n) {
   const t = "🍍 " + e;
   typeof __VUE_DEVTOOLS_TOAST__ == "function" ? __VUE_DEVTOOLS_TOAST__(t, n) : n === "error" ? console.error(t) : n === "warn" ? console.warn(t) : console.log(t);
 }
-function Ne(e) {
+function qe(e) {
   return "_a" in e && "install" in e;
 }
 function Ze() {
@@ -282,7 +282,7 @@ function L(e) {
 }
 const nt = "🍍 Pinia (root)", Ee = "_root";
 function jt(e) {
-  return Ne(e) ? {
+  return qe(e) ? {
     id: Ee,
     label: nt
   } : {
@@ -291,7 +291,7 @@ function jt(e) {
   };
 }
 function At(e) {
-  if (Ne(e)) {
+  if (qe(e)) {
     const t = Array.from(e._s.keys()), o = e._s;
     return {
       state: t.map((a) => ({
@@ -469,7 +469,7 @@ function Rt(e, n) {
         if (!a)
           return T(`store "${o.nodeId}" not found`, "error");
         const { path: r } = o;
-        Ne(a) ? r.unshift("state") : (r.length !== 1 || !a._customProperties.has(r[0]) || r[0] in a.$state) && r.unshift("$state"), Y = !1, o.set(a, r, o.state.value), Y = !0;
+        qe(a) ? r.unshift("state") : (r.length !== 1 || !a._customProperties.has(r[0]) || r[0] in a.$state) && r.unshift("$state"), Y = !1, o.set(a, r, o.state.value), Y = !0;
       }
     }), t.on.editComponentState((o) => {
       if (o.type.startsWith("🍍")) {
@@ -744,8 +744,8 @@ function Te(e, n, t = {}, o, s, a) {
     u ? y = f : u == !1 && !d._hotUpdating && (Array.isArray(y) ? y.push(f) : console.error("🍍 debuggerEvents should be an array. This is most likely an internal Pinia bug."));
   });
   let u, m, g = [], v = [], y;
-  const q = o.state.value[e];
-  !a && !q && (process.env.NODE_ENV === "production" || !s) && (o.state.value[e] = {});
+  const N = o.state.value[e];
+  !a && !N && (process.env.NODE_ENV === "production" || !s) && (o.state.value[e] = {});
   const x = k({});
   let ae;
   function Z(f) {
@@ -843,7 +843,7 @@ function Te(e, n, t = {}, o, s, a) {
   for (const f in C) {
     const l = C[f];
     if (se(l) && !Me(l) || ke(l))
-      process.env.NODE_ENV !== "production" && s ? ue(x.value, f, be(C, f)) : a || (q && Jt(l) && (se(l) ? l.value = q[f] : we(l, q[f])), o.state.value[e][f] = l), process.env.NODE_ENV !== "production" && b.state.push(f);
+      process.env.NODE_ENV !== "production" && s ? ue(x.value, f, be(C, f)) : a || (N && Jt(l) && (se(l) ? l.value = N[f] : we(l, N[f])), o.state.value[e][f] = l), process.env.NODE_ENV !== "production" && b.state.push(f);
     else if (typeof l == "function") {
       const S = process.env.NODE_ENV !== "production" && s ? l : ce(f, l);
       C[f] = S, process.env.NODE_ENV !== "production" && (b.actions[f] = l), i.actions[f] = l;
@@ -920,12 +920,15 @@ function Te(e, n, t = {}, o, s, a) {
       })));
   }), process.env.NODE_ENV !== "production" && d.$state && typeof d.$state == "object" && typeof d.$state.constructor == "function" && !d.$state.constructor.toString().includes("[native code]") && console.warn(`[🍍]: The "state" must be a plain object. It cannot be
 	state: () => new MyClass()
-Found in store "${d.$id}".`), q && a && t.hydrate && t.hydrate(d.$state, q), u = !0, m = !0, d;
+Found in store "${d.$id}".`), N && a && t.hydrate && t.hydrate(d.$state, N), u = !0, m = !0, d;
 }
 function Yt(e, n, t) {
   let o, s;
   const a = typeof n == "function";
-  o = e, s = a ? t : n;
+  if (typeof e == "string")
+    o = e, s = a ? t : n;
+  else if (s = e, o = e.id, process.env.NODE_ENV !== "production" && typeof o != "string")
+    throw new Error('[🍍]: "defineStore()" must be passed a store id as its first argument.');
   function r(i, c) {
     const u = dt();
     if (i = // in test mode, ignore the argument provided as we can always retrieve a
@@ -1304,16 +1307,16 @@ const rt = (e, n) => n.findIndex((t) => {
       x(b), u.value = t.getRemainingQuestions(), c("nextQuestion");
     }, y = () => {
       x(a), c("skipQuestion");
-    }, q = (b) => t.incrementStat(
+    }, N = (b) => t.incrementStat(
       b.$oid,
       "attempts",
       r.value ?? void 0
     ), x = (b) => {
-      q(b), i.value = !1, r.value = null;
+      N(b), i.value = !1, r.value = null;
     }, ae = () => {
       c("prevQuestion");
     }, Z = (b, E) => {
-      i.value || (r.value = r.value === E ? null : E), q(b);
+      i.value || (r.value = r.value === E ? null : E), N(b);
     }, _e = (b, E, d) => t.quizMode === "Timed" ? ve(b, E) : ce(E, d);
     function ve(b, E) {
       const d = rt(b.$oid, t.quizStats), H = t.quizStats[d].selectedValue, C = dn(
@@ -1355,18 +1358,18 @@ const rt = (e, n) => n.findIndex((t) => {
         onSubmitAnswer: m,
         onNextQuestion: E[0] || (E[0] = (d) => v(b._id)),
         onSkipQuestion: y
-      }, null, 8, ["submitted", "selected-option", "hide-skip"])) : N("", !0),
+      }, null, 8, ["submitted", "selected-option", "hide-skip"])) : q("", !0),
       p("div", mn, [
         w(t).quizMode === "Timed" ? (h(), M(Ae, {
           key: 0,
           "button-name": w(t).questionsQueue.length >= 1 ? "→" : "submit",
           onNextQuestion: E[1] || (E[1] = (d) => g())
-        }, null, 8, ["button-name"])) : N("", !0),
+        }, null, 8, ["button-name"])) : q("", !0),
         w(t).quizMode === "Timed" && w(t).questionsStack.length > 1 ? (h(), M(Ae, {
           key: 1,
           "button-name": "←",
           onPrevQuestion: E[2] || (E[2] = (d) => ae())
-        })) : N("", !0)
+        })) : q("", !0)
       ])
     ], 64));
   }
@@ -1376,7 +1379,7 @@ const rt = (e, n) => n.findIndex((t) => {
     /* @__PURE__ */ p("th", null, "correct option"),
     /* @__PURE__ */ p("th", null, "your answer")
   ])
-], -1)), En = { class: "question-row" }, wn = ["href", "innerHTML"], Tn = { class: "answer-row" }, kn = ["innerHTML"], On = { class: "answer-row" }, $n = ["innerHTML"], qn = { class: "mcq-result" }, Nn = { class: "score" }, Qn = /* @__PURE__ */ V({
+], -1)), En = { class: "question-row" }, wn = ["href", "innerHTML"], Tn = { class: "answer-row" }, kn = ["innerHTML"], On = { class: "answer-row" }, $n = ["innerHTML"], Nn = { class: "mcq-result" }, qn = { class: "score" }, Qn = /* @__PURE__ */ V({
   __name: "MCQStatus",
   setup(e) {
     const n = R(), t = n.quizStats, o = n.quizStats.length, s = t.filter((r) => r.correct === 1).length, a = (s * 100 / o).toFixed(0);
@@ -1404,7 +1407,7 @@ const rt = (e, n) => n.findIndex((t) => {
                     g.optionCorrect ? (h(), _("span", {
                       key: 0,
                       innerHTML: g.optionValue
-                    }, null, 8, kn)) : N("", !0)
+                    }, null, 8, kn)) : q("", !0)
                   ]))), 128))
                 ]),
                 p("td", On, [
@@ -1421,8 +1424,8 @@ const rt = (e, n) => n.findIndex((t) => {
         ])
       ]),
       p("div", null, [
-        p("div", qn, [
-          p("span", Nn, "⌛ Result: " + $(w(s)) + " out of " + $(w(o)) + " - (" + $(w(a)) + " %)", 1)
+        p("div", Nn, [
+          p("span", qn, "⌛ Result: " + $(w(s)) + " out of " + $(w(o)) + " - (" + $(w(a)) + " %)", 1)
         ])
       ])
     ]));
@@ -1447,9 +1450,9 @@ const rt = (e, n) => n.findIndex((t) => {
         _id: n.value._id,
         onNextQuestion: s,
         onSkipQuestion: o
-      }, null, 8, ["statement", "options-list", "_id"])) : N("", !0),
-      n.value ? N("", !0) : (h(), M(ct, { key: 1 })),
-      n.value ? N("", !0) : (h(), _("button", {
+      }, null, 8, ["statement", "options-list", "_id"])) : q("", !0),
+      n.value ? q("", !0) : (h(), M(ct, { key: 1 })),
+      n.value ? q("", !0) : (h(), _("button", {
         key: 2,
         class: "btn-relocate",
         onClick: a
@@ -1477,18 +1480,18 @@ const rt = (e, n) => n.findIndex((t) => {
       s = window.setInterval(y, De), o = window.setTimeout(() => {
       }, n.timeLimit * De);
     }, g = (y) => {
-      const q = Math.floor(y / 60), x = y % 60;
-      return `${q}:${x < 10 ? "0" : ""}${x}`;
+      const N = Math.floor(y / 60), x = y % 60;
+      return `${N}:${x < 10 ? "0" : ""}${x}`;
     }, v = () => {
-      var q;
+      var N;
       u();
       const y = (x) => n.incrementStat(x, "attempts", Pn);
-      for (y(((q = t.value) == null ? void 0 : q._id.$oid) ?? ""); t.value = n.dequeueQuestion(); )
+      for (y(((N = t.value) == null ? void 0 : N._id.$oid) ?? ""); t.value = n.dequeueQuestion(); )
         y(t.value._id.$oid);
       return alert("Time's up! Quiz has ended."), i();
     };
-    return (y, q) => (h(), _(A, null, [
-      a.value ? (h(), _("h3", In, "Time left: " + $(g(a.value)), 1)) : N("", !0),
+    return (y, N) => (h(), _(A, null, [
+      a.value ? (h(), _("h3", In, "Time left: " + $(g(a.value)), 1)) : q("", !0),
       p("h3", null, " Question " + $(w(n).questionsStack.length) + " out of " + $(w(n).questionsQueue.length + w(n).questionsStack.length), 1),
       t.value ? (h(), M(at, {
         key: 1,
@@ -1497,9 +1500,9 @@ const rt = (e, n) => n.findIndex((t) => {
         _id: t.value._id,
         onNextQuestion: i,
         onPrevQuestion: r
-      }, null, 8, ["statement", "options-list", "_id"])) : N("", !0),
-      t.value ? N("", !0) : (h(), M(ct, { key: 2 })),
-      t.value ? N("", !0) : (h(), _("button", {
+      }, null, 8, ["statement", "options-list", "_id"])) : q("", !0),
+      t.value ? q("", !0) : (h(), M(ct, { key: 2 })),
+      t.value ? q("", !0) : (h(), _("button", {
         key: 3,
         class: "btn-relocate",
         onClick: c
@@ -1559,7 +1562,7 @@ const rt = (e, n) => n.findIndex((t) => {
           for: `${i.category}-${g}-checkbox`
         }, [
           bt($(g) + " ", 1),
-          m !== null && m !== "0" ? (h(), _("span", Mn, $(m), 1)) : N("", !0)
+          m !== null && m !== "0" ? (h(), _("span", Mn, $(m), 1)) : q("", !0)
         ], 8, Ln)
       ], 2))), 128))
     ]));
@@ -1653,7 +1656,7 @@ const rt = (e, n) => n.findIndex((t) => {
               ]
             ])
           ]),
-          s.value ? (h(), _("p", to, " Cannot select more than " + $(w(i).getquestionnumber()) + " questions. ", 1)) : N("", !0),
+          s.value ? (h(), _("p", to, " Cannot select more than " + $(w(i).getquestionnumber()) + " questions. ", 1)) : q("", !0),
           p("div", null, [
             no,
             Pe(p("select", {
@@ -1670,7 +1673,7 @@ const rt = (e, n) => n.findIndex((t) => {
               { value: 1, label: "Time Option 2", unit: "Min." }
             ],
             "option-name": "Time per Question"
-          }, null, 8, ["options"])) : N("", !0)
+          }, null, 8, ["options"])) : q("", !0)
         ])
       ]),
       p("button", {
