@@ -35,10 +35,10 @@ export default defineConfig({
           vue: "Vue",
         },
         // Ensuring CSS is bundled separately if needed
-        assetFileNames: (assetInfo) => {
-          if (assetInfo.name.endsWith(".css")) return "[name][extname]";
-          return "[name][extname]";
-        },
+        // assetFileNames: (assetInfo) => {
+        //   if (assetInfo.name.endsWith(".css")) return "[name][extname]";
+        //   return "[name][extname]";
+        // },
       },
     },
   },

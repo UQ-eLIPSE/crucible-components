@@ -7,8 +7,7 @@
     ".": {
       "import": "./dist/index.es.js",
       "require": "./dist/index.js"
-    },
-    "./style.css": "./dist/style.css"
+    }
   },
   "files": [
     "dist"
