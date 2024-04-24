@@ -106,8 +106,12 @@ const getQuestionsnumByTags = (
 
 ul {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0.5rem 1rem;
+  grid-template-columns: 1fr;
+  gap: 0.25rem 1rem;
+  padding-top: 0.5rem;
+  margin-top: 0.5rem;
+  border-top: 1px solid grey;
+  padding-left: 1rem;
 }
 @media screen and (max-width: 768px) {
   .filter-options {

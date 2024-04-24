@@ -5,7 +5,7 @@
       :key="category"
       class="category"
     >
-      <h2>{{ category }}</h2>
+      <h2 class="category-heading">{{ category }}</h2>
       <FilterCheckbox :category="category" :topics="valueKeys" />
     </div>
   </div>
@@ -37,6 +37,11 @@ li {
 }
 label {
   cursor: pointer;
+}
+
+h2.category-heading {
+  margin-bottom: 0;
+  font-size: 0.9rem;
 }
 
 @media screen and (max-width: 768px) {
