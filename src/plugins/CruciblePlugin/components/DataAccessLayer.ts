@@ -1,5 +1,5 @@
 import { MCQuestion } from "@/plugins/CruciblePlugin/types/MCQ";
-import { questions } from "../question-data.json";
+import { questions } from "./question-data.json";
 import { generateDummyData } from "../../../../data/dummyQuestionData";
 
 export const getAllQuestions = () => {
