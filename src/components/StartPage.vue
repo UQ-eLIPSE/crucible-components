@@ -5,7 +5,10 @@
     <div class="quiz-config-container">
       <div class="question-config-container">
         <p class="tag-text">
-          Maximum possible questions: {{ questionsQueue.getquestionnumber() }}
+          Maximum possible questions:
+          <span class="question-number">{{
+            questionsQueue.getquestionnumber()
+          }}</span>
         </p>
         <div class="question-amount-container">
           <label for="question-amount">Select the amount of questions:</label>
@@ -26,17 +29,18 @@
         <div>
           <label for="mode-select">Select mode:</label>
           <select id="mode-select" v-model="selectedMode">
-            <option value="Tutor">Tutor mode</option>
-            <option value="Timed">Timed mode</option>
+            <option value="Tutor">Tutor</option>
+            <option value="Timed">Timed</option>
           </select>
         </div>
         <DropDownbox
-          v-if="selectedMode === 'Timed'"
           :options="[
-            { value: 1.5, label: 'Time Option 1', unit: 'Min.' },
             { value: 1, label: 'Time Option 2', unit: 'Min.' },
+            { value: 1.5, label: 'Time Option 1', unit: 'Min.' },
           ]"
           :option-name="'Time per Question'"
+          :class="selectedMode === 'Timed' ? '' : 'input-disabled'"
+          :disabled="selectedMode !== 'Timed'"
         />
       </div>
     </div>
@@ -90,7 +94,7 @@ const checkMax = () => {
   flex-direction: column;
   gap: 0.25rem;
   text-align: left;
-  padding-left: 40px;
+  padding-left: 0.5rem;
   margin-bottom: 40px;
 }
 
@@ -108,7 +112,21 @@ const checkMax = () => {
   margin: 0px;
 }
 
+.question-number {
+  border-radius: 10px;
+  text-align: center;
+  background-color: #2a52be;
+  color: white;
+  padding: 4px 8px;
+  text-align: left;
+  width: fit-content;
+  font-weight: bolder;
+  font-size: small;
+  margin-left: 2px;
+}
+
 .start-page-container {
+  min-width: 350px;
   background: linear-gradient(145deg, #ffffff, #e1e1e1);
   padding: 1.5rem;
   border-radius: 50px;
@@ -122,6 +140,12 @@ const checkMax = () => {
   align-items: center;
   gap: 0.5rem;
 }
+
+.input-disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
 @media screen and (max-width: 768px) {
   h1 {
     font-size: 1.5rem;

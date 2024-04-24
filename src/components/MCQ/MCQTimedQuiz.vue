@@ -1,25 +1,19 @@
 <template>
-  <h3 v-if="timeLeft">Time left: {{ formatSecondsToMinutes(timeLeft) }}</h3>
-  <h3>
-    Question {{ questionsQueue.questionsStack.length }} out of
-    {{
-      questionsQueue.questionsQueue.length +
-      questionsQueue.questionsStack.length
-    }}
-  </h3>
-  <MCQQuestion
-    v-if="currentQuestion"
-    :statement="currentQuestion.statement"
-    :options-list="currentQuestion.optionsList"
-    :_id="currentQuestion._id"
-    @next-question="nextQuestionhandler"
-    @prev-question="prevQuestionHandler"
-  />
-
-  <MCQStatus v-if="!currentQuestion" />
-  <button v-if="!currentQuestion" class="btn-relocate" @click="refreshPage">
-    End
-  </button>
+  <main>
+    <MCQInfoPanel :time-left="timeLeft" />
+    <MCQQuestion
+      v-if="currentQuestion"
+      :statement="currentQuestion.statement"
+      :options-list="currentQuestion.optionsList"
+      :_id="currentQuestion._id"
+      @next-question="nextQuestionhandler"
+      @prev-question="prevQuestionHandler"
+    />
+    <MCQStatus v-if="!currentQuestion" />
+    <button v-if="!currentQuestion" class="btn-relocate" @click="refreshPage">
+      End
+    </button>
+  </main>
 </template>
 
 <script setup lang="ts">
@@ -28,6 +22,7 @@ import MCQQuestion from "@components/MCQ/MCQQuestion.vue";
 import MCQStatus from "./MCQStatus.vue";
 import { onBeforeMount, onMounted, ref } from "vue";
 import { MCQuestion } from "@/types/MCQ";
+import MCQInfoPanel from "./MCQInfoPanel.vue";
 
 const oneSecond = 1000;
 const timeoutTag = "-1"; // Marks a question as timed out in quiz store
@@ -74,13 +69,6 @@ const startTimer = () => {
   timeoutId = window.setTimeout(() => {}, questionsQueue.timeLimit * oneSecond);
 };
 
-// A function that converts seconds to MM:SS format
-const formatSecondsToMinutes = (time: number) => {
-  const minutes = Math.floor(time / 60);
-  const seconds = time % 60;
-  return `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
-};
-
 const skipToEnd = () => {
   resetTimer();
   const markQuestionAsTimedOut = (currQuestionId: string) =>
@@ -99,6 +87,9 @@ const skipToEnd = () => {
 </script>
 
 <style>
+main {
+  width: 800px;
+}
 .btn-relocate {
   float: right;
   background-color: green;
@@ -111,5 +102,11 @@ const skipToEnd = () => {
   margin: auto;
   margin-bottom: 5px;
   cursor: pointer;
+}
+
+@media screen and (max-width: 1000px) {
+  main {
+    width: 100%;
+  }
 }
 </style>
