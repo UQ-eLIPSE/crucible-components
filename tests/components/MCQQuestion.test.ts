@@ -4,10 +4,10 @@ import { questionsData as questions } from "../testSeeds";
 import MCQQuestion from "@/plugins/CruciblePlugin/components/MCQ/MCQQuestion.vue";
 import { MCQuestion } from "@/plugins/CruciblePlugin/types/MCQ";
 import { mount, VueWrapper } from "@vue/test-utils";
-import { useQuizStore } from "@/store/QuizStore";
-import { QuestionState } from "@/types/MCQ";
+import { useQuizStore } from "@/plugins/CruciblePlugin/store/QuizStore";
+import { QuestionState } from "@/plugins/CruciblePlugin/types/MCQ";
 import { dataTest } from "../testSeeds";
-import { findSelectedOptionValue } from "@components/QuestionStore";
+import { findSelectedOptionValue } from "@/plugins/CruciblePlugin/components/QuestionStore";
 
 let wrapper: VueWrapper;
 const _id = questions[0]._id;
