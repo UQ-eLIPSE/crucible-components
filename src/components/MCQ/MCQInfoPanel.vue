@@ -1,6 +1,8 @@
 <template>
-  <h3 v-if="timeLeft">Time left: {{ formatSecondsToMinutes(timeLeft) }}</h3>
-  <h3>
+  <h3 v-if="timeLeft" class="time-left-header">
+    Time left: {{ formatSecondsToMinutes(timeLeft) }}
+  </h3>
+  <h3 class="questions-left-header">
     Question {{ questionsQueue.questionsStack.length }} out of
     {{
       questionsQueue.questionsQueue.length +
