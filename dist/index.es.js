@@ -10,13 +10,13 @@ function ve(e, o) {
   }
   delete e[o];
 }
-function Pt() {
+function _t() {
   return Ge().__VUE_DEVTOOLS_GLOBAL_HOOK__;
 }
 function Ge() {
   return typeof navigator < "u" && typeof window < "u" ? window : typeof globalThis < "u" ? globalThis : {};
 }
-const _t = typeof Proxy == "function", Tt = "devtools-plugin:setup", wt = "plugin:settings:set";
+const Pt = typeof Proxy == "function", Tt = "devtools-plugin:setup", wt = "plugin:settings:set";
 let J, Se;
 function Et() {
   var e;
@@ -88,7 +88,7 @@ class Lt {
   }
 }
 function Je(e, o) {
-  const t = e, s = Ge(), i = Pt(), r = _t && t.enableEarlyProxy;
+  const t = e, s = Ge(), i = _t(), r = Pt && t.enableEarlyProxy;
   if (i && (s.__VUE_DEVTOOLS_PLUGIN_API_AVAILABLE__ || !r))
     i.emit(Tt, e, o);
   else {
@@ -197,7 +197,7 @@ function xt(e, o, t, s) {
     }, 4e4);
   }
 }
-function _(e, o) {
+function P(e, o) {
   const t = "🍍 " + e;
   typeof __VUE_DEVTOOLS_TOAST__ == "function" ? __VUE_DEVTOOLS_TOAST__(t, o) : o === "error" ? console.error(t) : o === "warn" ? console.warn(t) : console.log(t);
 }
@@ -206,29 +206,29 @@ function Le(e) {
 }
 function et() {
   if (!("clipboard" in navigator))
-    return _("Your browser doesn't support the Clipboard API", "error"), !0;
+    return P("Your browser doesn't support the Clipboard API", "error"), !0;
 }
 function tt(e) {
-  return e instanceof Error && e.message.toLowerCase().includes("document is not focused") ? (_('You need to activate the "Emulate a focused page" setting in the "Rendering" panel of devtools.', "warn"), !0) : !1;
+  return e instanceof Error && e.message.toLowerCase().includes("document is not focused") ? (P('You need to activate the "Emulate a focused page" setting in the "Rendering" panel of devtools.', "warn"), !0) : !1;
 }
 async function jt(e) {
   if (!et())
     try {
-      await navigator.clipboard.writeText(JSON.stringify(e.state.value)), _("Global state copied to clipboard.");
+      await navigator.clipboard.writeText(JSON.stringify(e.state.value)), P("Global state copied to clipboard.");
     } catch (o) {
       if (tt(o))
         return;
-      _("Failed to serialize the state. Check the console for more details.", "error"), console.error(o);
+      P("Failed to serialize the state. Check the console for more details.", "error"), console.error(o);
     }
 }
 async function Ot(e) {
   if (!et())
     try {
-      ot(e, JSON.parse(await navigator.clipboard.readText())), _("Global state pasted from clipboard.");
+      ot(e, JSON.parse(await navigator.clipboard.readText())), P("Global state pasted from clipboard.");
     } catch (o) {
       if (tt(o))
         return;
-      _("Failed to deserialize the state from clipboard. Check the console for more details.", "error"), console.error(o);
+      P("Failed to deserialize the state from clipboard. Check the console for more details.", "error"), console.error(o);
     }
 }
 async function It(e) {
@@ -237,7 +237,7 @@ async function It(e) {
       type: "text/plain;charset=utf-8"
     }), "pinia-state.json");
   } catch (o) {
-    _("Failed to export the state as JSON. Check the console for more details.", "error"), console.error(o);
+    P("Failed to export the state as JSON. Check the console for more details.", "error"), console.error(o);
   }
 }
 let H;
@@ -262,9 +262,9 @@ async function Wt(e) {
     if (!t)
       return;
     const { text: s, file: i } = t;
-    ot(e, JSON.parse(s)), _(`Global state imported from "${i.name}".`);
+    ot(e, JSON.parse(s)), P(`Global state imported from "${i.name}".`);
   } catch (o) {
-    _("Failed to import the state from JSON. Check the console for more details.", "error"), console.error(o);
+    P("Failed to import the state from JSON. Check the console for more details.", "error"), console.error(o);
   }
 }
 function ot(e, o) {
@@ -280,10 +280,10 @@ function I(e) {
     }
   };
 }
-const st = "🍍 Pinia (root)", Pe = "_root";
+const st = "🍍 Pinia (root)", _e = "_root";
 function Ht(e) {
   return Le(e) ? {
-    id: Pe,
+    id: _e,
     label: st
   } : {
     id: e.$id,
@@ -363,7 +363,7 @@ function Bt(e, o) {
     componentStateTypes: de,
     app: e
   }, (t) => {
-    typeof t.now != "function" && _("You seem to be using an outdated version of Vue Devtools. Are you still using the Beta release instead of the stable one? You can find the links at https://devtools.vuejs.org/guide/installation.html."), t.addTimelineLayer({
+    typeof t.now != "function" && P("You seem to be using an outdated version of Vue Devtools. Are you still using the Beta release instead of the stable one? You can find the links at https://devtools.vuejs.org/guide/installation.html."), t.addTimelineLayer({
       id: z,
       label: "Pinia 🍍",
       color: 15064968
@@ -408,7 +408,7 @@ function Bt(e, o) {
           tooltip: 'Reset the state (with "$reset")',
           action: (s) => {
             const i = o._s.get(s);
-            i ? typeof i.$reset != "function" ? _(`Cannot reset "${s}" store because it doesn't have a "$reset" method implemented.`, "warn") : (i.$reset(), _(`Store "${s}" reset.`)) : _(`Cannot reset "${s}" store because it wasn't found.`, "warn");
+            i ? typeof i.$reset != "function" ? P(`Cannot reset "${s}" store because it doesn't have a "$reset" method implemented.`, "warn") : (i.$reset(), P(`Store "${s}" reset.`)) : P(`Cannot reset "${s}" store because it wasn't found.`, "warn");
           }
         }
       ]
@@ -458,16 +458,16 @@ function Bt(e, o) {
       }
     }), t.on.getInspectorState((s) => {
       if (s.app === e && s.inspectorId === w) {
-        const i = s.nodeId === Pe ? o : o._s.get(s.nodeId);
+        const i = s.nodeId === _e ? o : o._s.get(s.nodeId);
         if (!i)
           return;
         i && (s.state = Mt(i));
       }
     }), t.on.editInspectorState((s, i) => {
       if (s.app === e && s.inspectorId === w) {
-        const r = s.nodeId === Pe ? o : o._s.get(s.nodeId);
+        const r = s.nodeId === _e ? o : o._s.get(s.nodeId);
         if (!r)
-          return _(`store "${s.nodeId}" not found`, "error");
+          return P(`store "${s.nodeId}" not found`, "error");
         const { path: n } = s;
         Le(r) ? n.unshift("state") : (n.length !== 1 || !r._customProperties.has(n[0]) || n[0] in r.$state) && n.unshift("$state"), K = !1, s.set(r, n, s.state.value), K = !0;
       }
@@ -475,10 +475,10 @@ function Bt(e, o) {
       if (s.type.startsWith("🍍")) {
         const i = s.type.replace(/^🍍\s*/, ""), r = o._s.get(i);
         if (!r)
-          return _(`store "${i}" not found`, "error");
+          return P(`store "${i}" not found`, "error");
         const { path: n } = s;
         if (n[0] !== "state")
-          return _(`Invalid path for store "${i}":
+          return P(`Invalid path for store "${i}":
 ${n}
 Only state can be modified.`);
         n[0] = "$state", K = !1, s.set(r, n, s.state.value), K = !0;
@@ -612,8 +612,8 @@ function zt(e, o) {
     });
     const { $dispose: r } = o;
     o.$dispose = () => {
-      r(), t.notifyComponentUpdate(), t.sendInspectorTree(w), t.sendInspectorState(w), t.getSettings().logStoreChanges && _(`Disposed "${o.$id}" store 🗑`);
-    }, t.notifyComponentUpdate(), t.sendInspectorTree(w), t.sendInspectorState(w), t.getSettings().logStoreChanges && _(`"${o.$id}" store installed 🆕`);
+      r(), t.notifyComponentUpdate(), t.sendInspectorTree(w), t.sendInspectorState(w), t.getSettings().logStoreChanges && P(`Disposed "${o.$id}" store 🗑`);
+    }, t.notifyComponentUpdate(), t.sendInspectorTree(w), t.sendInspectorState(w), t.getSettings().logStoreChanges && P(`"${o.$id}" store installed 🆕`);
   });
 }
 let it = 0, Q;
@@ -693,13 +693,13 @@ function Z(e, ...o) {
   });
 }
 const Gt = (e) => e();
-function _e(e, o) {
+function Pe(e, o) {
   e instanceof Map && o instanceof Map && o.forEach((t, s) => e.set(s, t)), e instanceof Set && o instanceof Set && o.forEach(e.add, e);
   for (const t in o) {
     if (!o.hasOwnProperty(t))
       continue;
     const s = o[t], i = e[t];
-    U(i) && U(s) && e.hasOwnProperty(t) && !ae(s) && !we(s) ? e[t] = _e(i, s) : e[t] = s;
+    U(i) && U(s) && e.hasOwnProperty(t) && !ae(s) && !we(s) ? e[t] = Pe(i, s) : e[t] = s;
   }
   return e;
 }
@@ -725,8 +725,8 @@ function We(e, o, t, s) {
     ) : Ne(t.state.value[e]);
     return x(h, r, Object.keys(n || {}).reduce((m, g) => (process.env.NODE_ENV !== "production" && g in h && console.warn(`[🍍]: A getter cannot have the same name as another state property. Rename one of them. Found with "${g}" in store "${e}".`), m[g] = F(Ee(() => {
       ne(t);
-      const P = t._s.get(e);
-      return n[g].call(P, P);
+      const _ = t._s.get(e);
+      return n[g].call(_, _);
     })), m), {}));
   }
   return c = Te(e, l, o, t, s, !0), c;
@@ -741,24 +741,24 @@ function Te(e, o, t = {}, s, i, r) {
     // flush: 'post',
   };
   process.env.NODE_ENV !== "production" && !Ue && (c.onTrigger = (f) => {
-    l ? P = f : l == !1 && !u._hotUpdating && (Array.isArray(P) ? P.push(f) : console.error("🍍 debuggerEvents should be an array. This is most likely an internal Pinia bug."));
+    l ? _ = f : l == !1 && !u._hotUpdating && (Array.isArray(_) ? _.push(f) : console.error("🍍 debuggerEvents should be an array. This is most likely an internal Pinia bug."));
   });
-  let l, h, m = [], g = [], P;
+  let l, h, m = [], g = [], _;
   const O = s.state.value[e];
   !r && !O && (process.env.NODE_ENV === "production" || !i) && (s.state.value[e] = {});
   const G = T({});
   let ce;
   function ee(f) {
     let p;
-    l = h = !1, process.env.NODE_ENV !== "production" && (P = []), typeof f == "function" ? (f(s.state.value[e]), p = {
+    l = h = !1, process.env.NODE_ENV !== "production" && (_ = []), typeof f == "function" ? (f(s.state.value[e]), p = {
       type: W.patchFunction,
       storeId: e,
-      events: P
-    }) : (_e(s.state.value[e], f), p = {
+      events: _
+    }) : (Pe(s.state.value[e], f), p = {
       type: W.patchObject,
       payload: f,
       storeId: e,
-      events: P
+      events: _
     });
     const C = ce = Symbol();
     $e().then(() => {
@@ -822,7 +822,7 @@ function Te(e, o, t = {}, s, i, r) {
         (p.flush === "sync" ? h : l) && f({
           storeId: e,
           type: W.direct,
-          events: P
+          events: _
         }, te);
       }, x({}, c, p)));
       return C;
@@ -843,7 +843,7 @@ function Te(e, o, t = {}, s, i, r) {
   for (const f in $) {
     const p = $[f];
     if (ae(p) && !Ae(p) || we(p))
-      process.env.NODE_ENV !== "production" && i ? pe(G.value, f, Ce($, f)) : r || (O && Zt(p) && (ae(p) ? p.value = O[f] : _e(p, O[f])), s.state.value[e][f] = p), process.env.NODE_ENV !== "production" && V.state.push(f);
+      process.env.NODE_ENV !== "production" && i ? pe(G.value, f, Ce($, f)) : r || (O && Zt(p) && (ae(p) ? p.value = O[f] : Pe(p, O[f])), s.state.value[e][f] = p), process.env.NODE_ENV !== "production" && V.state.push(f);
     else if (typeof p == "function") {
       const C = process.env.NODE_ENV !== "production" && i ? p : le(f, p);
       $[f] = C, process.env.NODE_ENV !== "production" && (V.actions[f] = p), a.actions[f] = p;
@@ -944,8 +944,8 @@ This will fail in production.`);
       const m = bt();
       if (m && m.proxy && // avoid adding stores that are just built for hot module replacement
       !c) {
-        const g = m.proxy, P = "_pStores" in g ? g._pStores : g._pStores = {};
-        P[s] = h;
+        const g = m.proxy, _ = "_pStores" in g ? g._pStores : g._pStores = {};
+        _[s] = h;
       }
     }
     return h;
@@ -1034,41 +1034,6 @@ const Yt = ["id", "checked"], Xt = ["for", "innerHTML"], eo = /* @__PURE__ */ q(
     ]));
   }
 }), He = /* @__PURE__ */ j(ao, [["__scopeId", "data-v-081c5673"]]), no = [
-  {
-    tags: {
-      course: "VETS2011",
-      subject: "Physiology",
-      system: "Nervous System"
-    },
-    statement: "<p>Which part of a neuron receives information from surrounding cells?</p>",
-    optionsList: [
-      {
-        optionValue: "<p>Axon</p>",
-        optionCorrect: !1
-      },
-      {
-        optionValue: "<p>Presynaptic terminal</p>",
-        optionCorrect: !1
-      },
-      {
-        optionValue: "<p>Cell body</p>",
-        optionCorrect: !1
-      },
-      {
-        optionValue: "<p>Dendrite</p>",
-        optionCorrect: !0
-      },
-      {
-        optionValue: "<p>Myelin</p>",
-        optionCorrect: !1
-      }
-    ],
-    _id: {
-      $oid: "6625c7c8c8259deb8c3af39b"
-    },
-    label: "Placeholder label 1",
-    link: "https://vetshub.uqcloud.net/resource/5a0ba18d34cc363763e05e99/61a9ae14e04e3d5bffb26ef7/62142eee64c71f1df2110cf5/62142f2764c71f1df2110cf7/6214301b64c71f1df2110cfd"
-  },
   {
     tags: {
       course: "VETS2011",
@@ -7124,7 +7089,7 @@ const rt = (e, o) => o.findIndex((t) => {
       n.value = null, c("nextQuestion");
     }, g = (V) => {
       G(V), l.value = t.getRemainingQuestions(), c("nextQuestion");
-    }, P = () => {
+    }, _ = () => {
       G(r), c("skipQuestion");
     }, O = (V) => t.incrementStat(
       V.$oid,
@@ -7176,7 +7141,7 @@ const rt = (e, o) => o.findIndex((t) => {
         "hide-skip": l.value <= 1,
         onSubmitAnswer: h,
         onNextQuestion: v[0] || (v[0] = (u) => g(V._id)),
-        onSkipQuestion: P
+        onSkipQuestion: _
       }, null, 8, ["submitted", "selected-option", "hide-skip"])) : L("", !0),
       d("div", mo, [
         S(t).quizMode === "Timed" ? (b(), A(He, {
@@ -7198,7 +7163,7 @@ const rt = (e, o) => o.findIndex((t) => {
     /* @__PURE__ */ d("th", null, "correct option"),
     /* @__PURE__ */ d("th", null, "your answer")
   ])
-], -1)), Po = { class: "question-row" }, _o = ["href", "innerHTML"], To = { class: "answer-row" }, wo = ["innerHTML"], Eo = { class: "answer-row" }, ko = ["innerHTML"], Lo = { class: "mcq-result" }, qo = { class: "score" }, $o = /* @__PURE__ */ q({
+], -1)), _o = { class: "question-row" }, Po = ["href", "innerHTML"], To = { class: "answer-row" }, wo = ["innerHTML"], Eo = { class: "answer-row" }, ko = ["innerHTML"], Lo = { class: "mcq-result" }, qo = { class: "score" }, $o = /* @__PURE__ */ q({
   __name: "MCQStatus",
   setup(e) {
     const o = R(), t = o.quizStats, s = o.quizStats.length, i = t.filter((n) => n.correct === 1).length, r = (i * 100 / s).toFixed(0);
@@ -7212,12 +7177,12 @@ const rt = (e, o) => o.findIndex((t) => {
                 key: c,
                 class: "quiz-statment"
               }, [
-                d("td", Po, [
+                d("td", _o, [
                   d("a", {
                     href: l.question.link,
                     target: "_blank",
                     innerHTML: l.question.statement
-                  }, null, 8, _o)
+                  }, null, 8, Po)
                 ]),
                 d("td", To, [
                   (b(!0), y(M, null, Y(Object.entries(
@@ -7324,14 +7289,14 @@ const rt = (e, o) => o.findIndex((t) => {
       i = window.setInterval(g, Me), s = window.setTimeout(() => {
       }, o.timeLimit * Me);
     }, m = () => {
-      var P;
+      var _;
       l();
       const g = (O) => o.incrementStat(O, "attempts", Ao);
-      for (g(((P = t.value) == null ? void 0 : P._id.$oid) ?? ""); t.value = o.dequeueQuestion(); )
+      for (g(((_ = t.value) == null ? void 0 : _._id.$oid) ?? ""); t.value = o.dequeueQuestion(); )
         g(t.value._id.$oid);
       return alert("Time's up! Quiz has ended."), a();
     };
-    return (g, P) => (b(), y("main", null, [
+    return (g, _) => (b(), y("main", null, [
       X(Io, { "time-left": r.value }, null, 8, ["time-left"]),
       t.value ? (b(), A(ct, {
         key: 0,
