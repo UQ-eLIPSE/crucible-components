@@ -59,7 +59,7 @@ const getButtonClassAndText = (
 };
 </script>
 
-<style>
+<style scoped>
 .mcq-button {
   color: #ffffff;
   background-color: #7f7f7f;

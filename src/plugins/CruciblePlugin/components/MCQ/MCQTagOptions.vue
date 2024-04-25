@@ -24,7 +24,7 @@ const tagSet = questions.flatMap((question) => question.tags);
 const filterSet: SelectedTags = getUniquePropertyValues(tagSet);
 </script>
 
-<style>
+<style scoped>
 .filter {
   text-align: left;
   text-transform: capitalize;

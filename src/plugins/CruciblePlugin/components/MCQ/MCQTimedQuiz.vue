@@ -85,7 +85,7 @@ const skipToEnd = () => {
 };
 </script>
 
-<style>
+<style scoped>
 main {
   width: 800px;
 }
