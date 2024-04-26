@@ -1,13 +1,13 @@
 import { describe, it, expect, beforeEach } from "vitest";
 import { createPinia, setActivePinia } from "pinia";
 import { questionsData as questions } from "../testSeeds";
-import MCQQuestion from "@/plugins/CruciblePlugin/components/MCQ/MCQQuestion.vue";
-import { MCQuestion } from "@/plugins/CruciblePlugin/types/MCQ";
+import MCQQuestion from "@components/MCQ/MCQQuestion.vue";
+import { MCQuestion } from "@types/MCQ";
 import { mount, VueWrapper } from "@vue/test-utils";
-import { useQuizStore } from "@/plugins/CruciblePlugin/store/QuizStore";
-import { QuestionState } from "@/plugins/CruciblePlugin/types/MCQ";
+import { useQuizStore } from "../../src/store/QuizStore";
+import { QuestionState } from "@types/MCQ";
 import { dataTest } from "../testSeeds";
-import { findSelectedOptionValue } from "@/plugins/CruciblePlugin/components/QuestionStore";
+import { findSelectedOptionValue } from "@components/QuestionStore";
 
 let wrapper: VueWrapper;
 const _id = questions[0]._id;

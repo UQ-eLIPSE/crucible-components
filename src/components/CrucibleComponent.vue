@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref, inject } from "vue";
 import MCQQuiz from "./MCQ/MCQQuiz.vue";
 import MCQTimedQuiz from "./MCQ/MCQTimedQuiz.vue";
 import StartPage from "./StartPage.vue";
@@ -12,8 +12,9 @@ import { getQuestionsBasedOnEnv } from "./DataAccessLayer";
 const quizQuestions = ref(0);
 const questionsQueue = useQuizStore();
 const quizStarted = ref<boolean>(false);
-
+const dataAPI = inject("$dataLink");
 const handleStartQuiz = ({ questionAmount, mode }: StartQuizConfig) => {
+  console.log("dataLink: ", dataAPI);
   const selectedTags = questionsQueue.getselectedtags();
 
   const questions = getQuestionsBasedOnEnv();

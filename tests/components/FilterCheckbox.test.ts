@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeEach, vi } from "vitest";
-import FilterCheckbox from "@/plugins/CruciblePlugin/components/MCQ/FilterCheckbox.vue";
+import FilterCheckbox from "@components/MCQ/FilterCheckbox.vue";
 import { DOMWrapper, VueWrapper, mount } from "@vue/test-utils";
 import { createPinia, setActivePinia } from "pinia";
 

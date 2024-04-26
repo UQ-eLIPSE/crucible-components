@@ -1,5 +1,5 @@
-import { questionsData as questions } from "../testSeeds";
-import { MCQuestion } from "@/plugins/CruciblePlugin/types/MCQ";
+import { questionsData as questions } from "./testSeeds";
+import { MCQuestion } from "../src/types/MCQ";
 
 describe("QuestionsDataStructure", () => {
   it("Should have a question object with the correct properties", () => {

@@ -21,7 +21,7 @@
 </template>
 
 <script setup lang="ts">
-import type { MCQRadioOption } from "@type/MCQ.d.ts";
+import type { MCQRadioOption } from "@/types/MCQ";
 const { optionKey, checked, option, submitted } = defineProps<MCQRadioOption>();
 const emit = defineEmits(["selectOption"]);
 const update = () => emit("selectOption");

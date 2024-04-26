@@ -19,7 +19,7 @@
 <script setup lang="ts">
 import { onMounted, ref } from "vue";
 import MCQQuestion from "./MCQQuestion.vue";
-import type { MCQuestion } from "@type/MCQ.d.ts";
+import type { MCQuestion } from "@/types/MCQ";
 import MCQStatus from "./MCQStatus.vue";
 import { useQuizStore } from "../../store/QuizStore";
 

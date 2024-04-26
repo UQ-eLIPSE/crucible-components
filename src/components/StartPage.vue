@@ -52,7 +52,7 @@
 import { ref } from "vue";
 import MCQTagOptions from "./MCQ/MCQTagOptions.vue";
 import DropDownbox from "./MCQ/DropDownbox.vue";
-import { useQuizStore } from "@/plugins/CruciblePlugin/store/QuizStore";
+import { useQuizStore } from "@/store/QuizStore";
 const questionAmount = ref<number>(1);
 const selectedMode = ref<string>("Tutor");
 

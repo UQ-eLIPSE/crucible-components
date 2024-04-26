@@ -24,7 +24,7 @@
       "@/*": ["./src/*"],
       "@components/*": ["./src/components/*"],
       "@data/*": ["data/*"],
-      "@type/*": ["src/plugins/CruciblePlugin/types/*"]
+      "@type/*": ["src/types/*"]
     }
   },
   "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue", "tests/**/*.ts"],

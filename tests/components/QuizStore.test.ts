@@ -1,6 +1,6 @@
 import { describe, it, expect, beforeEach } from "vitest";
 import { createPinia, setActivePinia } from "pinia";
-import { useQuizStore } from "@/plugins/CruciblePlugin/store/QuizStore";
+import { useQuizStore } from "../../src/store/QuizStore";
 import { questionsData } from "../testSeeds";
 
 setActivePinia(createPinia());

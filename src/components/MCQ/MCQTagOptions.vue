@@ -12,7 +12,7 @@
 </template>
 
 <script setup lang="ts">
-import type { SelectedTags } from "@/plugins/CruciblePlugin/types/MCQ";
+import type { SelectedTags } from "@/types/MCQ";
 import { getUniquePropertyValues } from "../QuestionStore";
 import { getQuestionsBasedOnEnv } from "../DataAccessLayer";
 import FilterCheckbox from "./FilterCheckbox.vue";

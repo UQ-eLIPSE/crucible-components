@@ -1,7 +1,7 @@
 import { describe, it, expect, beforeEach } from "vitest";
 import { questionsData as questions } from "../testSeeds";
 import { createPinia, setActivePinia } from "pinia";
-import MCQQuestion from "@/plugins/CruciblePlugin/components/MCQ/MCQQuestion.vue";
+import MCQQuestion from "@components/MCQ/MCQQuestion.vue";
 import { DOMWrapper, mount, VueWrapper } from "@vue/test-utils";
 import { getOptions } from "./MCQQuestion.test";
 

@@ -9,11 +9,15 @@ export default defineConfig({
   resolve: {
     alias: {
       "@": fileURLToPath(new URL("./src", import.meta.url)),
+      "@components": fileURLToPath(
+        new URL("./src/components", import.meta.url),
+      ),
+      "@type": fileURLToPath(new URL("./src/types", import.meta.url)),
     },
   },
   build: {
     lib: {
-      entry: "./src/plugins/CruciblePlugin/ViewerPlugin.ts",
+      entry: "./src/ViewerPlugin.ts",
       name: "CruciblePlugin",
       fileName: (format) => `index.${format}.js`,
     },

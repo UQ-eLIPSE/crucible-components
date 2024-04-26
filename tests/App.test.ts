@@ -1,7 +1,7 @@
 import { describe, it, expect, beforeEach } from "vitest";
 import { mount } from "@vue/test-utils";
-import CrucibleComponent from "@/plugins/CruciblePlugin/components/CrucibleComponent.vue";
-import MCQQuiz from "@/plugins/CruciblePlugin/components/MCQ/MCQQuiz.vue";
+import CrucibleComponent from "@components/CrucibleComponent.vue";
+import MCQQuiz from "@components/MCQ/MCQQuiz.vue";
 import { createPinia, setActivePinia } from "pinia";
 
 beforeEach(() => {

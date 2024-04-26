@@ -3,8 +3,8 @@ import {
   filterQuestionsByTags,
   getQuestionsRandomly,
   shuffleArray,
-} from "@/plugins/CruciblePlugin/components/QuestionStore";
-import { SelectedTags } from "@/plugins/CruciblePlugin/types/MCQ";
+} from "@components/QuestionStore";
+import { SelectedTags } from "@/types/MCQ";
 
 const questions = [
   {

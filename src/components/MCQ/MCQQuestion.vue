@@ -47,7 +47,7 @@
 
 <script setup lang="ts">
 import { ref } from "vue";
-import type { MCQuestionProp, MCQOptions } from "@type/MCQ.d.ts";
+import type { MCQuestionProp, MCQOptions } from "@/types/MCQ";
 import MCQOption from "./MCQOption.vue";
 import MCQButton from "./MCQButton.vue";
 import NextButton from "./NextButton.vue";

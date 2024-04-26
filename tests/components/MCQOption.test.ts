@@ -1,6 +1,6 @@
 import { describe, it, expect, beforeEach } from "vitest";
 import { questionsData as questions } from "../testSeeds";
-import MCQQuestion from "@/plugins/CruciblePlugin/components/MCQ/MCQQuestion.vue";
+import MCQQuestion from "@components/MCQ/MCQQuestion.vue";
 import { mount, VueWrapper, DOMWrapper } from "@vue/test-utils";
 import { getOptions } from "./MCQQuestion.test";
 

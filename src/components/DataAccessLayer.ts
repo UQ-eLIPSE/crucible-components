@@ -1,6 +1,6 @@
-import { MCQuestion } from "@/plugins/CruciblePlugin/types/MCQ";
+import { MCQuestion } from "@/types/MCQ.js";
 import { questions } from "./question-data.ts";
-import { generateDummyData } from "../../../../data/dummyQuestionData";
+import { generateDummyData } from "../../data/dummyQuestionData.ts";
 
 export const getAllQuestions = () => {
   return questions as MCQuestion[];
