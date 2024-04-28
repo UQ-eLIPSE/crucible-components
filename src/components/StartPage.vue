@@ -50,8 +50,8 @@
 
 <script setup lang="ts">
 import { ref } from "vue";
-import MCQTagOptions from "@components/MCQ/MCQTagOptions.vue";
-import DropDownbox from "./DropDownbox.vue";
+import MCQTagOptions from "./MCQ/MCQTagOptions.vue";
+import DropDownbox from "./MCQ/DropDownbox.vue";
 import { useQuizStore } from "@/store/QuizStore";
 const questionAmount = ref<number>(1);
 const selectedMode = ref<string>("Tutor");

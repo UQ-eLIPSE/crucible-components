@@ -2,10 +2,10 @@ import { describe, it, expect, beforeEach } from "vitest";
 import { createPinia, setActivePinia } from "pinia";
 import { questionsData as questions } from "../testSeeds";
 import MCQQuestion from "@components/MCQ/MCQQuestion.vue";
-import { MCQuestion } from "@/types/MCQ";
+import { MCQuestion } from "@types/MCQ";
 import { mount, VueWrapper } from "@vue/test-utils";
-import { useQuizStore } from "@/store/QuizStore";
-import { QuestionState } from "@/types/MCQ";
+import { useQuizStore } from "../../src/store/QuizStore";
+import { QuestionState } from "@types/MCQ";
 import { dataTest } from "../testSeeds";
 import { findSelectedOptionValue } from "@components/QuestionStore";
 

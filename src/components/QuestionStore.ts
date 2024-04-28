@@ -1,4 +1,4 @@
-import { MCQuestion, QuestionState, SelectedTags, tags } from "@/types/MCQ";
+import { MCQuestion, QuestionState, SelectedTags, tags } from "../types/MCQ";
 
 /**
  * shuffleArray - Shuffles the array using Fisher-Yates algorithm

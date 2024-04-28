@@ -1,6 +1,6 @@
 import { describe, it, expect, beforeEach } from "vitest";
 import { createPinia, setActivePinia } from "pinia";
-import { useQuizStore } from "@/store/QuizStore";
+import { useQuizStore } from "../../src/store/QuizStore";
 import { questionsData as questions } from "../testSeeds";
 import MCQQuiz from "@components/MCQ/MCQQuiz.vue";
 import { mount, VueWrapper, DOMWrapper } from "@vue/test-utils";

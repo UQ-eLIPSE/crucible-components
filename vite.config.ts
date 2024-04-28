@@ -12,8 +12,22 @@ export default defineConfig({
       "@components": fileURLToPath(
         new URL("./src/components", import.meta.url),
       ),
-      "@data": fileURLToPath(new URL("./data", import.meta.url)),
       "@type": fileURLToPath(new URL("./src/types", import.meta.url)),
+    },
+  },
+  build: {
+    lib: {
+      entry: "./src/ViewerPlugin.ts",
+      name: "CruciblePlugin",
+      fileName: (format) => `index.${format}.js`,
+    },
+    rollupOptions: {
+      external: ["vue"],
+      output: {
+        globals: {
+          vue: "Vue",
+        },
+      },
     },
   },
   test: {

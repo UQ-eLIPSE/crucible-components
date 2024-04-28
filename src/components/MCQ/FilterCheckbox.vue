@@ -27,8 +27,8 @@
 <script setup lang="ts">
 import { SelectedTags } from "@/types/MCQ";
 import { useQuizStore } from "@/store/QuizStore";
-import { getQuestionsBasedOnEnv } from "./DataAccessLayer";
-import { filterQuestionsByTags } from "./QuestionStore";
+import { getQuestionsBasedOnEnv } from "../DataAccessLayer";
+import { filterQuestionsByTags } from "../QuestionStore";
 import { computed } from "vue";
 const { category, topics } = defineProps<{
   category: string;

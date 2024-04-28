@@ -1,4 +1,4 @@
-import { tags, MCQuestion } from "@/types/MCQ";
+import { tags, MCQuestion } from "../src/types/MCQ";
 
 interface Option {
   optionValue: string;

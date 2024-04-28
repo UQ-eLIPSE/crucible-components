@@ -12,7 +12,7 @@
 </template>
 
 <script setup lang="ts">
-import { useQuizStore } from "@/store/QuizStore";
+import { useQuizStore } from "../../store/QuizStore";
 
 const questionsQueue = useQuizStore();
 

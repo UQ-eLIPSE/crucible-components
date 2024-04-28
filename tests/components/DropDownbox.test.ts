@@ -1,8 +1,8 @@
 import { describe, it, expect, beforeEach, vi } from "vitest";
 import { mount, VueWrapper } from "@vue/test-utils";
 import { createPinia, setActivePinia } from "pinia";
-import { useQuizStore } from "@/store/QuizStore";
-import DropDownbox from "@/components/DropDownbox.vue"; // Ensure the import is correct
+import { useQuizStore } from "../../src/store/QuizStore";
+import DropDownbox from "../../src/components/MCQ/DropDownbox.vue"; // Ensure the import is correct
 
 describe("DropDownbox", () => {
   let wrapper: VueWrapper;
