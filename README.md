@@ -6,7 +6,15 @@ Node version requirement: 20
 
 ## Install Project as a package
 
-`yarn add https://github.com/UQ-eLIPSE/crucible-components.git#release-package`
+- `yarn add https://github.com/UQ-eLIPSE/crucible-components.git#release-package`
+
+- Import plugin:
+  1. find `main.ts` in plugin host project and add:
+     `import { createViewerPlugin } from "crucible-components"`,
+     `import "crucible-components/dist/styles.css"`,
+     `app.use(createViewer)` or `app.use(createViewer, { myOptionKey: value });`
+  2. in the component, implement the following directly:
+     <CrucibleComponent />
 
 ## Project Setup
 
