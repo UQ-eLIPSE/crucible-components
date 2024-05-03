@@ -29,17 +29,10 @@
   />
   <div class="next-prev-question">
     <NextButton
-      v-if="
-        statUpdate.quizMode === 'Timed' && statUpdate.questionsQueue.length >= 1
+      v-if="statUpdate.quizMode === 'Timed'"
+      :button-name="
+        statUpdate.questionsQueue.length >= 1 ? '&#x2192;' : 'Submit'
       "
-      :button-name="'&#x2192;'"
-      @next-question="timedNextQuestion()"
-    />
-    <NextButton
-      v-if="
-        statUpdate.quizMode === 'Timed' && statUpdate.questionsQueue.length < 1
-      "
-      :button-name="'Submit'"
       @next-question="timedNextQuestion()"
     />
     <NextButton
