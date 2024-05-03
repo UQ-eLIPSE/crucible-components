@@ -1,12 +1,14 @@
 <template>
   <div>
-    <button class="mcq-button" @click="handleButtonClick()">
+    <button :class="buttonClass" @click="handleButtonClick()">
       {{ buttonName }}
     </button>
   </div>
 </template>
 
 <script setup lang="ts">
+import { computed } from "vue";
+
 const { buttonName } = defineProps<{ buttonName: String }>();
 
 const emit = defineEmits(["nextQuestion", "prevQuestion"]);
@@ -22,14 +24,21 @@ const handleButtonClick = () => {
 const modifyButtonAndEmit = (event: "nextQuestion" | "prevQuestion") => {
   emit(event);
 };
+
+const buttonClass = computed(() => ({
+  "mcq-button": true,
+  submit_btn: buttonName === "Submit",
+  next: buttonName == "\u2192",
+  prev: buttonName == "\u2190",
+}));
 </script>
 
 <style scoped>
 .mcq-button {
   color: #ffffff;
-  background-color: #7f7f7f;
   border-color: #c3e6cb;
   cursor: pointer;
+  background-color: #2a52be;
   font-size: 24px;
   padding: 2px 10px;
 }
@@ -37,14 +46,13 @@ const modifyButtonAndEmit = (event: "nextQuestion" | "prevQuestion") => {
   opacity: 50%;
   cursor: default;
 }
-
-.submit {
-  background-color: #7f7f7f;
+.submit_btn {
+  background-color: #569821;
 }
 .next {
   background-color: #2a52be;
 }
-.skip {
-  background-color: #569821;
+.prev {
+  background-color: #2a52be;
 }
 </style>
