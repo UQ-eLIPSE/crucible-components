@@ -31,7 +31,7 @@
     <NextButton
       v-if="statUpdate.quizMode === 'Timed'"
       :button-name="
-        statUpdate.questionsQueue.length >= 1 ? '&#x2192;' : 'submit'
+        statUpdate.questionsQueue.length >= 1 ? '&#x2192;' : 'Submit'
       "
       @next-question="timedNextQuestion()"
     />

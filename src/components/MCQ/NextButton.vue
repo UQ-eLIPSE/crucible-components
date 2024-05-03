@@ -1,6 +1,9 @@
 <template>
   <div>
-    <button class="mcq-button" @click="handleButtonClick()">
+    <button
+      :class="buttonName === 'Submit' ? 'submit_btn' : 'mcq-button'"
+      @click="handleButtonClick()"
+    >
       {{ buttonName }}
     </button>
   </div>
@@ -27,9 +30,9 @@ const modifyButtonAndEmit = (event: "nextQuestion" | "prevQuestion") => {
 <style scoped>
 .mcq-button {
   color: #ffffff;
-  background-color: #7f7f7f;
   border-color: #c3e6cb;
   cursor: pointer;
+  background-color: #2a52be;
   font-size: 24px;
   padding: 2px 10px;
 }
@@ -37,14 +40,12 @@ const modifyButtonAndEmit = (event: "nextQuestion" | "prevQuestion") => {
   opacity: 50%;
   cursor: default;
 }
-
-.submit {
-  background-color: #7f7f7f;
-}
-.next {
-  background-color: #2a52be;
-}
-.skip {
+.submit_btn {
+  color: #ffffff;
+  border-color: #c3e6cb;
+  cursor: pointer;
   background-color: #569821;
+  font-size: 24px;
+  padding: 2px 10px;
 }
 </style>
