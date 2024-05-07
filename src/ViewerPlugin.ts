@@ -11,7 +11,7 @@ export function createViewerPlugin(
   const pinia = createPinia();
   app.use(pinia);
   app.component("CrucibleComponent", CrucibleComponent);
-  app.provide("$dataLink", options.dataLink || defaultDataLink);
+  app.provide("dataLink", options.dataLink || defaultDataLink);
   console.log(options.dataLink);
 }
 
