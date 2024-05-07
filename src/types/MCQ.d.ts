@@ -13,7 +13,8 @@ export interface MCQQuiz {
 export interface MCQuestion {
   _id: { $oid: string };
   statement: string;
-  tags: tags;
+  // tags: tags; // * CHANGE THIS
+  tags: Tags;
   optionsList: MCQOptions[];
   link: string;
 }
@@ -58,9 +59,17 @@ export interface tags {
   animal: string;
 }
 
+// export interface SelectedTags {
+//   course: string[];
+//   subject: string[];
+//   system: string[];
+//   animal: string[];
+// }
+
+export interface Tags {
+  [key: string]: string;
+}
+
 export interface SelectedTags {
-  course: string[];
-  subject: string[];
-  system: string[];
-  animal: string[];
+  [key: string]: string[];
 }

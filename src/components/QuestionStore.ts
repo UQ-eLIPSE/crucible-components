@@ -1,4 +1,4 @@
-import { MCQuestion, QuestionState, SelectedTags, tags } from "../types/MCQ";
+import { MCQuestion, QuestionState, SelectedTags, Tags } from "../types/MCQ";
 
 /**
  * shuffleArray - Shuffles the array using Fisher-Yates algorithm
@@ -21,27 +21,49 @@ export const getQuestionsRandomly = (
   return shuffled.slice(0, count);
 };
 
-export function getUniquePropertyValues(tagProps: tags[]) {
-  const uniqueValues = {
-    course: new Set<string>(),
-    subject: new Set<string>(),
-    system: new Set<string>(),
-    animal: new Set<string>(),
-  };
+export function getUniquePropertyValues(tagProps: Tags[]) {
+  // populate unique values of the given tags
+  const uniqueTags = tagProps.reduce(
+    (acc: Record<string, Set<string>>, item) => {
+      Object.keys(item).forEach((key) => {
+        if (!acc[key]) {
+          acc[key] = new Set<string>();
+        }
+        acc[key].add(item[key]);
+      });
+      return acc;
+    },
+    {},
+  );
 
-  for (const item of tagProps) {
-    uniqueValues.course.add(item.course);
-    uniqueValues.subject.add(item.subject);
-    uniqueValues.system.add(item.system);
-    uniqueValues.animal.add(item.animal);
-  }
+  return Object.keys(uniqueTags).reduce(
+    (acc: Record<string, string[]>, key) => {
+      acc[key] = [...uniqueTags[key]];
+      return acc;
+    },
+    {},
+  );
 
-  return {
-    course: [...uniqueValues.course],
-    subject: [...uniqueValues.subject],
-    system: [...uniqueValues.system],
-    animal: [...uniqueValues.animal],
-  };
+  // const uniqueValues = {
+  //   course: new Set<string>(),
+  //   subject: new Set<string>(),
+  //   system: new Set<string>(),
+  //   animal: new Set<string>(),
+  // };
+
+  // for (const item of tagProps) {
+  //   uniqueValues.course.add(item.course);
+  //   uniqueValues.subject.add(item.subject);
+  //   uniqueValues.system.add(item.system);
+  //   uniqueValues.animal.add(item.animal);
+  // }
+
+  // return {
+  //   course: [...uniqueValues.course],
+  //   subject: [...uniqueValues.subject],
+  //   system: [...uniqueValues.system],
+  //   animal: [...uniqueValues.animal],
+  // };
 }
 
 export function filterQuestionsByTags(

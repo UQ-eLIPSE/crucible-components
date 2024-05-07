@@ -1,13 +1,11 @@
-interface DataTags {
-  [key: string]: string[];
-}
+export type DataTags = string[];
 
 interface DataMCQOptions {
   optionValue: string;
   optionCorrect?: boolean;
 }
 
-interface DataMCQuestion {
+export interface DataMCQuestion {
   _id: { $oid: string };
   statement: string;
   tags: DataTags;
