@@ -19,12 +19,6 @@ export const useQuizStore = defineStore("questionsQueue", {
       questionsStack: [] as MCQuestion[],
       quizStats: [] as QuestionState[],
       quizMode: "Tutor" as QuizMode,
-      // selectedTags: {
-      //   course: [],
-      //   subject: [],
-      //   system: [],
-      //   animal: [],
-      // } as SelectedTags,
       selectedTags: { course: [] } as SelectedTags,
       timeLimit: 60, // default time limit 1 min per qs
     };
