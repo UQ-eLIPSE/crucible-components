@@ -77,6 +77,7 @@ const getQuestionsnumByTags = (
     modifiedSelectedTags[category].push(topic);
   }
 
+  // TODO: need to change this
   const questions = getQuestionsBasedOnEnv();
   return filterQuestionsByTags(
     questions,

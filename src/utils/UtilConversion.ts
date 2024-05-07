@@ -5,6 +5,7 @@ import { MCQuestion, Tags } from "@/types/MCQ";
 // TODO: ADD VALIDATION
 const convertTags = (tagsData: DataTags): Tags => {
   return tagsData.reduce((acc: Tags, tag: string) => {
+    if (!tag.includes(":")) return acc;
     const [key, value] = tag.split(":");
     acc[key] = value.trim();
     return acc;

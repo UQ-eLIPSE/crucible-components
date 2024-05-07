@@ -24,12 +24,20 @@ const questions = ref<MCQuestion[]>([]);
 onMounted(async () => {
   // Fetch quiz data from API
   const useStatic = import.meta.env.VITE_USE_DUMMY_DATA === "false";
+  // note that the fetched data needs to be converted using UtilConversion
   questions.value = useStatic
     ? await getAllQuestionsFromApi()
     : getQuestionsBasedOnEnv();
 
   const allUniqueTags = getUniquePropertyValues(
     questions.value.map((q) => q.tags),
+  );
+  console.log("all unique tags: ", allUniqueTags);
+  console.log(
+    "all unique tags reduced: ",
+    Object.keys(allUniqueTags).reduce((acc, tag) => {
+      return { ...acc, [tag]: [] };
+    }, {}),
   );
   // For filtering functionality
   questionsQueue.setselectedTags(
