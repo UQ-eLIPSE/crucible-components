@@ -18,7 +18,7 @@
     "prepare": "husky install",
     "test": "vitest tests/**/*.test.ts",
     "test:ui": "vitest --ui tests/**/*.test.ts",
-    "dev": "vite",
+    "dev": "vite --port 5174",
     "build": "vue-tsc && vite build",
     "preview": "vite preview",
     "lint": "eslint --ext .ts,.vue src tests --fix",
