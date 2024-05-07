@@ -43,27 +43,6 @@ export function getUniquePropertyValues(tagProps: Tags[]) {
     },
     {},
   );
-
-  // const uniqueValues = {
-  //   course: new Set<string>(),
-  //   subject: new Set<string>(),
-  //   system: new Set<string>(),
-  //   animal: new Set<string>(),
-  // };
-
-  // for (const item of tagProps) {
-  //   uniqueValues.course.add(item.course);
-  //   uniqueValues.subject.add(item.subject);
-  //   uniqueValues.system.add(item.system);
-  //   uniqueValues.animal.add(item.animal);
-  // }
-
-  // return {
-  //   course: [...uniqueValues.course],
-  //   subject: [...uniqueValues.subject],
-  //   system: [...uniqueValues.system],
-  //   animal: [...uniqueValues.animal],
-  // };
 }
 
 export function filterQuestionsByTags(
