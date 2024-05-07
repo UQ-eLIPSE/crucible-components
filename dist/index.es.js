@@ -7534,7 +7534,7 @@ const ct = (e, o) => o.findIndex((t) => {
 }), hs = /* @__PURE__ */ j(bs, [["__scopeId", "data-v-30ab292c"]]), ms = /* @__PURE__ */ q({
   __name: "CrucibleComponent",
   setup(e) {
-    const o = T(0), t = R(), s = T(!1), i = Qe("$dataLink"), r = ({ questionAmount: n, mode: a }) => {
+    const o = T(0), t = R(), s = T(!1), i = Qe("dataLink"), r = ({ questionAmount: n, mode: a }) => {
       console.log("dataLink: ", i);
       const c = t.getselectedtags(), l = ye(), m = qe(
         l,
@@ -7547,7 +7547,7 @@ const ct = (e, o) => o.findIndex((t) => {
       onStartQuiz: r
     }));
   }
-}), ys = /* @__PURE__ */ j(ms, [["__scopeId", "data-v-8f590da4"]]), gs = "http://localhost:8080/api/resource/getQuiz";
+}), ys = /* @__PURE__ */ j(ms, [["__scopeId", "data-v-d2b620ae"]]), gs = "http://localhost:8080/api/resource/getQuiz";
 function Cs(e, o = {}) {
   const t = Ut();
   e.use(t), e.component("CrucibleComponent", ys), e.provide("dataLink", o.dataLink || gs), console.log(o.dataLink);
