@@ -40,7 +40,6 @@ const questionsNumByTags = computed(() =>
   Object.entries(topics)
     .map(([idx, topic]) => {
       const num = getQuestionsnumByTags(topic, category);
-      console.log("NUM: ", num);
       return { idx, topic, num };
     })
     .filter(({ topic }) => topic !== undefined),
@@ -79,7 +78,6 @@ const getQuestionsnumByTags = (
   }
 
   const questions = getQuestionsBasedOnEnv();
-  console.log(questions);
   return filterQuestionsByTags(
     questions,
     modifiedSelectedTags,
