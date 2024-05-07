@@ -1,4 +1,4 @@
-import { effectScope as Re, ref as T, markRaw as F, hasInjectionContext as dt, inject as Qe, getCurrentInstance as bt, toRaw as he, watch as De, reactive as ht, isRef as ae, isReactive as we, toRef as Ce, nextTick as $e, computed as Ee, unref as S, getCurrentScope as mt, onScopeDispose as yt, toRefs as Ne, defineComponent as q, openBlock as b, createElementBlock as y, Fragment as M, normalizeClass as D, withModifiers as gt, createElementVNode as d, toDisplayString as E, renderList as Y, createVNode as X, createBlock as A, createCommentVNode as L, pushScopeId as Be, popScopeId as ze, onMounted as Fe, resolveComponent as Vt, onBeforeMount as Ct, createTextVNode as Ue, withDirectives as xe, vModelText as vt, vModelSelect as St } from "vue";
+import { effectScope as Re, ref as T, markRaw as F, toRaw as he, hasInjectionContext as dt, inject as Qe, getCurrentInstance as bt, watch as De, unref as S, reactive as ht, isRef as ae, isReactive as we, toRef as Ce, nextTick as $e, computed as Ee, getCurrentScope as mt, onScopeDispose as yt, toRefs as Ne, defineComponent as q, openBlock as b, createElementBlock as y, Fragment as M, normalizeClass as D, withModifiers as gt, createElementVNode as d, toDisplayString as E, renderList as Y, createVNode as X, createBlock as A, createCommentVNode as L, pushScopeId as Be, popScopeId as ze, onMounted as Fe, resolveComponent as Vt, onBeforeMount as Ct, createTextVNode as Ue, withDirectives as xe, vModelText as vt, vModelSelect as St } from "vue";
 var Ge = !1;
 function pe(e, o, t) {
   return Array.isArray(e) ? (e.length = Math.max(e.length, o), e.splice(o, 1, t), t) : (e[o] = t, t);
@@ -7519,7 +7519,7 @@ const ct = (e, o) => o.findIndex((t) => {
             "option-name": "Time per Question",
             class: D(s.value === "Timed" ? "" : "input-disabled"),
             disabled: s.value !== "Timed"
-          }, null, 8, ["options", "class", "disabled"])
+          }, null, 8, ["class", "disabled"])
         ])
       ]),
       d("button", {
@@ -7547,7 +7547,7 @@ const ct = (e, o) => o.findIndex((t) => {
 }), ys = /* @__PURE__ */ j(ms, [["__scopeId", "data-v-8f590da4"]]), gs = "http://localhost:8080/api/resource/getQuiz";
 function Cs(e, o = {}) {
   const t = Ut();
-  e.use(t), e.component("CrucibleComponent", ys), e.provide("$dataLink", o.dataLink || gs);
+  e.use(t), e.component("CrucibleComponent", ys), e.provide("$dataLink", o.dataLink || gs), console.log(o.dataLink);
 }
 export {
   ys as CrucibleComponent,
