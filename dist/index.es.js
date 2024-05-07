@@ -1,4 +1,4 @@
-import { effectScope as Re, ref as T, markRaw as F, toRaw as he, hasInjectionContext as dt, inject as Qe, getCurrentInstance as bt, watch as De, unref as S, reactive as ht, isRef as ae, isReactive as we, toRef as Ce, nextTick as $e, computed as Ee, getCurrentScope as mt, onScopeDispose as yt, toRefs as Ne, defineComponent as q, openBlock as b, createElementBlock as y, Fragment as M, normalizeClass as D, withModifiers as gt, createElementVNode as d, toDisplayString as E, renderList as Y, createVNode as X, createBlock as A, createCommentVNode as L, pushScopeId as Be, popScopeId as ze, onMounted as Fe, resolveComponent as Vt, onBeforeMount as Ct, createTextVNode as Ue, withDirectives as xe, vModelText as vt, vModelSelect as St } from "vue";
+import { effectScope as Re, ref as T, markRaw as F, hasInjectionContext as dt, inject as Qe, getCurrentInstance as bt, toRaw as he, watch as De, reactive as ht, isRef as ae, isReactive as we, toRef as Ce, nextTick as $e, computed as Ee, unref as S, getCurrentScope as mt, onScopeDispose as yt, toRefs as Ne, defineComponent as q, openBlock as b, createElementBlock as y, Fragment as M, normalizeClass as D, withModifiers as gt, createElementVNode as d, toDisplayString as E, renderList as Y, createVNode as X, createBlock as A, createCommentVNode as L, pushScopeId as Be, popScopeId as ze, onMounted as Fe, resolveComponent as Vt, onBeforeMount as Ct, createTextVNode as Ue, withDirectives as xe, vModelText as vt, vModelSelect as St } from "vue";
 var Ge = !1;
 function pe(e, o, t) {
   return Array.isArray(e) ? (e.length = Math.max(e.length, o), e.splice(o, 1, t), t) : (e[o] = t, t);
@@ -221,7 +221,7 @@ async function jt(e) {
       _("Failed to serialize the state. Check the console for more details.", "error"), console.error(o);
     }
 }
-async function Ot(e) {
+async function It(e) {
   if (!tt())
     try {
       st(e, JSON.parse(await navigator.clipboard.readText())), _("Global state pasted from clipboard.");
@@ -231,7 +231,7 @@ async function Ot(e) {
       _("Failed to deserialize the state from clipboard. Check the console for more details.", "error"), console.error(o);
     }
 }
-async function It(e) {
+async function Ot(e) {
   try {
     et(new Blob([JSON.stringify(e.state.value)], {
       type: "text/plain;charset=utf-8"
@@ -273,7 +273,7 @@ function st(e, o) {
     s ? Object.assign(s, o[t]) : e.state.value[t] = o[t];
   }
 }
-function I(e) {
+function O(e) {
   return {
     _custom: {
       display: e
@@ -333,8 +333,8 @@ function Rt(e) {
     operations: [],
     newValue: {}
   }) : {
-    operation: I(e.type),
-    key: I(e.key),
+    operation: O(e.type),
+    key: O(e.key),
     oldValue: e.oldValue,
     newValue: e.newValue
   } : {};
@@ -383,14 +383,14 @@ function Bt(e, o) {
         {
           icon: "content_paste",
           action: async () => {
-            await Ot(o), t.sendInspectorTree(w), t.sendInspectorState(w);
+            await It(o), t.sendInspectorTree(w), t.sendInspectorState(w);
           },
           tooltip: "Replace the state with the content of your clipboard"
         },
         {
           icon: "save",
           action: () => {
-            It(o);
+            Ot(o);
           },
           tooltip: "Save the state as a JSON file"
         },
@@ -518,8 +518,8 @@ function zt(e, o) {
           title: "🛫 " + c,
           subtitle: "start",
           data: {
-            store: I(o.$id),
-            action: I(c),
+            store: O(o.$id),
+            action: O(c),
             args: l
           },
           groupId: m
@@ -532,8 +532,8 @@ function zt(e, o) {
             title: "🛬 " + c,
             subtitle: "end",
             data: {
-              store: I(o.$id),
-              action: I(c),
+              store: O(o.$id),
+              action: O(c),
               args: l,
               result: h
             },
@@ -549,8 +549,8 @@ function zt(e, o) {
             title: "💥 " + c,
             subtitle: "end",
             data: {
-              store: I(o.$id),
-              action: I(c),
+              store: O(o.$id),
+              action: O(c),
               args: l,
               error: h
             },
@@ -580,7 +580,7 @@ function zt(e, o) {
       const l = {
         time: s(),
         title: Qt(a),
-        data: Dt({ store: I(o.$id) }, Rt(n)),
+        data: Dt({ store: O(o.$id) }, Rt(n)),
         groupId: Q
       };
       a === W.patchFunction ? l.subtitle = "⤵️" : a === W.patchObject ? l.subtitle = "🧩" : n && !Array.isArray(n) && (l.subtitle = n.type), n && (l.data["rawEvent(s)"] = {
@@ -604,8 +604,8 @@ function zt(e, o) {
           title: "🔥 " + o.$id,
           subtitle: "HMR update",
           data: {
-            store: I(o.$id),
-            info: I("HMR update")
+            store: O(o.$id),
+            info: O("HMR update")
           }
         }
       }), t.notifyComponentUpdate(), t.sendInspectorTree(w), t.sendInspectorState(w);
@@ -617,7 +617,7 @@ function zt(e, o) {
   });
 }
 let at = 0, Q;
-function Oe(e, o, t) {
+function Ie(e, o, t) {
   const s = o.reduce((i, r) => (i[r] = he(e)[r], i), {});
   for (const i in s)
     e[i] = function() {
@@ -637,10 +637,10 @@ function Oe(e, o, t) {
 function Ft({ app: e, store: o, options: t }) {
   if (o.$id.startsWith("__hot:"))
     return;
-  o._isOptionsAPI = !!t.state, Oe(o, Object.keys(t.actions), o._isOptionsAPI);
+  o._isOptionsAPI = !!t.state, Ie(o, Object.keys(t.actions), o._isOptionsAPI);
   const s = o._hotUpdate;
   he(o)._hotUpdate = function(i) {
-    s.apply(this, arguments), Oe(o, Object.keys(i._hmrPayload.actions), !!o._isOptionsAPI);
+    s.apply(this, arguments), Ie(o, Object.keys(i._hmrPayload.actions), !!o._isOptionsAPI);
   }, zt(
     e,
     // FIXME: is there a way to allow the assignment from Store<Id, S, G, A> to StoreGeneric?
@@ -679,7 +679,7 @@ function nt(e, o) {
 }
 const rt = () => {
 };
-function Ie(e, o, t, s = rt) {
+function Oe(e, o, t, s = rt) {
   e.push(o);
   const i = () => {
     const r = e.indexOf(o);
@@ -744,8 +744,8 @@ function Te(e, o, t = {}, s, i, r) {
     l ? P = f : l == !1 && !u._hotUpdating && (Array.isArray(P) ? P.push(f) : console.error("🍍 debuggerEvents should be an array. This is most likely an internal Pinia bug."));
   });
   let l, m, h = [], g = [], P;
-  const O = s.state.value[e];
-  !r && !O && (process.env.NODE_ENV === "production" || !i) && (s.state.value[e] = {});
+  const I = s.state.value[e];
+  !r && !I && (process.env.NODE_ENV === "production" || !i) && (s.state.value[e] = {});
   const G = T({});
   let ce;
   function ee(f) {
@@ -814,11 +814,11 @@ function Te(e, o, t = {}, s, i, r) {
     _p: s,
     // _s: scope,
     $id: e,
-    $onAction: Ie.bind(null, g),
+    $onAction: Oe.bind(null, g),
     $patch: ee,
     $reset: ge,
     $subscribe(f, p = {}) {
-      const C = Ie(h, f, p.detached, () => k()), k = n.run(() => De(() => s.state.value[e], (te) => {
+      const C = Oe(h, f, p.detached, () => k()), k = n.run(() => De(() => s.state.value[e], (te) => {
         (p.flush === "sync" ? m : l) && f({
           storeId: e,
           type: W.direct,
@@ -843,7 +843,7 @@ function Te(e, o, t = {}, s, i, r) {
   for (const f in $) {
     const p = $[f];
     if (ae(p) && !Ae(p) || we(p))
-      process.env.NODE_ENV !== "production" && i ? pe(G.value, f, Ce($, f)) : r || (O && Zt(p) && (ae(p) ? p.value = O[f] : _e(p, O[f])), s.state.value[e][f] = p), process.env.NODE_ENV !== "production" && V.state.push(f);
+      process.env.NODE_ENV !== "production" && i ? pe(G.value, f, Ce($, f)) : r || (I && Zt(p) && (ae(p) ? p.value = I[f] : _e(p, I[f])), s.state.value[e][f] = p), process.env.NODE_ENV !== "production" && V.state.push(f);
     else if (typeof p == "function") {
       const C = process.env.NODE_ENV !== "production" && i ? p : le(f, p);
       $[f] = C, process.env.NODE_ENV !== "production" && (V.actions[f] = p), a.actions[f] = p;
@@ -920,12 +920,15 @@ function Te(e, o, t = {}, s, i, r) {
       })));
   }), process.env.NODE_ENV !== "production" && u.$state && typeof u.$state == "object" && typeof u.$state.constructor == "function" && !u.$state.constructor.toString().includes("[native code]") && console.warn(`[🍍]: The "state" must be a plain object. It cannot be
 	state: () => new MyClass()
-Found in store "${u.$id}".`), O && r && t.hydrate && t.hydrate(u.$state, O), l = !0, m = !0, u;
+Found in store "${u.$id}".`), I && r && t.hydrate && t.hydrate(u.$state, I), l = !0, m = !0, u;
 }
 function Kt(e, o, t) {
   let s, i;
   const r = typeof o == "function";
-  s = e, i = r ? t : o;
+  if (typeof e == "string")
+    s = e, i = r ? t : o;
+  else if (i = e, s = e.id, process.env.NODE_ENV !== "production" && typeof s != "string")
+    throw new Error('[🍍]: "defineStore()" must be passed a store id as its first argument.');
   function n(a, c) {
     const l = dt();
     if (a = // in test mode, ignore the argument provided as we can always retrieve a
@@ -7126,16 +7129,16 @@ const ct = (e, o) => o.findIndex((t) => {
       G(V), l.value = t.getRemainingQuestions(), c("nextQuestion");
     }, P = () => {
       G(r), c("skipQuestion");
-    }, O = (V) => t.incrementStat(
+    }, I = (V) => t.incrementStat(
       V.$oid,
       "attempts",
       n.value ?? void 0
     ), G = (V) => {
-      O(V), a.value = !1, n.value = null;
+      I(V), a.value = !1, n.value = null;
     }, ce = () => {
       c("prevQuestion");
     }, ee = (V, v) => {
-      a.value || (n.value = n.value === v ? null : v), O(V);
+      a.value || (n.value = n.value === v ? null : v), I(V);
     }, ge = (V, v, u) => t.quizMode === "Timed" ? Ve(V, v) : le(v, u);
     function Ve(V, v) {
       const u = ct(V.$oid, t.quizStats), B = t.quizStats[u].selectedValue, $ = uo(
@@ -7285,7 +7288,7 @@ const ct = (e, o) => o.findIndex((t) => {
 }), xo = /* @__PURE__ */ j(No, [["__scopeId", "data-v-937e1a1b"]]), jo = {
   key: 0,
   class: "time-left-header"
-}, Oo = { class: "questions-left-header" }, Io = /* @__PURE__ */ q({
+}, Io = { class: "questions-left-header" }, Oo = /* @__PURE__ */ q({
   __name: "MCQInfoPanel",
   props: {
     timeLeft: {
@@ -7300,7 +7303,7 @@ const ct = (e, o) => o.findIndex((t) => {
     };
     return (s, i) => (b(), y(M, null, [
       e.timeLeft ? (b(), y("h3", jo, " Time left: " + E(t(e.timeLeft)), 1)) : L("", !0),
-      d("h3", Oo, " Question " + E(S(o).questionsStack.length) + " out of " + E(S(o).questionsQueue.length + S(o).questionsStack.length), 1)
+      d("h3", Io, " Question " + E(S(o).questionsStack.length) + " out of " + E(S(o).questionsQueue.length + S(o).questionsStack.length), 1)
     ], 64));
   }
 }), Me = 1e3, Ao = "-1", Wo = /* @__PURE__ */ q({
@@ -7326,13 +7329,13 @@ const ct = (e, o) => o.findIndex((t) => {
     }, h = () => {
       var P;
       l();
-      const g = (O) => o.incrementStat(O, "attempts", Ao);
+      const g = (I) => o.incrementStat(I, "attempts", Ao);
       for (g(((P = t.value) == null ? void 0 : P._id.$oid) ?? ""); t.value = o.dequeueQuestion(); )
         g(t.value._id.$oid);
       return alert("Time's up! Quiz has ended."), a();
     };
     return (g, P) => (b(), y("main", null, [
-      X(Io, { "time-left": r.value }, null, 8, ["time-left"]),
+      X(Oo, { "time-left": r.value }, null, 8, ["time-left"]),
       t.value ? (b(), A(lt, {
         key: 0,
         statement: t.value.statement,
@@ -7519,7 +7522,7 @@ const ct = (e, o) => o.findIndex((t) => {
             "option-name": "Time per Question",
             class: D(s.value === "Timed" ? "" : "input-disabled"),
             disabled: s.value !== "Timed"
-          }, null, 8, ["class", "disabled"])
+          }, null, 8, ["options", "class", "disabled"])
         ])
       ]),
       d("button", {
@@ -7547,7 +7550,7 @@ const ct = (e, o) => o.findIndex((t) => {
 }), ys = /* @__PURE__ */ j(ms, [["__scopeId", "data-v-8f590da4"]]), gs = "http://localhost:8080/api/resource/getQuiz";
 function Cs(e, o = {}) {
   const t = Ut();
-  e.use(t), e.component("CrucibleComponent", ys), e.provide("$dataLink", o.dataLink || gs), console.log(o.dataLink);
+  e.use(t), e.component("CrucibleComponent", ys), e.provide("dataLink", o.dataLink || gs), console.log(o.dataLink);
 }
 export {
   ys as CrucibleComponent,
