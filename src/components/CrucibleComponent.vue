@@ -6,6 +6,7 @@ import StartPage from "@components/StartPage.vue";
 import {
   filterQuestionsByTags,
   getQuestionsRandomly,
+  getUniquePropertyValues,
 } from "../components/QuestionStore";
 import { useQuizStore } from "../store/QuizStore";
 import { StartQuizConfig } from "../types/MCQ";
@@ -22,10 +23,20 @@ const questions = ref<MCQuestion[]>([]);
 
 onMounted(async () => {
   // Fetch quiz data from API
-  const useStatic = import.meta.env.VITE_USE_DUMMY_DATA === "false";
+  const useStatic = import.meta.env.VITE_USE_DUMMY_DATA === "true";
   questions.value = useStatic
     ? await getAllQuestionsFromApi()
     : getQuestionsBasedOnEnv();
+
+  const allUniqueTags = getUniquePropertyValues(
+    questions.value.map((q) => q.tags),
+  );
+  // For filtering functionality
+  questionsQueue.setselectedTags(
+    Object.keys(allUniqueTags).reduce((acc, tag) => {
+      return { ...acc, [tag]: [] };
+    }, {}),
+  );
 });
 
 const dataAPI = inject("$dataLink");

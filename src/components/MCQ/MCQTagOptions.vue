@@ -20,6 +20,7 @@ import FilterCheckbox from "./FilterCheckbox.vue";
 // Access environment variable
 const questions = getQuestionsBasedOnEnv();
 const tagSet = questions.map((question) => question.tags);
+console.log(tagSet);
 
 const filterSet: SelectedTags = getUniquePropertyValues(tagSet);
 </script>

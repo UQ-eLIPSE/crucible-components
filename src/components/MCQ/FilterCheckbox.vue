@@ -61,6 +61,7 @@ const getQuestionsnumByTags = (
   const currentSelectedTags = questionsQueue.getselectedtags();
 
   if (
+    !currentSelectedTags[category] ||
     (currentSelectedTags[category as keyof SelectedTags] as string[])?.includes(
       topic,
     )

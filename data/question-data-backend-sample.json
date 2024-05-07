@@ -4,7 +4,7 @@
       "tags": [
         "course: VETS2011",
         "subject: Physiology",
-        "ssystem: Nervous System"
+        "system: Nervous System"
       ],
       "statement": "<p>Which part of a neuron receives information from surrounding cells?</p>",
       "optionsList": [
@@ -37,7 +37,7 @@
     },
     {
       "tags": [
-        "course: VETS2011",
+        "course: VETS2012",
         "subject: Physiology",
         "system: Nervous System"
       ],
