@@ -12,7 +12,7 @@ import { getQuestionsBasedOnEnv } from "./DataAccessLayer";
 const quizQuestions = ref(0);
 const questionsQueue = useQuizStore();
 const quizStarted = ref<boolean>(false);
-const dataAPI = inject("$dataLink");
+const dataAPI = inject("dataLink");
 const handleStartQuiz = ({ questionAmount, mode }: StartQuizConfig) => {
   console.log("dataLink: ", dataAPI);
   const selectedTags = questionsQueue.getselectedtags();
