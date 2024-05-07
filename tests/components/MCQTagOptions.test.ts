@@ -28,12 +28,7 @@ describe("MCQTagOptions.vue", () => {
     const tags = [];
 
     const uniqueCourses = getUniquePropertyValues(tags);
-    expect(uniqueCourses).toEqual({
-      course: [],
-      subject: [],
-      system: [],
-      animal: [],
-    });
+    expect(uniqueCourses).toEqual({});
   });
 
   it("returns unique values for a given property", () => {

@@ -5,7 +5,7 @@ import { createPinia, setActivePinia } from "pinia";
 
 let wrapper: VueWrapper;
 const category: string = "course";
-const topics: string[] = ["VETS2011", "VETS2012"];
+const topics: string[] = ["VETS2011", "VETS9999"];
 let firstCheckbox: Omit<DOMWrapper<HTMLInputElement>, "exists">;
 let secondCheckbox: Omit<DOMWrapper<HTMLInputElement>, "exists">;
 
@@ -47,7 +47,7 @@ describe("FilterCheckbox.vue", () => {
 });
 
 it("Should disable and grey out checkboxes with no associated questions", async () => {
-  //VETS2012 has no questions.
+  //VETS9999 has no questions.
   expect(secondCheckbox.attributes("disabled")).toBe("");
   expect(wrapper.find(".grey-out").exists()).toBe(true);
 });

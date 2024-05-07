@@ -25,7 +25,7 @@ export const useQuizStore = defineStore("questionsQueue", {
       //   system: [],
       //   animal: [],
       // } as SelectedTags,
-      selectedTags: {} as SelectedTags,
+      selectedTags: { course: [] } as SelectedTags,
       timeLimit: 60, // default time limit 1 min per qs
     };
   },
@@ -44,7 +44,7 @@ export const useQuizStore = defineStore("questionsQueue", {
       isChecked: boolean,
       { category, topic }: { category: keyof SelectedTags; topic: string },
     ) {
-      if (!this.selectedTags) return;
+      if (!this.selectedTags[category]) return;
       this.selectedTags[category] = isChecked
         ? [...this.selectedTags[category], topic]
         : this.selectedTags[category].filter(

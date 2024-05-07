@@ -23,7 +23,7 @@ const questions = ref<MCQuestion[]>([]);
 
 onMounted(async () => {
   // Fetch quiz data from API
-  const useStatic = import.meta.env.VITE_USE_DUMMY_DATA === "true";
+  const useStatic = import.meta.env.VITE_USE_DUMMY_DATA === "false";
   questions.value = useStatic
     ? await getAllQuestionsFromApi()
     : getQuestionsBasedOnEnv();
