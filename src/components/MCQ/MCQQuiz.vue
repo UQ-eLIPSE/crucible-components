@@ -18,11 +18,10 @@
 
 <script setup lang="ts">
 import { onMounted, ref } from "vue";
-import MCQQuestion from "@components/MCQ/MCQQuestion.vue";
-import type { MCQuestion } from "@type/MCQ.d.ts";
+import MCQQuestion from "./MCQQuestion.vue";
+import type { MCQuestion } from "@/types/MCQ";
 import MCQStatus from "./MCQStatus.vue";
-import { useQuizStore } from "@/store/QuizStore";
-import MCQInfoPanel from "./MCQInfoPanel.vue";
+import { useQuizStore } from "../../store/QuizStore";
 
 const currentQuestion = ref<MCQuestion | undefined>();
 

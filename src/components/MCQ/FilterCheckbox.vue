@@ -27,8 +27,8 @@
 <script setup lang="ts">
 import { SelectedTags } from "@/types/MCQ";
 import { useQuizStore } from "@/store/QuizStore";
-import { getQuestionsBasedOnEnv } from "./DataAccessLayer";
-import { filterQuestionsByTags } from "./QuestionStore";
+import { getQuestionsBasedOnEnv } from "../DataAccessLayer";
+import { filterQuestionsByTags } from "../QuestionStore";
 import { computed } from "vue";
 const { category, topics } = defineProps<{
   category: string;
@@ -112,6 +112,7 @@ ul {
   margin-top: 0.5rem;
   border-top: 1px solid grey;
   padding-left: 1rem;
+  list-style-type: none;
 }
 @media screen and (max-width: 768px) {
   .filter-options {

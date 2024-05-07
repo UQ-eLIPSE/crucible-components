@@ -15,7 +15,7 @@
 import type { SelectedTags } from "@/types/MCQ";
 import { getUniquePropertyValues } from "../QuestionStore";
 import { getQuestionsBasedOnEnv } from "../DataAccessLayer";
-import FilterCheckbox from "../FilterCheckbox.vue";
+import FilterCheckbox from "./FilterCheckbox.vue";
 
 // Access environment variable
 const questions = getQuestionsBasedOnEnv();
@@ -24,7 +24,7 @@ const tagSet = questions.flatMap((question) => question.tags);
 const filterSet: SelectedTags = getUniquePropertyValues(tagSet);
 </script>
 
-<style>
+<style scoped>
 .filter {
   text-align: left;
   text-transform: capitalize;

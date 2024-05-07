@@ -8,7 +8,6 @@ pnpm-debug.log*
 lerna-debug.log*
 
 node_modules
-dist
 dist-ssr
 *.local
 *.tar.gz
@@ -25,7 +24,7 @@ dist-ssr
 
 # General 
 .DS_Store
-
+dist
 package-lock.json
 yarn.lock
 

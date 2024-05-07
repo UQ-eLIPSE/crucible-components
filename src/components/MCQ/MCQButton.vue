@@ -16,7 +16,7 @@
 
 <script setup lang="ts">
 import { ref } from "vue";
-import type { MCQButton } from "@type/MCQ.d.ts";
+import type { MCQButton } from "@/types/MCQ";
 
 const { submitted, selectedOption, hideSkip } = defineProps<MCQButton>();
 const buttonClass = ref<string>("skip");

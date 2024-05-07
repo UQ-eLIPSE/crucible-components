@@ -1,5 +1,5 @@
 import { MCQuestion } from "@/types/MCQ";
-import { questions } from "@data/question-data.json";
+import { questions } from "../../data/question-data.json";
 import { generateDummyData } from "../../data/dummyQuestionData";
 import NetworkCalls from "@/utils/NetworkCalls";
 import NetworkGuard from "@/utils/NetworkGuard";
