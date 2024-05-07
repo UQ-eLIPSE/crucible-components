@@ -32,13 +32,6 @@ onMounted(async () => {
   const allUniqueTags = getUniquePropertyValues(
     questions.value.map((q) => q.tags),
   );
-  console.log("all unique tags: ", allUniqueTags);
-  console.log(
-    "all unique tags reduced: ",
-    Object.keys(allUniqueTags).reduce((acc, tag) => {
-      return { ...acc, [tag]: [] };
-    }, {}),
-  );
   // For filtering functionality
   questionsQueue.setselectedTags(
     Object.keys(allUniqueTags).reduce((acc, tag) => {

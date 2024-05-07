@@ -22,7 +22,6 @@ export const getQuestionsRandomly = (
 };
 
 export function getUniquePropertyValues(tagProps: Tags[]) {
-  console.log("tag props:", tagProps);
   // populate unique values of the given tags
   const uniqueTags = tagProps.reduce(
     (acc: Record<string, Set<string>>, item) => {
@@ -36,7 +35,6 @@ export function getUniquePropertyValues(tagProps: Tags[]) {
     },
     {},
   );
-  console.log("UNIQUE TAGS:", uniqueTags);
 
   const result = Object.keys(uniqueTags).reduce(
     (acc: Record<string, string[]>, key) => {
