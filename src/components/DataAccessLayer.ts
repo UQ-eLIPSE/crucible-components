@@ -4,6 +4,7 @@ import NetworkCalls from "@/utils/NetworkCalls";
 import UtilConversion from "@/utils/UtilConversion";
 import { newQuestions } from "../../data/question-data-backend-sample.json";
 import NetworkGuard from "@/utils/NetworkGuard";
+import { DataMCQuestion } from "@/types/DataMCQ";
 
 export const getAllQuestions = () => {
   const questions = newQuestions;
@@ -11,9 +12,20 @@ export const getAllQuestions = () => {
     return UtilConversion.convertQuestions(questions);
   }
 
+  if (!Array.isArray(questions) || !newQuestions.length) {
+    throw new Error("No questions found in the data");
+  }
+  const validQuestions: DataMCQuestion[] = newQuestions.filter(
+    NetworkGuard.isMCQuestion,
+  );
+
+  console.warn(
+    `Some questions' structures are not corret. Proceeding with using 
+    ${validQuestions.length} questions out of 
+    ${(questions as DataMCQuestion[]).length} questions`,
+  );
+
   return UtilConversion.convertQuestions(newQuestions);
-  // TODO: Replace this with passed in parent component data
-  // return questions as MCQuestion[];
 };
 
 export const getDummyQuestions = (random = false) => {
