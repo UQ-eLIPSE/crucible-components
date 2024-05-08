@@ -20,7 +20,7 @@ export const getAllQuestions = () => {
   );
 
   console.warn(
-    `Some questions' structures are not corret. Proceeding with using 
+    `Some questions' structures are not correct. Proceeding with using 
     ${validQuestions.length} questions out of 
     ${(questions as DataMCQuestion[]).length} questions`,
   );
@@ -39,5 +39,23 @@ export function getQuestionsBasedOnEnv() {
 
 export const getAllQuestionsFromApi = async (): Promise<MCQuestion[]> => {
   const allQuizzes = await NetworkCalls.getQuiz();
+
+  if (NetworkGuard.isMCQuestionArray(allQuizzes)) {
+    return UtilConversion.convertQuestions(allQuizzes);
+  }
+
+  if (!Array.isArray(allQuizzes) || !allQuizzes.length) {
+    throw new Error("No questions found in the data");
+  }
+  const validQuestions: DataMCQuestion[] = newQuestions.filter(
+    NetworkGuard.isMCQuestion,
+  );
+
+  console.warn(
+    `Some questions' structures are not correct. Proceeding with using 
+    ${validQuestions.length} questions out of 
+    ${(allQuizzes as DataMCQuestion[]).length} questions`,
+  );
+
   return UtilConversion.convertQuestions(allQuizzes);
 };

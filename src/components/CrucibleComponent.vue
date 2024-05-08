@@ -23,11 +23,11 @@ const questions = ref<MCQuestion[]>([]);
 
 onMounted(async () => {
   // Fetch quiz data from API
-  const useStatic = import.meta.env.VITE_USE_DUMMY_DATA === "false";
+  const useStatic = import.meta.env.VITE_USE_DUMMY_DATA === "true";
   // note that the fetched data needs to be converted using UtilConversion
   questions.value = useStatic
-    ? await getAllQuestionsFromApi()
-    : getQuestionsBasedOnEnv();
+    ? getQuestionsBasedOnEnv()
+    : await getAllQuestionsFromApi();
 
   const allUniqueTags = getUniquePropertyValues(
     questions.value.map((q) => q.tags),
