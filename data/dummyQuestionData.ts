@@ -1,4 +1,4 @@
-import { tags, MCQuestion } from "../src/types/MCQ";
+import { MCQuestion, Tags } from "../src/types/MCQ";
 
 interface Option {
   optionValue: string;
@@ -6,7 +6,7 @@ interface Option {
 }
 
 interface Question {
-  tags: tags;
+  tags: Tags;
   statement: string;
   optionsList: Option[];
   _id: {
