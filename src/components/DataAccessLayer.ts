@@ -2,8 +2,10 @@ import { MCQuestion } from "@/types/MCQ";
 import { generateDummyData } from "../../data/dummyQuestionData";
 import NetworkCalls from "@/utils/NetworkCalls";
 import UtilConversion from "@/utils/UtilConversion";
-import { newQuestions } from "../../data/question-data-backend-sample.json";
+// import { newQuestions } from "../../data/question-data-backend-sample.json";
+import { pluginQuestions } from "./question-data.ts";
 import { inject } from "vue";
+import { DataMCQuestion } from "@/types/DataMCQ.js";
 // import { json } from "stream/consumers";
 
 // TODO: ADD TYPEGUARDS VALIDATION
@@ -11,7 +13,7 @@ export const getAllQuestions = () => {
   const dataAPI = inject("dataLink");
   console.log("data from server", dataAPI);
 
-  return UtilConversion.convertQuestions(newQuestions);
+  return UtilConversion.convertQuestions(pluginQuestions as DataMCQuestion[]);
   // TODO: Replace this with passed in parent component data
   // return questions as MCQuestion[];
 };
