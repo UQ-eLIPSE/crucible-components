@@ -13,21 +13,20 @@ import { StartQuizConfig } from "../types/MCQ";
 import { MCQuestion } from "../types/MCQ";
 import {
   getAllQuestionsFromApi,
-  getQuestionsBasedOnEnv,
+  getAllQuestions,
 } from "../components/DataAccessLayer";
 
 const quizQuestions = ref(0);
 const questionsQueue = useQuizStore();
 const quizStarted = ref<boolean>(false);
 const questions = ref<MCQuestion[]>([]);
-
 onMounted(async () => {
   // Fetch quiz data from API
   const useStatic = import.meta.env.VITE_USE_DUMMY_DATA === "false";
   // note that the fetched data needs to be converted using UtilConversion
   questions.value = useStatic
     ? await getAllQuestionsFromApi()
-    : getQuestionsBasedOnEnv();
+    : getAllQuestions();
 
   const allUniqueTags = getUniquePropertyValues(
     questions.value.map((q) => q.tags),
