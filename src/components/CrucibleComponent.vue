@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { inject, onMounted, ref } from "vue";
+import { onMounted, ref } from "vue";
 import MCQQuiz from "@components/MCQ/MCQQuiz.vue";
 import MCQTimedQuiz from "@components/MCQ/MCQTimedQuiz.vue";
 import StartPage from "@components/StartPage.vue";
@@ -40,9 +40,7 @@ onMounted(async () => {
   );
 });
 
-const dataAPI = inject("dataLink");
 const handleStartQuiz = ({ questionAmount, mode }: StartQuizConfig) => {
-  console.log("dataLink: ", dataAPI);
   const selectedTags = questionsQueue.getselectedtags();
   if (!questions.value.length)
     return alert("Trouble fetching questions, please try again later");
