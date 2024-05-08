@@ -2,7 +2,6 @@
 import { DataMCQuestion, DataTags } from "@/types/DataMCQ";
 import { MCQuestion, Tags } from "@/types/MCQ";
 
-// TODO: ADD VALIDATION
 const convertTags = (tagsData: DataTags): Tags => {
   return tagsData.reduce((acc: Tags, tag: string) => {
     if (!tag.includes(":")) return acc;
