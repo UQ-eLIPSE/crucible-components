@@ -27,7 +27,6 @@
 <script setup lang="ts">
 import { SelectedTags } from "@/types/MCQ";
 import { useQuizStore } from "@/store/QuizStore";
-import { getQuestionsBasedOnEnv } from "../DataAccessLayer";
 import { filterQuestionsByTags } from "../QuestionStore";
 import { computed } from "vue";
 const { category, topics } = defineProps<{
@@ -77,8 +76,8 @@ const getQuestionsnumByTags = (
     modifiedSelectedTags[category].push(topic);
   }
 
-  // TODO: need to change this
-  const questions = getQuestionsBasedOnEnv();
+  const questions = questionsQueue.allQs;
+  console.log("questions: ", questions);
   return filterQuestionsByTags(
     questions,
     modifiedSelectedTags,

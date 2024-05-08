@@ -14,11 +14,12 @@
 <script setup lang="ts">
 import type { SelectedTags } from "@/types/MCQ";
 import { getUniquePropertyValues } from "../QuestionStore";
-import { getQuestionsBasedOnEnv } from "../DataAccessLayer";
 import FilterCheckbox from "./FilterCheckbox.vue";
+import { useQuizStore } from "@/store/QuizStore";
 
-// Access environment variable
-const questions = getQuestionsBasedOnEnv();
+const questionsQueue = useQuizStore();
+const questions = questionsQueue.allQs;
+console.log("Tag options questions: ", questions);
 const tagSet = questions.map((question) => question.tags);
 
 const filterSet: SelectedTags = getUniquePropertyValues(tagSet);
