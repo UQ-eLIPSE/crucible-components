@@ -4,6 +4,7 @@ import NetworkCalls from "@/utils/NetworkCalls";
 import UtilConversion from "@/utils/UtilConversion";
 import { pluginQuestions as questions } from "@/components/question-data";
 import { DataMCQuestion } from "@/types/DataMCQ";
+import NetworkGuard from "@/utils/NetworkGuard";
 
 // TODO: ADD TYPEGUARDS VALIDATION
 export const getAllQuestions = (apiData: DataMCQuestion[]) => {
@@ -27,7 +28,52 @@ export const getStaticRawData = (): DataMCQuestion[] => {
 };
 
 export const getConvertedStaticData = (): MCQuestion[] => {
-  return UtilConversion.convertQuestions(questions);
+  // Validate questions
+  const allDataQs: DataMCQuestion[] = getStaticRawData();
+
+  NetworkGuard.isMCQuestionArray(allDataQs)
+    ? console.info(
+        "%cAll questions are valid",
+        "color: #00FF00",
+        "\nTotal Questions Validated:",
+        allDataQs.length,
+      )
+    : console.warn(
+        "%WARNING: Some questions contains invalid structure",
+        "color: #FF0000",
+      );
+
+  let invalidTags = 0;
+  let noTags = 0;
+  let invalidQs = 0;
+  let totalTags = 0;
+  const allQsLength = allDataQs.length;
+
+  for (const dataQs of allDataQs as DataMCQuestion[]) {
+    // Check question structure
+    if (!NetworkGuard.isMCQuestion(dataQs)) {
+      invalidQs++;
+    }
+
+    let { tags } = dataQs;
+
+    if (!tags || (Array.isArray(tags) && !tags.length)) {
+      noTags++;
+      continue;
+    }
+
+    totalTags += tags.length;
+
+    if (!NetworkGuard.isAllTags(tags)) {
+      const validTags = tags.filter((tag) => NetworkGuard.isTag(tag));
+      invalidTags += tags.length - validTags.length;
+      tags = validTags; // remove all invalid tags
+    }
+  }
+
+  logQsWarnings(invalidQs, allQsLength, invalidTags, totalTags, noTags);
+
+  return UtilConversion.convertQuestions(allDataQs);
 };
 
 export const getAllQuestionsFromApi = async (): Promise<MCQuestion[]> => {
@@ -35,3 +81,23 @@ export const getAllQuestionsFromApi = async (): Promise<MCQuestion[]> => {
 
   return UtilConversion.convertQuestions(allQuizzes);
 };
+
+function logQsWarnings(
+  invalidQs: number,
+  allQsLength: number,
+  invalidTags: number,
+  totalTags: number,
+  noTags: number,
+): void {
+  console.warn(
+    `Invalid Questions Received: %c${invalidQs} out of ${allQsLength}`,
+    "color: #CA336A",
+  );
+
+  console.warn(
+    `Filtering out invalid tags: %c${invalidTags} out of ${totalTags}`,
+    "color: #CA336A",
+  );
+
+  console.warn("Questions with no tags: %c" + noTags, "color: #CA336A");
+}
