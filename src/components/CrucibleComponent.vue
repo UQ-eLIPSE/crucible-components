@@ -23,8 +23,6 @@ const quizStarted = ref<boolean>(false);
 const questions = ref<MCQuestion[]>([]);
 // inject data from crucible parent here
 const apiData: DataApi = inject("$dataLink") as DataApi;
-console.info("api data received: ", apiData);
-// const apiData = getStaticRawData(); // * TEMPORARY
 
 onBeforeMount(() => {
   // Fetch quiz data from API
@@ -47,7 +45,6 @@ onBeforeMount(() => {
 });
 
 const handleStartQuiz = ({ questionAmount, mode }: StartQuizConfig) => {
-  console.log("DATALINK: ", apiData);
   const selectedTags = questionsQueue.getselectedtags();
   if (!questions.value.length)
     return alert("Trouble fetching questions, please try again later");
