@@ -47,7 +47,7 @@ onBeforeMount(() => {
 });
 
 const handleStartQuiz = ({ questionAmount, mode }: StartQuizConfig) => {
-  console.log("dataLink: ", apiData);
+  console.log("DATALINK: ", apiData);
   const selectedTags = questionsQueue.getselectedtags();
   if (!questions.value.length)
     return alert("Trouble fetching questions, please try again later");
