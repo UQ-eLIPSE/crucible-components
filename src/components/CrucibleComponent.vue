@@ -29,10 +29,6 @@ const apiData = getStaticRawData();
 onBeforeMount(() => {
   // Fetch quiz data from API
   const useStatic = import.meta.env.VITE_USE_DUMMY_DATA === "false";
-  // note that the fetched data needs to be converted using UtilConversion
-  // questions.value = useStatic
-  //   ? await getAllQuestionsFromApi()
-  //   : getQuestionsBasedOnEnv();
   questions.value = useStatic
     ? getAllQuestions(apiData as DataMCQuestion[])
     : getConvertedStaticData();
