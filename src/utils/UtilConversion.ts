@@ -5,8 +5,9 @@ import { MCQuestion, Tags } from "@/types/MCQ";
 const convertTags = (tagsData: DataTags): Tags => {
   return tagsData.reduce((acc: Tags, tag: string) => {
     if (!tag.includes(":")) return acc;
-    const [key, value] = tag.split(":");
-    acc[key] = value.trim();
+    let [key, value] = tag.split(":");
+    [key, value] = [key.trim().toLowerCase(), value.trim().toLowerCase()];
+    acc[key] = value;
     return acc;
   }, {});
 };

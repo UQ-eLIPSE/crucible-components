@@ -36,6 +36,12 @@ yarn run dev
 yarn run build
 ```
 
+### Build Project as a package
+
+```
+BUILDASLIBRARY=true yarn build
+```
+
 ### Run Headed Component Tests with [Vitest Component Testing](https://vitest.dev)
 
 ```sh
