@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { inject, onBeforeMount, ref } from "vue";
+import { onBeforeMount, ref } from "vue";
 import MCQQuiz from "@components/MCQ/MCQQuiz.vue";
 import MCQTimedQuiz from "@components/MCQ/MCQTimedQuiz.vue";
 import StartPage from "@components/StartPage.vue";
@@ -24,7 +24,7 @@ const quizStarted = ref<boolean>(false);
 const questions = ref<MCQuestion[]>([]);
 // inject data from crucible parent here
 // ? const apiData = inject("dataLink");
-const apiData = getStaticRawData();
+const apiData = getStaticRawData(); // * TEMPORARY
 
 onBeforeMount(() => {
   // Fetch quiz data from API
@@ -45,9 +45,8 @@ onBeforeMount(() => {
   );
 });
 
-const dataAPI = inject("$dataLink");
 const handleStartQuiz = ({ questionAmount, mode }: StartQuizConfig) => {
-  console.log("dataLink: ", dataAPI);
+  console.log("dataLink: ", apiData);
   const selectedTags = questionsQueue.getselectedtags();
   if (!questions.value.length)
     return alert("Trouble fetching questions, please try again later");
