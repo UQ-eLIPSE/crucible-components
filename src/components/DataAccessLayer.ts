@@ -39,7 +39,7 @@ export const getConvertedStaticData = (): MCQuestion[] => {
         allDataQs.length,
       )
     : console.warn(
-        "%WARNING: Some questions contains invalid structure",
+        "%cWARNING: Some questions contains invalid structure",
         "color: #FF0000",
       );
 
@@ -89,15 +89,18 @@ function logQsWarnings(
   totalTags: number,
   noTags: number,
 ): void {
-  console.warn(
-    `Invalid Questions Received: %c${invalidQs} out of ${allQsLength}`,
-    "color: #CA336A",
-  );
+  invalidQs &&
+    console.warn(
+      `Invalid Questions Received: %c${invalidQs} out of ${allQsLength}`,
+      "color: #FF0000",
+    );
 
-  console.warn(
-    `Filtering out invalid tags: %c${invalidTags} out of ${totalTags}`,
-    "color: #CA336A",
-  );
+  invalidTags &&
+    console.warn(
+      `Filtering out invalid tags: %c${invalidTags} out of ${totalTags}`,
+      "color: #FF0000",
+    );
 
-  console.warn("Questions with no tags: %c" + noTags, "color: #CA336A");
+  noTags &&
+    console.warn(`Questions with no tags: %c${noTags}`, "color: #FF0000");
 }
