@@ -7,8 +7,15 @@ import { DataMCQuestion } from "@/types/DataMCQ";
 
 // TODO: ADD TYPEGUARDS VALIDATION
 export const getAllQuestions = (apiData: DataMCQuestion[]) => {
-  return UtilConversion.convertQuestions(apiData);
-  // return UtilConversion.convertQuestions(newQuestions);
+  try {
+    if (!apiData) {
+      throw new Error("No question data found. Please Try again later.");
+    }
+    return UtilConversion.convertQuestions(apiData);
+  } catch (err) {
+    alert(err);
+    return [];
+  }
 };
 
 export const getDummyQuestions = (random = false) => {
