@@ -22,7 +22,9 @@
     "build": "vue-tsc && vite build",
     "preview": "vite preview",
     "lint": "eslint --ext .ts,.vue src tests --fix",
-    "quizlinkvalidation": "node ./data/validateQuestionLink.js"
+    "quizlinkvalidation": "node ./data/validateQuestionLink.js",
+    "serve:test": "vite --mode test --port 5174",
+    "build:lib": "BUILDASLIBRARY=true yarn build"
   },
   "engines": {
     "node": "20.11.x"

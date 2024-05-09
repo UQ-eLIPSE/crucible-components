@@ -1,9 +1,11 @@
+import { DataApi } from "./DataMCQ";
+
 export type ViewerPluginOptions = {
-  dataLink?: string;
+  dataLink?: DataApi;
 };
 
 declare module "@vue/runtime-core" {
   interface ComponentCustomProperties {
-    dataLink: string;
+    $dataLink: DataApi;
   }
 }

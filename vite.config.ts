@@ -5,8 +5,10 @@ import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
 
 const buildAsLibrary = process.env.BUILDASLIBRARY === "true";
+const isTest = process.env.MODE === "test";
 export default defineConfig({
   plugins: [vue()],
+  root: fileURLToPath(new URL(".", import.meta.url)),
   resolve: {
     alias: {
       "@": fileURLToPath(new URL("./src", import.meta.url)),
@@ -35,5 +37,8 @@ export default defineConfig({
     include: ["tests/**/*.test.ts"],
     globals: true,
     environment: "jsdom",
+  },
+  server: {
+    open: isTest ? "/tests/testApp.vue" : "/index.html", // Open testApp.vue if in test mode
   },
 });
