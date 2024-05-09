@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { inject, onMounted, ref } from "vue";
+import { inject, onBeforeMount, ref } from "vue";
 import MCQQuiz from "@components/MCQ/MCQQuiz.vue";
 import MCQTimedQuiz from "@components/MCQ/MCQTimedQuiz.vue";
 import StartPage from "@components/StartPage.vue";
@@ -12,22 +12,26 @@ import { useQuizStore } from "../store/QuizStore";
 import { StartQuizConfig } from "../types/MCQ";
 import { MCQuestion } from "../types/MCQ";
 import {
-  getAllQuestionsFromApi,
-  getQuestionsBasedOnEnv,
+  getAllQuestions,
+  getConvertedStaticData,
 } from "../components/DataAccessLayer";
+import { DataApi, DataMCQuestion } from "@/types/DataMCQ";
 
 const quizQuestions = ref(0);
 const questionsQueue = useQuizStore();
 const quizStarted = ref<boolean>(false);
 const questions = ref<MCQuestion[]>([]);
+// inject data from crucible parent here
+const apiData: DataApi = inject("$dataLink") as DataApi;
 
-onMounted(async () => {
+onBeforeMount(() => {
   // Fetch quiz data from API
-  const useStatic = import.meta.env.VITE_USE_DUMMY_DATA === "false";
-  // note that the fetched data needs to be converted using UtilConversion
+  const useStatic = import.meta.env.VITE_USE_DUMMY_DATA === "true";
   questions.value = useStatic
-    ? await getAllQuestionsFromApi()
-    : getQuestionsBasedOnEnv();
+    ? getConvertedStaticData()
+    : getAllQuestions(apiData.data.questions as DataMCQuestion[]);
+  console.info("All Questions:", questions.value);
+  questionsQueue.allQs = questions.value;
 
   const allUniqueTags = getUniquePropertyValues(
     questions.value.map((q) => q.tags),
@@ -40,9 +44,7 @@ onMounted(async () => {
   );
 });
 
-const dataAPI = inject("$dataLink");
 const handleStartQuiz = ({ questionAmount, mode }: StartQuizConfig) => {
-  console.log("dataLink: ", dataAPI);
   const selectedTags = questionsQueue.getselectedtags();
   if (!questions.value.length)
     return alert("Trouble fetching questions, please try again later");
