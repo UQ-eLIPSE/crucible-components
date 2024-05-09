@@ -23,7 +23,7 @@ const quizStarted = ref<boolean>(false);
 const questions = ref<MCQuestion[]>([]);
 // inject data from crucible parent here
 const apiData = inject("$dataLink");
-console.log(apiData);
+console.log("api data received: ", apiData);
 // const apiData = getStaticRawData(); // * TEMPORARY
 
 onBeforeMount(() => {
@@ -32,7 +32,7 @@ onBeforeMount(() => {
   questions.value = useStatic
     ? getConvertedStaticData()
     : getAllQuestions(apiData as DataMCQuestion[]);
-  console.log(questions.value);
+  console.log("receiving from api data:", questions.value);
   questionsQueue.allQs = questions.value;
 
   const allUniqueTags = getUniquePropertyValues(
