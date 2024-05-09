@@ -2,26 +2,33 @@ import { MCQuestion } from "@/types/MCQ";
 import { generateDummyData } from "../../data/dummyQuestionData";
 import NetworkCalls from "@/utils/NetworkCalls";
 import UtilConversion from "@/utils/UtilConversion";
-// import { newQuestions } from "../../data/question-data-backend-sample.json";
-// import { pluginQuestions } from "./question-data.ts";
-import { DataMCQuestion } from "@/types/DataMCQ.js";
-import { inject } from "vue";
-// TODO: ADD TYPEGUARDS VALIDATION
-export const getAllQuestions = () => {
-  const dataLink = inject("dataLink");
+import { pluginQuestions as questions } from "@/components/question-data";
+import { DataMCQuestion } from "@/types/DataMCQ";
 
-  return UtilConversion.convertQuestions(dataLink as DataMCQuestion[]);
-  // TODO: Replace this with passed in parent component data
-  // return questions as MCQuestion[];
+// TODO: ADD TYPEGUARDS VALIDATION
+export const getAllQuestions = (apiData: DataMCQuestion[]) => {
+  try {
+    if (!apiData) {
+      throw new Error("No question data found. Please Try again later.");
+    }
+    return UtilConversion.convertQuestions(apiData);
+  } catch (err) {
+    alert(err);
+    return [];
+  }
 };
 
 export const getDummyQuestions = (random = false) => {
   return generateDummyData(random);
 };
 
-export function getQuestionsBasedOnEnv() {
-  return getAllQuestions();
-}
+export const getStaticRawData = (): DataMCQuestion[] => {
+  return questions;
+};
+
+export const getConvertedStaticData = (): MCQuestion[] => {
+  return UtilConversion.convertQuestions(questions);
+};
 
 export const getAllQuestionsFromApi = async (): Promise<MCQuestion[]> => {
   const allQuizzes = await NetworkCalls.getQuiz();

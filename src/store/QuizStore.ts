@@ -4,7 +4,6 @@ import {
   QuizMode,
   SelectedTags,
 } from "../types/MCQ";
-import { getQuestionsBasedOnEnv } from "../components/DataAccessLayer";
 import { filterQuestionsByTags } from "../components/QuestionStore";
 import { defineStore } from "pinia";
 
@@ -15,6 +14,7 @@ export const statIndex = (questionId: string, quizStats: QuestionState[]) =>
 export const useQuizStore = defineStore("questionsQueue", {
   state: () => {
     return {
+      allQs: [] as MCQuestion[],
       questionsQueue: [] as MCQuestion[],
       questionsStack: [] as MCQuestion[],
       quizStats: [] as QuestionState[],
@@ -25,7 +25,7 @@ export const useQuizStore = defineStore("questionsQueue", {
   },
   actions: {
     getquestionnumber() {
-      const questions = getQuestionsBasedOnEnv();
+      const questions = this.allQs;
       return filterQuestionsByTags(questions, this.selectedTags).length;
     },
     setselectedTags(tags: SelectedTags) {

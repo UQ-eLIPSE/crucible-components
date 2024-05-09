@@ -3,9 +3,12 @@ import { mount } from "@vue/test-utils";
 import { questionsData as questions } from "../testSeeds";
 import StartPage from "@components/StartPage.vue";
 import { createPinia, setActivePinia } from "pinia";
+import { useQuizStore } from "../../src/store/QuizStore";
 
 beforeEach(() => {
   setActivePinia(createPinia());
+  const questionsQueue = useQuizStore();
+  questionsQueue.allQs = questions;
 });
 
 describe("StartPage.vue", () => {

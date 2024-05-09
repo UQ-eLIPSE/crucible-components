@@ -43,7 +43,6 @@ export function getUniquePropertyValues(tagProps: Tags[]) {
     },
     {},
   );
-  console.log("result", result);
   return result;
 }
 
