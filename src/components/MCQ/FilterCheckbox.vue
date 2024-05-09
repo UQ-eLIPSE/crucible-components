@@ -77,7 +77,6 @@ const getQuestionsnumByTags = (
   }
 
   const questions = questionsQueue.allQs;
-  console.log("questions: ", questions);
   return filterQuestionsByTags(
     questions,
     modifiedSelectedTags,
