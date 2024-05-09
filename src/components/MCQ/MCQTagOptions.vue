@@ -19,7 +19,6 @@ import { useQuizStore } from "@/store/QuizStore";
 
 const questionsQueue = useQuizStore();
 const questions = questionsQueue.allQs;
-console.log("Tag options questions: ", questions);
 const tagSet = questions.map((question) => question.tags);
 
 const filterSet: SelectedTags = getUniquePropertyValues(tagSet);
