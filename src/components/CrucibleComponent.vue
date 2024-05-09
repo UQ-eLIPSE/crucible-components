@@ -15,14 +15,14 @@ import {
   getAllQuestions,
   getConvertedStaticData,
 } from "../components/DataAccessLayer";
-import { DataMCQuestion } from "@/types/DataMCQ";
+import { DataApi, DataMCQuestion } from "@/types/DataMCQ";
 
 const quizQuestions = ref(0);
 const questionsQueue = useQuizStore();
 const quizStarted = ref<boolean>(false);
 const questions = ref<MCQuestion[]>([]);
 // inject data from crucible parent here
-const apiData = inject("$dataLink");
+const apiData: DataApi = inject("$dataLink") as DataApi;
 console.log("api data received: ", apiData);
 // const apiData = getStaticRawData(); // * TEMPORARY
 
@@ -31,7 +31,7 @@ onBeforeMount(() => {
   const useStatic = import.meta.env.VITE_USE_DUMMY_DATA === "true";
   questions.value = useStatic
     ? getConvertedStaticData()
-    : getAllQuestions(apiData as DataMCQuestion[]);
+    : getAllQuestions(apiData.data.questions as DataMCQuestion[]);
   console.log("receiving from api data:", questions.value);
   questionsQueue.allQs = questions.value;
 

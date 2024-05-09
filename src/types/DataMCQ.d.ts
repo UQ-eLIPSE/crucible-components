@@ -12,3 +12,9 @@ export interface DataMCQuestion {
   optionsList: DataMCQOptions[];
   link: string;
 }
+
+export interface DataApi {
+  data: {
+    questions: DataMCQuestion[];
+  };
+}
