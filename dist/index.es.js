@@ -1,4 +1,4 @@
-import { effectScope as je, ref as w, markRaw as F, hasInjectionContext as mt, inject as ze, getCurrentInstance as ht, toRaw as he, watch as Ue, reactive as _t, isRef as ie, isReactive as ke, toRef as be, nextTick as qe, computed as Oe, unref as T, getCurrentScope as gt, onScopeDispose as vt, toRefs as Ie, defineComponent as q, openBlock as m, createElementBlock as g, Fragment as z, normalizeClass as U, withModifiers as bt, createElementVNode as p, toDisplayString as $, renderList as X, createVNode as Z, createBlock as V, createCommentVNode as N, pushScopeId as Re, popScopeId as He, onMounted as Be, resolveComponent as yt, onBeforeMount as Fe, createTextVNode as Ge, withDirectives as Ce, vModelText as St, vModelSelect as Tt } from "vue";
+import { effectScope as je, ref as w, markRaw as F, hasInjectionContext as mt, inject as ze, getCurrentInstance as ht, toRaw as he, watch as Ue, reactive as _t, isRef as ie, isReactive as ke, toRef as be, nextTick as Ne, computed as Oe, unref as T, getCurrentScope as gt, onScopeDispose as vt, toRefs as Ie, defineComponent as N, openBlock as m, createElementBlock as g, Fragment as z, normalizeClass as U, withModifiers as bt, createElementVNode as p, toDisplayString as $, renderList as X, createVNode as Z, createBlock as V, createCommentVNode as q, pushScopeId as Re, popScopeId as He, onMounted as Be, resolveComponent as yt, onBeforeMount as Fe, createTextVNode as Ge, withDirectives as Ce, vModelText as St, vModelSelect as Tt } from "vue";
 var Je = !1;
 function le(e, o, t) {
   return Array.isArray(e) ? (e.length = Math.max(e.length, o), e.splice(o, 1, t), t) : (e[o] = t, t);
@@ -25,7 +25,7 @@ function $t() {
 function Qt() {
   return $t() ? Se.now() : Date.now();
 }
-class Nt {
+class qt {
   constructor(o, t) {
     this.target = null, this.targetQueue = [], this.onQueue = [], this.plugin = o, this.hook = t;
     const n = {};
@@ -92,7 +92,7 @@ function Ye(e, o) {
   if (s && (n.__VUE_DEVTOOLS_PLUGIN_API_AVAILABLE__ || !r))
     s.emit(kt, e, o);
   else {
-    const a = r ? new Nt(t, s) : null;
+    const a = r ? new qt(t, s) : null;
     (n.__VUE_DEVTOOLS_PLUGINS__ = n.__VUE_DEVTOOLS_PLUGINS__ || []).push({
       pluginDescriptor: t,
       setupFn: o,
@@ -118,7 +118,7 @@ var A;
   e.direct = "direct", e.patchObject = "patch object", e.patchFunction = "patch function";
 })(A || (A = {}));
 const _e = typeof window < "u", se = (process.env.NODE_ENV !== "production" || !1) && process.env.NODE_ENV !== "test" && _e, Le = typeof window == "object" && window.window === window ? window : typeof self == "object" && self.self === self ? self : typeof global == "object" && global.global === global ? global : typeof globalThis == "object" ? globalThis : { HTMLElement: null };
-function qt(e, { autoBom: o = !1 } = {}) {
+function Nt(e, { autoBom: o = !1 } = {}) {
   return o && /^\s*(?:text\/\S*|application\/xml|\S*\/\S*\+xml)\s*;.*charset\s*=\s*utf-8/i.test(e.type) ? new Blob(["\uFEFF", e], { type: e.type }) : e;
 }
 function $e(e, o, t) {
@@ -176,7 +176,7 @@ function Ct(e, o = "download", t) {
       });
     }
   else
-    navigator.msSaveOrOpenBlob(qt(e, t), o);
+    navigator.msSaveOrOpenBlob(Nt(e, t), o);
 }
 function Lt(e, o, t, n) {
   if (n = n || open("", "_blank"), n && (n.document.title = n.document.body.innerText = "downloading..."), typeof e == "string")
@@ -761,7 +761,7 @@ function Ee(e, o, t = {}, n, s, r) {
       events: E
     });
     const y = ue = Symbol();
-    qe().then(() => {
+    Ne().then(() => {
       ue === y && (c = !0);
     }), _ = !0, Y(h, l, n.state.value[e]);
   }
@@ -872,7 +872,7 @@ function Ee(e, o, t = {}, n, s, r) {
       le(d, l, be(f.$state, l));
     }), Object.keys(d.$state).forEach((l) => {
       l in f.$state || ye(d, l);
-    }), c = !1, _ = !1, n.state.value[e] = be(f._hmrPayload, "hotState"), _ = !0, qe().then(() => {
+    }), c = !1, _ = !1, n.state.value[e] = be(f._hmrPayload, "hotState"), _ = !0, Ne().then(() => {
       c = !0;
     });
     for (const l in f._hmrPayload.actions) {
@@ -955,7 +955,7 @@ This will fail in production.`);
   }
   return a.$id = n, a;
 }
-const Xt = ["id", "checked"], Zt = ["for", "innerHTML"], en = /* @__PURE__ */ q({
+const Xt = ["id", "checked"], Zt = ["for", "innerHTML"], en = /* @__PURE__ */ N({
   __name: "MCQOption",
   props: {
     optionKey: {},
@@ -995,7 +995,7 @@ const Xt = ["id", "checked"], Zt = ["for", "innerHTML"], en = /* @__PURE__ */ q(
   for (const [n, s] of o)
     t[n] = s;
   return t;
-}, tn = /* @__PURE__ */ P(en, [["__scopeId", "data-v-e5ddf38c"]]), nn = ["disabled"], on = /* @__PURE__ */ q({
+}, tn = /* @__PURE__ */ P(en, [["__scopeId", "data-v-e5ddf38c"]]), nn = ["disabled"], on = /* @__PURE__ */ N({
   __name: "MCQButton",
   props: {
     submitted: { type: Boolean },
@@ -1017,7 +1017,7 @@ const Xt = ["id", "checked"], Zt = ["for", "innerHTML"], en = /* @__PURE__ */ q(
       }, $(i(u.submitted, u.selectedOption).text), 11, nn)
     ]));
   }
-}), sn = /* @__PURE__ */ P(on, [["__scopeId", "data-v-847b8dd5"]]), rn = /* @__PURE__ */ q({
+}), sn = /* @__PURE__ */ P(on, [["__scopeId", "data-v-847b8dd5"]]), rn = /* @__PURE__ */ N({
   __name: "NextButton",
   props: {
     buttonName: {}
@@ -1055,7 +1055,7 @@ function ut(e) {
     {}
   );
 }
-function Ne(e, o) {
+function qe(e, o) {
   return e.filter((t) => Object.keys(o).every((n) => !o[n].length || o[n].includes(t.tags[n])));
 }
 function cn(e, o, t) {
@@ -1081,7 +1081,7 @@ const ct = (e, o) => o.findIndex((t) => {
   actions: {
     getquestionnumber() {
       const e = this.allQs;
-      return Ne(e, this.selectedTags).length;
+      return qe(e, this.selectedTags).length;
     },
     setselectedTags(e) {
       this.selectedTags = e;
@@ -1144,7 +1144,7 @@ const ct = (e, o) => o.findIndex((t) => {
       return this.questionsQueue.length;
     }
   }
-}), ln = ["innerHTML"], dn = { class: "mcq-list" }, fn = ["onClick"], pn = { class: "next-prev-question" }, mn = /* @__PURE__ */ q({
+}), ln = ["innerHTML"], dn = { class: "mcq-list" }, fn = ["onClick"], pn = { class: "next-prev-question" }, mn = /* @__PURE__ */ N({
   __name: "MCQQuestion",
   props: {
     _id: {},
@@ -1212,18 +1212,18 @@ const ct = (e, o) => o.findIndex((t) => {
         onSubmitAnswer: _,
         onNextQuestion: S[0] || (S[0] = (d) => v(b._id)),
         onSkipQuestion: E
-      }, null, 8, ["submitted", "selected-option", "hide-skip"])) : N("", !0),
+      }, null, 8, ["submitted", "selected-option", "hide-skip"])) : q("", !0),
       p("div", pn, [
         T(t).quizMode === "Timed" ? (m(), V(Ae, {
           key: 0,
           "button-name": T(t).questionsQueue.length >= 1 ? "→" : "Submit",
           onNextQuestion: S[1] || (S[1] = (d) => h())
-        }, null, 8, ["button-name"])) : N("", !0),
+        }, null, 8, ["button-name"])) : q("", !0),
         T(t).quizMode === "Timed" && T(t).questionsStack.length > 1 ? (m(), V(Ae, {
           key: 1,
           "button-name": "←",
           onPrevQuestion: S[2] || (S[2] = (d) => ue())
-        })) : N("", !0)
+        })) : q("", !0)
       ])
     ], 64));
   }
@@ -1233,7 +1233,7 @@ const ct = (e, o) => o.findIndex((t) => {
     /* @__PURE__ */ p("th", null, "correct option"),
     /* @__PURE__ */ p("th", null, "your answer")
   ])
-], -1)), yn = { class: "question-row" }, Sn = ["href", "innerHTML"], Tn = { class: "answer-row" }, wn = ["innerHTML"], En = { class: "answer-row" }, kn = ["innerHTML"], On = { class: "mcq-result" }, $n = { class: "score" }, Qn = /* @__PURE__ */ q({
+], -1)), yn = { class: "question-row" }, Sn = ["href", "innerHTML"], Tn = { class: "answer-row" }, wn = ["innerHTML"], En = { class: "answer-row" }, kn = ["innerHTML"], On = { class: "mcq-result" }, $n = { class: "score" }, Qn = /* @__PURE__ */ N({
   __name: "MCQStatus",
   setup(e) {
     const o = D(), t = o.quizStats, n = o.quizStats.length, s = t.filter((a) => a.correct === 1).length, r = (s * 100 / n).toFixed(0);
@@ -1261,7 +1261,7 @@ const ct = (e, o) => o.findIndex((t) => {
                     h.optionCorrect ? (m(), g("span", {
                       key: 0,
                       innerHTML: h.optionValue
-                    }, null, 8, wn)) : N("", !0)
+                    }, null, 8, wn)) : q("", !0)
                   ]))), 128))
                 ]),
                 p("td", En, [
@@ -1284,7 +1284,7 @@ const ct = (e, o) => o.findIndex((t) => {
       ])
     ]));
   }
-}), dt = /* @__PURE__ */ P(Qn, [["__scopeId", "data-v-4ffecbcd"]]), Nn = /* @__PURE__ */ q({
+}), dt = /* @__PURE__ */ P(Qn, [["__scopeId", "data-v-4ffecbcd"]]), qn = /* @__PURE__ */ N({
   __name: "MCQQuiz",
   setup(e) {
     const o = w(), t = D();
@@ -1307,9 +1307,9 @@ const ct = (e, o) => o.findIndex((t) => {
           _id: o.value._id,
           onNextQuestion: s,
           onSkipQuestion: n
-        }, null, 8, ["statement", "options-list", "_id"])) : N("", !0),
-        o.value ? N("", !0) : (m(), V(dt, { key: 1 })),
-        o.value ? N("", !0) : (m(), g("button", {
+        }, null, 8, ["statement", "options-list", "_id"])) : q("", !0),
+        o.value ? q("", !0) : (m(), V(dt, { key: 1 })),
+        o.value ? q("", !0) : (m(), g("button", {
           key: 2,
           class: "btn-relocate",
           onClick: r
@@ -1317,10 +1317,10 @@ const ct = (e, o) => o.findIndex((t) => {
       ]);
     };
   }
-}), qn = /* @__PURE__ */ P(Nn, [["__scopeId", "data-v-937e1a1b"]]), In = {
+}), Nn = /* @__PURE__ */ P(qn, [["__scopeId", "data-v-937e1a1b"]]), In = {
   key: 0,
   class: "time-left-header"
-}, Cn = { class: "questions-left-header" }, Ln = /* @__PURE__ */ q({
+}, Cn = { class: "questions-left-header" }, Ln = /* @__PURE__ */ N({
   __name: "MCQInfoPanel",
   props: {
     timeLeft: {
@@ -1334,11 +1334,11 @@ const ct = (e, o) => o.findIndex((t) => {
       return `${s}:${r < 10 ? "0" : ""}${r}`;
     };
     return (n, s) => (m(), g(z, null, [
-      e.timeLeft ? (m(), g("h3", In, " Time left: " + $(t(e.timeLeft)), 1)) : N("", !0),
+      e.timeLeft ? (m(), g("h3", In, " Time left: " + $(t(e.timeLeft)), 1)) : q("", !0),
       p("h3", Cn, " Question " + $(T(o).questionsStack.length) + " out of " + $(T(o).questionsQueue.length + T(o).questionsStack.length), 1)
     ], 64));
   }
-}), De = 1e3, Pn = "-1", xn = /* @__PURE__ */ q({
+}), De = 1e3, Pn = "-1", xn = /* @__PURE__ */ N({
   __name: "MCQTimedQuiz",
   setup(e) {
     const o = D(), t = w();
@@ -1375,9 +1375,9 @@ const ct = (e, o) => o.findIndex((t) => {
         _id: t.value._id,
         onNextQuestion: i,
         onPrevQuestion: a
-      }, null, 8, ["statement", "options-list", "_id"])) : N("", !0),
-      t.value ? N("", !0) : (m(), V(dt, { key: 1 })),
-      t.value ? N("", !0) : (m(), g("button", {
+      }, null, 8, ["statement", "options-list", "_id"])) : q("", !0),
+      t.value ? q("", !0) : (m(), V(dt, { key: 1 })),
+      t.value ? q("", !0) : (m(), g("button", {
         key: 2,
         class: "btn-relocate",
         onClick: u
@@ -1387,7 +1387,7 @@ const ct = (e, o) => o.findIndex((t) => {
 }), Mn = /* @__PURE__ */ P(xn, [["__scopeId", "data-v-cffdfe07"]]), Vn = ["id", "name", "value", "disabled"], An = ["for"], Dn = {
   key: 0,
   class: "question-number"
-}, jn = /* @__PURE__ */ q({
+}, jn = /* @__PURE__ */ N({
   __name: "FilterCheckbox",
   props: {
     category: {},
@@ -1416,7 +1416,7 @@ const ct = (e, o) => o.findIndex((t) => {
       );
       _[u].includes(i) || _[u].push(i);
       const h = n.allQs;
-      return Ne(
+      return qe(
         h,
         _
       ).length.toString();
@@ -1438,12 +1438,12 @@ const ct = (e, o) => o.findIndex((t) => {
           for: `${i.category}-${h}-checkbox`
         }, [
           Ge($(h) + " ", 1),
-          _ !== null && _ !== "0" ? (m(), g("span", Dn, $(_), 1)) : N("", !0)
+          _ !== null && _ !== "0" ? (m(), g("span", Dn, $(_), 1)) : q("", !0)
         ], 8, An)
       ], 2))), 128))
     ]));
   }
-}), zn = /* @__PURE__ */ P(jn, [["__scopeId", "data-v-0f1deb69"]]), Un = { class: "filter" }, Rn = { class: "category-heading" }, Hn = /* @__PURE__ */ q({
+}), zn = /* @__PURE__ */ P(jn, [["__scopeId", "data-v-0f1deb69"]]), Un = { class: "filter" }, Rn = { class: "category-heading" }, Hn = /* @__PURE__ */ N({
   __name: "MCQTagOptions",
   setup(e) {
     const n = D().allQs.map((r) => r.tags), s = ut(n);
@@ -1460,7 +1460,7 @@ const ct = (e, o) => o.findIndex((t) => {
       ]))), 128))
     ]));
   }
-}), Bn = /* @__PURE__ */ P(Hn, [["__scopeId", "data-v-efaccb2c"]]), Fn = { for: "optionName" }, Gn = ["value"], Jn = /* @__PURE__ */ q({
+}), Bn = /* @__PURE__ */ P(Hn, [["__scopeId", "data-v-efaccb2c"]]), Fn = { for: "optionName" }, Gn = ["value"], Jn = /* @__PURE__ */ N({
   __name: "DropDownbox",
   props: {
     options: {},
@@ -1495,7 +1495,7 @@ const ct = (e, o) => o.findIndex((t) => {
 }, ro = /* @__PURE__ */ ae(() => /* @__PURE__ */ p("label", { for: "mode-select" }, "Select mode:", -1)), ao = /* @__PURE__ */ ae(() => /* @__PURE__ */ p("option", { value: "Tutor" }, "Tutor", -1)), uo = /* @__PURE__ */ ae(() => /* @__PURE__ */ p("option", { value: "Timed" }, "Timed", -1)), co = [
   ao,
   uo
-], lo = 3e3, fo = /* @__PURE__ */ q({
+], lo = 3e3, fo = /* @__PURE__ */ N({
   __name: "StartPage",
   emits: ["start-quiz"],
   setup(e, { emit: o }) {
@@ -1537,7 +1537,7 @@ const ct = (e, o) => o.findIndex((t) => {
               ]
             ])
           ]),
-          s.value ? (m(), g("p", io, " Cannot select more than " + $(T(i).getquestionnumber()) + " questions. ", 1)) : N("", !0),
+          s.value ? (m(), g("p", io, " Cannot select more than " + $(T(i).getquestionnumber()) + " questions. ", 1)) : q("", !0),
           p("div", null, [
             ro,
             Ce(p("select", {
@@ -1586,14 +1586,14 @@ const mo = (e) => e.reduce((o, t) => {
       throw new Error("No question data found. Please Try again later.");
     return _o.convertQuestions(e);
   } catch (o) {
-    return alert(o), [];
+    return console.error(o), [];
   }
-}, vo = /* @__PURE__ */ q({
+}, vo = /* @__PURE__ */ N({
   __name: "CrucibleComponent",
   setup(e) {
     const o = w(0), t = D(), n = w(!1), s = w([]), r = ze("$dataLink");
     console.log("api data received: ", r), Fe(() => {
-      s.value = go(r), console.log("receiving from api data:", s.value), t.allQs = s.value;
+      s.value = go(r.data.questions), console.log("receiving from api data:", s.value), t.allQs = s.value;
       const i = ut(
         s.value.map((u) => u.tags)
       );
@@ -1606,18 +1606,18 @@ const mo = (e) => e.reduce((o, t) => {
       const c = t.getselectedtags();
       if (!s.value.length)
         return alert("Trouble fetching questions, please try again later");
-      const _ = Ne(
+      const _ = qe(
         s.value,
         c
       ), h = un(i, _);
       o.value = h.length, t.initialiseQuiz(h, u), u === "Timed" && t.setTimeLimit(i * t.timeLimit), n.value = !0;
     };
-    return (i, u) => n.value && T(t).quizMode === "Tutor" ? (m(), V(qn, { key: 0 })) : n.value && T(t).quizMode === "Timed" ? (m(), V(Mn, { key: 1 })) : (m(), V(po, {
+    return (i, u) => n.value && T(t).quizMode === "Tutor" ? (m(), V(Nn, { key: 0 })) : n.value && T(t).quizMode === "Timed" ? (m(), V(Mn, { key: 1 })) : (m(), V(po, {
       key: 2,
       onStartQuiz: a
     }));
   }
-}), bo = /* @__PURE__ */ P(vo, [["__scopeId", "data-v-5debb51b"]]), yo = "http://localhost:8080/api/resource/getQuiz";
+}), bo = /* @__PURE__ */ P(vo, [["__scopeId", "data-v-95c93848"]]), yo = "http://localhost:8080/api/resource/getQuiz";
 function To(e, o = {}) {
   const t = Gt();
   e.use(t), e.component("CrucibleComponent", bo), e.provide("$dataLink", o.dataLink || yo), console.log(o.dataLink);
