@@ -13,7 +13,7 @@ export const getAllQuestions = (apiData: DataMCQuestion[]) => {
     }
     return UtilConversion.convertQuestions(apiData);
   } catch (err) {
-    console.error(err);
+    alert(err);
     return [];
   }
 };
