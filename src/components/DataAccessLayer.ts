@@ -1,6 +1,4 @@
 import { MCQuestion } from "@/types/MCQ";
-import { generateDummyData } from "../../data/dummyQuestionData";
-import NetworkCalls from "@/utils/NetworkCalls";
 import UtilConversion from "@/utils/UtilConversion";
 import { pluginQuestions as questions } from "@/components/question-data";
 import { DataMCQuestion } from "@/types/DataMCQ";
@@ -19,10 +17,6 @@ export const getAllQuestions = (apiData: DataMCQuestion[]) => {
   }
 };
 
-export const getDummyQuestions = (random = false) => {
-  return generateDummyData(random);
-};
-
 export const getStaticRawData = (): DataMCQuestion[] => {
   return questions;
 };
@@ -31,12 +25,6 @@ export const getConvertedStaticData = (): MCQuestion[] => {
   // Validate questions
   const allDataQs: DataMCQuestion[] = getStaticRawData();
   return UtilConversion.convertQuestions(validateMCQuestions(allDataQs));
-};
-
-export const getAllQuestionsFromApi = async (): Promise<MCQuestion[]> => {
-  const allQuizzes = await NetworkCalls.getQuiz();
-
-  return UtilConversion.convertQuestions(allQuizzes);
 };
 
 // helpers functions with typeguards and console warns
