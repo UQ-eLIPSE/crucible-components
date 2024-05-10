@@ -1,4 +1,4 @@
-import { MCQOptions, MCQuestion } from "@/types/MCQ";
+import { DataMCQOptions, DataMCQuestion, DataTags } from "@/types/DataMCQ";
 
 /**
  * A helper module function that validates the structure of primitives and objects
@@ -38,7 +38,31 @@ const validate = (() => {
   };
 })();
 
-function isMCQOptions(obj: unknown): obj is MCQOptions {
+/**
+ * Validates the tags for a question
+ * Three types of tags:
+ * 1. Taxonomy: (i.e. Course: VETHUB2011)
+ * 2. Search tags: (i.e. Animal_Being) NO SPACES
+ * TODO: Decide on the format of the directives and its purpose
+ * 3. Directives: (i.e. !!EXCLUDE!!)
+ * @param tag string to validate
+ * @returns {boolean}
+ */
+function isTag(tag: string): boolean {
+  const isTaxonomy = tag.includes(":") && tag.split(":").length === 2;
+  const isSearchTag = !tag.includes(":") && tag.split(" ").length === 1;
+  return isTaxonomy || isSearchTag;
+}
+
+function isTags(arr: unknown): arr is DataTags {
+  return validate.isArray(arr, validate.isString) && arr.some(isTag);
+}
+
+function isAllTags(arr: unknown): boolean {
+  return validate.isArray(arr, validate.isString) && arr.every(isTag);
+}
+
+function isMCQOptions(obj: unknown): obj is DataMCQOptions {
   return (
     validate.isObject(obj) &&
     validate.isString(obj.optionValue) &&
@@ -46,20 +70,27 @@ function isMCQOptions(obj: unknown): obj is MCQOptions {
   );
 }
 
-function isMCQuestion(obj: unknown): obj is MCQuestion {
+function isMCQuestion(obj: unknown): obj is DataMCQuestion {
   return (
     validate.isObject(obj) &&
     validate.isObject(obj._id) &&
     validate.isString(obj._id.$oid) &&
     validate.isString(obj.statement) &&
-    validate.isObject(obj.tags) &&
+    isTags(obj.tags) &&
     validate.isArray(obj.optionsList, isMCQOptions) &&
     validate.isString(obj.link)
   );
 }
 
-function isMCQuestionArray(obj: unknown): obj is MCQuestion[] {
+function isMCQuestionArray(obj: unknown): obj is DataMCQuestion[] {
   return validate.isArray(obj, isMCQuestion);
 }
 
-export default { isMCQuestion, isMCQuestionArray };
+export default {
+  isMCQuestion,
+  isMCQuestionArray,
+  isAllTags,
+  isTags,
+  isTag,
+  validate,
+};
