@@ -1,5 +1,4 @@
 import { MCQuestion } from "@/types/MCQ";
-import { generateDummyData } from "../../data/dummyQuestionData";
 import NetworkCalls from "@/utils/NetworkCalls";
 import UtilConversion from "@/utils/UtilConversion";
 import { pluginQuestions as questions } from "@/components/question-data";
@@ -16,10 +15,6 @@ export const getAllQuestions = (apiData: DataMCQuestion[]) => {
     alert(err);
     return [];
   }
-};
-
-export const getDummyQuestions = (random = false) => {
-  return generateDummyData(random);
 };
 
 export const getStaticRawData = (): DataMCQuestion[] => {
