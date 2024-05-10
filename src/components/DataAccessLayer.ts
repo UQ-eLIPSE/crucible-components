@@ -1,5 +1,4 @@
 import { MCQuestion } from "@/types/MCQ";
-import NetworkCalls from "@/utils/NetworkCalls";
 import UtilConversion from "@/utils/UtilConversion";
 import { pluginQuestions as questions } from "@/components/question-data";
 import { DataMCQuestion } from "@/types/DataMCQ";
@@ -23,9 +22,4 @@ export const getStaticRawData = (): DataMCQuestion[] => {
 
 export const getConvertedStaticData = (): MCQuestion[] => {
   return UtilConversion.convertQuestions(questions);
-};
-
-export const getAllQuestionsFromApi = async (): Promise<MCQuestion[]> => {
-  const allQuizzes = await NetworkCalls.getQuiz();
-  return UtilConversion.convertQuestions(allQuizzes);
 };
