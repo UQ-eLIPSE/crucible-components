@@ -87,6 +87,16 @@ function isMCQuestionArray(obj: unknown): obj is DataMCQuestion[] {
   return validate.isArray(obj, isMCQuestion);
 }
 
+/**
+ * Used to help collect the info of invalid data in the warn logs
+ */
+export interface InvalidDataQsLogs {
+  invalidTags: number;
+  noTags: number;
+  invalidQs: number;
+  totalTags: number;
+}
+
 export default {
   isMCQuestion,
   isMCQuestionArray,

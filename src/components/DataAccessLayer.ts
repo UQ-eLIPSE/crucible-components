@@ -2,7 +2,7 @@ import { MCQuestion } from "@/types/MCQ";
 import UtilConversion from "@/utils/UtilConversion";
 import { pluginQuestions as questions } from "@/components/question-data";
 import { DataMCQuestion } from "@/types/DataMCQ";
-import NetworkGuard from "@/utils/NetworkGuard";
+import NetworkGuard, { InvalidDataQsLogs } from "@/utils/NetworkGuard";
 
 // TODO: ADD TYPEGUARDS VALIDATION
 export const getAllQuestions = (apiData: DataMCQuestion[]) => {
@@ -42,46 +42,44 @@ function validateMCQuestions(allDataQs: DataMCQuestion[]): DataMCQuestion[] {
         "color: #FF0000",
       );
 
-  let invalidTags = 0;
-  let noTags = 0;
-  let invalidQs = 0;
-  let totalTags = 0;
-  const allQsLength = allDataQs.length;
+  const initialStats: InvalidDataQsLogs = {
+    invalidTags: 0,
+    noTags: 0,
+    invalidQs: 0,
+    totalTags: 0,
+  };
 
-  for (const dataQs of allDataQs as DataMCQuestion[]) {
+  const stats = (allDataQs as DataMCQuestion[]).reduce((acc, dataQs) => {
     // Check question structure
     if (!NetworkGuard.isMCQuestion(dataQs)) {
-      invalidQs++;
+      return { ...acc, invalidQs: acc.invalidQs + 1 };
     }
 
     let { tags } = dataQs;
 
     if (!tags || (Array.isArray(tags) && !tags.length)) {
-      noTags++;
-      continue;
+      return { ...acc, noTags: acc.noTags + 1 };
     }
 
-    totalTags += tags.length;
+    const totalTags = acc.totalTags + tags.length;
 
     if (!NetworkGuard.isAllTags(tags)) {
       const validTags = tags.filter((tag) => NetworkGuard.isTag(tag));
-      invalidTags += tags.length - validTags.length;
+      const invalidTags = acc.invalidTags + tags.length - validTags.length;
       tags = validTags; // remove all invalid tags
+      return { ...acc, invalidTags, totalTags };
     }
-  }
 
-  logQsWarnings(invalidQs, allQsLength, invalidTags, totalTags, noTags);
+    return { ...acc, totalTags };
+  }, initialStats);
+
+  logQsWarnings(stats, allDataQs.length);
 
   return allDataQs;
 }
 
-function logQsWarnings(
-  invalidQs: number,
-  allQsLength: number,
-  invalidTags: number,
-  totalTags: number,
-  noTags: number,
-): void {
+function logQsWarnings(stats: InvalidDataQsLogs, allQsLength: number): void {
+  const { invalidQs, invalidTags, noTags, totalTags } = stats;
   invalidQs &&
     console.warn(
       `Invalid Questions Received: %c${invalidQs} out of ${allQsLength}`,
