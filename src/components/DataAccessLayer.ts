@@ -63,7 +63,7 @@ function validateMCQuestions(allDataQs: DataMCQuestion[]): DataMCQuestion[] {
 
     const totalTags = acc.totalTags + tags.length;
 
-    if (!NetworkGuard.isAllTags(tags)) {
+    if (!NetworkGuard.validateTags(tags, true)) {
       const validTags = tags.filter((tag) => NetworkGuard.isTag(tag));
       const invalidTags = acc.invalidTags + tags.length - validTags.length;
       tags = validTags; // remove all invalid tags

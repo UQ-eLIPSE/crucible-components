@@ -1,4 +1,4 @@
-import { DataMCQOptions, DataMCQuestion, DataTags } from "@/types/DataMCQ";
+import { DataMCQOptions, DataMCQuestion } from "@/types/DataMCQ";
 
 /**
  * A helper module function that validates the structure of primitives and objects
@@ -55,12 +55,12 @@ function isTag(tag: string): boolean {
   return isTaxonomy || isSearchTag;
 }
 
-function isTags(arr: unknown): arr is DataTags {
-  return validate.isArray(arr, validate.isString) && arr.some(isTag);
-}
+function validateTags(arr: unknown, checkAll: boolean = false): boolean {
+  if (!validate.isArray(arr, validate.isString)) {
+    return false;
+  }
 
-function isAllTags(arr: unknown): boolean {
-  return validate.isArray(arr, validate.isString) && arr.every(isTag);
+  return checkAll ? arr.every(isTag) : arr.some(isTag);
 }
 
 function isMCQOptions(obj: unknown): obj is DataMCQOptions {
@@ -77,7 +77,7 @@ function isMCQuestion(obj: unknown): obj is DataMCQuestion {
     validate.isObject(obj._id) &&
     validate.isString(obj._id.$oid) &&
     validate.isString(obj.statement) &&
-    isTags(obj.tags) &&
+    validateTags(obj.tags, false) &&
     validate.isArray(obj.optionsList, isMCQOptions) &&
     validate.isString(obj.link)
   );
@@ -100,7 +100,6 @@ export interface InvalidDataQsLogs {
 export default {
   isMCQuestion,
   isMCQuestionArray,
-  isAllTags,
-  isTags,
+  validateTags,
   isTag,
 };
