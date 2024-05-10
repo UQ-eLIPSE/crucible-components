@@ -12,7 +12,7 @@ export const getAllQuestions = (apiData: DataMCQuestion[]) => {
     if (!apiData) {
       throw new Error("No question data found. Please Try again later.");
     }
-    return UtilConversion.convertQuestions(apiData);
+    return UtilConversion.convertQuestions(validateMCQuestions(apiData));
   } catch (err) {
     alert(err);
     return [];
@@ -30,7 +30,18 @@ export const getStaticRawData = (): DataMCQuestion[] => {
 export const getConvertedStaticData = (): MCQuestion[] => {
   // Validate questions
   const allDataQs: DataMCQuestion[] = getStaticRawData();
+  return UtilConversion.convertQuestions(validateMCQuestions(allDataQs));
+};
 
+export const getAllQuestionsFromApi = async (): Promise<MCQuestion[]> => {
+  const allQuizzes = await NetworkCalls.getQuiz();
+
+  return UtilConversion.convertQuestions(allQuizzes);
+};
+
+// helpers functions with typeguards and console warns
+// IMPORTANT: This function is also used to filter out invalid tags.
+function validateMCQuestions(allDataQs: DataMCQuestion[]): DataMCQuestion[] {
   NetworkGuard.isMCQuestionArray(allDataQs)
     ? console.info(
         "%cAll questions are valid",
@@ -73,14 +84,8 @@ export const getConvertedStaticData = (): MCQuestion[] => {
 
   logQsWarnings(invalidQs, allQsLength, invalidTags, totalTags, noTags);
 
-  return UtilConversion.convertQuestions(allDataQs);
-};
-
-export const getAllQuestionsFromApi = async (): Promise<MCQuestion[]> => {
-  const allQuizzes = await NetworkCalls.getQuiz();
-
-  return UtilConversion.convertQuestions(allQuizzes);
-};
+  return allDataQs;
+}
 
 function logQsWarnings(
   invalidQs: number,
