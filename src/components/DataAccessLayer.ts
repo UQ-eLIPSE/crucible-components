@@ -78,20 +78,20 @@ function validateMCQuestions(allDataQs: DataMCQuestion[]): DataMCQuestion[] {
   return allDataQs;
 }
 
+// condition will be > 0 (truthy) if there are invalid stats
+function logWarning(condition: number, message: string) {
+  condition && console.warn(message, "color: #FF0000"); // red text color
+}
+
 function logQsWarnings(stats: InvalidDataQsLogs, allQsLength: number): void {
   const { invalidQs, invalidTags, noTags, totalTags } = stats;
-  invalidQs &&
-    console.warn(
-      `Invalid Questions Received: %c${invalidQs} out of ${allQsLength}`,
-      "color: #FF0000",
-    );
-
-  invalidTags &&
-    console.warn(
-      `Filtering out invalid tags: %c${invalidTags} out of ${totalTags}`,
-      "color: #FF0000",
-    );
-
-  noTags &&
-    console.warn(`Questions with no tags: %c${noTags}`, "color: #FF0000");
+  logWarning(
+    invalidQs,
+    `Invalid Questions Received: %c${invalidQs} out of ${allQsLength}`,
+  );
+  logWarning(
+    invalidTags,
+    `Filtering out invalid tags: %c${invalidTags} out of ${totalTags}`,
+  );
+  logWarning(noTags, `Questions with no tags: %c${noTags}`);
 }
