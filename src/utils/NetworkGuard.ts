@@ -45,12 +45,13 @@ const validate = (() => {
  * 2. Search tags: (i.e. Animal_Being) NO SPACES
  * TODO: Decide on the format of the directives and its purpose
  * 3. Directives: (i.e. !!EXCLUDE!!)
+ * NOTE: Tags w/ spaces will count as invalid. Use underscores instead. i.e. "SEM 1" should be "SEM_1"
  * @param tag string to validate
  * @returns {boolean}
  */
 function isTag(tag: string): boolean {
   const isTaxonomy = tag.includes(":") && tag.split(":").length === 2;
-  const isSearchTag = !tag.includes(":") && tag.split(" ").length === 1;
+  const isSearchTag = !tag.includes(":") && tag.trim().split(" ").length === 1;
   return isTaxonomy || isSearchTag;
 }
 
@@ -92,5 +93,4 @@ export default {
   isAllTags,
   isTags,
   isTag,
-  validate,
 };
