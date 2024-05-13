@@ -21,7 +21,7 @@ const quizQuestions = ref(0);
 const questionsQueue = useQuizStore();
 const quizStarted = ref<boolean>(false);
 const questions = ref<MCQuestion[]>([]);
-// inject data from crucible parent here
+// Inject data from crucible parent here
 const apiData: DataApi = inject("$dataLink") as DataApi;
 
 onBeforeMount(() => {
