@@ -4,20 +4,19 @@ import { DataMCQOptions, DataMCQuestion } from "@/types/DataMCQ";
  * A helper module function that validates the structure of primitives and objects
  */
 const validate = (() => {
-  const isString = (str: any): str is string => typeof str === "string";
+  const isString = (str: string): boolean => typeof str === "string";
 
-  const isObject = (obj: any): obj is Record<string, any> =>
+  const isObject = (obj: object): obj is Record<string, any> =>
     typeof obj === "object" && obj !== null;
 
-  const isBoolean = (bool: any): bool is boolean => typeof bool === "boolean";
+  const isBoolean = (bool: boolean): boolean => typeof bool === "boolean";
 
-  const isArray = <T>(arr: any, check: (item: any) => item is T): arr is T[] =>
+  const isArray = <T>(arr: T[], check: (item: T) => boolean): arr is T[] =>
     Array.isArray(arr) && arr.every(check);
 
-  const isNumber = (num: any): num is number => typeof num === "number";
+  const isNumber = (num: number): boolean => typeof num === "number";
 
-  const isFunction = (func: any): func is Function =>
-    typeof func === "function";
+  const isFunction = (func: Function): boolean => typeof func === "function";
 
   return {
     isString,
@@ -38,15 +37,14 @@ function isTag(tag: string): boolean {
   return isTaxonomy || isSearchTag;
 }
 
-function validateTags(arr: any, checkAll: boolean = false): boolean {
+function validateTags(arr: string[], checkAll: boolean = false): boolean {
   if (!validate.isArray(arr, validate.isString)) {
     return false;
   }
-
   return checkAll ? arr.every(isTag) : arr.some(isTag);
 }
 
-function isMCQOptions(obj: any): obj is DataMCQOptions {
+function isMCQOptions(obj: DataMCQOptions): boolean {
   return (
     validate.isObject(obj) &&
     validate.isString(obj.optionValue) &&
@@ -54,19 +52,19 @@ function isMCQOptions(obj: any): obj is DataMCQOptions {
   );
 }
 
-function isMCQuestion(obj: any): obj is DataMCQuestion {
+function isMCQuestion(obj: DataMCQuestion): boolean {
   return (
     validate.isObject(obj) &&
-    validate.isObject(obj._id) &&
+    validate.isObject(obj._id) && // Assuming _id is an object with $oid property
     validate.isString(obj._id.$oid) &&
     validate.isString(obj.statement) &&
-    validateTags(obj.tags, false) &&
+    validateTags(obj.tags) && // Modified to ensure tags are always checked
     validate.isArray(obj.optionsList, isMCQOptions) &&
     validate.isString(obj.link)
   );
 }
 
-function isMCQuestionArray(obj: any): obj is DataMCQuestion[] {
+function isMCQuestionArray(obj: DataMCQuestion[]): boolean {
   return validate.isArray(obj, isMCQuestion);
 }
 
