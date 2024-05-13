@@ -126,8 +126,7 @@ function getClassForTimedMode(_id: { $oid: string }, key: string): string {
     questionIndex,
     selectedValue,
   );
-  const answerString = String(answer);
-  if (answerString === key) {
+  if (String(answer) === key) {
     selectedOption.value = key;
     return "selected";
   }
