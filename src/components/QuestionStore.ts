@@ -26,10 +26,12 @@ export function getUniquePropertyValues(tagProps: Tags[]) {
   const uniqueTags = tagProps.reduce(
     (acc: Record<string, Set<string>>, item) => {
       Object.keys(item).forEach((key) => {
-        if (!acc[key]) {
-          acc[key] = new Set<string>();
+        if (typeof key === "string" && /^[a-zA-Z]+$/.test(key)) {
+          if (!acc[key]) {
+            acc[key] = new Set<string>();
+          }
+          acc[key].add(item[key]);
         }
-        acc[key].add(item[key]);
       });
       return acc;
     },
