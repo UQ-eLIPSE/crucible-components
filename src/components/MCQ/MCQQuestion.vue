@@ -95,6 +95,7 @@ const resetQuestion = (_id: { $oid: string }) => {
   selectedOption.value = null;
 };
 const prevQuestion = () => {
+  selectedOption.value = null;
   emit("prevQuestion");
 };
 
@@ -125,8 +126,14 @@ function getClassForTimedMode(_id: { $oid: string }, key: string): string {
     questionIndex,
     selectedValue,
   );
-  return String(answer) === key ? "selected" : "";
+  const answerString = String(answer);
+  if (answerString === key) {
+    selectedOption.value = key;
+    return "selected";
+  }
+  return "";
 }
+
 function getClassForTutorMode(key: string, optionsList: MCQOptions[]): string {
   const option = optionsList[parseInt(key)];
   const isSelected = selectedOption.value === key;
