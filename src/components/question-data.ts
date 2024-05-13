@@ -1,6 +1,14 @@
+// This sample data is for testing purposes only. It is not intended to be used in production.
+// It contains irregular form taxonomy for test purpose
 export const pluginQuestions = [
   {
-    tags: ["course: VETS2011", "subject: Physiology", "system: Nervous System"],
+    tags: [
+      "course: VETS2011",
+      "subject: Physiology",
+      "system: Nervous System",
+      "234: wrongtag",
+      "  @#: wr ",
+    ],
     statement:
       "<p>Which part of a neuron receives information from surrounding cells?</p>",
     optionsList: [
@@ -64,7 +72,12 @@ export const pluginQuestions = [
     link: "https://vetshub.uqcloud.net/resource/5a0ba18d34cc363763e05e99/61a9ae14e04e3d5bffb26ef7/62142eee64c71f1df2110cf5/62142f2764c71f1df2110cf7/6214301b64c71f1df2110cfd",
   },
   {
-    tags: ["course: VETS2012", "subject: Physiology", "animal: Horse"],
+    tags: [
+      "course: VETS2012",
+      "subject: Physiology",
+      "animal: Horse",
+      ": wrongtag",
+    ],
     statement:
       "<p>Action potentials are transmitted along which part of a neuron?</p>",
     optionsList: [
