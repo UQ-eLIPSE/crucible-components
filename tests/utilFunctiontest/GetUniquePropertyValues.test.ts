@@ -13,7 +13,6 @@ describe("should return correct tags structure", () => {
   });
 
   it("should return unique values of the given tags", () => {
-    console.log(badTags);
     const tags = getUniquePropertyValues(badTags as Tags[]);
     expect(tags).toEqual({
       course: ["vets2011", "vets2012"],
