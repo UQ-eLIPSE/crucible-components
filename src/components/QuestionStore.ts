@@ -20,16 +20,19 @@ export const getQuestionsRandomly = (
   const shuffled = shuffleArray(questions);
   return shuffled.slice(0, count);
 };
-
+// this is the function to generate Taxonomies
 export function getUniquePropertyValues(tagProps: Tags[]) {
   // populate unique values of the given tags
   const uniqueTags = tagProps.reduce(
     (acc: Record<string, Set<string>>, item) => {
       Object.keys(item).forEach((key) => {
-        if (!acc[key]) {
-          acc[key] = new Set<string>();
+        // during generate taxonomies, we use only alphabets and ignore other characters or empty strings
+        if (typeof key === "string" && /^[a-zA-Z]+$/.test(key)) {
+          if (!acc[key]) {
+            acc[key] = new Set<string>();
+          }
+          acc[key].add(item[key]);
         }
-        acc[key].add(item[key]);
       });
       return acc;
     },
