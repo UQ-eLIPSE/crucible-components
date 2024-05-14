@@ -41,7 +41,6 @@ const skipQuestion = () => {
 };
 
 const nextQuestion = () => {
-  console.log(questionsQueue.quizStats.map((q) => q.selectedValue));
   questionsQueue.setAnsweredQuestionsNum();
   currentQuestion.value = questionsQueue.dequeueQuestion();
 };
