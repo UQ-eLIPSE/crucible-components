@@ -29,7 +29,10 @@ export const useQuizStore = defineStore("questionsQueue", {
       return this.AnsweredQuesiton;
     },
     setAnsweredQuestionsNum() {
-      this.AnsweredQuesiton = this.AnsweredQuesiton + 1;
+      this.AnsweredQuesiton = Math.min(
+        this.AnsweredQuesiton + 1,
+        this.quizStats.length,
+      );
     },
     getquestionnumber() {
       const questions = this.allQs;
