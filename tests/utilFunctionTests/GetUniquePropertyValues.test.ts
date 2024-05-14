@@ -18,6 +18,8 @@ describe("should return correct tags structure", () => {
       course: ["vets2011", "vets2012"],
       subject: ["physiology"],
       system: ["nervous system"],
+      234: ["tagvalue"],
+      "@#": ["wr"],
       animal: ["horse"],
     });
   });

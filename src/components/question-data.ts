@@ -6,8 +6,8 @@ export const pluginQuestions = [
       "course:vets2011",
       "subject:physiology",
       "system:nervous_system",
-      "234: wrongtag",
-      "  @#: wr ",
+      "234:tagvalue",
+      "  @#:wr ",
     ],
     statement:
       "<p>Which part of a neuron receives information from surrounding cells?</p>",

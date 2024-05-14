@@ -26,8 +26,8 @@ export function getUniquePropertyValues(tagProps: Tags[]) {
   const uniqueTags = tagProps.reduce(
     (acc: Record<string, Set<string>>, item) => {
       Object.keys(item).forEach((key) => {
-        // during generate taxonomies, we use only alphabets and ignore other characters or empty strings
-        if (typeof key === "string" && /^[a-zA-Z]+$/.test(key)) {
+        // during generate taxonomies, exclude empty strings
+        if (typeof key === "string" && key.trim() !== "") {
           if (!acc[key]) {
             acc[key] = new Set<string>();
           }
