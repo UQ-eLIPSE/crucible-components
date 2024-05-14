@@ -6,7 +6,7 @@ export const pluginQuestions = [
       "course: VETS2011",
       "subject: Physiology",
       "system: Nervous_System",
-      "234: wrongtag",
+      "234: tagvalue",
       "  @#: wr ",
     ],
     statement:
