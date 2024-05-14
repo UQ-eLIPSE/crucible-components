@@ -3,11 +3,11 @@
 export const pluginQuestions = [
   {
     tags: [
-      "course: VETS2011",
-      "subject: Physiology",
-      "system: Nervous_System",
-      "234: tagvalue",
-      "  @#: wr ",
+      "course:vets2011",
+      "subject:physiology",
+      "system:nervous_system",
+      "234:tagvalue",
+      "  @#:wr ",
     ],
     statement:
       "<p>Which part of a neuron receives information from surrounding cells?</p>",
@@ -77,10 +77,9 @@ export const pluginQuestions = [
   },
   {
     tags: [
-      "course: VETS2012",
-      "subject: Physiology",
-      "system: Nervous_System",
-      "animal: Horse",
+      "course:vets2012",
+      "subject:physiology",
+      "animal:horse",
       ": wrongtag",
     ],
     statement:
@@ -114,7 +113,7 @@ export const pluginQuestions = [
     link: "https://vetshub.uqcloud.net/resource/5a0ba18d34cc363763e05e99/61a9ae14e04e3d5bffb26ef7/62142eee64c71f1df2110cf5/62142f2764c71f1df2110cf7/6214407964c71f1df2110d03",
   },
   {
-    tags: ["course: VETS2012", "subject:Physiology", "animal:Horse"],
+    tags: ["course:vets2012", "subject:physiology", "animal:horse"],
     statement:
       "<p>Which of the following would NOT be possible occurrences when signal build-up occurs?</p>",
     optionsList: [
