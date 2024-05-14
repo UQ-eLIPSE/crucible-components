@@ -15,7 +15,7 @@
         @change="onChecked($event)"
       />
       <label :for="`${category}-${topic}-checkbox`">
-        {{ topic }}
+        {{ formatTopic(topic) }}
         <span v-if="num !== null && num !== '0'" class="question-number">{{
           num
         }}</span></label
@@ -34,6 +34,10 @@ const { category, topics } = defineProps<{
   topics: string[];
 }>();
 const questionsQueue = useQuizStore();
+
+const formatTopic = (topic: string) => {
+  return category === "course" ? topic.toUpperCase() : topic;
+};
 
 const questionsNumByTags = computed(() =>
   Object.entries(topics)
