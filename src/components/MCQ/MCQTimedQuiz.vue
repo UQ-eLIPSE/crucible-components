@@ -42,6 +42,10 @@ onBeforeMount(() => {
   startTimer();
 });
 const prevQuestionHandler = () => {
+  console.log(
+    "0",
+    questionsQueue.quizStats.map((q) => q.selectedValue),
+  );
   currentQuestion.value =
     questionsQueue.removeFromLastHistory() ?? currentQuestion.value;
 };
@@ -89,6 +93,7 @@ const skipToEnd = () => {
 main {
   width: 800px;
 }
+
 .btn-relocate {
   float: right;
   background-color: green;

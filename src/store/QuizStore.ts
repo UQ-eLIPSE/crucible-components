@@ -21,9 +21,16 @@ export const useQuizStore = defineStore("questionsQueue", {
       quizMode: "Tutor" as QuizMode,
       selectedTags: { course: [] } as SelectedTags,
       timeLimit: 60, // default time limit 1 min per qs
+      AnsweredQuesiton: 0,
     };
   },
   actions: {
+    getAnsweredQuestionsNum() {
+      return this.AnsweredQuesiton;
+    },
+    setAnsweredQuestionsNum() {
+      this.AnsweredQuesiton = this.AnsweredQuesiton + 1;
+    },
     getquestionnumber() {
       const questions = this.allQs;
       return filterQuestionsByTags(questions, this.selectedTags).length;

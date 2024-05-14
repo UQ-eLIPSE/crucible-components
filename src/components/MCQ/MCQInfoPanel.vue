@@ -4,10 +4,7 @@
   </h3>
   <h3 class="questions-left-header">
     Question {{ questionsQueue.questionsStack.length }} out of
-    {{
-      questionsQueue.questionsQueue.length +
-      questionsQueue.questionsStack.length
-    }}
+    {{ questionsQueue.quizStats.length }}
   </h3>
 </template>
 
