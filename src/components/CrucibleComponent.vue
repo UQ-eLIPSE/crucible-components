@@ -73,15 +73,6 @@ const handleStartQuiz = ({ questionAmount, mode }: StartQuizConfig) => {
 </template>
 
 <style scoped>
-@font-face {
-  font-family: "icomoon";
-  src:
-    url("../public/fonts/icomoon.eot?tvt6dy#iefix") format("embedded-opentype"),
-    url("../public/fonts/icomoon.ttf?tvt6dy") format("truetype"),
-    url("../public/fonts/icomoon.woff?tvt6dy") format("woff"),
-    url("../public/fonts/icomoon.svg?tvt6dy#icomoon") format("svg");
-}
-
 #question-amount {
   margin-left: 5px;
 }
@@ -97,5 +88,37 @@ const handleStartQuiz = ({ questionAmount, mode }: StartQuizConfig) => {
   justify-content: center;
   margin-bottom: 20px;
   gap: 10px;
+}
+</style>
+<style>
+@font-face {
+  font-family: "icomoon";
+  src:
+    url("../public/fonts/icomoon.eot?tvt6dy#iefix") format("embedded-opentype"),
+    url("../public/fonts/icomoon.ttf?tvt6dy") format("truetype"),
+    url("../public/fonts/icomoon.woff?tvt6dy") format("woff"),
+    url("../public/fonts/icomoon.svg?tvt6dy#icomoon") format("svg");
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  transition: border-color 0.25s;
+}
+
+button:not([disabled]):hover {
+  border-color: black;
+}
+
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+label p {
+  margin: 0;
 }
 </style>
