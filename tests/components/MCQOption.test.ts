@@ -86,4 +86,15 @@ describe("MCQOption.vue", () => {
       expect(option.classes()).toContain("ignore-hover");
     });
   });
+
+  it("Options label's should have same padding style", async () => {
+    const selectedOptionLabelWrapper = wrapper.findAll(".mcq-option-label");
+    const selectedOptionLabelPWrapper = wrapper.findAll(".mcq-option-label p");
+    selectedOptionLabelWrapper.forEach((label: DOMWrapper<Element>) => {
+      expect(label.element.style.padding).toBe("");
+    });
+    selectedOptionLabelPWrapper?.forEach((label: DOMWrapper<Element>) => {
+      expect(label.element.style.padding).toBe("");
+    });
+  });
 });
