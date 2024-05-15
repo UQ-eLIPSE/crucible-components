@@ -30,7 +30,6 @@ onBeforeMount(() => {
   questions.value = useStatic
     ? getConvertedStaticData()
     : getAllQuestions(apiData.data.questions as DataMCQuestion[]);
-  console.info("All Questions:", questions.value);
   questionsQueue.allQs = questions.value;
 
   const allUniqueTags = getUniquePropertyValues(
