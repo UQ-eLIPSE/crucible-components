@@ -23,9 +23,9 @@
     "paths": {
       "@/*": ["./src/*"],
       "@components/*": ["./src/components/*"],
-      "@data/*": ["./data/*"],
-      "@type/*": ["./src/types/*"],
-    }, 
+      "@data/*": ["data/*"],
+      "@type/*": ["src/types/*"]
+    }
   },
   "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue", "tests/**/*.ts"],
   "exclude": ["tests/**/*.ts"],

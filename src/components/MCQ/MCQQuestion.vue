@@ -6,15 +6,15 @@
       v-for="[key, value] in Object.entries(optionsList)"
       :key="key"
       class="mcq-option"
-      :class="optionClass(key, optionsList)"
-      @click="selectOption(key)"
+      :class="optionClass(_id, key, optionsList)"
+      @click="selectOption(_id, key)"
     >
       <MCQOption
         :option-key="key"
         :checked="selectedOption === key"
         :option="value"
         :submitted="submitted"
-        @select-option="selectOption(key)"
+        @select-option="selectOption(_id, key)"
       />
     </div>
   </div>
@@ -24,16 +24,16 @@
     :selected-option="selectedOption"
     :hide-skip="remainingQuestions <= 1"
     @submit-answer="submitAnswer"
-    @next-question="nextQuestion(_id)"
+    @next-question="nextQuestion()"
     @skip-question="skipQuestion"
   />
   <div class="next-prev-question">
     <NextButton
       v-if="statUpdate.quizMode === 'Timed'"
       :button-name="
-        statUpdate.questionsQueue.length >= 1 ? '&#x2192;' : 'submit'
+        statUpdate.questionsQueue.length >= 1 ? '&#x2192;' : 'Submit'
       "
-      @next-question="timedNextQuestion(_id)"
+      @next-question="timedNextQuestion()"
     />
     <NextButton
       v-if="
@@ -47,11 +47,12 @@
 
 <script setup lang="ts">
 import { ref } from "vue";
-import type { MCQuestionProp, MCQOptions } from "@type/MCQ.d.ts";
+import type { MCQuestionProp, MCQOptions } from "@/types/MCQ";
 import MCQOption from "./MCQOption.vue";
 import MCQButton from "./MCQButton.vue";
 import NextButton from "./NextButton.vue";
-import { useQuizStore } from "@/store/QuizStore";
+import { statIndex, useQuizStore } from "../../store/QuizStore";
+import { findSelectedOptionValue } from "../QuestionStore";
 
 const statUpdate = useQuizStore();
 const { statement, optionsList, _id } = defineProps<MCQuestionProp>();
@@ -64,19 +65,20 @@ const remainingQuestions = ref<number>(statUpdate.getRemainingQuestions());
 const submitAnswer = () => {
   submitted.value = true;
 };
-const timedNextQuestion = (_id: { $oid: string }) => {
-  trackQuizStatus(_id);
+
+const timedNextQuestion = () => {
   selectedOption.value = null;
   emit("nextQuestion");
 };
-const nextQuestion = (_id: { $oid: string }) => {
-  resetQuestion(_id);
+
+const nextQuestion = () => {
+  resetQuestion();
   remainingQuestions.value = statUpdate.getRemainingQuestions();
   emit("nextQuestion");
 };
 
 const skipQuestion = () => {
-  resetQuestion(_id);
+  resetQuestion();
   emit("skipQuestion");
 };
 
@@ -87,25 +89,50 @@ const trackQuizStatus = (_id: { $oid: string }) =>
     selectedOption.value ?? undefined,
   );
 
-const resetQuestion = (_id: { $oid: string }) => {
-  trackQuizStatus(_id);
+const resetQuestion = () => {
   submitted.value = false;
   selectedOption.value = null;
 };
 const prevQuestion = () => {
+  selectedOption.value = null;
   emit("prevQuestion");
 };
 
-// Only allow selection if the quiz is not submitted
-const selectOption = (key: string) => {
-  if (!submitted.value && selectedOption.value != key) {
-    selectedOption.value = key;
-  } else if (!submitted.value && selectedOption.value === key) {
-    selectedOption.value = null;
+const selectOption = (_id: { $oid: string }, key: string) => {
+  if (!submitted.value) {
+    selectedOption.value = selectedOption.value === key ? null : key;
   }
+  trackQuizStatus(_id);
 };
 
-const optionClass = (key: string, optionsList: MCQOptions[]) => {
+const optionClass = (
+  _id: { $oid: string },
+  key: string,
+  optionsList: MCQOptions[],
+): string => {
+  if (statUpdate.quizMode === "Timed") {
+    return getClassForTimedMode(_id, key);
+  }
+
+  return getClassForTutorMode(key, optionsList);
+};
+
+function getClassForTimedMode(_id: { $oid: string }, key: string): string {
+  const questionIndex = statIndex(_id.$oid, statUpdate.quizStats);
+  const selectedValue = statUpdate.quizStats[questionIndex]["selectedValue"];
+  const answer = findSelectedOptionValue(
+    statUpdate.quizStats,
+    questionIndex,
+    selectedValue,
+  );
+  if (String(answer) === key) {
+    selectedOption.value = key;
+    return "selected";
+  }
+  return "";
+}
+
+function getClassForTutorMode(key: string, optionsList: MCQOptions[]): string {
   const option = optionsList[parseInt(key)];
   const isSelected = selectedOption.value === key;
 
@@ -118,7 +145,7 @@ const optionClass = (key: string, optionsList: MCQOptions[]) => {
     : isSelected
       ? "wrong ignore-hover"
       : "ignore-hover";
-};
+}
 </script>
 
 <style scoped>
@@ -147,7 +174,7 @@ const optionClass = (key: string, optionsList: MCQOptions[]) => {
 }
 
 .mcq-option.selected {
-  background-color: #7f7f7f;
+  background-color: #2a52be;
   color: white;
   border-color: black;
 }

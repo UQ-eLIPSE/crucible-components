@@ -1,11 +1,15 @@
 import { mount } from "@vue/test-utils";
 import { describe, it, expect, beforeEach } from "vitest";
-import MCQTagOptions from "@/components/MCQ/MCQTagOptions.vue";
-import { getUniquePropertyValues } from "@/components/QuestionStore";
+import MCQTagOptions from "@components/MCQ/MCQTagOptions.vue";
+import { getUniquePropertyValues } from "@components/QuestionStore";
 import { createPinia, setActivePinia } from "pinia";
+import { useQuizStore } from "../../src/store/QuizStore";
+import { questionsData as questions } from "../testSeeds";
 
 beforeEach(() => {
   setActivePinia(createPinia());
+  const questionsQueue = useQuizStore();
+  questionsQueue.allQs = questions;
 });
 
 describe("MCQTagOptions.vue", () => {
@@ -21,19 +25,14 @@ describe("MCQTagOptions.vue", () => {
       },
     });
 
-    expect(wrapper.findAll(".category").length).toBe(4);
+    expect(wrapper.findAll(".category").length).toBe(3);
   });
 
   it("Returns an empty array when input is empty", () => {
     const tags = [];
 
     const uniqueCourses = getUniquePropertyValues(tags);
-    expect(uniqueCourses).toEqual({
-      course: [],
-      subject: [],
-      system: [],
-      animal: [],
-    });
+    expect(uniqueCourses).toEqual({});
   });
 
   it("returns unique values for a given property", () => {

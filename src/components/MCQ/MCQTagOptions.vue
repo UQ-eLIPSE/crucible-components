@@ -5,7 +5,7 @@
       :key="category"
       class="category"
     >
-      <h2>{{ category }}</h2>
+      <h2 class="category-heading">{{ category }}</h2>
       <FilterCheckbox :category="category" :topics="valueKeys" />
     </div>
   </div>
@@ -14,17 +14,17 @@
 <script setup lang="ts">
 import type { SelectedTags } from "@/types/MCQ";
 import { getUniquePropertyValues } from "../QuestionStore";
-import { getQuestionsBasedOnEnv } from "../DataAccessLayer";
-import FilterCheckbox from "../FilterCheckbox.vue";
+import FilterCheckbox from "./FilterCheckbox.vue";
+import { useQuizStore } from "@/store/QuizStore";
 
-// Access environment variable
-const questions = getQuestionsBasedOnEnv();
-const tagSet = questions.flatMap((question) => question.tags);
+const questionsQueue = useQuizStore();
+const questions = questionsQueue.allQs;
+const tagSet = questions.map((question) => question.tags);
 
 const filterSet: SelectedTags = getUniquePropertyValues(tagSet);
 </script>
 
-<style>
+<style scoped>
 .filter {
   text-align: left;
   text-transform: capitalize;
@@ -37,6 +37,11 @@ li {
 }
 label {
   cursor: pointer;
+}
+
+h2.category-heading {
+  margin-bottom: 0;
+  font-size: 0.9rem;
 }
 
 @media screen and (max-width: 768px) {

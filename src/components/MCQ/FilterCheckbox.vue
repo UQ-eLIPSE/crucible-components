@@ -15,7 +15,7 @@
         @change="onChecked($event)"
       />
       <label :for="`${category}-${topic}-checkbox`">
-        {{ topic }}
+        {{ formatTopic(topic) }}
         <span v-if="num !== null && num !== '0'" class="question-number">{{
           num
         }}</span></label
@@ -27,14 +27,17 @@
 <script setup lang="ts">
 import { SelectedTags } from "@/types/MCQ";
 import { useQuizStore } from "@/store/QuizStore";
-import { getQuestionsBasedOnEnv } from "./DataAccessLayer";
-import { filterQuestionsByTags } from "./QuestionStore";
+import { filterQuestionsByTags } from "../QuestionStore";
 import { computed } from "vue";
 const { category, topics } = defineProps<{
   category: string;
   topics: string[];
 }>();
 const questionsQueue = useQuizStore();
+
+const formatTopic = (topic: string) => {
+  return category === "course" ? topic.toUpperCase() : topic;
+};
 
 const questionsNumByTags = computed(() =>
   Object.entries(topics)
@@ -61,6 +64,7 @@ const getQuestionsnumByTags = (
   const currentSelectedTags = questionsQueue.getselectedtags();
 
   if (
+    !currentSelectedTags[category] ||
     (currentSelectedTags[category as keyof SelectedTags] as string[])?.includes(
       topic,
     )
@@ -76,8 +80,7 @@ const getQuestionsnumByTags = (
     modifiedSelectedTags[category].push(topic);
   }
 
-  const questions = getQuestionsBasedOnEnv();
-
+  const questions = questionsQueue.allQs;
   return filterQuestionsByTags(
     questions,
     modifiedSelectedTags,
@@ -106,8 +109,13 @@ const getQuestionsnumByTags = (
 
 ul {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0.5rem 1rem;
+  grid-template-columns: 1fr;
+  gap: 0.25rem 1rem;
+  padding-top: 0.5rem;
+  margin-top: 0.5rem;
+  border-top: 1px solid grey;
+  padding-left: 1rem;
+  list-style-type: none;
 }
 @media screen and (max-width: 768px) {
   .filter-options {

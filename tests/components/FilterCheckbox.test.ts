@@ -1,16 +1,20 @@
 import { describe, it, expect, beforeEach, vi } from "vitest";
-import FilterCheckbox from "@/components/FilterCheckbox.vue";
+import FilterCheckbox from "@components/MCQ/FilterCheckbox.vue";
 import { DOMWrapper, VueWrapper, mount } from "@vue/test-utils";
 import { createPinia, setActivePinia } from "pinia";
-
+import { useQuizStore } from "../../src/store/QuizStore";
+import { questionsData as questions } from "../testSeeds";
 let wrapper: VueWrapper;
 const category: string = "course";
-const topics: string[] = ["VETS2011", "VETS2012"];
+const topics: string[] = ["VETS2011", "VETS9999"];
 let firstCheckbox: Omit<DOMWrapper<HTMLInputElement>, "exists">;
 let secondCheckbox: Omit<DOMWrapper<HTMLInputElement>, "exists">;
 
 beforeEach(() => {
   setActivePinia(createPinia());
+  // * NEED TO ADD THIS I THINK
+  const questionsQueue = useQuizStore();
+  questionsQueue.allQs = questions;
   // Access the store and initialize it with some data
   wrapper = mount(FilterCheckbox, {
     props: {
@@ -47,7 +51,7 @@ describe("FilterCheckbox.vue", () => {
 });
 
 it("Should disable and grey out checkboxes with no associated questions", async () => {
-  //VETS2012 has no questions.
+  //VETS9999 has no questions.
   expect(secondCheckbox.attributes("disabled")).toBe("");
   expect(wrapper.find(".grey-out").exists()).toBe(true);
 });

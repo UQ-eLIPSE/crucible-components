@@ -69,7 +69,7 @@
 </template>
 
 <script setup lang="ts">
-import { useQuizStore } from "@/store/QuizStore";
+import { useQuizStore } from "../../store/QuizStore";
 
 const questionsQueue = useQuizStore();
 
@@ -87,7 +87,6 @@ const correctQuizNumPercent = ((correctQuizNum * 100) / workQuiz).toFixed(0);
 <style scoped>
 .report-container {
   position: relative;
-  width: 50em;
   height: 30em;
   display: flex;
   flex-direction: column-reverse;

@@ -1,4 +1,4 @@
-import { MCQuestion, SelectedTags, tags } from "@/types/MCQ";
+import { MCQuestion, QuestionState, SelectedTags, Tags } from "../types/MCQ";
 
 /**
  * shuffleArray - Shuffles the array using Fisher-Yates algorithm
@@ -20,44 +20,59 @@ export const getQuestionsRandomly = (
   const shuffled = shuffleArray(questions);
   return shuffled.slice(0, count);
 };
+// this is the function to generate Taxonomies
+export function getUniquePropertyValues(tagProps: Tags[]) {
+  // populate unique values of the given tags
+  const uniqueTags = tagProps.reduce(
+    (acc: Record<string, Set<string>>, item) => {
+      Object.keys(item).forEach((key) => {
+        // during generate taxonomies, exclude empty strings
+        if (typeof key === "string" && key.trim() !== "") {
+          if (!acc[key]) {
+            acc[key] = new Set<string>();
+          }
+          acc[key].add(item[key]);
+        }
+      });
+      return acc;
+    },
+    {},
+  );
 
-export function getUniquePropertyValues(tagProps: tags[]) {
-  const uniqueValues = {
-    course: new Set<string>(),
-    subject: new Set<string>(),
-    system: new Set<string>(),
-    animal: new Set<string>(),
-  };
-
-  for (const item of tagProps) {
-    uniqueValues.course.add(item.course);
-    uniqueValues.subject.add(item.subject);
-    uniqueValues.system.add(item.system);
-    uniqueValues.animal.add(item.animal);
-  }
-
-  return {
-    course: [...uniqueValues.course],
-    subject: [...uniqueValues.subject],
-    system: [...uniqueValues.system],
-    animal: [...uniqueValues.animal],
-  };
+  const result = Object.keys(uniqueTags).reduce(
+    (acc: Record<string, string[]>, key) => {
+      acc[key] = [...uniqueTags[key]];
+      return acc;
+    },
+    {},
+  );
+  return result;
 }
 
 export function filterQuestionsByTags(
   questions: MCQuestion[],
   selectedTags: SelectedTags,
 ): MCQuestion[] {
-  return questions.filter((question) => {
-    return (
-      (selectedTags.course.length === 0 ||
-        selectedTags.course.includes(question.tags.course)) &&
-      (selectedTags.subject.length === 0 ||
-        selectedTags.subject.includes(question.tags.subject)) &&
-      (selectedTags.system.length === 0 ||
-        selectedTags.system.includes(question.tags.system)) &&
-      (selectedTags.animal.length === 0 ||
-        selectedTags.animal.includes(question.tags.animal))
-    );
+  return questions.filter((question: MCQuestion) => {
+    return Object.keys(selectedTags).every((key) => {
+      return (
+        !selectedTags[key].length ||
+        selectedTags[key].includes(question.tags[key])
+      );
+    });
   });
+}
+
+export function findSelectedOptionValue(
+  quizStats: QuestionState[],
+  questionIndex: number,
+  answer: string,
+): number | undefined {
+  const optionsList = quizStats[questionIndex].question.optionsList;
+  for (let i = 0; i < optionsList.length; i++) {
+    if (optionsList[i].optionValue === answer) {
+      return i; // This returns the index if the answer matches
+    }
+  }
+  return undefined; // Return undefined if no match is found
 }
