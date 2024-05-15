@@ -74,6 +74,15 @@ const handleStartQuiz = ({ questionAmount, mode }: StartQuizConfig) => {
 </template>
 
 <style scoped>
+@font-face {
+  font-family: "icomoon";
+  src:
+    url("../public/fonts/icomoon.eot?tvt6dy#iefix") format("embedded-opentype"),
+    url("../public/fonts/icomoon.ttf?tvt6dy") format("truetype"),
+    url("../public/fonts/icomoon.woff?tvt6dy") format("woff"),
+    url("../public/fonts/icomoon.svg?tvt6dy#icomoon") format("svg");
+}
+
 #question-amount {
   margin-left: 5px;
 }

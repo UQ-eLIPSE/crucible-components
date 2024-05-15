@@ -13,7 +13,7 @@ function Se(e, s) {
 function $t() {
   return Xe().__VUE_DEVTOOLS_GLOBAL_HOOK__;
 }
-function Xe() {
+function Ze() {
   return typeof navigator < "u" && typeof window < "u" ? window : typeof globalThis < "u" ? globalThis : {};
 }
 const qt = typeof Proxy == "function", Nt = "devtools-plugin:setup", It = "plugin:settings:set";
@@ -22,8 +22,8 @@ function Ct() {
   var e;
   return K !== void 0 || (typeof window < "u" && window.performance ? (K = !0, we = window.performance) : typeof globalThis < "u" && (!((e = globalThis.perf_hooks) === null || e === void 0) && e.performance) ? (K = !0, we = globalThis.perf_hooks.performance) : K = !1), K;
 }
-function Lt() {
-  return Ct() ? we.now() : Date.now();
+function Pt() {
+  return Lt() ? Ee.now() : Date.now();
 }
 class Pt {
   constructor(s, n) {
@@ -45,21 +45,22 @@ class Pt {
       getSettings() {
         return i;
       },
-      setSettings(r) {
+      setSettings(i) {
         try {
-          localStorage.setItem(o, JSON.stringify(r));
+          localStorage.setItem(o, JSON.stringify(i));
         } catch {
         }
         i = r;
       },
       now() {
-        return Lt();
+        return Pt();
       }
     }, n && n.on(It, (r, a) => {
       r === this.plugin.id && this.fallbacks.setSettings(a);
     }), this.proxiedOn = new Proxy({}, {
       get: (r, a) => this.target ? this.target.on[a] : (...u) => {
         this.onQueue.push({
+          method: a,
           method: a,
           args: u
         });
@@ -71,7 +72,9 @@ class Pt {
         resolve: () => {
         }
       }), this.fallbacks[a](...u)) : (...u) => new Promise((c) => {
+      }), this.fallbacks[a](...u)) : (...u) => new Promise((c) => {
         this.targetQueue.push({
+          method: a,
           method: a,
           args: u,
           resolve: c
@@ -81,6 +84,10 @@ class Pt {
   }
   async setRealTarget(s) {
     this.target = s;
+    for (const n of this.onQueue)
+      this.target.on[n.method](...n.args);
+    for (const n of this.targetQueue)
+      n.resolve(await this.target[n.method](...n.args));
     for (const n of this.onQueue)
       this.target.on[n.method](...n.args);
     for (const n of this.targetQueue)
@@ -96,8 +103,8 @@ function Ze(e, s) {
     (t.__VUE_DEVTOOLS_PLUGINS__ = t.__VUE_DEVTOOLS_PLUGINS__ || []).push({
       pluginDescriptor: n,
       setupFn: s,
-      proxy: r
-    }), r && s(r.proxiedTarget);
+      proxy: i
+    }), i && s(i.proxiedTarget);
   }
 }
 /*!
@@ -128,8 +135,9 @@ function Ie(e, s, n) {
   }, t.onerror = function() {
     console.error("could not download file");
   }, t.send();
+  }, t.send();
 }
-function tt(e) {
+function nt(e) {
   const s = new XMLHttpRequest();
   s.open("HEAD", e, !1);
   try {
@@ -144,15 +152,17 @@ function he(e) {
   } catch {
     const n = document.createEvent("MouseEvents");
     n.initMouseEvent("click", !0, !0, window, 0, 0, 0, 80, 20, !1, !1, !1, !1, 0, null), e.dispatchEvent(n);
+    const n = document.createEvent("MouseEvents");
+    n.initMouseEvent("click", !0, !0, window, 0, 0, 0, 80, 20, !1, !1, !1, !1, 0, null), e.dispatchEvent(n);
   }
 }
 const me = typeof navigator == "object" ? navigator : { userAgent: "" }, nt = /Macintosh/.test(me.userAgent) && /AppleWebKit/.test(me.userAgent) && !/Safari/.test(me.userAgent), st = be ? (
   // Use download attribute first if possible (#193 Lumia mobile) unless this is a macOS WebView or mini program
-  typeof HTMLAnchorElement < "u" && "download" in HTMLAnchorElement.prototype && !nt ? Mt : (
+  typeof HTMLAnchorElement < "u" && "download" in HTMLAnchorElement.prototype && !st ? At : (
     // Use msSaveOrOpenBlob as a second approach
     "msSaveOrOpenBlob" in me ? xt : (
       // Fallback to using FileReader and a popup
-      Vt
+      Dt
     )
   )
 ) : () => {
@@ -194,6 +204,9 @@ function Vt(e, s, n, t) {
     const a = URL.createObjectURL(e);
     t ? t.location.assign(a) : location.href = a, t = null, setTimeout(function() {
       URL.revokeObjectURL(a);
+    const a = URL.createObjectURL(e);
+    t ? t.location.assign(a) : location.href = a, t = null, setTimeout(function() {
+      URL.revokeObjectURL(a);
     }, 4e4);
   }
 }
@@ -204,7 +217,7 @@ function E(e, s) {
 function Ce(e) {
   return "_a" in e && "install" in e;
 }
-function ot() {
+function it() {
   if (!("clipboard" in navigator))
     return E("Your browser doesn't support the Clipboard API", "error"), !0;
 }
@@ -216,7 +229,7 @@ async function jt(e) {
     try {
       await navigator.clipboard.writeText(JSON.stringify(e.state.value)), E("Global state copied to clipboard.");
     } catch (s) {
-      if (it(s))
+      if (rt(s))
         return;
       E("Failed to serialize the state. Check the console for more details.", "error"), console.error(s);
     }
@@ -226,14 +239,14 @@ async function Dt(e) {
     try {
       rt(e, JSON.parse(await navigator.clipboard.readText())), E("Global state pasted from clipboard.");
     } catch (s) {
-      if (it(s))
+      if (rt(s))
         return;
       E("Failed to deserialize the state from clipboard. Check the console for more details.", "error"), console.error(s);
     }
 }
-async function zt(e) {
+async function Ut(e) {
   try {
-    st(new Blob([JSON.stringify(e.state.value)], {
+    ot(new Blob([JSON.stringify(e.state.value)], {
       type: "text/plain;charset=utf-8"
     }), "pinia-state.json");
   } catch (s) {
@@ -250,13 +263,14 @@ function Ut() {
         if (!t)
           return s(null);
         const o = t.item(0);
+        const o = t.item(0);
         return s(o ? { text: await o.text(), file: o } : null);
       }, U.oncancel = () => s(null), U.onerror = n, U.click();
     });
   }
   return e;
 }
-async function Rt(e) {
+async function Ft(e) {
   try {
     const n = await Ut()();
     if (!n)
@@ -311,17 +325,26 @@ function Bt(e) {
   }
   const s = {
     state: Object.keys(e.$state).map((n) => ({
+    state: Object.keys(e.$state).map((n) => ({
       editable: !0,
+      key: n,
+      value: e.$state[n]
       key: n,
       value: e.$state[n]
     }))
   };
   return e._getters && e._getters.length && (s.getters = e._getters.map((n) => ({
+  return e._getters && e._getters.length && (s.getters = e._getters.map((n) => ({
     editable: !1,
     key: n,
     value: e[n]
   }))), e._customProperties.size && (s.customProperties = Array.from(e._customProperties).map((n) => ({
+    key: n,
+    value: e[n]
+  }))), e._customProperties.size && (s.customProperties = Array.from(e._customProperties).map((n) => ({
     editable: !0,
+    key: n,
+    value: e[n]
     key: n,
     value: e[n]
   }))), s;
@@ -339,7 +362,7 @@ function Ht(e) {
     newValue: e.newValue
   } : {};
 }
-function Gt(e) {
+function Jt(e) {
   switch (e) {
     case D.direct:
       return "mutation";
@@ -377,6 +400,7 @@ function Wt(e, s) {
           icon: "content_copy",
           action: () => {
             jt(s);
+            jt(s);
           },
           tooltip: "Serialize and copy the state"
         },
@@ -390,7 +414,7 @@ function Wt(e, s) {
         {
           icon: "save",
           action: () => {
-            zt(s);
+            Ut(s);
           },
           tooltip: "Save the state as a JSON file"
         },
@@ -422,6 +446,7 @@ function Wt(e, s) {
             key: "state",
             editable: !0,
             value: a._isOptionsAPI ? {
+            value: a._isOptionsAPI ? {
               _custom: {
                 value: ve(a.$state),
                 actions: [
@@ -429,17 +454,22 @@ function Wt(e, s) {
                     icon: "restore",
                     tooltip: "Reset the state of this store",
                     action: () => a.$reset()
+                    action: () => a.$reset()
                   }
                 ]
               }
             } : (
               // NOTE: workaround to unwrap transferred refs
               Object.keys(a.$state).reduce((u, c) => (u[c] = a.$state[c], u), {})
+              Object.keys(a.$state).reduce((u, c) => (u[c] = a.$state[c], u), {})
             )
+          }), a._getters && a._getters.length && t.instanceData.state.push({
+            type: ge(a.$id),
           }), a._getters && a._getters.length && t.instanceData.state.push({
             type: ge(a.$id),
             key: "getters",
             editable: !1,
+            value: a._getters.reduce((u, c) => {
             value: a._getters.reduce((u, c) => {
               try {
                 u[c] = a[c];
@@ -515,6 +545,7 @@ function Yt(e, s) {
         layerId: G,
         event: {
           time: t(),
+          time: t(),
           title: "🛫 " + u,
           subtitle: "start",
           data: {
@@ -528,6 +559,7 @@ function Yt(e, s) {
         H = void 0, n.addTimelineEvent({
           layerId: G,
           event: {
+            time: t(),
             time: t(),
             title: "🛬 " + u,
             subtitle: "end",
@@ -544,6 +576,7 @@ function Yt(e, s) {
         H = void 0, n.addTimelineEvent({
           layerId: G,
           event: {
+            time: t(),
             time: t(),
             logType: "error",
             title: "💥 " + u,
@@ -564,9 +597,11 @@ function Yt(e, s) {
           layerId: G,
           event: {
             time: t(),
+            time: t(),
             title: "Change",
-            subtitle: r,
+            subtitle: i,
             data: {
+              newValue: a,
               newValue: a,
               oldValue: u
             },
@@ -588,7 +623,7 @@ function Yt(e, s) {
           display: "DebuggerEvent",
           type: "object",
           tooltip: "raw DebuggerEvent[]",
-          value: r
+          value: i
         }
       }), n.addTimelineEvent({
         layerId: G,
@@ -600,6 +635,7 @@ function Yt(e, s) {
       o(r), n.addTimelineEvent({
         layerId: G,
         event: {
+          time: t(),
           time: t(),
           title: "🔥 " + s.$id,
           subtitle: "HMR update",
@@ -658,6 +694,7 @@ function Xt() {
       return !this._a && !Ke ? t.push(i) : n.push(i), this;
     },
     _p: n,
+    _p: n,
     // it's actually undefined here
     // @ts-expect-error
     _a: null,
@@ -677,7 +714,7 @@ function ct(e, s) {
   }
   return e;
 }
-const lt = () => {
+const dt = () => {
 };
 function je(e, s, n, t = lt) {
   e.push(s);
@@ -703,7 +740,7 @@ function Qe(e, s) {
   }
   return e;
 }
-const en = process.env.NODE_ENV !== "production" ? Symbol("pinia:skipHydration") : (
+const tn = process.env.NODE_ENV !== "production" ? Symbol("pinia:skipHydration") : (
   /* istanbul ignore next */
   Symbol()
 );
@@ -774,7 +811,7 @@ function Ee(e, s, n = {}, t, o, i) {
     /* istanbul ignore next */
     process.env.NODE_ENV !== "production" ? () => {
       throw new Error(`🍍: Store "${e}" is built using the setup syntax and does not implement $reset().`);
-    } : lt
+    } : dt
   );
   function w() {
     r.stop(), f = [], g = [], t._s.delete(e);
@@ -952,7 +989,7 @@ This will fail in production.`);
   }
   return r.$id = t, r;
 }
-const sn = ["id", "checked"], on = ["for", "innerHTML"], rn = /* @__PURE__ */ I({
+const on = ["id", "checked"], rn = ["for", "innerHTML"], an = /* @__PURE__ */ N({
   __name: "MCQOption",
   props: {
     optionKey: {},
@@ -979,7 +1016,7 @@ const sn = ["id", "checked"], on = ["for", "innerHTML"], rn = /* @__PURE__ */ I(
         class: F(o.submitted ? "mcq-option-label ignore-hover" : "mcq-option-label"),
         onClick: i[0] || (i[0] = (r) => t()),
         innerHTML: o.option.optionValue
-      }, null, 10, on))
+      }, null, 10, rn))
     ], 64));
   }
 }), A = (e, s) => {
@@ -1009,7 +1046,7 @@ const sn = ["id", "checked"], on = ["for", "innerHTML"], rn = /* @__PURE__ */ I(
       }, k(a(u.submitted, u.selectedOption).text), 11, un)
     ]));
   }
-}), ln = /* @__PURE__ */ A(cn, [["__scopeId", "data-v-847b8dd5"]]), dn = /* @__PURE__ */ I({
+}), dn = /* @__PURE__ */ M(ln, [["__scopeId", "data-v-847b8dd5"]]), fn = /* @__PURE__ */ N({
   __name: "NextButton",
   props: {
     buttonName: {}
@@ -1032,10 +1069,12 @@ const sn = ["id", "checked"], on = ["for", "innerHTML"], rn = /* @__PURE__ */ I(
   for (let s = e.length - 1; s > 0; s--) {
     const n = Math.floor(Math.random() * (s + 1));
     [e[s], e[n]] = [e[n], e[s]];
+    const n = Math.floor(Math.random() * (s + 1));
+    [e[s], e[n]] = [e[n], e[s]];
   }
   return e;
-}, pn = (e, s) => fn(s).slice(0, e);
-function dt(e) {
+}, mn = (e, s) => pn(s).slice(0, e);
+function ft(e) {
   const s = e.reduce(
     (t, o) => (Object.keys(o).forEach((i) => {
       typeof i == "string" && i.trim() !== "" && (t[i] || (t[i] = /* @__PURE__ */ new Set()), t[i].add(o[i]));
@@ -1044,12 +1083,17 @@ function dt(e) {
   );
   return Object.keys(s).reduce(
     (t, o) => (t[o] = [...s[o]], t),
+    (t, o) => (t[o] = [...s[o]], t),
     {}
   );
 }
 function Le(e, s) {
   return e.filter((n) => Object.keys(s).every((t) => !s[t].length || s[t].includes(n.tags[t])));
 }
+function hn(e, s, n) {
+  const t = e[s].question.optionsList;
+  for (let o = 0; o < t.length; o++)
+    if (t[o].optionValue === n)
 function hn(e, s, n) {
   const t = e[s].question.optionsList;
   for (let o = 0; o < t.length; o++)
@@ -1094,9 +1138,14 @@ const ft = (e, s) => s.findIndex((n) => {
     modifySelectedTags(e, { category: s, topic: n }) {
       this.selectedTags[s] && (this.selectedTags[s] = e ? [...this.selectedTags[s], n] : this.selectedTags[s].filter(
         (t) => t !== n
+    modifySelectedTags(e, { category: s, topic: n }) {
+      this.selectedTags[s] && (this.selectedTags[s] = e ? [...this.selectedTags[s], n] : this.selectedTags[s].filter(
+        (t) => t !== n
       ));
     },
     initialiseQuiz(e, s) {
+      this.questionsQueue = e, this.questionsStack = [], this.quizMode = s, this.quizStats = e.map((n) => ({
+        question: n,
       this.questionsQueue = e, this.questionsStack = [], this.quizMode = s, this.quizStats = e.map((n) => ({
         question: n,
         correct: 0,
@@ -1116,6 +1165,7 @@ const ft = (e, s) => s.findIndex((n) => {
           const o = this.quizStats[t].question.optionsList.map((i) => i.optionCorrect).indexOf(!0);
           Number(n) === Number(o) ? this.quizStats[t].correct = 1 : this.quizStats[t].correct = 0;
         }
+        this.quizStats[t].selectedValue = n !== void 0 ? this.quizStats[t].question.optionsList[Number(n)].optionValue : "";
         this.quizStats[t].selectedValue = n !== void 0 ? this.quizStats[t].question.optionsList[Number(n)].optionValue : "";
       }
     },
@@ -1146,7 +1196,7 @@ const ft = (e, s) => s.findIndex((n) => {
       return this.questionsQueue.length;
     }
   }
-}), mn = ["innerHTML"], _n = { class: "mcq-list" }, gn = ["onClick"], vn = { class: "next-prev-question" }, bn = /* @__PURE__ */ I({
+}), gn = ["innerHTML"], _n = { class: "mcq-list" }, vn = ["onClick"], bn = { class: "next-prev-question" }, yn = /* @__PURE__ */ N({
   __name: "MCQQuestion",
   props: {
     _id: {},
@@ -1204,7 +1254,7 @@ const ft = (e, s) => s.findIndex((n) => {
             submitted: o.value,
             onSelectOption: (Y) => M(T._id, O)
           }, null, 8, ["option-key", "checked", "option", "submitted", "onSelectOption"])
-        ], 10, gn))), 128))
+        ], 10, vn))), 128))
       ]),
       S(n).quizMode === "Tutor" ? (h(), j(ln, {
         key: 0,
@@ -1484,6 +1534,7 @@ const ft = (e, s) => s.findIndex((n) => {
         id: "optionName",
         name: "optionName",
         onChange: t
+        onChange: t
       }, [
         (h(!0), v(R, null, ee(o.options, (r) => (h(), v("option", {
           key: r.value,
@@ -1539,6 +1590,7 @@ const ft = (e, s) => s.findIndex((n) => {
               max: S(a).getquestionnumber(),
               onInput: c
             }, null, 40, ls), [
+            }, null, 40, ls), [
               [
                 Et,
                 n.value,
@@ -1568,7 +1620,7 @@ const ft = (e, s) => s.findIndex((n) => {
           }, null, 8, ["options", "class", "disabled"])
         ])
       ]),
-      p("button", {
+      m("button", {
         class: "start-button",
         onClick: u
       }, "Start")
@@ -1580,8 +1632,12 @@ const ft = (e, s) => s.findIndex((n) => {
   let [t, o] = n.split(":");
   return [t, o] = [t.trim().toLowerCase(), bs(o)], s[t] = o, s;
 }, {}), Ss = (e) => e.map((s) => ({
+  let [t, o] = n.split(":");
+  return [t, o] = [t.trim().toLowerCase(), bs(o)], s[t] = o, s;
+}, {}), Ss = (e) => e.map((s) => ({
   _id: { $oid: s._id.$oid },
   statement: s.statement,
+  tags: ys(s.tags),
   tags: ys(s.tags),
   optionsList: s.optionsList,
   link: s.link
@@ -1600,6 +1656,8 @@ function ke(e) {
 function mt(e, s = !1) {
   return P.isArray(e, P.isString) ? s ? e.every(ke) : e.some(ke) : !1;
 }
+function ws(e) {
+  return P.isObject(e) && P.isString(e.optionValue) && (e.optionCorrect === void 0 || P.isBoolean(e.optionCorrect));
 function ws(e) {
   return P.isObject(e) && P.isString(e.optionValue) && (e.optionCorrect === void 0 || P.isBoolean(e.optionCorrect));
 }
@@ -1669,7 +1727,7 @@ function ks(e, s) {
     `Filtering out invalid tags: %c${t} out of ${i}`
   ), Te(o, `Questions with no tags: %c${o}`);
 }
-const $s = /* @__PURE__ */ I({
+const $s = /* @__PURE__ */ N({
   __name: "CrucibleComponent",
   setup(e) {
     const s = Q(0), n = z(), t = Q(!1), o = Q([]), i = Be("$dataLink");
@@ -1678,6 +1736,8 @@ const $s = /* @__PURE__ */ I({
       const a = dt(
         o.value.map((u) => u.tags)
       );
+      n.setselectedTags(
+        Object.keys(a).reduce((u, c) => ({ ...u, [c]: [] }), {})
       n.setselectedTags(
         Object.keys(a).reduce((u, c) => ({ ...u, [c]: [] }), {})
       );
@@ -1694,7 +1754,7 @@ const $s = /* @__PURE__ */ I({
     };
     return (a, u) => t.value && S(n).quizMode === "Tutor" ? (h(), j(Mn, { key: 0 })) : t.value && S(n).quizMode === "Timed" ? (h(), j(Un, { key: 1 })) : (h(), j(vs, {
       key: 2,
-      onStartQuiz: r
+      onStartQuiz: i
     }));
   }
 }), qs = /* @__PURE__ */ A($s, [["__scopeId", "data-v-b0b475ef"]]), Ns = {
