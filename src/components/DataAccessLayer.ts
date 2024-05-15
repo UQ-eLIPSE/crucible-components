@@ -1,10 +1,8 @@
 import { MCQuestion } from "@/types/MCQ";
-import { generateDummyData } from "../../data/dummyQuestionData";
-import NetworkCalls from "@/utils/NetworkCalls";
 import UtilConversion from "@/utils/UtilConversion";
 import { pluginQuestions as questions } from "@/components/question-data";
 import { DataMCQuestion } from "@/types/DataMCQ";
-import NetworkGuard from "@/utils/NetworkGuard";
+import NetworkGuard, { InvalidDataQsLogs } from "@/utils/NetworkGuard";
 
 // TODO: ADD TYPEGUARDS VALIDATION
 export const getAllQuestions = (apiData: DataMCQuestion[]) => {
@@ -19,10 +17,6 @@ export const getAllQuestions = (apiData: DataMCQuestion[]) => {
   }
 };
 
-export const getDummyQuestions = (random = false) => {
-  return generateDummyData(random);
-};
-
 export const getStaticRawData = (): DataMCQuestion[] => {
   return questions;
 };
@@ -31,12 +25,6 @@ export const getConvertedStaticData = (): MCQuestion[] => {
   // Validate questions
   const allDataQs: DataMCQuestion[] = getStaticRawData();
   return UtilConversion.convertQuestions(validateMCQuestions(allDataQs));
-};
-
-export const getAllQuestionsFromApi = async (): Promise<MCQuestion[]> => {
-  const allQuizzes = await NetworkCalls.getQuiz();
-
-  return UtilConversion.convertQuestions(allQuizzes);
 };
 
 // helpers functions with typeguards and console warns
@@ -54,58 +42,56 @@ function validateMCQuestions(allDataQs: DataMCQuestion[]): DataMCQuestion[] {
         "color: #FF0000",
       );
 
-  let invalidTags = 0;
-  let noTags = 0;
-  let invalidQs = 0;
-  let totalTags = 0;
-  const allQsLength = allDataQs.length;
+  const initialStats: InvalidDataQsLogs = {
+    invalidTags: 0,
+    noTags: 0,
+    invalidQs: 0,
+    totalTags: 0,
+  };
 
-  for (const dataQs of allDataQs as DataMCQuestion[]) {
+  const stats = (allDataQs as DataMCQuestion[]).reduce((acc, dataQs) => {
     // Check question structure
     if (!NetworkGuard.isMCQuestion(dataQs)) {
-      invalidQs++;
+      return { ...acc, invalidQs: acc.invalidQs + 1 };
     }
 
     let { tags } = dataQs;
 
     if (!tags || (Array.isArray(tags) && !tags.length)) {
-      noTags++;
-      continue;
+      return { ...acc, noTags: acc.noTags + 1 };
     }
 
-    totalTags += tags.length;
+    const totalTags = acc.totalTags + tags.length;
 
-    if (!NetworkGuard.isAllTags(tags)) {
+    if (!NetworkGuard.validateTags(tags, true)) {
       const validTags = tags.filter((tag) => NetworkGuard.isTag(tag));
-      invalidTags += tags.length - validTags.length;
+      const invalidTags = acc.invalidTags + tags.length - validTags.length;
       tags = validTags; // remove all invalid tags
+      return { ...acc, invalidTags, totalTags };
     }
-  }
 
-  logQsWarnings(invalidQs, allQsLength, invalidTags, totalTags, noTags);
+    return { ...acc, totalTags };
+  }, initialStats);
+
+  logQsWarnings(stats, allDataQs.length);
 
   return allDataQs;
 }
 
-function logQsWarnings(
-  invalidQs: number,
-  allQsLength: number,
-  invalidTags: number,
-  totalTags: number,
-  noTags: number,
-): void {
-  invalidQs &&
-    console.warn(
-      `Invalid Questions Received: %c${invalidQs} out of ${allQsLength}`,
-      "color: #FF0000",
-    );
+// condition will be > 0 (truthy) if there are invalid stats
+function logWarning(condition: number, message: string) {
+  condition && console.warn(message, "color: #FF0000"); // red text color
+}
 
-  invalidTags &&
-    console.warn(
-      `Filtering out invalid tags: %c${invalidTags} out of ${totalTags}`,
-      "color: #FF0000",
-    );
-
-  noTags &&
-    console.warn(`Questions with no tags: %c${noTags}`, "color: #FF0000");
+function logQsWarnings(stats: InvalidDataQsLogs, allQsLength: number): void {
+  const { invalidQs, invalidTags, noTags, totalTags } = stats;
+  logWarning(
+    invalidQs,
+    `Invalid Questions Received: %c${invalidQs} out of ${allQsLength}`,
+  );
+  logWarning(
+    invalidTags,
+    `Filtering out invalid tags: %c${invalidTags} out of ${totalTags}`,
+  );
+  logWarning(noTags, `Questions with no tags: %c${noTags}`);
 }

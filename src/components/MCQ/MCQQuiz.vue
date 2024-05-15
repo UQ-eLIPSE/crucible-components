@@ -1,6 +1,10 @@
 <template>
   <main>
     <MCQInfoPanel />
+    <h3 class="questions-left-header">
+      Question {{ questionsQueue.getAnsweredQuestionsNum() }} out of
+      {{ questionsQueue.quizStats.length }}
+    </h3>
     <MCQQuestion
       v-if="currentQuestion"
       :statement="currentQuestion.statement"
@@ -33,10 +37,11 @@ onMounted(() => {
 
 const skipQuestion = () => {
   questionsQueue.enqueueQuestion(currentQuestion.value as MCQuestion);
-  nextQuestion();
+  currentQuestion.value = questionsQueue.dequeueQuestion();
 };
 
 const nextQuestion = () => {
+  questionsQueue.setAnsweredQuestionsNum();
   currentQuestion.value = questionsQueue.dequeueQuestion();
 };
 
@@ -47,6 +52,7 @@ const refreshPage = () => window.location.reload();
 main {
   width: 800px;
 }
+
 .btn-relocate {
   float: right;
   background-color: green;

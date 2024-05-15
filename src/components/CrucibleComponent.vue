@@ -21,12 +21,12 @@ const quizQuestions = ref(0);
 const questionsQueue = useQuizStore();
 const quizStarted = ref<boolean>(false);
 const questions = ref<MCQuestion[]>([]);
-// inject data from crucible parent here
+// Inject data from crucible parent here
 const apiData: DataApi = inject("$dataLink") as DataApi;
 
 onBeforeMount(() => {
   // Fetch quiz data from API
-  const useStatic = import.meta.env.VITE_USE_DUMMY_DATA === "true";
+  const useStatic = import.meta.env.VITE_USE_DUMMY_DATA === "false";
   questions.value = useStatic
     ? getConvertedStaticData()
     : getAllQuestions(apiData.data.questions as DataMCQuestion[]);

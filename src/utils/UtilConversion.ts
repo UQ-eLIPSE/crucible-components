@@ -2,11 +2,16 @@
 import { DataMCQuestion, DataTags } from "@/types/DataMCQ";
 import { MCQuestion, Tags } from "@/types/MCQ";
 
-const convertTags = (tagsData: DataTags): Tags => {
+// This function is used to convert the tags values to the correct format.
+const getCorrectTagValues = (value: string): string => {
+  return value.trim().toLowerCase().replace("_", " ");
+};
+
+export const convertTags = (tagsData: DataTags): Tags => {
   return tagsData.reduce((acc: Tags, tag: string) => {
     if (!tag.includes(":")) return acc;
     let [key, value] = tag.split(":");
-    [key, value] = [key.trim().toLowerCase(), value.trim().toLowerCase()];
+    [key, value] = [key.trim().toLowerCase(), getCorrectTagValues(value)];
     acc[key] = value;
     return acc;
   }, {});

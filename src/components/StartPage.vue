@@ -49,7 +49,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
+import { onMounted, ref, watchEffect } from "vue";
 import MCQTagOptions from "./MCQ/MCQTagOptions.vue";
 import DropDownbox from "./MCQ/DropDownbox.vue";
 import { useQuizStore } from "@/store/QuizStore";
@@ -61,6 +61,13 @@ const showMaxMsgDelay = 3000;
 const showMaxMsgTimeoutId = ref<number | null>(null);
 const emit = defineEmits(["start-quiz"]);
 const questionsQueue = useQuizStore();
+
+onMounted(() => {
+  watchEffect(() => {
+    const maxQuestions = questionsQueue.getquestionnumber();
+    questionAmount.value = Math.min(10, maxQuestions);
+  });
+});
 
 const startQuiz = () => {
   emit("start-quiz", {

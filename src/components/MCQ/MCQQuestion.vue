@@ -24,7 +24,7 @@
     :selected-option="selectedOption"
     :hide-skip="remainingQuestions <= 1"
     @submit-answer="submitAnswer"
-    @next-question="nextQuestion(_id)"
+    @next-question="nextQuestion()"
     @skip-question="skipQuestion"
   />
   <div class="next-prev-question">
@@ -71,14 +71,14 @@ const timedNextQuestion = () => {
   emit("nextQuestion");
 };
 
-const nextQuestion = (_id: { $oid: string }) => {
-  resetQuestion(_id);
+const nextQuestion = () => {
+  resetQuestion();
   remainingQuestions.value = statUpdate.getRemainingQuestions();
   emit("nextQuestion");
 };
 
 const skipQuestion = () => {
-  resetQuestion(_id);
+  resetQuestion();
   emit("skipQuestion");
 };
 
@@ -89,12 +89,12 @@ const trackQuizStatus = (_id: { $oid: string }) =>
     selectedOption.value ?? undefined,
   );
 
-const resetQuestion = (_id: { $oid: string }) => {
-  trackQuizStatus(_id);
+const resetQuestion = () => {
   submitted.value = false;
   selectedOption.value = null;
 };
 const prevQuestion = () => {
+  selectedOption.value = null;
   emit("prevQuestion");
 };
 
@@ -125,8 +125,13 @@ function getClassForTimedMode(_id: { $oid: string }, key: string): string {
     questionIndex,
     selectedValue,
   );
-  return String(answer) === key ? "selected" : "";
+  if (String(answer) === key) {
+    selectedOption.value = key;
+    return "selected";
+  }
+  return "";
 }
+
 function getClassForTutorMode(key: string, optionsList: MCQOptions[]): string {
   const option = optionsList[parseInt(key)];
   const isSelected = selectedOption.value === key;
