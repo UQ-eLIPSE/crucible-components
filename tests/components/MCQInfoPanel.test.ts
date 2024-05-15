@@ -57,7 +57,7 @@ describe("MCQInfoPanel.vue", () => {
     questionsQueue.enqueueQuestion();
     await wrapper.vm.$nextTick();
     expect(questionsLeftHeader.text()).toEqual(
-      `Question 1 out of ${questions.length + 1}`,
+      `Question 1 out of ${questions.length}`,
     );
   });
 });

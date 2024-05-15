@@ -89,6 +89,7 @@ const skipToEnd = () => {
 main {
   width: 800px;
 }
+
 .btn-relocate {
   float: right;
   background-color: green;
