@@ -72,7 +72,7 @@ const handleStartQuiz = ({ questionAmount, mode }: StartQuizConfig) => {
   <StartPage v-else @start-quiz="handleStartQuiz" />
 </template>
 
-<style scoped>
+<style>
 @font-face {
   font-family: "icomoon";
   src:
@@ -82,20 +82,25 @@ const handleStartQuiz = ({ questionAmount, mode }: StartQuizConfig) => {
     url("../public/fonts/icomoon.svg?tvt6dy#icomoon") format("svg");
 }
 
-#question-amount {
-  margin-left: 5px;
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  transition: border-color 0.25s;
 }
 
-.start-button {
-  color: #ffffff;
-  background-color: #2a52be;
-  margin-top: 5%;
+button:not([disabled]):hover {
+  border-color: black;
 }
 
-.tag-list {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 20px;
-  gap: 10px;
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+label p {
+  margin: 0;
 }
 </style>

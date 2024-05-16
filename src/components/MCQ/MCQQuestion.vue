@@ -149,6 +149,11 @@ function getClassForTutorMode(key: string, optionsList: MCQOptions[]): string {
 </script>
 
 <style scoped>
+.mcq-statement,
+.mcq-list {
+  line-height: 1.5;
+  font-weight: 400;
+}
 .mcq-list {
   list-style: none;
   padding: 0;
