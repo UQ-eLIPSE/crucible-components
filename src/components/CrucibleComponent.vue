@@ -72,24 +72,6 @@ const handleStartQuiz = ({ questionAmount, mode }: StartQuizConfig) => {
   <StartPage v-else @start-quiz="handleStartQuiz" />
 </template>
 
-<style scoped>
-#question-amount {
-  margin-left: 5px;
-}
-
-.start-button {
-  color: #ffffff;
-  background-color: #2a52be;
-  margin-top: 5%;
-}
-
-.tag-list {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 20px;
-  gap: 10px;
-}
-</style>
 <style>
 @font-face {
   font-family: "icomoon";
