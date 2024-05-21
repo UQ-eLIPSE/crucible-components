@@ -57,9 +57,9 @@ export const dataTest = [
 export const questionsData = [
   {
     tags: {
-      course: "VETS2011",
-      subject: "Physiology",
-      system: "Nervous System",
+      course: ["VETS2011"],
+      subject: ["Physiology"],
+      system: ["Nervous System"],
     },
     statement:
       "<p>Which of the following statements regarding action potentials is TRUE?</p>",
@@ -97,9 +97,9 @@ export const questionsData = [
   },
   {
     tags: {
-      course: "VETS2011",
-      subject: "Physiology",
-      system: "Nervous System",
+      course: ["VETS2011"],
+      subject: ["Physiology"],
+      system: ["Nervous System"],
     },
     statement: "<p>What happens when an IPSP is generated after EPSP?</p>",
     optionsList: [
@@ -132,9 +132,9 @@ export const questionsData = [
   },
   {
     tags: {
-      course: "VETS2011",
-      subject: "Physiology",
-      system: "Nervous System",
+      course: ["VETS2011"],
+      subject: ["Physiology"],
+      system: ["Nervous System"],
     },
     statement:
       "<p>Which of the following would NOT be possible occurrences when signal build-up occurs?</p>",

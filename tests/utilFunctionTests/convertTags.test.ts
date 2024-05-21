@@ -11,10 +11,10 @@ const testTagsData = [
 describe("test convertTags function", () => {
   it("should return the tags with space to replace underscore", () => {
     const expected = {
-      course: "vets2012",
-      subject: "physiology",
-      system: "nervous system",
-      animal: "horse",
+      course: ["vets2012"],
+      subject: ["physiology"],
+      system: ["nervous system"],
+      animal: ["horse"],
     };
     expect(convertTags(testTagsData)).toEqual(expected);
   });
