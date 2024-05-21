@@ -15,7 +15,7 @@ describe("should return correct tags structure", () => {
   it("should return unique values of the given tags", () => {
     const tags = getUniquePropertyValues(badTags as Tags[]);
     expect(tags).toEqual({
-      course: ["vets2011", "vets2012", "vets2013"],
+      course: ["vets2011", "vets2012", "vets2016", "vets2013"],
       subject: ["physiology", "atonomy"],
       system: ["nervous system"],
       234: ["tagvalue"],
