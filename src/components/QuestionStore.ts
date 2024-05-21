@@ -31,13 +31,7 @@ export function getUniquePropertyValues(tagProps: Tags[]) {
             acc[key] = new Set<string>();
           }
           const value = item[key];
-          if (Array.isArray(value)) {
-            // If is an array ad each element to the set
-            value.forEach((val) => acc[key].add(val));
-          } else {
-            // If it is an string just add it to the set
-            acc[key].add(value);
-          }
+          value.forEach((val) => acc[key].add(val));
         }
       });
       return acc;
@@ -53,7 +47,6 @@ export function getUniquePropertyValues(tagProps: Tags[]) {
     },
     {},
   );
-  console.log(result);
   return result;
 }
 
@@ -66,15 +59,9 @@ export function filterQuestionsByTags(
       if (!selectedTags[key].length) {
         return true;
       }
-
       const questionTag = question.tags[key];
-      // Check if questionTag is an array or a single string
-      if (Array.isArray(questionTag)) {
-        // Return true if any tag in the question's tag array is equal to any tag in the selected tags
+      if (questionTag) {
         return questionTag.some((tag) => selectedTags[key].includes(tag));
-      } else {
-        // Return true if the a question tag matches any tag in the selected tags
-        return selectedTags[key].includes(questionTag);
       }
     });
   });

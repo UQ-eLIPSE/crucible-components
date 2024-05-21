@@ -82,12 +82,7 @@ export const pluginQuestions = [
     link: "https://vetshub.uqcloud.net/resource/5a0ba18d34cc363763e05e99/61a9ae14e04e3d5bffb26ef7/62142eee64c71f1df2110cf5/62142f2764c71f1df2110cf7/6214407964c71f1df2110d03",
   },
   {
-    tags: [
-      "course:vets2012",
-      "subject:physiology",
-      "animal:horse",
-      ": wrongtag",
-    ],
+    tags: ["course:vets2012", "subject:physiology", "animal:horse"],
     statement:
       "<p>Action potentials are transmitted along which part of a neuron?</p>",
     optionsList: [
@@ -181,7 +176,7 @@ export const pluginQuestions = [
     link: "https://vetshub.uqcloud.net/resource/5a0ba18d34cc363763e05e99/61a9ae14e04e3d5bffb26ef7/62142eee64c71f1df2110cf5/62142f2764c71f1df2110cf7/6214407964c71f1df2110d03",
   },
   {
-    tags: ["course: VETS2013", "subject:Physiology"],
+    tags: ["course: VETS2013", "course:vets2016", "subject:Physiology"],
     statement:
       "<p>Which of the following types of glial cells myelinate neurons in the peripheral nervous system?</p>",
     optionsList: [

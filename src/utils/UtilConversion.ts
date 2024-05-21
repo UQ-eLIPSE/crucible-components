@@ -15,15 +15,9 @@ export const convertTags = (tagsData: DataTags): Tags => {
 
     // Check if key exists
     if (acc[key]) {
-      // If the key exist and it's not already an array, convert it to array
-      if (typeof acc[key] === "string") {
-        acc[key] = [acc[key] as string];
-      }
-
-      (acc[key] as string[]).push(value);
+      acc[key] = [...acc[key], value];
     } else {
-      // If the key does not exist assign the value
-      acc[key] = value;
+      acc[key] = [value];
     }
     return acc;
   }, {});

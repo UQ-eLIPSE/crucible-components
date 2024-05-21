@@ -52,7 +52,7 @@ export interface QuestionState {
 }
 
 export interface Tags {
-  [key: string]: string | string[];
+  [key: string]: string[];
 }
 
 export interface SelectedTags {
