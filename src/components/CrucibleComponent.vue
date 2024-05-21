@@ -26,10 +26,10 @@ const apiData: DataApi = inject("$dataLink") as DataApi;
 
 onBeforeMount(() => {
   // Fetch quiz data from API
-  const useStatic = import.meta.env.VITE_USE_DUMMY_DATA === "false";
-  questions.value = useStatic
-    ? getConvertedStaticData()
-    : getAllQuestions(apiData.data.questions as DataMCQuestion[]);
+  questions.value = apiData
+    ? getAllQuestions(apiData.data.questions as DataMCQuestion[])
+    : getConvertedStaticData();
+
   questionsQueue.allQs = questions.value;
   const allUniqueTags = getUniquePropertyValues(
     questions.value.map((q) => q.tags),

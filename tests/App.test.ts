@@ -3,9 +3,13 @@ import { mount } from "@vue/test-utils";
 import CrucibleComponent from "@components/CrucibleComponent.vue";
 import MCQQuiz from "@components/MCQ/MCQQuiz.vue";
 import { createPinia, setActivePinia } from "pinia";
+import { useQuizStore } from "../src/store/QuizStore";
+import { getConvertedStaticData as mockData } from "../src/components/DataAccessLayer";
 
+let questionsQueue;
 beforeEach(() => {
   setActivePinia(createPinia());
+  questionsQueue = useQuizStore();
 });
 
 describe("CrucibleComponent.vue", () => {
@@ -27,9 +31,12 @@ describe("CrucibleComponent.vue", () => {
   });
 
   it("No Default input has been set which pass all questions to MCQ Quiz.", async () => {
-    const wrapper = mount(CrucibleComponent);
+    const wrapper = mount(CrucibleComponent, {
+      provide: {
+        $dataLink: mockData,
+      },
+    });
     await wrapper.find(".start-button").trigger("click");
-    const mcqQuiz = wrapper.findComponent(MCQQuiz);
-    expect(mcqQuiz.props().questions.length).toBe(0);
+    expect(questionsQueue.allQs.length).toBe(13);
   });
 });
