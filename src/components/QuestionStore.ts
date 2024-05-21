@@ -22,23 +22,30 @@ export const getQuestionsRandomly = (
 };
 // this is the function to generate Taxonomies
 export function getUniquePropertyValues(tagProps: Tags[]) {
-  // populate unique values of the given tags
   const uniqueTags = tagProps.reduce(
     (acc: Record<string, Set<string>>, item) => {
       Object.keys(item).forEach((key) => {
         // during generate taxonomies, exclude empty strings
-        if (typeof key === "string" && key.trim() !== "") {
+        if (key.trim() !== "") {
           if (!acc[key]) {
             acc[key] = new Set<string>();
           }
-          acc[key].add(item[key]);
+          const value = item[key];
+          if (Array.isArray(value)) {
+            // If is an array ad each element to the set
+            value.forEach((val) => acc[key].add(val));
+          } else {
+            // If it is an string just add it to the set
+            acc[key].add(value);
+          }
         }
       });
       return acc;
     },
-    {},
+    {} as Record<string, Set<string>>,
   );
 
+  // Convert Sets to arrays and populate the result object
   const result = Object.keys(uniqueTags).reduce(
     (acc: Record<string, string[]>, key) => {
       acc[key] = [...uniqueTags[key]];
@@ -46,6 +53,7 @@ export function getUniquePropertyValues(tagProps: Tags[]) {
     },
     {},
   );
+  console.log(result);
   return result;
 }
 
@@ -55,10 +63,19 @@ export function filterQuestionsByTags(
 ): MCQuestion[] {
   return questions.filter((question: MCQuestion) => {
     return Object.keys(selectedTags).every((key) => {
-      return (
-        !selectedTags[key].length ||
-        selectedTags[key].includes(question.tags[key])
-      );
+      if (!selectedTags[key].length) {
+        return true;
+      }
+
+      const questionTag = question.tags[key];
+      // Check if questionTag is an array or a single string
+      if (Array.isArray(questionTag)) {
+        // Return true if any tag in the question's tag array is equal to any tag in the selected tags
+        return questionTag.some((tag) => selectedTags[key].includes(tag));
+      } else {
+        // Return true if the a question tag matches any tag in the selected tags
+        return selectedTags[key].includes(questionTag);
+      }
     });
   });
 }

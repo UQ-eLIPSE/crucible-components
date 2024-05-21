@@ -31,7 +31,7 @@ onBeforeMount(() => {
     ? getConvertedStaticData()
     : getAllQuestions(apiData.data.questions as DataMCQuestion[]);
   questionsQueue.allQs = questions.value;
-
+  console.log(questions.value.map((q) => q.tags));
   const allUniqueTags = getUniquePropertyValues(
     questions.value.map((q) => q.tags),
   );

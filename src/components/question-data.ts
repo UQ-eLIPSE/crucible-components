@@ -4,6 +4,7 @@ export const pluginQuestions = [
   {
     tags: [
       "course:vets2011",
+      "course:vets2011",
       "subject:physiology",
       "system:nervous_system",
       "234:tagvalue",
@@ -40,7 +41,12 @@ export const pluginQuestions = [
     link: "https://vetshub.uqcloud.net/resource/5a0ba18d34cc363763e05e99/61a9ae14e04e3d5bffb26ef7/62142eee64c71f1df2110cf5/62142f2764c71f1df2110cf7/6214301b64c71f1df2110cfd",
   },
   {
-    tags: ["course: VETS2012", "subject: Physiology", "system: Nervous System"],
+    tags: [
+      "course: VETS2012",
+      "course:vets2016",
+      "subject: Physiology",
+      "system: Nervous System",
+    ],
     statement:
       "<p>Which of the following statements regarding action potentials is TRUE?</p>",
     optionsList: [
