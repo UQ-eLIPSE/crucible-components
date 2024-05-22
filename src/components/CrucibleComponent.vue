@@ -31,7 +31,6 @@ onBeforeMount(() => {
     : getConvertedStaticData();
 
   questionsQueue.allQs = questions.value;
-
   const allUniqueTags = getUniquePropertyValues(
     questions.value.map((q) => q.tags),
   );

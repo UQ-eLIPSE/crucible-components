@@ -22,23 +22,24 @@ export const getQuestionsRandomly = (
 };
 // this is the function to generate Taxonomies
 export function getUniquePropertyValues(tagProps: Tags[]) {
-  // populate unique values of the given tags
   const uniqueTags = tagProps.reduce(
     (acc: Record<string, Set<string>>, item) => {
       Object.keys(item).forEach((key) => {
         // during generate taxonomies, exclude empty strings
-        if (typeof key === "string" && key.trim() !== "") {
+        if (key.trim() !== "") {
           if (!acc[key]) {
             acc[key] = new Set<string>();
           }
-          acc[key].add(item[key]);
+          const value = item[key];
+          value.forEach((val) => acc[key].add(val));
         }
       });
       return acc;
     },
-    {},
+    {} as Record<string, Set<string>>,
   );
 
+  // Convert Sets to arrays and populate the result object
   const result = Object.keys(uniqueTags).reduce(
     (acc: Record<string, string[]>, key) => {
       acc[key] = [...uniqueTags[key]];
@@ -55,10 +56,13 @@ export function filterQuestionsByTags(
 ): MCQuestion[] {
   return questions.filter((question: MCQuestion) => {
     return Object.keys(selectedTags).every((key) => {
-      return (
-        !selectedTags[key].length ||
-        selectedTags[key].includes(question.tags[key])
-      );
+      if (!selectedTags[key].length) {
+        return true;
+      }
+      const questionTag = question.tags[key];
+      if (questionTag) {
+        return questionTag.some((tag) => selectedTags[key].includes(tag));
+      }
     });
   });
 }

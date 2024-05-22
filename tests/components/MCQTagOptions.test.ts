@@ -38,22 +38,22 @@ describe("MCQTagOptions.vue", () => {
   it("returns unique values for a given property", () => {
     const tags = [
       {
-        course: "VETS2011",
-        subject: "Physiology",
-        system: "Neurophysiology",
-        animal: "Horse",
+        course: ["VETS2011"],
+        subject: ["Physiology"],
+        system: ["Neurophysiology"],
+        animal: ["Horse"],
       },
       {
-        course: "VETS2011",
-        subject: "Anatomy",
-        system: "Cardiovascular",
-        animal: "Horse",
+        course: ["VETS2011"],
+        subject: ["Anatomy"],
+        system: ["Cardiovascular"],
+        animal: ["Horse"],
       },
       {
-        course: "VETS2012",
-        subject: "Physiology",
-        system: "Neurophysiology",
-        animal: "Horse",
+        course: ["VETS2012"],
+        subject: ["Physiology"],
+        system: ["Neurophysiology"],
+        animal: ["Horse"],
       },
     ];
 
