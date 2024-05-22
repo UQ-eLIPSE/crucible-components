@@ -12,7 +12,13 @@ export const convertTags = (tagsData: DataTags): Tags => {
     if (!tag.includes(":")) return acc;
     let [key, value] = tag.split(":");
     [key, value] = [key.trim().toLowerCase(), getCorrectTagValues(value)];
-    acc[key] = value;
+
+    // Check if key exists
+    if (acc[key]) {
+      acc[key] = [...acc[key], value];
+    } else {
+      acc[key] = [value];
+    }
     return acc;
   }, {});
 };

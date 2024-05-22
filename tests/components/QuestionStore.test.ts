@@ -10,10 +10,10 @@ const questions = [
   {
     statement: "The question 1",
     tags: {
-      course: "VETS2011",
-      subject: "Physiology",
-      system: "Neurophysiology",
-      animal: "Horse",
+      course: ["VETS2011"],
+      subject: ["Physiology"],
+      system: ["Neurophysiology"],
+      animal: ["Horse"],
     },
     optionsList: [
       { optionValue: "Answer A Q1", optionCorrect: false },
@@ -24,10 +24,10 @@ const questions = [
   {
     statement: "The question 2",
     tags: {
-      course: "VETS2022",
-      subject: "Anatomy",
-      system: "Musculoskeletal",
-      animal: "Horse",
+      course: ["VETS2022"],
+      subject: ["Anatomy"],
+      system: ["Musculoskeletal"],
+      animal: ["Horse"],
     },
     optionsList: [
       { optionValue: "Answer A Q2", optionCorrect: false },
@@ -38,10 +38,10 @@ const questions = [
   {
     statement: "The question 3",
     tags: {
-      course: "VETS2011",
-      subject: "Physiology",
-      system: "Cardiovascular",
-      animal: "Horse",
+      course: ["VETS2011"],
+      subject: ["Physiology"],
+      system: ["Cardiovascular"],
+      animal: ["Horse"],
     },
     optionsList: [
       { optionValue: "Answer A Q3", optionCorrect: true },
@@ -52,10 +52,10 @@ const questions = [
   {
     statement: "The question 4",
     tags: {
-      course: "VETS2011",
-      subject: "Physiology",
-      system: "Neurophysiology",
-      animal: "Horse",
+      course: ["VETS2011"],
+      subject: ["Physiology"],
+      system: ["Neurophysiology"],
+      animal: ["Horse"],
     },
     optionsList: [
       { optionValue: "Answer A Q4", optionCorrect: true },
@@ -115,10 +115,10 @@ test("Filter questions by a specific course, subject, and system, allowing multi
   expect(
     filteredQuestions.every(
       (question) =>
-        question.tags.course === "VETS2011" &&
-        question.tags.subject === "Physiology" &&
-        (question.tags.system === "Neurophysiology" ||
-          question.tags.system === "Cardiovascular"),
+        question.tags.course[0] === "VETS2011" &&
+        question.tags.subject[0] === "Physiology" &&
+        (question.tags.system[0] === "Neurophysiology" ||
+          question.tags.system[0] === "Cardiovascular"),
     ),
   ).toBe(true);
 });
@@ -135,10 +135,10 @@ test("Filter questions by multiple courses and subjects", () => {
   expect(
     filteredQuestions.every(
       (question) =>
-        (question.tags.course === "VETS2011" ||
-          question.tags.course === "VETS2022") &&
-        (question.tags.subject === "Physiology" ||
-          question.tags.subject === "Anatomy"),
+        (question.tags.course[0] === "VETS2011" ||
+          question.tags.course[0] === "VETS2022") &&
+        (question.tags.subject[0] === "Physiology" ||
+          question.tags.subject[0] === "Anatomy"),
     ),
   ).toBe(true);
 });
