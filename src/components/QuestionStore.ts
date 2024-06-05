@@ -67,6 +67,17 @@ export function filterQuestionsByTags(
   });
 }
 
+export function filterQuestionsBySingleTopic(
+  questions: MCQuestion[],
+  topic: string,
+  category: string,
+): MCQuestion[] {
+  return questions.filter((question: MCQuestion) => {
+    const questionTags = question.tags[category];
+    return questionTags && questionTags.includes(topic);
+  });
+}
+
 export function findSelectedOptionValue(
   quizStats: QuestionState[],
   questionIndex: number,
