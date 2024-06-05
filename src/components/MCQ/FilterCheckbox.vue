@@ -1,7 +1,7 @@
 <template>
   <ul>
     <li
-      v-for="{ idx, num, topic } in questionsNumByTags"
+      v-for="{ idx, num, topic, questionamount } in questionsNumByTags"
       :key="idx"
       class="filter-options"
       :class="{ 'grey-out': num === '0' }"
@@ -17,7 +17,7 @@
       <label :for="`${category}-${topic}-checkbox`">
         {{ formatTopic(topic) }}
         <span v-if="num !== null && num !== '0'" class="question-number">{{
-          num
+          questionamount
         }}</span></label
       >
     </li>
@@ -27,7 +27,10 @@
 <script setup lang="ts">
 import { SelectedTags } from "@/types/MCQ";
 import { useQuizStore } from "@/store/QuizStore";
-import { filterQuestionsByTags } from "../QuestionStore";
+import {
+  filterQuestionsByTags,
+  filterQuestionsBySingleTopic,
+} from "../QuestionStore";
 import { computed } from "vue";
 const { category, topics } = defineProps<{
   category: string;
@@ -43,7 +46,12 @@ const questionsNumByTags = computed(() =>
   Object.entries(topics)
     .map(([idx, topic]) => {
       const num = getQuestionsnumByTags(topic, category);
-      return { idx, topic, num };
+      const questionamount = filterQuestionsBySingleTopic(
+        questionsQueue.allQs,
+        topic,
+        category,
+      ).length.toString();
+      return { idx, topic, num, questionamount };
     })
     .filter(({ topic }) => topic !== undefined),
 );
