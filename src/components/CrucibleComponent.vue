@@ -23,7 +23,6 @@ const quizStarted = ref<boolean>(false);
 const questions = ref<MCQuestion[]>([]);
 // Inject data from crucible parent here
 const apiData: DataApi = inject("$dataLink") as DataApi;
-console.log("apiData", apiData);
 
 onBeforeMount(() => {
   // Fetch quiz data from API
