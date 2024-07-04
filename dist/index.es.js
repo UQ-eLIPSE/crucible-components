@@ -1,4 +1,4 @@
-import { effectScope as He, ref as E, markRaw as G, hasInjectionContext as St, inject as Fe, getCurrentInstance as Tt, toRaw as _e, watch as Be, reactive as wt, isRef as ae, isReactive as $e, toRef as ye, nextTick as Ie, computed as Ve, unref as S, getCurrentScope as Ct, onScopeDispose as Et, toRefs as Le, defineComponent as N, openBlock as h, createElementBlock as _, Fragment as U, normalizeClass as H, createElementVNode as p, toDisplayString as Q, renderList as ee, createVNode as te, createBlock as j, createCommentVNode as O, pushScopeId as We, popScopeId as Ge, onMounted as qe, resolveComponent as kt, onBeforeMount as Je, createTextVNode as Ye, watchEffect as Qt, withDirectives as Ae, vModelText as $t, vModelSelect as Vt } from "vue";
+import { effectScope as He, ref as E, markRaw as G, hasInjectionContext as St, inject as Fe, getCurrentInstance as Tt, toRaw as _e, watch as Be, reactive as wt, isRef as ae, isReactive as $e, toRef as ye, nextTick as Ie, computed as Ve, unref as S, getCurrentScope as Ct, onScopeDispose as Et, toRefs as Le, defineComponent as N, openBlock as h, createElementBlock as _, Fragment as U, normalizeClass as H, createElementVNode as p, toDisplayString as Q, renderList as ee, createVNode as te, createBlock as j, createCommentVNode as q, pushScopeId as We, popScopeId as Ge, onMounted as Oe, resolveComponent as kt, onBeforeMount as Je, createTextVNode as Ye, watchEffect as Qt, withDirectives as Ae, vModelText as $t, vModelSelect as Vt } from "vue";
 var Ke = !1;
 function fe(e, n, o) {
   return Array.isArray(e) ? (e.length = Math.max(e.length, n), e.splice(n, 1, o), o) : (e[n] = o, o);
@@ -10,13 +10,13 @@ function Se(e, n) {
   }
   delete e[n];
 }
-function qt() {
+function Ot() {
   return Xe().__VUE_DEVTOOLS_GLOBAL_HOOK__;
 }
 function Xe() {
   return typeof navigator < "u" && typeof window < "u" ? window : typeof globalThis < "u" ? globalThis : {};
 }
-const Ot = typeof Proxy == "function", Nt = "devtools-plugin:setup", Pt = "plugin:settings:set";
+const qt = typeof Proxy == "function", Nt = "devtools-plugin:setup", Pt = "plugin:settings:set";
 let K, we;
 function It() {
   var e;
@@ -88,7 +88,7 @@ class At {
   }
 }
 function Ze(e, n) {
-  const o = e, t = Xe(), s = qt(), i = Ot && o.enableEarlyProxy;
+  const o = e, t = Xe(), s = Ot(), i = qt && o.enableEarlyProxy;
   if (s && (t.__VUE_DEVTOOLS_PLUGIN_API_AVAILABLE__ || !i))
     s.emit(Nt, e, n);
   else {
@@ -121,7 +121,7 @@ const ve = typeof window < "u", re = (process.env.NODE_ENV !== "production" || !
 function xt(e, { autoBom: n = !1 } = {}) {
   return n && /^\s*(?:text\/\S*|application\/xml|\S*\/\S*\+xml)\s*;.*charset\s*=\s*utf-8/i.test(e.type) ? new Blob(["\uFEFF", e], { type: e.type }) : e;
 }
-function Oe(e, n, o) {
+function qe(e, n, o) {
   const t = new XMLHttpRequest();
   t.open("GET", e), t.responseType = "blob", t.onload = function() {
     nt(t.response, n, o);
@@ -159,7 +159,7 @@ const me = typeof navigator == "object" ? navigator : { userAgent: "" }, ot = /M
 };
 function Mt(e, n = "download", o) {
   const t = document.createElement("a");
-  t.download = n, t.rel = "noopener", typeof e == "string" ? (t.href = e, t.origin !== location.origin ? tt(t.href) ? Oe(e, n, o) : (t.target = "_blank", he(t)) : he(t)) : (t.href = URL.createObjectURL(e), setTimeout(function() {
+  t.download = n, t.rel = "noopener", typeof e == "string" ? (t.href = e, t.origin !== location.origin ? tt(t.href) ? qe(e, n, o) : (t.target = "_blank", he(t)) : he(t)) : (t.href = URL.createObjectURL(e), setTimeout(function() {
     URL.revokeObjectURL(t.href);
   }, 4e4), setTimeout(function() {
     he(t);
@@ -168,7 +168,7 @@ function Mt(e, n = "download", o) {
 function jt(e, n = "download", o) {
   if (typeof e == "string")
     if (tt(e))
-      Oe(e, n, o);
+      qe(e, n, o);
     else {
       const t = document.createElement("a");
       t.href = e, t.target = "_blank", setTimeout(function() {
@@ -180,7 +180,7 @@ function jt(e, n = "download", o) {
 }
 function Dt(e, n, o, t) {
   if (t = t || open("", "_blank"), t && (t.document.title = t.document.body.innerText = "downloading..."), typeof e == "string")
-    return Oe(e, n, o);
+    return qe(e, n, o);
   const s = e.type === "application/octet-stream", i = /constructor/i.test(String(xe.HTMLElement)) || "safari" in xe, r = /CriOS\/[\d]+/.test(navigator.userAgent);
   if ((r || s && i || ot) && typeof FileReader < "u") {
     const a = new FileReader();
@@ -767,8 +767,8 @@ function ke(e, n, o = {}, t, s, i) {
   }
   const T = i ? function() {
     const { state: l } = o, y = l ? l() : {};
-    this.$patch((q) => {
-      I(q, y);
+    this.$patch((O) => {
+      I(O, y);
     });
   } : (
     /* istanbul ignore next */
@@ -782,9 +782,9 @@ function ke(e, n, o = {}, t, s, i) {
   function C(d, l) {
     return function() {
       ce(t);
-      const y = Array.from(arguments), q = [], ne = [];
+      const y = Array.from(arguments), O = [], ne = [];
       function vt(P) {
-        q.push(P);
+        O.push(P);
       }
       function yt(P) {
         ne.push(P);
@@ -802,7 +802,7 @@ function ke(e, n, o = {}, t, s, i) {
       } catch (P) {
         throw X(ne, P), P;
       }
-      return se instanceof Promise ? se.then((P) => (X(q, P), P)).catch((P) => (X(ne, P), Promise.reject(P))) : (X(q, se), se);
+      return se instanceof Promise ? se.then((P) => (X(O, P), P)).catch((P) => (X(ne, P), Promise.reject(P))) : (X(O, se), se);
     };
   }
   const A = /* @__PURE__ */ G({
@@ -818,7 +818,7 @@ function ke(e, n, o = {}, t, s, i) {
     $patch: de,
     $reset: T,
     $subscribe(d, l = {}) {
-      const y = je(f, d, l.detached, () => q()), q = r.run(() => Be(() => t.state.value[e], (ne) => {
+      const y = je(f, d, l.detached, () => O()), O = r.run(() => Be(() => t.state.value[e], (ne) => {
         (l.flush === "sync" ? m : u) && d({
           storeId: e,
           type: D.direct,
@@ -866,8 +866,8 @@ function ke(e, n, o = {}, t, s, i) {
   }), process.env.NODE_ENV !== "production" && (g._hotUpdate = G((d) => {
     g._hotUpdating = !0, d._hmrPayload.state.forEach((l) => {
       if (l in g.$state) {
-        const y = d.$state[l], q = g.$state[l];
-        typeof y == "object" && J(y) && J(q) ? ut(y, q) : d.$state[l] = q;
+        const y = d.$state[l], O = g.$state[l];
+        typeof y == "object" && J(y) && J(O) ? ut(y, O) : d.$state[l] = O;
       }
       fe(g, l, ye(d.$state, l));
     }), Object.keys(g.$state).forEach((l) => {
@@ -880,11 +880,11 @@ function ke(e, n, o = {}, t, s, i) {
       fe(g, l, C(l, y));
     }
     for (const l in d._hmrPayload.getters) {
-      const y = d._hmrPayload.getters[l], q = i ? (
+      const y = d._hmrPayload.getters[l], O = i ? (
         // special handling of options api
         Ve(() => (ce(t), y.call(g, g)))
       ) : y;
-      fe(g, l, q);
+      fe(g, l, O);
     }
     Object.keys(g._hmrPayload.getters).forEach((l) => {
       l in d._hmrPayload.getters || Se(g, l);
@@ -1129,7 +1129,7 @@ const ft = (e, n) => n.findIndex((o) => {
             return;
           }
           const s = this.quizStats[t].question.optionsList.map((i) => i.optionCorrect).indexOf(!0);
-          console.log("question id"), Number(o) === Number(s) ? this.quizStats[t].correct = 1 : this.quizStats[t].correct = 0;
+          console.log("question id", e), Number(o) === Number(s) ? this.quizStats[t].correct = 1 : this.quizStats[t].correct = 0;
         }
         this.quizStats[t].selectedValue = o !== void 0 ? this.quizStats[t].question.optionsList[Number(o)].optionValue : "";
       }
@@ -1229,18 +1229,18 @@ const ft = (e, n) => n.findIndex((o) => {
         onSubmitAnswer: a,
         onNextQuestion: w[0] || (w[0] = (C) => u()),
         onSkipQuestion: m
-      }, null, 8, ["submitted", "selected-option", "hide-skip"])) : O("", !0),
+      }, null, 8, ["submitted", "selected-option", "hide-skip"])) : q("", !0),
       p("div", So, [
         S(o).quizMode === "Timed" ? (h(), j(Re, {
           key: 0,
           "button-name": S(o).questionsQueue.length >= 1 ? "→" : "Submit",
           onNextQuestion: w[1] || (w[1] = (C) => c())
-        }, null, 8, ["button-name"])) : O("", !0),
+        }, null, 8, ["button-name"])) : q("", !0),
         S(o).quizMode === "Timed" && S(o).questionsStack.length > 1 ? (h(), j(Re, {
           key: 1,
           "button-name": "←",
           onPrevQuestion: w[2] || (w[2] = (C) => v())
-        })) : O("", !0)
+        })) : q("", !0)
       ])
     ], 64));
   }
@@ -1250,7 +1250,7 @@ const ft = (e, n) => n.findIndex((o) => {
     /* @__PURE__ */ p("th", null, "correct option"),
     /* @__PURE__ */ p("th", null, "your answer")
   ])
-], -1)), $o = { class: "question-row" }, Vo = ["href", "innerHTML"], qo = { class: "answer-row" }, Oo = ["innerHTML"], No = { class: "answer-row" }, Po = ["innerHTML"], Io = { class: "mcq-result" }, Lo = { class: "score" }, Ao = /* @__PURE__ */ N({
+], -1)), $o = { class: "question-row" }, Vo = ["href", "innerHTML"], Oo = { class: "answer-row" }, qo = ["innerHTML"], No = { class: "answer-row" }, Po = ["innerHTML"], Io = { class: "mcq-result" }, Lo = { class: "score" }, Ao = /* @__PURE__ */ N({
   __name: "MCQStatus",
   setup(e) {
     const n = z(), o = n.quizStats, t = n.quizStats.length, s = o.filter((r) => r.correct === 1).length, i = (s * 100 / t).toFixed(0);
@@ -1271,14 +1271,14 @@ const ft = (e, n) => n.findIndex((o) => {
                     innerHTML: u.question.statement
                   }, null, 8, Vo)
                 ]),
-                p("td", qo, [
+                p("td", Oo, [
                   (h(!0), _(U, null, ee(Object.entries(
                     u.question.optionsList
                   ), ([m, f]) => (h(), _("span", { key: m }, [
                     f.optionCorrect ? (h(), _("span", {
                       key: 0,
                       innerHTML: f.optionValue
-                    }, null, 8, Oo)) : O("", !0)
+                    }, null, 8, qo)) : q("", !0)
                   ]))), 128))
                 ]),
                 p("td", No, [
@@ -1305,7 +1305,7 @@ const ft = (e, n) => n.findIndex((o) => {
   __name: "MCQQuiz",
   setup(e) {
     const n = E(), o = z();
-    qe(() => {
+    Oe(() => {
       s();
     });
     const t = () => {
@@ -1325,9 +1325,9 @@ const ft = (e, n) => n.findIndex((o) => {
           _id: n.value._id,
           onNextQuestion: s,
           onSkipQuestion: t
-        }, null, 8, ["statement", "options-list", "_id"])) : O("", !0),
-        n.value ? O("", !0) : (h(), j(ht, { key: 1 })),
-        n.value ? O("", !0) : (h(), _("button", {
+        }, null, 8, ["statement", "options-list", "_id"])) : q("", !0),
+        n.value ? q("", !0) : (h(), j(ht, { key: 1 })),
+        n.value ? q("", !0) : (h(), _("button", {
           key: 2,
           class: "btn-relocate",
           onClick: i
@@ -1352,7 +1352,7 @@ const ft = (e, n) => n.findIndex((o) => {
       return `${s}:${i < 10 ? "0" : ""}${i}`;
     };
     return (t, s) => (h(), _(U, null, [
-      e.timeLeft ? (h(), _("h3", Do, " Time left: " + Q(o(e.timeLeft)), 1)) : O("", !0),
+      e.timeLeft ? (h(), _("h3", Do, " Time left: " + Q(o(e.timeLeft)), 1)) : q("", !0),
       p("h3", zo, " Question " + Q(S(n).questionsStack.length) + " out of " + Q(S(n).quizStats.length), 1)
     ], 64));
   }
@@ -1362,7 +1362,7 @@ const ft = (e, n) => n.findIndex((o) => {
     const n = z(), o = E();
     let t = null, s = null;
     const i = E(n.timeLimit);
-    qe(() => {
+    Oe(() => {
       a();
     }), Je(() => {
       u(), m();
@@ -1393,9 +1393,9 @@ const ft = (e, n) => n.findIndex((o) => {
         _id: o.value._id,
         onNextQuestion: a,
         onPrevQuestion: r
-      }, null, 8, ["statement", "options-list", "_id"])) : O("", !0),
-      o.value ? O("", !0) : (h(), j(ht, { key: 1 })),
-      o.value ? O("", !0) : (h(), _("button", {
+      }, null, 8, ["statement", "options-list", "_id"])) : q("", !0),
+      o.value ? q("", !0) : (h(), j(ht, { key: 1 })),
+      o.value ? q("", !0) : (h(), _("button", {
         key: 2,
         class: "btn-relocate",
         onClick: c
@@ -1460,7 +1460,7 @@ const ft = (e, n) => n.findIndex((o) => {
           for: `${c.category}-${b}-checkbox`
         }, [
           Ye(Q(s(b)) + " ", 1),
-          f !== null && f !== "0" ? (h(), _("span", Go, Q(v), 1)) : O("", !0)
+          f !== null && f !== "0" ? (h(), _("span", Go, Q(v), 1)) : q("", !0)
         ], 8, Wo)
       ], 2))), 128))
     ]));
@@ -1522,7 +1522,7 @@ const ft = (e, n) => n.findIndex((o) => {
   emits: ["start-quiz"],
   setup(e, { emit: n }) {
     const o = E(1), t = E("Tutor"), s = E(!1), i = E(null), r = n, a = z();
-    qe(() => {
+    Oe(() => {
       Qt(() => {
         const m = a.getquestionnumber();
         o.value = Math.min(10, m);
@@ -1566,7 +1566,7 @@ const ft = (e, n) => n.findIndex((o) => {
               ]
             ])
           ]),
-          s.value ? (h(), _("p", mn, " Cannot select more than " + Q(S(a).getquestionnumber()) + " questions. ", 1)) : O("", !0),
+          s.value ? (h(), _("p", mn, " Cannot select more than " + Q(S(a).getquestionnumber()) + " questions. ", 1)) : q("", !0),
           p("div", null, [
             gn,
             Ae(p("select", {
@@ -2035,8 +2035,8 @@ const pe = {
   } catch (n) {
     return alert(n), [];
   }
-}, qn = () => kn, On = () => {
-  const e = qn();
+}, On = () => kn, qn = () => {
+  const e = On();
   return mt.convertQuestions(_t(e));
 };
 function _t(e) {
@@ -2088,7 +2088,7 @@ const Pn = /* @__PURE__ */ N({
   setup(e) {
     const n = E(0), o = z(), t = E(!1), s = E([]), i = Fe("$dataLink");
     console.log("currently fetching: ", i), Je(() => {
-      s.value = i ? Vn(i.data.questions) : On(), o.allQs = s.value;
+      s.value = i ? Vn(i.data.questions) : qn(), o.allQs = s.value;
       const a = dt(
         s.value.map((c) => c.tags)
       );
