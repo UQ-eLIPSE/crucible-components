@@ -89,6 +89,11 @@ export const useQuizStore = defineStore("questionsQueue", {
         ].question.optionsList
           .map((e) => e.optionCorrect)
           .indexOf(true);
+        console.log("question id", questionId);
+        console.log(
+          "is correct",
+          Number(selectedOptionValue) === Number(correctOptionIndex),
+        );
 
         if (Number(selectedOptionValue) === Number(correctOptionIndex)) {
           this.quizStats[questionIndex]["correct"] = 1;

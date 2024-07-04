@@ -16,6 +16,8 @@ import {
   getConvertedStaticData,
 } from "../components/DataAccessLayer";
 import { DataApi, DataMCQuestion } from "@/types/DataMCQ";
+import { UpdateQAttemptCallbackType } from "@/types/QuestionAttempt";
+import { defaultUpdateQAttemptCallback } from "@/ViewerPlugin";
 
 const quizQuestions = ref(0);
 const questionsQueue = useQuizStore();
@@ -23,7 +25,13 @@ const quizStarted = ref<boolean>(false);
 const questions = ref<MCQuestion[]>([]);
 // Inject data from crucible parent here
 const apiData: DataApi = inject("$dataLink") as DataApi;
+const updateQuestionAttemptApi =
+  (inject("$updateQAttemptCallback") as UpdateQAttemptCallbackType) ??
+  defaultUpdateQAttemptCallback;
 
+console.log("update q attempt function", updateQuestionAttemptApi);
+console.log(updateQuestionAttemptApi("123", false));
+// updateQuestionAttemptApi("123", false);
 onBeforeMount(() => {
   // Fetch quiz data from API
   questions.value = apiData

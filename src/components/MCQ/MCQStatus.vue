@@ -74,6 +74,7 @@ import { useQuizStore } from "../../store/QuizStore";
 const questionsQueue = useQuizStore();
 
 const quizStatus = questionsQueue.quizStats;
+console.log("FINAL QUIZ STATUS", quizStatus);
 
 const workQuiz = questionsQueue.quizStats.length;
 

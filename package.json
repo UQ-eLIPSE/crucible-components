@@ -27,7 +27,7 @@
     "build:lib": "BUILDASLIBRARY=true yarn build"
   },
   "engines": {
-    "node": "20.11.x"
+    "node": "20.x.x"
   },
   "lint-staged": {
     "**/*.{ts,vue}": "eslint --cache --fix"

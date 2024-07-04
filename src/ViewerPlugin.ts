@@ -17,6 +17,15 @@ export const defaultData = {
   },
 };
 
+export const defaultUpdateQAttemptCallback = async (
+  questionId: string,
+  isCorrect: boolean,
+) => {
+  console.info(
+    `Default updateQAttemptCallback called on ${questionId} and is correct: ${isCorrect}`,
+  );
+};
+
 export function createViewerPlugin(
   app: App,
   options: ViewerPluginOptions = {},
@@ -25,6 +34,10 @@ export function createViewerPlugin(
   app.use(pinia);
   app.component("CrucibleComponent", CrucibleComponent);
   app.provide("$dataLink", options.dataLink || defaultData);
+  app.provide(
+    "$updateQAttemptCallback",
+    options.updateQAttemptCallback || defaultUpdateQAttemptCallback,
+  );
 }
 
 export { CrucibleComponent };
