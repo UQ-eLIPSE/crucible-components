@@ -2092,7 +2092,10 @@ const In = /* @__PURE__ */ N({
   __name: "CrucibleComponent",
   setup(e) {
     const n = E(0), o = z(), t = E(!1), s = E([]), i = we("$dataLink"), r = we("$updateQAttemptCallback") ?? vt;
-    console.log("update q attempt function", r), console.log(r("123", !1)), Je(() => {
+    console.log("update q attempt function", r), console.log(
+      "updating 64ba560447d01bfdcb099df8",
+      r("64ba560447d01bfdcb099df8", !0)
+    ), Je(() => {
       s.value = i ? qn(i.data.questions) : Nn(), o.allQs = s.value;
       const c = dt(
         s.value.map((u) => u.tags)
