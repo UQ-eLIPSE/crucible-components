@@ -30,8 +30,11 @@ const updateQuestionAttemptApi =
   defaultUpdateQAttemptCallback;
 
 console.log("update q attempt function", updateQuestionAttemptApi);
-console.log(updateQuestionAttemptApi("123", false));
-// updateQuestionAttemptApi("123", false);
+// testing purposes
+console.log(
+  "updating 64ba560447d01bfdcb099df8",
+  updateQuestionAttemptApi("64ba560447d01bfdcb099df8", true),
+);
 onBeforeMount(() => {
   // Fetch quiz data from API
   questions.value = apiData
