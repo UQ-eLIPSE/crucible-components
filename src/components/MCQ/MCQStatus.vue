@@ -77,7 +77,6 @@ import { inject } from "vue";
 const updateQuestionAttemptApi =
   (inject("$updateQAttemptCallback") as UpdateQAttemptCallbackType) ??
   defaultUpdateQAttemptCallback;
-console.log(updateQuestionAttemptApi);
 
 const questionsQueue = useQuizStore();
 
@@ -94,15 +93,23 @@ const correctQuizNumPercent = ((correctQuizNum * 100) / workQuiz).toFixed(0);
 
 /** Updates user's questions attempts in db from external parent */
 const updateQuestionAttempts = async () => {
-  quizStatus
+  const quizStatusResult = quizStatus
     .filter((quiz) => quiz.attempts)
-    .forEach((quiz) => {
-      try {
-        updateQuestionAttemptApi(quiz.question._id.$oid, Boolean(quiz.correct));
-      } catch (error) {
-        console.error("Error updating question attempts", error);
-      }
+    .map((quiz) => {
+      return updateQuestionAttemptApi(quiz.question._id.$oid, !!quiz.correct);
     });
+  Promise.allSettled(quizStatusResult).then((results) => {
+    console.log("Results of updating question attempts", results);
+  });
+  // quizStatus
+  //   .filter((quiz) => quiz.attempts)
+  //   .forEach((quiz) => {
+  //     try {
+  //       updateQuestionAttemptApi(quiz.question._id.$oid, Boolean(quiz.correct));
+  //     } catch (error) {
+  //       console.error("Error updating question attempts", error);
+  //     }
+  //   });
 };
 updateQuestionAttempts();
 </script>
