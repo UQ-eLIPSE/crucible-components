@@ -69,7 +69,15 @@
 </template>
 
 <script setup lang="ts">
+import { UpdateQAttemptCallbackType } from "@/types/QuestionAttempt";
 import { useQuizStore } from "../../store/QuizStore";
+import { defaultUpdateQAttemptCallback } from "@/ViewerPlugin";
+import { inject } from "vue";
+
+const updateQuestionAttemptApi =
+  (inject("$updateQAttemptCallback") as UpdateQAttemptCallbackType) ??
+  defaultUpdateQAttemptCallback;
+console.log(updateQuestionAttemptApi);
 
 const questionsQueue = useQuizStore();
 
@@ -83,6 +91,20 @@ const correctQuizNum = quizStatus.filter((quiz) => {
 }).length;
 
 const correctQuizNumPercent = ((correctQuizNum * 100) / workQuiz).toFixed(0);
+
+/** Updates user's questions attempts in db from external parent */
+const updateQuestionAttempts = async () => {
+  quizStatus
+    .filter((quiz) => quiz.attempts)
+    .forEach((quiz) => {
+      try {
+        updateQuestionAttemptApi(quiz.question._id.$oid, Boolean(quiz.correct));
+      } catch (error) {
+        console.error("Error updating question attempts", error);
+      }
+    });
+};
+updateQuestionAttempts();
 </script>
 
 <style scoped>
