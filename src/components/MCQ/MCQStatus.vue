@@ -72,7 +72,7 @@
 import { UpdateQAttemptCallbackType } from "@/types/QuestionAttempt";
 import { useQuizStore } from "../../store/QuizStore";
 import { defaultUpdateQAttemptCallback } from "@/ViewerPlugin";
-import { inject } from "vue";
+import { inject, onMounted } from "vue";
 
 const updateQuestionAttemptApi =
   (inject("$updateQAttemptCallback") as UpdateQAttemptCallbackType) ??
@@ -93,25 +93,21 @@ const correctQuizNumPercent = ((correctQuizNum * 100) / workQuiz).toFixed(0);
 
 /** Updates user's questions attempts in db from external parent */
 const updateQuestionAttempts = async () => {
-  const quizStatusResult = quizStatus
-    .filter((quiz) => quiz.attempts)
-    .map((quiz) => {
-      return updateQuestionAttemptApi(quiz.question._id.$oid, !!quiz.correct);
-    });
-  Promise.allSettled(quizStatusResult).then((results) => {
+  try {
+    const quizStatusResult = quizStatus
+      .filter((quiz) => quiz.attempts)
+      .map((quiz) =>
+        updateQuestionAttemptApi(quiz.question._id.$oid, !!quiz.correct),
+      );
+
+    const results = await Promise.allSettled(quizStatusResult);
     console.log("Results of updating question attempts", results);
-  });
-  // quizStatus
-  //   .filter((quiz) => quiz.attempts)
-  //   .forEach((quiz) => {
-  //     try {
-  //       updateQuestionAttemptApi(quiz.question._id.$oid, Boolean(quiz.correct));
-  //     } catch (error) {
-  //       console.error("Error updating question attempts", error);
-  //     }
-  //   });
+  } catch (err) {
+    console.error("Error updating question attempts", err);
+    throw err;
+  }
 };
-updateQuestionAttempts();
+onMounted(updateQuestionAttempts);
 </script>
 
 <style scoped>
