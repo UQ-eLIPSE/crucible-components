@@ -1129,7 +1129,7 @@ const pt = (e, n) => n.findIndex((o) => {
             return;
           }
           const s = this.quizStats[t].question.optionsList.map((i) => i.optionCorrect).indexOf(!0);
-          console.log("question id", e), Number(o) === Number(s) ? this.quizStats[t].correct = 1 : this.quizStats[t].correct = 0;
+          Number(o) === Number(s) ? this.quizStats[t].correct = 1 : this.quizStats[t].correct = 0;
         }
         this.quizStats[t].selectedValue = o !== void 0 ? this.quizStats[t].question.optionsList[Number(o)].optionValue : "";
       }
