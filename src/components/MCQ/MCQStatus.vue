@@ -81,7 +81,6 @@ const updateQuestionAttemptApi =
 const questionsQueue = useQuizStore();
 
 const quizStatus = questionsQueue.quizStats;
-console.log("FINAL QUIZ STATUS", quizStatus);
 
 const workQuiz = questionsQueue.quizStats.length;
 
@@ -92,7 +91,7 @@ const correctQuizNum = quizStatus.filter((quiz) => {
 const correctQuizNumPercent = ((correctQuizNum * 100) / workQuiz).toFixed(0);
 
 /** Updates user's questions attempts in db from external parent */
-const updateQuestionAttempts = async () => {
+const updateQuestionAttempts = () => {
   try {
     const quizStatusResult = quizStatus
       .filter((quiz) => quiz.attempts)
@@ -100,8 +99,7 @@ const updateQuestionAttempts = async () => {
         updateQuestionAttemptApi(quiz.question._id.$oid, !!quiz.correct),
       );
 
-    const results = await Promise.allSettled(quizStatusResult);
-    console.log("Results of updating question attempts", results);
+    quizStatusResult.length && Promise.allSettled(quizStatusResult);
   } catch (err) {
     console.error("Error updating question attempts", err);
     throw err;

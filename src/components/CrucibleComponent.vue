@@ -16,8 +16,6 @@ import {
   getConvertedStaticData,
 } from "../components/DataAccessLayer";
 import { DataApi, DataMCQuestion } from "@/types/DataMCQ";
-// import { UpdateQAttemptCallbackType } from "@/types/QuestionAttempt";
-// import { defaultUpdateQAttemptCallback } from "@/ViewerPlugin";
 
 const quizQuestions = ref(0);
 const questionsQueue = useQuizStore();

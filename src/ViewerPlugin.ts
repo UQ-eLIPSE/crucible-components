@@ -17,14 +17,17 @@ export const defaultData = {
   },
 };
 
+/**
+ * Placeholder for the actual function that will be passed from the parent
+ * component. Used for updating the user's attempt on a question.
+ * Used for local testing.
+ */
 export const defaultUpdateQAttemptCallback = async (
-  questionId: string,
-  isCorrect: boolean,
-) => {
-  console.info(
-    `Default updateQAttemptCallback called on ${questionId} and is correct: ${isCorrect}`,
-  );
-};
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  _questionId: string,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  _isCorrect: boolean,
+) => {};
 
 export function createViewerPlugin(
   app: App,

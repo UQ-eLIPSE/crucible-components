@@ -63,7 +63,6 @@ const emit = defineEmits(["nextQuestion", "skipQuestion", "prevQuestion"]);
 const remainingQuestions = ref<number>(statUpdate.getRemainingQuestions());
 
 const submitAnswer = () => {
-  // Can update API here depending if they got the right ans
   submitted.value = true;
 };
 
