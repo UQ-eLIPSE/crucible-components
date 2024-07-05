@@ -17,6 +17,18 @@ export const defaultData = {
   },
 };
 
+/**
+ * Placeholder for the actual function that will be passed from the parent
+ * component. Used for updating the user's attempt on a question.
+ * Used for local testing.
+ */
+export const defaultUpdateQAttemptCallback = async (
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  _questionId: string,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  _isCorrect: boolean,
+) => {};
+
 export function createViewerPlugin(
   app: App,
   options: ViewerPluginOptions = {},
@@ -25,6 +37,10 @@ export function createViewerPlugin(
   app.use(pinia);
   app.component("CrucibleComponent", CrucibleComponent);
   app.provide("$dataLink", options.dataLink || defaultData);
+  app.provide(
+    "$updateQAttemptCallback",
+    options.updateQAttemptCallback || defaultUpdateQAttemptCallback,
+  );
 }
 
 export { CrucibleComponent };
