@@ -1085,10 +1085,10 @@ const pe = (t, s) => s.findIndex((n) => {
   }),
   actions: {
     setTagsset() {
-      this.tagsets = this.allQs.map((t) => t.tags), console.log("tagsets2 in store", this.tagsets);
+      this.tagsets = this.allQs.map((t) => t.tags);
     },
     getTagsets() {
-      return console.log("tagsets3 in store get", this.tagsets), this.tagsets;
+      return this.tagsets;
     },
     getAnsweredQuestionsNum() {
       return this.AnsweredQuesiton;
