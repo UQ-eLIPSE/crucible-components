@@ -1035,7 +1035,6 @@ const rn = ["id", "checked"], an = ["for", "innerHTML"], un = /* @__PURE__ */ I(
   return t;
 }, hn = (t, s) => mn(s).slice(0, t);
 function fe(t) {
-  console.log("tagprops in question store", t);
   const s = t.reduce(
     (e, o) => (Object.keys(o).forEach((i) => {
       i.trim() !== "" && (e[i] || (e[i] = /* @__PURE__ */ new Set()), o[i].forEach((u) => e[i].add(u)));
@@ -1718,16 +1717,14 @@ const Ns = /* @__PURE__ */ I({
     }
   },
   setup(t) {
-    const s = t, n = T(0), e = z(), o = T(!1), i = T([]), r = Nt("$dataLink");
-    console.log(r, "injected data");
-    const { level: u } = Qt(s);
+    const s = t, n = T(0), e = z(), o = T(!1), i = T([]), r = Nt("$dataLink"), { level: u } = Qt(s);
     Yt(async () => {
       const p = await (async () => (await (await fetch(`${r}?level=${u.value}`)).json()).questions)();
       i.value = Ht(p), e.allQs = i.value;
       const d = fe(
         i.value.map((m) => m.tags)
       );
-      console.log("tags in component 1", d), e.setselectedTags(
+      e.setselectedTags(
         Object.keys(d).reduce((m, v) => ({ ...m, [v]: [] }), {})
       ), e.setTagsset();
     });
