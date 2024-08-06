@@ -14,16 +14,7 @@ beforeEach(() => {
 
 describe("MCQTagOptions.vue", () => {
   it("Renders filter options", () => {
-    const wrapper = mount(MCQTagOptions, {
-      props: {
-        filterSet: {
-          course: ["VETS2011", "VETS2012"],
-          subject: ["Physiology", "Anatomy"],
-          system: ["Neurophysiology", "Cardiovascular"],
-          animal: ["Horse"],
-        },
-      },
-    });
+    const wrapper = mount(MCQTagOptions);
 
     expect(wrapper.findAll(".category").length).toBe(3);
   });

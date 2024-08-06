@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { inject, onBeforeMount, ref } from "vue";
+import { inject, onBeforeMount, ref, toRefs } from "vue";
 import MCQQuiz from "@components/MCQ/MCQQuiz.vue";
 import MCQTimedQuiz from "@components/MCQ/MCQTimedQuiz.vue";
 import StartPage from "@components/StartPage.vue";
@@ -15,40 +15,25 @@ import {
   getAllQuestions,
   // getConvertedStaticData,
 } from "../components/DataAccessLayer";
-import { DataApi, DataMCQuestion } from "@/types/DataMCQ";
+import { DataMCQuestion } from "@/types/DataMCQ";
+const props = defineProps({
+  level: {
+    type: Number,
+    default: 5,
+  },
+});
 
 const quizQuestions = ref(0);
 const questionsQueue = useQuizStore();
 const quizStarted = ref<boolean>(false);
 const questions = ref<MCQuestion[]>([]);
 // Inject data from crucible parent here
-const apiData: DataApi = inject("$dataLink") as DataApi;
-
-// onMounted(() => {
-//   console.log("mounted");
-//   const questionsFromServer = fetch("http://localhost:8080/api/resource/getQuiz").then((res) => res.json())
-//   console.log(questionsFromServer)
-
-//   // Fetch quiz data from API
-//   questions.value = apiData
-//     ? getAllQuestions(apiData.data.questions as DataMCQuestion[])
-//     : getConvertedStaticData();
-
-//   questionsQueue.allQs = questions.value;
-//   const allUniqueTags = getUniquePropertyValues(
-//     questions.value.map((q) => q.tags),
-//   );
-//   // For filtering functionality
-//   questionsQueue.setselectedTags(
-//     Object.keys(allUniqueTags).reduce((acc, tag) => {
-//       return { ...acc, [tag]: [] };
-//     }, {}),
-//   );
-// });
+const apiData: string = inject("$dataLink") as string;
+const { level } = toRefs(props);
 
 onBeforeMount(async () => {
   const result = async () => {
-    const res = await fetch("http://localhost:8080/api/resource//10/getQuiz");
+    const res = await fetch(`${apiData}?level=${level.value}`);
     const data = await res.json();
     const questionsFromServer = data.questions;
 
@@ -64,7 +49,6 @@ onBeforeMount(async () => {
   const allUniqueTags = getUniquePropertyValues(
     questions.value.map((q) => q.tags),
   );
-  console.log("tags in component 1", allUniqueTags);
   // For filtering functionality
   questionsQueue.setselectedTags(
     Object.keys(allUniqueTags).reduce((acc, tag) => {
