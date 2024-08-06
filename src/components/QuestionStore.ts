@@ -22,6 +22,7 @@ export const getQuestionsRandomly = (
 };
 // this is the function to generate Taxonomies
 export function getUniquePropertyValues(tagProps: Tags[]) {
+  console.log("tagprops in question store", tagProps);
   const uniqueTags = tagProps.reduce(
     (acc: Record<string, Set<string>>, item) => {
       Object.keys(item).forEach((key) => {

@@ -13,7 +13,7 @@ import { StartQuizConfig } from "../types/MCQ";
 import { MCQuestion } from "../types/MCQ";
 import {
   getAllQuestions,
-  getConvertedStaticData,
+  // getConvertedStaticData,
 } from "../components/DataAccessLayer";
 import { DataApi, DataMCQuestion } from "@/types/DataMCQ";
 
@@ -23,28 +23,60 @@ const quizStarted = ref<boolean>(false);
 const questions = ref<MCQuestion[]>([]);
 // Inject data from crucible parent here
 const apiData: DataApi = inject("$dataLink") as DataApi;
-console.log("currently fetching: ", apiData);
 
-onBeforeMount(() => {
-  // Fetch quiz data from API
+// onMounted(() => {
+//   console.log("mounted");
+//   const questionsFromServer = fetch("http://localhost:8080/api/resource/getQuiz").then((res) => res.json())
+//   console.log(questionsFromServer)
+
+//   // Fetch quiz data from API
+//   questions.value = apiData
+//     ? getAllQuestions(apiData.data.questions as DataMCQuestion[])
+//     : getConvertedStaticData();
+
+//   questionsQueue.allQs = questions.value;
+//   const allUniqueTags = getUniquePropertyValues(
+//     questions.value.map((q) => q.tags),
+//   );
+//   // For filtering functionality
+//   questionsQueue.setselectedTags(
+//     Object.keys(allUniqueTags).reduce((acc, tag) => {
+//       return { ...acc, [tag]: [] };
+//     }, {}),
+//   );
+// });
+
+onBeforeMount(async () => {
+  const result = async () => {
+    const res = await fetch("http://localhost:8080/api/resource//10/getQuiz");
+    const data = await res.json();
+    const questionsFromServer = data.questions;
+
+    return questionsFromServer;
+  };
+  const questionsMCQ = await result();
+
   questions.value = apiData
-    ? getAllQuestions(apiData.data.questions as DataMCQuestion[])
-    : getConvertedStaticData();
+    ? getAllQuestions(questionsMCQ as DataMCQuestion[])
+    : getAllQuestions(questionsMCQ as DataMCQuestion[]); //getConvertedStaticData();
 
   questionsQueue.allQs = questions.value;
   const allUniqueTags = getUniquePropertyValues(
     questions.value.map((q) => q.tags),
   );
+  console.log("tags in component 1", allUniqueTags);
   // For filtering functionality
   questionsQueue.setselectedTags(
     Object.keys(allUniqueTags).reduce((acc, tag) => {
       return { ...acc, [tag]: [] };
     }, {}),
   );
+  questionsQueue.setTagsset();
 });
 
 const handleStartQuiz = ({ questionAmount, mode }: StartQuizConfig) => {
   const selectedTags = questionsQueue.getselectedtags();
+
   if (!questions.value.length)
     return alert("Trouble fetching questions, please try again later");
 
@@ -100,6 +132,7 @@ button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
+
 label p {
   margin: 0;
 }

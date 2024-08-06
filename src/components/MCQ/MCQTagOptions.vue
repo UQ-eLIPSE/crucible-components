@@ -1,5 +1,5 @@
 <template>
-  <div class="filter">
+  <div v-if="questionsQueue.allQs" class="filter">
     <div
       v-for="[category, valueKeys] in Object.entries(filterSet)"
       :key="category"
@@ -12,16 +12,24 @@
 </template>
 
 <script setup lang="ts">
-import type { SelectedTags } from "@/types/MCQ";
+import type { SelectedTags, Tags } from "@/types/MCQ";
 import { getUniquePropertyValues } from "../QuestionStore";
 import FilterCheckbox from "./FilterCheckbox.vue";
 import { useQuizStore } from "@/store/QuizStore";
+import { watch, ref } from "vue";
 
+const tagSet = ref<Tags[]>([]); // Use a ref to make tagSet reactive
 const questionsQueue = useQuizStore();
-const questions = questionsQueue.allQs;
-const tagSet = questions.map((question) => question.tags);
+let filterSet: SelectedTags = {};
+watch(
+  () => questionsQueue.allQs,
 
-const filterSet: SelectedTags = getUniquePropertyValues(tagSet);
+  (_newValue, _oldValue) => {
+    questionsQueue.setTagsset();
+    tagSet.value = questionsQueue.getTagsets(); // Update tagSet inside the watch function
+    filterSet = getUniquePropertyValues(tagSet.value);
+  },
+);
 </script>
 
 <style scoped>
@@ -29,12 +37,15 @@ const filterSet: SelectedTags = getUniquePropertyValues(tagSet);
   text-align: left;
   text-transform: capitalize;
 }
+
 .category {
   margin-bottom: 20px;
 }
+
 li {
   list-style-type: none;
 }
+
 label {
   cursor: pointer;
 }

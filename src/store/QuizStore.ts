@@ -3,6 +3,7 @@ import {
   QuestionState,
   QuizMode,
   SelectedTags,
+  Tags,
 } from "../types/MCQ";
 import { filterQuestionsByTags } from "../components/QuestionStore";
 import { defineStore } from "pinia";
@@ -22,9 +23,18 @@ export const useQuizStore = defineStore("questionsQueue", {
       selectedTags: { course: [] } as SelectedTags,
       timeLimit: 60, // default time limit 1 min per qs
       AnsweredQuesiton: 0,
+      tagsets: [] as Tags[],
     };
   },
   actions: {
+    setTagsset() {
+      this.tagsets = this.allQs.map((question) => question.tags);
+      console.log("tagsets2 in store", this.tagsets);
+    },
+    getTagsets() {
+      console.log("tagsets3 in store get", this.tagsets);
+      return this.tagsets;
+    },
     getAnsweredQuestionsNum() {
       return this.AnsweredQuesiton;
     },
