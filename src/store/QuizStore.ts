@@ -29,10 +29,8 @@ export const useQuizStore = defineStore("questionsQueue", {
   actions: {
     setTagsset() {
       this.tagsets = this.allQs.map((question) => question.tags);
-      console.log("tagsets2 in store", this.tagsets);
     },
     getTagsets() {
-      console.log("tagsets3 in store get", this.tagsets);
       return this.tagsets;
     },
     getAnsweredQuestionsNum() {

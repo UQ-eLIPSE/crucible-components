@@ -1,6 +1,4 @@
-import { mount } from "@vue/test-utils";
 import { describe, it, expect, beforeEach } from "vitest";
-import MCQTagOptions from "@components/MCQ/MCQTagOptions.vue";
 import { getUniquePropertyValues } from "@components/QuestionStore";
 import { createPinia, setActivePinia } from "pinia";
 import { useQuizStore } from "../../src/store/QuizStore";
@@ -12,13 +10,9 @@ beforeEach(() => {
   questionsQueue.allQs = questions;
 });
 
+// Test Cases related to getUniquePropertyValues function
+// MCQTagOptions for correct render FilterCheckboxes refer to FilterCheckboxes.test.ts
 describe("MCQTagOptions.vue", () => {
-  it("Renders filter options", () => {
-    const wrapper = mount(MCQTagOptions);
-
-    expect(wrapper.findAll(".category").length).toBe(3);
-  });
-
   it("Returns an empty array when input is empty", () => {
     const tags = [];
 
