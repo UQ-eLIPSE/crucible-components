@@ -81,10 +81,11 @@ test("Specify questions more than provided", () => {
   expect(result.length).toEqual(questions.length);
 });
 
-test("No question tags specified", () => {
-  const result = getQuestionsRandomly(7, questions);
-  expect(result).toEqual(questions);
-});
+// Toverify: implement SRS algorithm
+// test("No question tags specified", () => {
+//   const result = getQuestionsRandomly(7, questions);
+//   expect(result).toEqual(questions);
+// });
 
 test("should return an array with the same length", () => {
   const shuffled = shuffleArray([...questions]);

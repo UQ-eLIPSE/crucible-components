@@ -13,7 +13,7 @@ export interface DataMCQuestion {
   link: string;
   attempts: number;
   correctAttempts: number;
-  reviewDue: Date;
+  lastAttempted: Date;
 }
 
 export interface DataApi {

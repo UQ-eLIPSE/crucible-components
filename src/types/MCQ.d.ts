@@ -18,13 +18,13 @@ export interface MCQuestion {
   link: string;
   attempts: number;
   correctAttempts: number;
-  reviewDue: Date;
+  lastAttempted: Date;
 }
 
 export interface MCQuestionProp
   extends Omit<
     MCQuestion,
-    "tags" | "link" | "attempts" | "correctAttempts" | "reviewDue"
+    "tags" | "link" | "attempts" | "correctAttempts" | "lastAttempted"
   > {}
 
 export interface MCQOptions {

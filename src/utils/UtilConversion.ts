@@ -33,7 +33,7 @@ const convertQuestions = (dataQuestions: DataMCQuestion[]): MCQuestion[] => {
       link: question.link,
       attempts: question.attempts,
       correctAttempts: question.correctAttempts,
-      reviewDue: question.reviewDue,
+      lastAttempted: question.lastAttempted,
     };
   });
 };
