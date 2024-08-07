@@ -1,5 +1,5 @@
 <template>
-  <div class="filter">
+  <div v-if="questionsQueue.allQs" class="filter">
     <div
       v-for="[category, valueKeys] in Object.entries(filterSet)"
       :key="category"

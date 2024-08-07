@@ -1,4 +1,4 @@
-import { effectScope as Be, ref as T, markRaw as G, toRaw as _e, hasInjectionContext as Tt, inject as Ve, getCurrentInstance as wt, watch as qe, unref as S, reactive as Ct, isRef as ae, isReactive as Pe, toRef as Se, nextTick as xe, computed as Ne, getCurrentScope as Et, onScopeDispose as kt, toRefs as Ce, defineComponent as P, openBlock as g, createElementBlock as v, Fragment as U, normalizeClass as H, createElementVNode as m, toDisplayString as Q, renderList as ee, createVNode as te, createBlock as j, createCommentVNode as q, onMounted as ve, pushScopeId as We, popScopeId as Ge, resolveComponent as Qt, onBeforeMount as Je, createTextVNode as Ye, watchEffect as $t, withDirectives as Me, vModelText as Ot, vModelSelect as Vt } from "vue";
+import { effectScope as Be, ref as T, markRaw as G, toRaw as _e, hasInjectionContext as Tt, inject as Ve, getCurrentInstance as wt, watch as qe, unref as S, reactive as Ct, isRef as ae, isReactive as Pe, toRef as Se, nextTick as xe, computed as Ne, getCurrentScope as Et, onScopeDispose as kt, toRefs as Ce, defineComponent as P, openBlock as g, createElementBlock as v, Fragment as U, normalizeClass as H, createElementVNode as m, toDisplayString as Q, renderList as ee, createVNode as te, createBlock as j, createCommentVNode as V, onMounted as ve, pushScopeId as We, popScopeId as Ge, resolveComponent as Qt, onBeforeMount as Je, createTextVNode as Ye, watchEffect as $t, withDirectives as Me, vModelText as Ot, vModelSelect as Vt } from "vue";
 var Ke = !1;
 function pe(e, n, o) {
   return Array.isArray(e) ? (e.length = Math.max(e.length, n), e.splice(n, 1, o), o) : (e[n] = o, o);
@@ -767,8 +767,8 @@ function $e(e, n, o = {}, t, s, i) {
   }
   const w = i ? function() {
     const { state: l } = o, y = l ? l() : {};
-    this.$patch((V) => {
-      I(V, y);
+    this.$patch((q) => {
+      I(q, y);
     });
   } : (
     /* istanbul ignore next */
@@ -782,9 +782,9 @@ function $e(e, n, o = {}, t, s, i) {
   function E(p, l) {
     return function() {
       ce(t);
-      const y = Array.from(arguments), V = [], ne = [];
+      const y = Array.from(arguments), q = [], ne = [];
       function yt(N) {
-        V.push(N);
+        q.push(N);
       }
       function St(N) {
         ne.push(N);
@@ -802,7 +802,7 @@ function $e(e, n, o = {}, t, s, i) {
       } catch (N) {
         throw X(ne, N), N;
       }
-      return se instanceof Promise ? se.then((N) => (X(V, N), N)).catch((N) => (X(ne, N), Promise.reject(N))) : (X(V, se), se);
+      return se instanceof Promise ? se.then((N) => (X(q, N), N)).catch((N) => (X(ne, N), Promise.reject(N))) : (X(q, se), se);
     };
   }
   const A = /* @__PURE__ */ G({
@@ -818,7 +818,7 @@ function $e(e, n, o = {}, t, s, i) {
     $patch: de,
     $reset: w,
     $subscribe(p, l = {}) {
-      const y = ze(d, p, l.detached, () => V()), V = r.run(() => qe(() => t.state.value[e], (ne) => {
+      const y = ze(d, p, l.detached, () => q()), q = r.run(() => qe(() => t.state.value[e], (ne) => {
         (l.flush === "sync" ? f : u) && p({
           storeId: e,
           type: D.direct,
@@ -865,8 +865,8 @@ function $e(e, n, o = {}, t, s, i) {
   }), process.env.NODE_ENV !== "production" && (b._hotUpdate = G((p) => {
     b._hotUpdating = !0, p._hmrPayload.state.forEach((l) => {
       if (l in b.$state) {
-        const y = p.$state[l], V = b.$state[l];
-        typeof y == "object" && J(y) && J(V) ? ut(y, V) : p.$state[l] = V;
+        const y = p.$state[l], q = b.$state[l];
+        typeof y == "object" && J(y) && J(q) ? ut(y, q) : p.$state[l] = q;
       }
       pe(b, l, Se(p.$state, l));
     }), Object.keys(b.$state).forEach((l) => {
@@ -879,11 +879,11 @@ function $e(e, n, o = {}, t, s, i) {
       pe(b, l, E(l, y));
     }
     for (const l in p._hmrPayload.getters) {
-      const y = p._hmrPayload.getters[l], V = i ? (
+      const y = p._hmrPayload.getters[l], q = i ? (
         // special handling of options api
         Ne(() => (ce(t), y.call(b, b)))
       ) : y;
-      pe(b, l, V);
+      pe(b, l, q);
     }
     Object.keys(b._hmrPayload.getters).forEach((l) => {
       l in p._hmrPayload.getters || Te(b, l);
@@ -1232,18 +1232,18 @@ const pt = (e, n) => n.findIndex((o) => {
         onSubmitAnswer: c,
         onNextQuestion: C[0] || (C[0] = (E) => u()),
         onSkipQuestion: f
-      }, null, 8, ["submitted", "selected-option", "hide-skip"])) : q("", !0),
+      }, null, 8, ["submitted", "selected-option", "hide-skip"])) : V("", !0),
       m("div", To, [
         S(o).quizMode === "Timed" ? (g(), j(He, {
           key: 0,
           "button-name": S(o).questionsQueue.length >= 1 ? "→" : "Submit",
           onNextQuestion: C[1] || (C[1] = (E) => a())
-        }, null, 8, ["button-name"])) : q("", !0),
+        }, null, 8, ["button-name"])) : V("", !0),
         S(o).quizMode === "Timed" && S(o).questionsStack.length > 1 ? (g(), j(He, {
           key: 1,
           "button-name": "←",
           onPrevQuestion: C[2] || (C[2] = (E) => _())
-        })) : q("", !0)
+        })) : V("", !0)
       ])
     ], 64));
   }
@@ -1290,7 +1290,7 @@ const pt = (e, n) => n.findIndex((o) => {
                     _.optionCorrect ? (g(), v("span", {
                       key: 0,
                       innerHTML: _.optionValue
-                    }, null, 8, Po)) : q("", !0)
+                    }, null, 8, Po)) : V("", !0)
                   ]))), 128))
                 ]),
                 m("td", No, [
@@ -1337,9 +1337,9 @@ const pt = (e, n) => n.findIndex((o) => {
           _id: n.value._id,
           onNextQuestion: s,
           onSkipQuestion: t
-        }, null, 8, ["statement", "options-list", "_id"])) : q("", !0),
-        n.value ? q("", !0) : (g(), j(ht, { key: 1 })),
-        n.value ? q("", !0) : (g(), v("button", {
+        }, null, 8, ["statement", "options-list", "_id"])) : V("", !0),
+        n.value ? V("", !0) : (g(), j(ht, { key: 1 })),
+        n.value ? V("", !0) : (g(), v("button", {
           key: 2,
           class: "btn-relocate",
           onClick: i
@@ -1364,7 +1364,7 @@ const pt = (e, n) => n.findIndex((o) => {
       return `${s}:${i < 10 ? "0" : ""}${i}`;
     };
     return (t, s) => (g(), v(U, null, [
-      e.timeLeft ? (g(), v("h3", zo, " Time left: " + Q(o(e.timeLeft)), 1)) : q("", !0),
+      e.timeLeft ? (g(), v("h3", zo, " Time left: " + Q(o(e.timeLeft)), 1)) : V("", !0),
       m("h3", Ro, " Question " + Q(S(n).questionsStack.length) + " out of " + Q(S(n).quizStats.length), 1)
     ], 64));
   }
@@ -1405,9 +1405,9 @@ const pt = (e, n) => n.findIndex((o) => {
         _id: o.value._id,
         onNextQuestion: c,
         onPrevQuestion: r
-      }, null, 8, ["statement", "options-list", "_id"])) : q("", !0),
-      o.value ? q("", !0) : (g(), j(ht, { key: 1 })),
-      o.value ? q("", !0) : (g(), v("button", {
+      }, null, 8, ["statement", "options-list", "_id"])) : V("", !0),
+      o.value ? V("", !0) : (g(), j(ht, { key: 1 })),
+      o.value ? V("", !0) : (g(), v("button", {
         key: 2,
         class: "btn-relocate",
         onClick: a
@@ -1472,12 +1472,15 @@ const pt = (e, n) => n.findIndex((o) => {
           for: `${a.category}-${h}-checkbox`
         }, [
           Ye(Q(s(h)) + " ", 1),
-          d !== null && d !== "0" ? (g(), v("span", Jo, Q(_), 1)) : q("", !0)
+          d !== null && d !== "0" ? (g(), v("span", Jo, Q(_), 1)) : V("", !0)
         ], 8, Go)
       ], 2))), 128))
     ]));
   }
-}), Ko = /* @__PURE__ */ M(Yo, [["__scopeId", "data-v-43544b02"]]), Xo = { class: "filter" }, Zo = { class: "category-heading" }, en = /* @__PURE__ */ P({
+}), Ko = /* @__PURE__ */ M(Yo, [["__scopeId", "data-v-43544b02"]]), Xo = {
+  key: 0,
+  class: "filter"
+}, Zo = { class: "category-heading" }, en = /* @__PURE__ */ P({
   __name: "MCQTagOptions",
   setup(e) {
     const n = T([]), o = z();
@@ -1487,7 +1490,7 @@ const pt = (e, n) => n.findIndex((o) => {
       (s, i) => {
         o.setTagSet(), n.value = o.getTagSet(), t = dt(n.value);
       }
-    ), (s, i) => (g(), v("div", Xo, [
+    ), (s, i) => S(o).allQs ? (g(), v("div", Xo, [
       (g(!0), v(U, null, ee(Object.entries(S(t)), ([r, c]) => (g(), v("div", {
         key: r,
         class: "category"
@@ -1498,9 +1501,9 @@ const pt = (e, n) => n.findIndex((o) => {
           topics: c
         }, null, 8, ["category", "topics"])
       ]))), 128))
-    ]));
+    ])) : V("", !0);
   }
-}), tn = /* @__PURE__ */ M(en, [["__scopeId", "data-v-f644e565"]]), on = { for: "optionName" }, nn = ["value"], sn = /* @__PURE__ */ P({
+}), tn = /* @__PURE__ */ M(en, [["__scopeId", "data-v-ebc7fb2c"]]), on = { for: "optionName" }, nn = ["value"], sn = /* @__PURE__ */ P({
   __name: "DropDownbox",
   props: {
     options: {},
@@ -1584,7 +1587,7 @@ const pt = (e, n) => n.findIndex((o) => {
               ]
             ])
           ]),
-          s.value ? (g(), v("p", gn, " Cannot select more than " + Q(S(c).getquestionnumber()) + " questions. ", 1)) : q("", !0),
+          s.value ? (g(), v("p", gn, " Cannot select more than " + Q(S(c).getquestionnumber()) + " questions. ", 1)) : V("", !0),
           m("div", null, [
             bn,
             Me(m("select", {
