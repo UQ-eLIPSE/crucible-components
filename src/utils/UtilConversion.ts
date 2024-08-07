@@ -31,6 +31,9 @@ const convertQuestions = (dataQuestions: DataMCQuestion[]): MCQuestion[] => {
       tags: convertTags(question.tags),
       optionsList: question.optionsList,
       link: question.link,
+      attempts: question.attempts,
+      correctAttempts: question.correctAttempts,
+      reviewDue: question.reviewDue,
     };
   });
 };
