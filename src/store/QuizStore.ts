@@ -23,15 +23,15 @@ export const useQuizStore = defineStore("questionsQueue", {
       selectedTags: { course: [] } as SelectedTags,
       timeLimit: 60, // default time limit 1 min per qs
       AnsweredQuesiton: 0,
-      tagsets: [] as Tags[],
+      tagSets: [] as Tags[],
     };
   },
   actions: {
-    setTagsset() {
-      this.tagsets = this.allQs.map((question) => question.tags);
+    setTagSet() {
+      this.tagSets = this.allQs.map((question) => question.tags);
     },
-    getTagsets() {
-      return this.tagsets;
+    getTagSet() {
+      return this.tagSets;
     },
     getAnsweredQuestionsNum() {
       return this.AnsweredQuesiton;

@@ -1,5 +1,5 @@
 <template>
-  <div v-if="questionsQueue.allQs" class="filter">
+  <div class="filter">
     <div
       v-for="[category, valueKeys] in Object.entries(filterSet)"
       :key="category"
@@ -25,8 +25,8 @@ watch(
   () => questionsQueue.allQs,
 
   (_newValue, _oldValue) => {
-    questionsQueue.setTagsset();
-    tagSet.value = questionsQueue.getTagsets(); // Update tagSet inside the watch function
+    questionsQueue.setTagSet();
+    tagSet.value = questionsQueue.getTagSet(); // Update tagSet inside the watch function
     filterSet = getUniquePropertyValues(tagSet.value);
   },
 );

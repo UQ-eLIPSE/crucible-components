@@ -13,13 +13,13 @@ import { StartQuizConfig } from "../types/MCQ";
 import { MCQuestion } from "../types/MCQ";
 import {
   getAllQuestions,
-  // getConvertedStaticData,
+  getConvertedStaticData,
 } from "../components/DataAccessLayer";
 import { DataMCQuestion } from "@/types/DataMCQ";
 const props = defineProps({
   level: {
     type: Number,
-    default: 5,
+    default: 0, // a default value is required for Vue props
   },
 });
 
@@ -43,7 +43,7 @@ onBeforeMount(async () => {
 
   questions.value = apiData
     ? getAllQuestions(questionsMCQ as DataMCQuestion[])
-    : getAllQuestions(questionsMCQ as DataMCQuestion[]); //getConvertedStaticData();
+    : getConvertedStaticData();
 
   questionsQueue.allQs = questions.value;
   const allUniqueTags = getUniquePropertyValues(
@@ -55,7 +55,7 @@ onBeforeMount(async () => {
       return { ...acc, [tag]: [] };
     }, {}),
   );
-  questionsQueue.setTagsset();
+  questionsQueue.setTagSet();
 });
 
 const handleStartQuiz = ({ questionAmount, mode }: StartQuizConfig) => {
