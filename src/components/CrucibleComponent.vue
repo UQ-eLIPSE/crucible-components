@@ -19,7 +19,7 @@ import { DataMCQuestion } from "@/types/DataMCQ";
 const props = defineProps({
   level: {
     type: Number,
-    default: 0, // a default value is required for Vue props
+    default: 5, // a default value is required for Vue props
   },
 });
 
