@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { inject, onBeforeMount, ref } from "vue";
+import { inject, onBeforeMount, ref, toRefs } from "vue";
 import MCQQuiz from "@components/MCQ/MCQQuiz.vue";
 import MCQTimedQuiz from "@components/MCQ/MCQTimedQuiz.vue";
 import StartPage from "@components/StartPage.vue";
@@ -15,19 +15,34 @@ import {
   getAllQuestions,
   getConvertedStaticData,
 } from "../components/DataAccessLayer";
-import { DataApi, DataMCQuestion } from "@/types/DataMCQ";
+import { DataMCQuestion } from "@/types/DataMCQ";
+const props = defineProps({
+  level: {
+    type: Number,
+    default: 5, // a default value is required for Vue props
+  },
+});
 
 const quizQuestions = ref(0);
 const questionsQueue = useQuizStore();
 const quizStarted = ref<boolean>(false);
 const questions = ref<MCQuestion[]>([]);
 // Inject data from crucible parent here
-const apiData: DataApi = inject("$dataLink") as DataApi;
+const apiData: string = inject("$dataLink") as string;
+const { level } = toRefs(props);
 
-onBeforeMount(() => {
-  // Fetch quiz data from API
+onBeforeMount(async () => {
+  const result = async () => {
+    const res = await fetch(`${apiData}?level=${level.value}`);
+    const data = await res.json();
+    const questionsFromServer = data.questions;
+
+    return questionsFromServer;
+  };
+  const questionsMCQ = await result();
+
   questions.value = apiData
-    ? getAllQuestions(apiData.data.questions as DataMCQuestion[])
+    ? getAllQuestions(questionsMCQ as DataMCQuestion[])
     : getConvertedStaticData();
 
   questionsQueue.allQs = questions.value;
@@ -40,10 +55,12 @@ onBeforeMount(() => {
       return { ...acc, [tag]: [] };
     }, {}),
   );
+  questionsQueue.setTagSet();
 });
 
 const handleStartQuiz = ({ questionAmount, mode }: StartQuizConfig) => {
   const selectedTags = questionsQueue.getselectedtags();
+
   if (!questions.value.length)
     return alert("Trouble fetching questions, please try again later");
 
@@ -99,6 +116,7 @@ button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
+
 label p {
   margin: 0;
 }
