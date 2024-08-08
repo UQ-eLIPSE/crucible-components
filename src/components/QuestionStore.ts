@@ -18,7 +18,7 @@ export const srsSortedQuestions = (questions: MCQuestion[]) => {
     (curr, next) =>
       curr.lastAttempted > next.lastAttempted
         ? 1
-        : curr.lastAttempted > next.lastAttempted
+        : curr.lastAttempted < next.lastAttempted
           ? -1
           : 0, //todo:replace this with reviewTime once algorithm implemented
   );
