@@ -8,6 +8,9 @@ import { SelectedTags } from "@/types/MCQ";
 
 const questions = [
   {
+    _id: {
+      $oid: "6615c7fb49fbda0108a9ac0b",
+    },
     statement: "The question 1",
     tags: {
       course: ["VETS2011"],
@@ -20,8 +23,14 @@ const questions = [
       { optionValue: "Answer B Q1", optionCorrect: true },
       { optionValue: "Answer C Q1", optionCorrect: false },
     ],
+    attempts: 0,
+    correctAttempts: 0,
+    lastAttempted: new Date("2024-08-07T09:55:35.944+00:00"),
   },
   {
+    _id: {
+      $oid: "6625c7c8c8259deb8c3af39b",
+    },
     statement: "The question 2",
     tags: {
       course: ["VETS2022"],
@@ -34,8 +43,14 @@ const questions = [
       { optionValue: "Answer B Q2", optionCorrect: true },
       { optionValue: "Answer C Q2", optionCorrect: false },
     ],
+    attempts: 0,
+    correctAttempts: 0,
+    lastAttempted: new Date("2024-08-07T09:55:35.944+00:00"),
   },
   {
+    _id: {
+      $oid: "6539c0bdeb2b18699ed86fac",
+    },
     statement: "The question 3",
     tags: {
       course: ["VETS2011"],
@@ -48,8 +63,14 @@ const questions = [
       { optionValue: "Answer B Q3", optionCorrect: false },
       { optionValue: "Answer C Q3", optionCorrect: false },
     ],
+    attempts: 0,
+    correctAttempts: 0,
+    lastAttempted: new Date("2024-08-07T09:55:35.944+00:00"),
   },
   {
+    _id: {
+      $oid: "6539c0bdeb2b18699ed86fae",
+    },
     statement: "The question 4",
     tags: {
       course: ["VETS2011"],
@@ -62,6 +83,9 @@ const questions = [
       { optionValue: "Answer B Q4", optionCorrect: false },
       { optionValue: "Answer C Q4", optionCorrect: false },
     ],
+    attempts: 0,
+    correctAttempts: 0,
+    lastAttempted: new Date("2024-08-07T09:55:35.944+00:00"),
   },
 ];
 
@@ -80,12 +104,6 @@ test("Specify questions more than provided", () => {
   const result = getQuestionsRandomly(5, questions);
   expect(result.length).toEqual(questions.length);
 });
-
-// Toverify: implement SRS algorithm
-// test("No question tags specified", () => {
-//   const result = getQuestionsRandomly(7, questions);
-//   expect(result).toEqual(questions);
-// });
 
 test("should return an array with the same length", () => {
   const shuffled = shuffleArray([...questions]);

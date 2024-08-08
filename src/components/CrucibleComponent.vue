@@ -30,20 +30,20 @@ const questions = ref<MCQuestion[]>([]);
 // Inject data from crucible parent here
 const apiData: string = inject("$dataLink") as string;
 const { level } = toRefs(props);
-
 onBeforeMount(async () => {
-  const result = async () => {
-    const res = await fetch(`${apiData}?level=${level.value}`);
-    const data = await res.json();
-    const questionsFromServer = data.questions;
+  if (apiData) {
+    const result = async () => {
+      const res = await fetch(`${apiData}?level=${level.value}`);
+      const data = await res.json();
+      const questionsFromServer = data.questions;
 
-    return questionsFromServer;
-  };
-  const questionsMCQ = await result();
-
-  questions.value = apiData
-    ? getAllQuestions(questionsMCQ as DataMCQuestion[])
-    : getConvertedStaticData();
+      return questionsFromServer;
+    };
+    const questionsMCQ = await result();
+    questions.value = getAllQuestions(questionsMCQ as DataMCQuestion[]);
+  } else {
+    questions.value = getConvertedStaticData();
+  }
 
   questionsQueue.allQs = questions.value;
   const allUniqueTags = getUniquePropertyValues(
