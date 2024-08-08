@@ -14,6 +14,17 @@ export const shuffleArray = (array: MCQuestion[]) => {
   return array;
 };
 
+export const srsSortedQuestions = (questions: MCQuestion[]) => {
+  return questions.sort(
+    (curr, next) =>
+      curr.lastAttempted > next.lastAttempted
+        ? 1
+        : curr.lastAttempted < next.lastAttempted
+          ? -1
+          : 0, //todo:replace this with reviewTime once algorithm implemented
+  );
+};
+
 export const getQuestionsRandomly = (
   count: number,
   questions: MCQuestion[],
