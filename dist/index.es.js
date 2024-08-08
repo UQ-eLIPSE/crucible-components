@@ -1038,7 +1038,7 @@ const ro = ["id", "checked"], ao = ["for", "innerHTML"], co = /* @__PURE__ */ O(
   }
   return t;
 }, go = (t) => t.sort(
-  (s, o) => s.lastAttempted > o.lastAttempted ? 1 : s.lastAttempted > o.lastAttempted ? -1 : 0
+  (s, o) => s.lastAttempted > o.lastAttempted ? 1 : s.lastAttempted < o.lastAttempted ? -1 : 0
   //todo:replace this with reviewTime once algorithm implemented
 ), bo = (t, s) => {
   const o = go(s);
