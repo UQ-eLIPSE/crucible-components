@@ -28,11 +28,9 @@ const questionsQueue = useQuizStore();
 const quizStarted = ref<boolean>(false);
 const questions = ref<MCQuestion[]>([]);
 // Inject data from crucible parent here
-const apiData: string =
-  (inject("$dataLink") as string) ??
-  `http://localhost:8080/api/resource/66b2e529d64a315b213ae8c7/getQuiz`;
+const apiData: string = inject("$dataLink") as string;
 const { level } = toRefs(props);
-console.log(apiData, "api");
+
 onBeforeMount(async () => {
   const result = async () => {
     const res = await fetch(`${apiData}?level=${level.value}`);
@@ -42,7 +40,7 @@ onBeforeMount(async () => {
     return questionsFromServer;
   };
   const questionsMCQ = await result();
-  console.log(questionsMCQ[0]);
+
   questions.value = apiData
     ? getAllQuestions(questionsMCQ as DataMCQuestion[])
     : getConvertedStaticData();
