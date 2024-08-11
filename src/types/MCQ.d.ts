@@ -1,3 +1,5 @@
+import MCQQuestion from "@/components/MCQ/MCQQuestion.vue";
+
 type QuizMode = "Timed" | "Tutor";
 
 export interface StartQuizConfig {
@@ -26,6 +28,10 @@ export interface MCQuestionProp
     MCQuestion,
     "tags" | "link" | "attempts" | "correctAttempts" | "lastAttempted"
   > {}
+
+export interface MCSRSQuestion extends MCQuestion {
+  reviewDue: Date;
+}
 
 export interface MCQOptions {
   optionValue: string;
