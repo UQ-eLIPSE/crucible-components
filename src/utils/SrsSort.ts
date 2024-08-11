@@ -28,7 +28,7 @@ const transformToCard = (card: MCQuestion): Card => ({
   difficulty: 2.5, // initial value
   elapsed_days: Math.floor(
     (new Date().getTime() - new Date(card.lastAttempted).getTime()) /
-      (1000 * 60 * 60 * 24),
+      (1000 * 60 * 60 * 24), // convert minisecond to days
   ),
   scheduled_days: 1, // Example initial value
   reps: 0, // Number of repetitions so far

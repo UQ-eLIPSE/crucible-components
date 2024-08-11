@@ -1469,6 +1469,7 @@ const Ws = (e) => new Bs(e || {}), Js = It({ enable_fuzz: !0 }), Ys = Ws(Js), Ks
   // initial value
   elapsed_days: Math.floor(
     ((/* @__PURE__ */ new Date()).getTime() - new Date(e.lastAttempted).getTime()) / (1e3 * 60 * 60 * 24)
+    // convert minisecond to days
   ),
   scheduled_days: 1,
   // Example initial value

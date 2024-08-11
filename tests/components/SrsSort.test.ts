@@ -1,4 +1,3 @@
-// import { testMCQquestions } from "../testSeeds";
 import { updatedQuestions, sortedQuestions } from "../../src/utils/SrsSort";
 import { it, expect } from "vitest";
 
