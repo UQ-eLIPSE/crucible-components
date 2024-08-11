@@ -1,3 +1,4 @@
+import { sortedQuestions } from "@/utils/SrsSort";
 import { MCQuestion, QuestionState, SelectedTags, Tags } from "../types/MCQ";
 
 /**
@@ -28,7 +29,7 @@ export const getQuestionsRandomly = (
   count: number,
   questions: MCQuestion[],
 ) => {
-  const srsQuestions = srsSortedQuestions(questions);
+  const srsQuestions = sortedQuestions(questions);
   const shuffled = shuffleArray(srsQuestions.slice(0, count));
   return shuffled;
 };
