@@ -1,3 +1,4 @@
+import { sortedQuestions } from "@/utils/SrsSort";
 import { MCQuestion, QuestionState, SelectedTags, Tags } from "../types/MCQ";
 
 /**
@@ -20,6 +21,13 @@ export const getQuestionsRandomly = (
   const shuffled = shuffleArray(questions);
   return shuffled.slice(0, count);
 };
+
+export const getQuestionsFromSRS = (count: number, questions: MCQuestion[]) => {
+  const srsQuestions = sortedQuestions(questions);
+  const shuffled = shuffleArray(srsQuestions.slice(0, count));
+  return shuffled;
+};
+
 // this is the function to generate Taxonomies
 export function getUniquePropertyValues(tagProps: Tags[]) {
   const uniqueTags = tagProps.reduce(

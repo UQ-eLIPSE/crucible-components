@@ -1,10 +1,11 @@
 <script setup lang="ts">
-import { inject, onBeforeMount, ref } from "vue";
+import { inject, onBeforeMount, ref, toRefs } from "vue";
 import MCQQuiz from "@components/MCQ/MCQQuiz.vue";
 import MCQTimedQuiz from "@components/MCQ/MCQTimedQuiz.vue";
 import StartPage from "@components/StartPage.vue";
 import {
   filterQuestionsByTags,
+  getQuestionsFromSRS,
   getQuestionsRandomly,
   getUniquePropertyValues,
 } from "../components/QuestionStore";
@@ -15,20 +16,35 @@ import {
   getAllQuestions,
   getConvertedStaticData,
 } from "../components/DataAccessLayer";
-import { DataApi, DataMCQuestion } from "@/types/DataMCQ";
-
+import { DataMCQuestion } from "@/types/DataMCQ";
+const props = defineProps({
+  level: {
+    type: Number,
+    default: 5, // a default value is required for Vue props
+  },
+});
+const enableSRS = ref(false);
 const quizQuestions = ref(0);
 const questionsQueue = useQuizStore();
 const quizStarted = ref<boolean>(false);
 const questions = ref<MCQuestion[]>([]);
 // Inject data from crucible parent here
-const apiData: DataApi = inject("$dataLink") as DataApi;
+const apiData: string = inject("$dataLink") as string;
+const { level } = toRefs(props);
+onBeforeMount(async () => {
+  if (apiData) {
+    const result = async () => {
+      const res = await fetch(`${apiData}?level=${level.value}`);
+      const data = await res.json();
+      const questionsFromServer = data.questions;
 
-onBeforeMount(() => {
-  // Fetch quiz data from API
-  questions.value = apiData
-    ? getAllQuestions(apiData.data.questions as DataMCQuestion[])
-    : getConvertedStaticData();
+      return questionsFromServer;
+    };
+    const questionsMCQ = await result();
+    questions.value = getAllQuestions(questionsMCQ as DataMCQuestion[]);
+  } else {
+    questions.value = getConvertedStaticData();
+  }
 
   questionsQueue.allQs = questions.value;
   const allUniqueTags = getUniquePropertyValues(
@@ -40,10 +56,12 @@ onBeforeMount(() => {
       return { ...acc, [tag]: [] };
     }, {}),
   );
+  questionsQueue.setTagSet();
 });
 
 const handleStartQuiz = ({ questionAmount, mode }: StartQuizConfig) => {
   const selectedTags = questionsQueue.getselectedtags();
+
   if (!questions.value.length)
     return alert("Trouble fetching questions, please try again later");
 
@@ -51,7 +69,9 @@ const handleStartQuiz = ({ questionAmount, mode }: StartQuizConfig) => {
     questions.value,
     selectedTags,
   );
-  const quizAmount = getQuestionsRandomly(questionAmount, filteredquestions);
+  const quizAmount = enableSRS.value
+    ? getQuestionsFromSRS(questionAmount, filteredquestions)
+    : getQuestionsRandomly(questionAmount, filteredquestions);
   quizQuestions.value = quizAmount.length;
   questionsQueue.initialiseQuiz(quizAmount, mode);
 
@@ -68,7 +88,11 @@ const handleStartQuiz = ({ questionAmount, mode }: StartQuizConfig) => {
   <MCQTimedQuiz
     v-else-if="quizStarted && questionsQueue.quizMode === 'Timed'"
   />
-  <StartPage v-else @start-quiz="handleStartQuiz" />
+  <StartPage
+    v-else
+    @start-quiz="handleStartQuiz"
+    @enable-srs="() => (enableSRS = !enableSRS)"
+  />
 </template>
 
 <style>
@@ -99,6 +123,7 @@ button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
+
 label p {
   margin: 0;
 }

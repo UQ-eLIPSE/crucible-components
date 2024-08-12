@@ -11,6 +11,9 @@ export interface DataMCQuestion {
   tags: DataTags;
   optionsList: DataMCQOptions[];
   link: string;
+  attempts: number;
+  correctAttempts: number;
+  lastAttempted: Date;
 }
 
 export interface DataApi {
