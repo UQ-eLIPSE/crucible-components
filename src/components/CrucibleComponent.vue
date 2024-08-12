@@ -5,6 +5,7 @@ import MCQTimedQuiz from "@components/MCQ/MCQTimedQuiz.vue";
 import StartPage from "@components/StartPage.vue";
 import {
   filterQuestionsByTags,
+  getQuestionsFromSRS,
   getQuestionsRandomly,
   getUniquePropertyValues,
 } from "../components/QuestionStore";
@@ -22,7 +23,7 @@ const props = defineProps({
     default: 5, // a default value is required for Vue props
   },
 });
-
+const enableSRS = ref(false);
 const quizQuestions = ref(0);
 const questionsQueue = useQuizStore();
 const quizStarted = ref<boolean>(false);
@@ -68,7 +69,9 @@ const handleStartQuiz = ({ questionAmount, mode }: StartQuizConfig) => {
     questions.value,
     selectedTags,
   );
-  const quizAmount = getQuestionsRandomly(questionAmount, filteredquestions);
+  const quizAmount = enableSRS.value
+    ? getQuestionsFromSRS(questionAmount, filteredquestions)
+    : getQuestionsRandomly(questionAmount, filteredquestions);
   quizQuestions.value = quizAmount.length;
   questionsQueue.initialiseQuiz(quizAmount, mode);
 
@@ -85,7 +88,12 @@ const handleStartQuiz = ({ questionAmount, mode }: StartQuizConfig) => {
   <MCQTimedQuiz
     v-else-if="quizStarted && questionsQueue.quizMode === 'Timed'"
   />
-  <StartPage v-else @start-quiz="handleStartQuiz" />
+  <StartPage
+    v-else
+    @start-quiz="handleStartQuiz"
+    @enable-srs="() => (enableSRS = !enableSRS)"
+  />
+  {{ enableSRS }}
 </template>
 
 <style>
