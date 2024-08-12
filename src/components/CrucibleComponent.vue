@@ -93,7 +93,6 @@ const handleStartQuiz = ({ questionAmount, mode }: StartQuizConfig) => {
     @start-quiz="handleStartQuiz"
     @enable-srs="() => (enableSRS = !enableSRS)"
   />
-  {{ enableSRS }}
 </template>
 
 <style>
