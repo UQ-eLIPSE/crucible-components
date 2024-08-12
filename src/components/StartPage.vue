@@ -44,6 +44,15 @@
         />
       </div>
     </div>
+    <div v-if="selectedMode === 'Tutor'" class="srs-toggle-frame">
+      <span>Enable Spaced Repetition Scheduled</span>
+      <input
+        id="switch"
+        class="srs-toggle"
+        type="checkbox"
+        @click="emit('enable-srs')"
+      /><label class="srs-label" for="switch">toggle</label>
+    </div>
     <button class="start-button" @click="startQuiz">Start</button>
   </div>
 </template>
@@ -59,7 +68,7 @@ const selectedMode = ref<string>("Tutor");
 const showMaxMsg = ref<boolean>(false);
 const showMaxMsgDelay = 3000;
 const showMaxMsgTimeoutId = ref<number | null>(null);
-const emit = defineEmits(["start-quiz"]);
+const emit = defineEmits(["start-quiz", "enable-srs"]);
 const questionsQueue = useQuizStore();
 
 onMounted(() => {
@@ -115,6 +124,7 @@ const checkMax = () => {
   background-color: #2a52be;
   cursor: pointer;
 }
+
 .tag-text {
   margin: 0px;
 }
@@ -157,17 +167,21 @@ const checkMax = () => {
   h1 {
     font-size: 1.5rem;
   }
+
   .question-config-container {
     font-size: 0.85rem;
   }
+
   .question-amount-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
   }
+
   .question-amount-container input {
     align-self: center;
   }
+
   #question-amount {
     margin-left: 0;
   }
@@ -176,5 +190,54 @@ const checkMax = () => {
     --responsive-padding-left: clamp(10px, 5vw, 20px);
     padding-left: var(--responsive-padding-left);
   }
+}
+
+.srs-toggle-frame {
+  margin: auto;
+  padding-bottom: 5px;
+  display: flex;
+}
+
+.srs-toggle {
+  height: 0;
+  width: 0;
+  visibility: hidden;
+}
+
+.srs-label {
+  position: relative;
+  cursor: pointer;
+  text-indent: -9999px;
+  width: 50px;
+  height: 27px;
+  background: grey;
+  display: block;
+  border-radius: 25px;
+  /* margin: auto; */
+}
+
+.srs-label:after {
+  content: "";
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  width: 25px;
+  height: 25px;
+  background: #fff;
+  border-radius: 25px;
+  transition: 0.3s;
+}
+
+.srs-toggle:checked + label {
+  background: blue;
+}
+
+.srs-toggle:checked + label:after {
+  left: calc(100%);
+  transform: translateX(-100%);
+}
+
+.srs-label:active:after {
+  width: 20px;
 }
 </style>

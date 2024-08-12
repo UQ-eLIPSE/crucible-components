@@ -14,25 +14,20 @@ export const shuffleArray = (array: MCQuestion[]) => {
   return array;
 };
 
-export const srsSortedQuestions = (questions: MCQuestion[]) => {
-  return questions.sort(
-    (curr, next) =>
-      curr.lastAttempted > next.lastAttempted
-        ? 1
-        : curr.lastAttempted < next.lastAttempted
-          ? -1
-          : 0, //todo:replace this with reviewTime once algorithm implemented
-  );
-};
-
 export const getQuestionsRandomly = (
   count: number,
   questions: MCQuestion[],
 ) => {
+  const shuffled = shuffleArray(questions);
+  return shuffled.slice(0, count);
+};
+
+export const getQuestionsFromSRS = (count: number, questions: MCQuestion[]) => {
   const srsQuestions = sortedQuestions(questions);
   const shuffled = shuffleArray(srsQuestions.slice(0, count));
   return shuffled;
 };
+
 // this is the function to generate Taxonomies
 export function getUniquePropertyValues(tagProps: Tags[]) {
   const uniqueTags = tagProps.reduce(
