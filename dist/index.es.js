@@ -1,7 +1,7 @@
 var Re = Object.defineProperty;
 var je = (e, t, n) => t in e ? Re(e, t, { enumerable: !0, configurable: !0, writable: !0, value: n }) : e[t] = n;
-var O = (e, t, n) => je(e, typeof t != "symbol" ? t + "" : t, n);
-import { effectScope as ce, ref as E, markRaw as X, toRaw as ht, hasInjectionContext as ze, inject as Rt, getCurrentInstance as He, watch as jt, unref as S, reactive as Fe, isRef as mt, isReactive as zt, toRef as $t, nextTick as Wt, computed as Ht, getCurrentScope as Ue, onScopeDispose as Ge, toRefs as Vt, defineComponent as M, openBlock as _, createElementBlock as y, Fragment as U, normalizeClass as W, createElementVNode as m, toDisplayString as k, renderList as ct, createVNode as lt, createBlock as H, createCommentVNode as V, onMounted as xt, pushScopeId as le, popScopeId as ue, resolveComponent as Be, onBeforeMount as de, createTextVNode as Ft, watchEffect as We, withDirectives as Jt, vModelText as Je, vModelSelect as Ye } from "vue";
+var V = (e, t, n) => je(e, typeof t != "symbol" ? t + "" : t, n);
+import { effectScope as ce, ref as E, markRaw as X, toRaw as ht, hasInjectionContext as ze, inject as Rt, getCurrentInstance as He, watch as jt, unref as S, reactive as Fe, isRef as mt, isReactive as zt, toRef as $t, nextTick as Wt, computed as Ht, getCurrentScope as Ue, onScopeDispose as Ge, toRefs as Vt, defineComponent as M, openBlock as _, createElementBlock as y, Fragment as U, normalizeClass as W, createElementVNode as m, toDisplayString as k, renderList as ct, createVNode as lt, createBlock as H, createCommentVNode as O, onMounted as xt, pushScopeId as le, popScopeId as ue, resolveComponent as Be, onBeforeMount as de, createTextVNode as Ft, watchEffect as We, withDirectives as Jt, vModelText as Je, vModelSelect as Ye } from "vue";
 var pe = !1;
 function vt(e, t, n) {
   return Array.isArray(e) ? (e.length = Math.max(e.length, t), e.splice(t, 1, n), n) : (e[t] = n, n);
@@ -1126,10 +1126,10 @@ function Hs(e, t, n) {
 }
 class Fs {
   constructor(t) {
-    O(this, "c");
-    O(this, "s0");
-    O(this, "s1");
-    O(this, "s2");
+    V(this, "c");
+    V(this, "s0");
+    V(this, "s1");
+    V(this, "s2");
     const n = Us();
     this.c = 1, this.s0 = n(" "), this.s1 = n(" "), this.s2 = n(" "), t == null && (t = +/* @__PURE__ */ new Date()), this.s0 -= n(t), this.s0 < 0 && (this.s0 += 1), this.s1 -= n(t), this.s1 < 0 && (this.s1 += 1), this.s2 -= n(t), this.s2 < 0 && (this.s2 += 1);
   }
@@ -1163,9 +1163,9 @@ function Gs(e) {
 const ne = -0.5, oe = 19 / 81;
 class Bs {
   constructor(t) {
-    O(this, "param");
-    O(this, "intervalModifier");
-    O(this, "_seed");
+    V(this, "param");
+    V(this, "intervalModifier");
+    V(this, "_seed");
     this.param = new Proxy(It(t), this.params_handler_proxy()), this.intervalModifier = this.calculate_interval_modifier(this.param.request_retention);
   }
   get interval_modifier() {
@@ -1238,11 +1238,11 @@ class Bs {
 }
 class Ce {
   constructor(t, n, s) {
-    O(this, "last");
-    O(this, "current");
-    O(this, "review_time");
-    O(this, "next", /* @__PURE__ */ new Map());
-    O(this, "algorithm");
+    V(this, "last");
+    V(this, "current");
+    V(this, "review_time");
+    V(this, "next", /* @__PURE__ */ new Map());
+    V(this, "algorithm");
     this.algorithm = s, this.last = v.card(t), this.current = v.card(t), this.review_time = v.time(n), this.init();
   }
   init() {
@@ -1394,7 +1394,7 @@ class re extends Ce {
 class Ws extends Bs {
   constructor(n) {
     super(n);
-    O(this, "Schduler");
+    V(this, "Schduler");
     const { enable_short_term: s } = this.parameters;
     this.Schduler = s ? ie : re;
   }
@@ -1703,18 +1703,18 @@ const ke = (e, t) => t.findIndex((n) => {
         onSubmitAnswer: a,
         onNextQuestion: D[0] || (D[0] = (x) => l()),
         onSkipQuestion: p
-      }, null, 8, ["submitted", "selected-option", "hide-skip"])) : V("", !0),
+      }, null, 8, ["submitted", "selected-option", "hide-skip"])) : O("", !0),
       m("div", un, [
         S(n).quizMode === "Timed" ? (_(), H(se, {
           key: 0,
           "button-name": S(n).questionsQueue.length >= 1 ? "→" : "Submit",
           onNextQuestion: D[1] || (D[1] = (x) => c())
-        }, null, 8, ["button-name"])) : V("", !0),
+        }, null, 8, ["button-name"])) : O("", !0),
         S(n).quizMode === "Timed" && S(n).questionsStack.length > 1 ? (_(), H(se, {
           key: 1,
           "button-name": "←",
           onPrevQuestion: D[2] || (D[2] = (x) => w())
-        })) : V("", !0)
+        })) : O("", !0)
       ])
     ], 64));
   }
@@ -1761,7 +1761,7 @@ const ke = (e, t) => t.findIndex((n) => {
                     w.optionCorrect ? (_(), y("span", {
                       key: 0,
                       innerHTML: w.optionValue
-                    }, null, 8, yn)) : V("", !0)
+                    }, null, 8, yn)) : O("", !0)
                   ]))), 128))
                 ]),
                 m("td", wn, [
@@ -1808,9 +1808,9 @@ const ke = (e, t) => t.findIndex((n) => {
           _id: t.value._id,
           onNextQuestion: o,
           onSkipQuestion: s
-        }, null, 8, ["statement", "options-list", "_id"])) : V("", !0),
-        t.value ? V("", !0) : (_(), H(Qe, { key: 1 })),
-        t.value ? V("", !0) : (_(), y("button", {
+        }, null, 8, ["statement", "options-list", "_id"])) : O("", !0),
+        t.value ? O("", !0) : (_(), H(Qe, { key: 1 })),
+        t.value ? O("", !0) : (_(), y("button", {
           key: 2,
           class: "btn-relocate",
           onClick: i
@@ -1835,7 +1835,7 @@ const ke = (e, t) => t.findIndex((n) => {
       return `${o}:${i < 10 ? "0" : ""}${i}`;
     };
     return (s, o) => (_(), y(U, null, [
-      e.timeLeft ? (_(), y("h3", Dn, " Time left: " + k(n(e.timeLeft)), 1)) : V("", !0),
+      e.timeLeft ? (_(), y("h3", Dn, " Time left: " + k(n(e.timeLeft)), 1)) : O("", !0),
       m("h3", kn, " Question " + k(S(t).questionsStack.length) + " out of " + k(S(t).quizStats.length), 1)
     ], 64));
   }
@@ -1876,9 +1876,9 @@ const ke = (e, t) => t.findIndex((n) => {
         _id: n.value._id,
         onNextQuestion: a,
         onPrevQuestion: r
-      }, null, 8, ["statement", "options-list", "_id"])) : V("", !0),
-      n.value ? V("", !0) : (_(), H(Qe, { key: 1 })),
-      n.value ? V("", !0) : (_(), y("button", {
+      }, null, 8, ["statement", "options-list", "_id"])) : O("", !0),
+      n.value ? O("", !0) : (_(), H(Qe, { key: 1 })),
+      n.value ? O("", !0) : (_(), y("button", {
         key: 2,
         class: "btn-relocate",
         onClick: c
@@ -1943,7 +1943,7 @@ const ke = (e, t) => t.findIndex((n) => {
           for: `${c.category}-${g}-checkbox`
         }, [
           Ft(k(o(g)) + " ", 1),
-          d !== null && d !== "0" ? (_(), y("span", Pn, k(w), 1)) : V("", !0)
+          d !== null && d !== "0" ? (_(), y("span", Pn, k(w), 1)) : O("", !0)
         ], 8, qn)
       ], 2))), 128))
     ]));
@@ -1972,7 +1972,7 @@ const ke = (e, t) => t.findIndex((n) => {
           topics: a
         }, null, 8, ["category", "topics"])
       ]))), 128))
-    ])) : V("", !0);
+    ])) : O("", !0);
   }
 }), Hn = /* @__PURE__ */ z(zn, [["__scopeId", "data-v-0ae43360"]]), Fn = { for: "optionName" }, Un = ["value"], Gn = /* @__PURE__ */ M({
   __name: "DropDownbox",
@@ -2003,13 +2003,16 @@ const ke = (e, t) => t.findIndex((n) => {
       ], 32)
     ], 2));
   }
-}), Bn = /* @__PURE__ */ z(Gn, [["__scopeId", "data-v-5f3ae97a"]]), st = (e) => (le("data-v-004e7898"), e = e(), ue(), e), Wn = { class: "start-page-container" }, Jn = /* @__PURE__ */ st(() => /* @__PURE__ */ m("h1", null, "VetCloud Smart Quiz", -1)), Yn = { class: "quiz-config-container" }, Kn = { class: "question-config-container" }, Xn = { class: "tag-text" }, Zn = { class: "question-number" }, to = { class: "question-amount-container" }, eo = /* @__PURE__ */ st(() => /* @__PURE__ */ m("label", { for: "question-amount" }, "Select the amount of questions:", -1)), so = ["max"], no = {
+}), Bn = /* @__PURE__ */ z(Gn, [["__scopeId", "data-v-5f3ae97a"]]), st = (e) => (le("data-v-adeabea1"), e = e(), ue(), e), Wn = { class: "start-page-container" }, Jn = /* @__PURE__ */ st(() => /* @__PURE__ */ m("h1", null, "VetCloud Smart Quiz", -1)), Yn = { class: "quiz-config-container" }, Kn = { class: "question-config-container" }, Xn = { class: "tag-text" }, Zn = { class: "question-number" }, to = { class: "question-amount-container" }, eo = /* @__PURE__ */ st(() => /* @__PURE__ */ m("label", { for: "question-amount" }, "Select the amount of questions:", -1)), so = ["max"], no = {
   key: 0,
   class: "show-max-msg"
 }, oo = /* @__PURE__ */ st(() => /* @__PURE__ */ m("label", { for: "mode-select" }, "Select mode:", -1)), io = /* @__PURE__ */ st(() => /* @__PURE__ */ m("option", { value: "Tutor" }, "Tutor", -1)), ro = /* @__PURE__ */ st(() => /* @__PURE__ */ m("option", { value: "Timed" }, "Timed", -1)), ao = [
   io,
   ro
-], co = { class: "srs-toggle-frame" }, lo = /* @__PURE__ */ st(() => /* @__PURE__ */ m("span", null, "Enable Spaced Repetition Scheduled", -1)), uo = /* @__PURE__ */ st(() => /* @__PURE__ */ m("label", {
+], co = {
+  key: 0,
+  class: "srs-toggle-frame"
+}, lo = /* @__PURE__ */ st(() => /* @__PURE__ */ m("span", null, "Enable Spaced Repetition Scheduled", -1)), uo = /* @__PURE__ */ st(() => /* @__PURE__ */ m("label", {
   class: "srs-label",
   for: "switch"
 }, "toggle", -1)), po = 3e3, fo = /* @__PURE__ */ M({
@@ -2061,7 +2064,7 @@ const ke = (e, t) => t.findIndex((n) => {
               ]
             ])
           ]),
-          o.value ? (_(), y("p", no, " Cannot select more than " + k(S(a).getquestionnumber()) + " questions. ", 1)) : V("", !0),
+          o.value ? (_(), y("p", no, " Cannot select more than " + k(S(a).getquestionnumber()) + " questions. ", 1)) : O("", !0),
           m("div", null, [
             oo,
             Jt(m("select", {
@@ -2082,7 +2085,7 @@ const ke = (e, t) => t.findIndex((n) => {
           }, null, 8, ["class", "disabled"])
         ])
       ]),
-      m("div", co, [
+      s.value === "Tutor" ? (_(), y("div", co, [
         lo,
         m("input", {
           id: "switch",
@@ -2091,14 +2094,14 @@ const ke = (e, t) => t.findIndex((n) => {
           onClick: d[2] || (d[2] = (g) => r("enable-srs"))
         }),
         uo
-      ]),
+      ])) : O("", !0),
       m("button", {
         class: "start-button",
         onClick: c
       }, "Start")
     ]));
   }
-}), ho = /* @__PURE__ */ z(fo, [["__scopeId", "data-v-004e7898"]]), mo = (e) => e.trim().toLowerCase().replace("_", " "), go = (e) => e.reduce((t, n) => {
+}), ho = /* @__PURE__ */ z(fo, [["__scopeId", "data-v-adeabea1"]]), mo = (e) => e.trim().toLowerCase().replace("_", " "), go = (e) => e.reduce((t, n) => {
   if (!n.includes(":")) return t;
   let [s, o] = n.split(":");
   return [s, o] = [s.trim().toLowerCase(), mo(o)], t[s] ? t[s] = [...t[s], o] : t[s] = [o], t;

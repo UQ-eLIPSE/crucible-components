@@ -44,7 +44,7 @@
         />
       </div>
     </div>
-    <div class="srs-toggle-frame">
+    <div v-if="selectedMode === 'Tutor'" class="srs-toggle-frame">
       <span>Enable Spaced Repetition Scheduled</span>
       <input
         id="switch"
