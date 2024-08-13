@@ -213,7 +213,6 @@ const checkMax = () => {
   background: grey;
   display: block;
   border-radius: 25px;
-  /* margin: auto; */
 }
 
 .srs-label:after {
