@@ -2003,11 +2003,7 @@ const $e = (e, t) => t.findIndex((n) => {
       ], 32)
     ], 2));
   }
-<<<<<<< HEAD
-}), Yn = /* @__PURE__ */ z(Jn, [["__scopeId", "data-v-5f3ae97a"]]), st = (e) => (ce("data-v-9e6db117"), e = e(), le(), e), Kn = { class: "start-page-container" }, Xn = /* @__PURE__ */ st(() => /* @__PURE__ */ g("h1", null, "VetCloud Smart Quiz", -1)), Zn = { class: "quiz-config-container" }, to = { class: "question-config-container" }, eo = { class: "tag-text" }, so = { class: "question-number" }, no = { class: "question-amount-container" }, oo = /* @__PURE__ */ st(() => /* @__PURE__ */ g("label", { for: "question-amount" }, "Select the amount of questions:", -1)), io = ["max"], ro = {
-=======
 }), Gn = /* @__PURE__ */ z(Un, [["__scopeId", "data-v-5f3ae97a"]]), gt = (e) => (ce("data-v-84467fb8"), e = e(), le(), e), Bn = { class: "start-page-container" }, Wn = /* @__PURE__ */ gt(() => /* @__PURE__ */ m("h1", null, "VetCloud Smart Quiz", -1)), Jn = { class: "quiz-config-container" }, Yn = { class: "question-config-container" }, Kn = { class: "tag-text" }, Xn = { class: "question-number" }, Zn = { class: "question-amount-container" }, to = /* @__PURE__ */ gt(() => /* @__PURE__ */ m("label", { for: "question-amount" }, "Select the amount of questions:", -1)), eo = ["max"], so = {
->>>>>>> release-package
   key: 0,
   class: "show-max-msg"
 }, no = /* @__PURE__ */ gt(() => /* @__PURE__ */ m("label", { for: "mode-select" }, "Select mode:", -1)), oo = /* @__PURE__ */ gt(() => /* @__PURE__ */ m("option", { value: "Tutor" }, "Tutor", -1)), io = /* @__PURE__ */ gt(() => /* @__PURE__ */ m("option", { value: "Timed" }, "Timed", -1)), ro = [
@@ -2015,15 +2011,7 @@ const $e = (e, t) => t.findIndex((n) => {
   io
 ], ao = 3e3, co = /* @__PURE__ */ M({
   __name: "StartPage",
-<<<<<<< HEAD
-  props: {
-    modelValue: { type: Boolean },
-    modelModifiers: {}
-  },
-  emits: /* @__PURE__ */ We(["start-quiz", "enable-srs"], ["update:modelValue"]),
-=======
   emits: ["start-quiz", "enable-srs"],
->>>>>>> release-package
   setup(e, { emit: t }) {
     const n = E(1), s = E("Tutor"), o = E(!1), i = E(null), r = t, a = U();
     Et(() => {
@@ -2097,11 +2085,7 @@ const $e = (e, t) => t.findIndex((n) => {
       }, "Start")
     ]));
   }
-<<<<<<< HEAD
-}), _o = /* @__PURE__ */ z(go, [["__scopeId", "data-v-9e6db117"]]), bo = (e) => e.trim().toLowerCase().replace("_", " "), vo = (e) => e.reduce((t, n) => {
-=======
 }), lo = /* @__PURE__ */ z(co, [["__scopeId", "data-v-84467fb8"]]), uo = (e) => e.trim().toLowerCase().replace("_", " "), po = (e) => e.reduce((t, n) => {
->>>>>>> release-package
   if (!n.includes(":")) return t;
   let [s, o] = n.split(":");
   return [s, o] = [s.trim().toLowerCase(), uo(o)], t[s] ? t[s] = [...t[s], o] : t[s] = [o], t;
