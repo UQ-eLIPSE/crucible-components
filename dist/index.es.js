@@ -1,24 +1,38 @@
 var Re = Object.defineProperty;
 var je = (e, t, n) => t in e ? Re(e, t, { enumerable: !0, configurable: !0, writable: !0, value: n }) : e[t] = n;
+<<<<<<< HEAD
 var V = (e, t, n) => je(e, typeof t != "symbol" ? t + "" : t, n);
 import { effectScope as ae, ref as E, markRaw as X, toRaw as ht, hasInjectionContext as ze, inject as Rt, getCurrentInstance as He, watch as jt, unref as S, reactive as Fe, isRef as mt, isReactive as zt, toRef as $t, nextTick as Bt, computed as Ht, getCurrentScope as Ue, onScopeDispose as Ge, toRefs as Vt, defineComponent as M, openBlock as _, createElementBlock as y, Fragment as B, normalizeClass as W, createElementVNode as m, toDisplayString as N, renderList as ct, createVNode as lt, createBlock as H, createCommentVNode as O, onMounted as xt, pushScopeId as ce, popScopeId as le, resolveComponent as Be, onBeforeMount as ue, createTextVNode as de, watchEffect as We, withDirectives as Wt, vModelText as Je, vModelSelect as Ye } from "vue";
+=======
+var M = (e, t, n) => je(e, typeof t != "symbol" ? t + "" : t, n);
+import { effectScope as ae, ref as x, markRaw as X, toRaw as ht, hasInjectionContext as ze, inject as jt, getCurrentInstance as He, watch as zt, unref as S, reactive as Fe, isRef as mt, isReactive as Ht, toRef as Dt, nextTick as Wt, computed as Ft, getCurrentScope as Ue, onScopeDispose as Be, toRefs as Ot, defineComponent as O, openBlock as _, createElementBlock as w, Fragment as G, normalizeClass as W, createElementVNode as g, toDisplayString as N, renderList as ct, createVNode as lt, createBlock as H, createCommentVNode as V, onMounted as Et, pushScopeId as ce, popScopeId as le, resolveComponent as Ge, onBeforeMount as ue, createTextVNode as de, mergeModels as We, useModel as Je, watchEffect as Ye, withDirectives as $t, vModelText as Ke, vModelSelect as Xe, vModelCheckbox as Ze } from "vue";
+>>>>>>> release-package
 var pe = !1;
 function vt(e, t, n) {
   return Array.isArray(e) ? (e.length = Math.max(e.length, t), e.splice(t, 1, n), n) : (e[t] = n, n);
 }
+<<<<<<< HEAD
 function Dt(e, t) {
+=======
+function kt(e, t) {
+>>>>>>> release-package
   if (Array.isArray(e)) {
     e.splice(t, 1);
     return;
   }
   delete e[t];
 }
+<<<<<<< HEAD
 function Ke() {
+=======
+function ts() {
+>>>>>>> release-package
   return fe().__VUE_DEVTOOLS_GLOBAL_HOOK__;
 }
 function fe() {
   return typeof navigator < "u" && typeof window < "u" ? window : typeof globalThis < "u" ? globalThis : {};
 }
+<<<<<<< HEAD
 const Xe = typeof Proxy == "function", Ze = "devtools-plugin:setup", ts = "plugin:settings:set";
 let it, Mt;
 function es() {
@@ -29,6 +43,18 @@ function ss() {
   return es() ? Mt.now() : Date.now();
 }
 class ns {
+=======
+const es = typeof Proxy == "function", ss = "devtools-plugin:setup", ns = "plugin:settings:set";
+let it, qt;
+function os() {
+  var e;
+  return it !== void 0 || (typeof window < "u" && window.performance ? (it = !0, qt = window.performance) : typeof globalThis < "u" && (!((e = globalThis.perf_hooks) === null || e === void 0) && e.performance) ? (it = !0, qt = globalThis.perf_hooks.performance) : it = !1), it;
+}
+function is() {
+  return os() ? qt.now() : Date.now();
+}
+class rs {
+>>>>>>> release-package
   constructor(t, n) {
     this.target = null, this.targetQueue = [], this.onQueue = [], this.plugin = t, this.hook = n;
     const s = {};
@@ -56,9 +82,15 @@ class ns {
         i = r;
       },
       now() {
+<<<<<<< HEAD
         return ss();
       }
     }, n && n.on(ts, (r, a) => {
+=======
+        return is();
+      }
+    }, n && n.on(ns, (r, a) => {
+>>>>>>> release-package
       r === this.plugin.id && this.fallbacks.setSettings(a);
     }), this.proxiedOn = new Proxy({}, {
       get: (r, a) => this.target ? this.target.on[a] : (...c) => {
@@ -91,11 +123,19 @@ class ns {
   }
 }
 function he(e, t) {
+<<<<<<< HEAD
   const n = e, s = fe(), o = Ke(), i = Xe && n.enableEarlyProxy;
   if (o && (s.__VUE_DEVTOOLS_PLUGIN_API_AVAILABLE__ || !i))
     o.emit(Ze, e, t);
   else {
     const r = i ? new ns(n, o) : null;
+=======
+  const n = e, s = fe(), o = ts(), i = es && n.enableEarlyProxy;
+  if (o && (s.__VUE_DEVTOOLS_PLUGIN_API_AVAILABLE__ || !i))
+    o.emit(ss, e, t);
+  else {
+    const r = i ? new rs(n, o) : null;
+>>>>>>> release-package
     (s.__VUE_DEVTOOLS_PLUGINS__ = s.__VUE_DEVTOOLS_PLUGINS__ || []).push({
       pluginDescriptor: n,
       setupFn: t,
@@ -121,10 +161,14 @@ var F;
   e.direct = "direct", e.patchObject = "patch object", e.patchFunction = "patch function";
 })(F || (F = {}));
 const Z = typeof window < "u", Jt = typeof window == "object" && window.window === window ? window : typeof self == "object" && self.self === self ? self : typeof global == "object" && global.global === global ? global : typeof globalThis == "object" ? globalThis : { HTMLElement: null };
+<<<<<<< HEAD
 function os(e, { autoBom: t = !1 } = {}) {
+=======
+function as(e, { autoBom: t = !1 } = {}) {
+>>>>>>> release-package
   return t && /^\s*(?:text\/\S*|application\/xml|\S*\/\S*\+xml)\s*;.*charset\s*=\s*utf-8/i.test(e.type) ? new Blob(["\uFEFF", e], { type: e.type }) : e;
 }
-function Ft(e, t, n) {
+function Ut(e, t, n) {
   const s = new XMLHttpRequest();
   s.open("GET", e), s.responseType = "blob", s.onload = function() {
     be(s.response, t, n);
@@ -151,27 +195,43 @@ function wt(e) {
 }
 const At = typeof navigator == "object" ? navigator : { userAgent: "" }, _e = /Macintosh/.test(At.userAgent) && /AppleWebKit/.test(At.userAgent) && !/Safari/.test(At.userAgent), be = Z ? (
   // Use download attribute first if possible (#193 Lumia mobile) unless this is a macOS WebView or mini program
+<<<<<<< HEAD
   typeof HTMLAnchorElement < "u" && "download" in HTMLAnchorElement.prototype && !_e ? is : (
     // Use msSaveOrOpenBlob as a second approach
     "msSaveOrOpenBlob" in At ? rs : (
       // Fallback to using FileReader and a popup
       as
+=======
+  typeof HTMLAnchorElement < "u" && "download" in HTMLAnchorElement.prototype && !_e ? cs : (
+    // Use msSaveOrOpenBlob as a second approach
+    "msSaveOrOpenBlob" in At ? ls : (
+      // Fallback to using FileReader and a popup
+      us
+>>>>>>> release-package
     )
   )
 ) : () => {
 };
+<<<<<<< HEAD
 function is(e, t = "download", n) {
+=======
+function cs(e, t = "download", n) {
+>>>>>>> release-package
   const s = document.createElement("a");
-  s.download = t, s.rel = "noopener", typeof e == "string" ? (s.href = e, s.origin !== location.origin ? ge(s.href) ? Ft(e, t, n) : (s.target = "_blank", wt(s)) : wt(s)) : (s.href = URL.createObjectURL(e), setTimeout(function() {
+  s.download = t, s.rel = "noopener", typeof e == "string" ? (s.href = e, s.origin !== location.origin ? ge(s.href) ? Ut(e, t, n) : (s.target = "_blank", wt(s)) : wt(s)) : (s.href = URL.createObjectURL(e), setTimeout(function() {
     URL.revokeObjectURL(s.href);
   }, 4e4), setTimeout(function() {
     wt(s);
   }, 0));
 }
+<<<<<<< HEAD
 function rs(e, t = "download", n) {
+=======
+function ls(e, t = "download", n) {
+>>>>>>> release-package
   if (typeof e == "string")
     if (ge(e))
-      Ft(e, t, n);
+      Ut(e, t, n);
     else {
       const s = document.createElement("a");
       s.href = e, s.target = "_blank", setTimeout(function() {
@@ -179,11 +239,17 @@ function rs(e, t = "download", n) {
       });
     }
   else
+<<<<<<< HEAD
     navigator.msSaveOrOpenBlob(os(e, n), t);
 }
 function as(e, t, n, s) {
+=======
+    navigator.msSaveOrOpenBlob(as(e, n), t);
+}
+function us(e, t, n, s) {
+>>>>>>> release-package
   if (s = s || open("", "_blank"), s && (s.document.title = s.document.body.innerText = "downloading..."), typeof e == "string")
-    return Ft(e, t, n);
+    return Ut(e, t, n);
   const o = e.type === "application/octet-stream", i = /constructor/i.test(String(Jt.HTMLElement)) || "safari" in Jt, r = /CriOS\/[\d]+/.test(navigator.userAgent);
   if ((r || o && i || _e) && typeof FileReader < "u") {
     const a = new FileReader();
@@ -204,7 +270,7 @@ function k(e, t) {
   const n = "🍍 " + e;
   typeof __VUE_DEVTOOLS_TOAST__ == "function" ? __VUE_DEVTOOLS_TOAST__(n, t) : t === "error" ? console.error(n) : t === "warn" ? console.warn(n) : console.log(n);
 }
-function Ut(e) {
+function Bt(e) {
   return "_a" in e && "install" in e;
 }
 function ve() {
@@ -213,10 +279,24 @@ function ve() {
 }
 function ye(e) {
   return e instanceof Error && e.message.toLowerCase().includes("document is not focused") ? (k('You need to activate the "Emulate a focused page" setting in the "Rendering" panel of devtools.', "warn"), !0) : !1;
+<<<<<<< HEAD
+=======
 }
-async function cs(e) {
+async function ds(e) {
   if (!ve())
     try {
+      await navigator.clipboard.writeText(JSON.stringify(e.state.value)), k("Global state copied to clipboard.");
+    } catch (t) {
+      if (ye(t))
+        return;
+      k("Failed to serialize the state. Check the console for more details.", "error"), console.error(t);
+    }
+>>>>>>> release-package
+}
+async function ps(e) {
+  if (!ve())
+    try {
+<<<<<<< HEAD
       await navigator.clipboard.writeText(JSON.stringify(e.state.value)), k("Global state copied to clipboard.");
     } catch (t) {
       if (ye(t))
@@ -235,6 +315,16 @@ async function ls(e) {
     }
 }
 async function us(e) {
+=======
+      we(e, JSON.parse(await navigator.clipboard.readText())), k("Global state pasted from clipboard.");
+    } catch (t) {
+      if (ye(t))
+        return;
+      k("Failed to deserialize the state from clipboard. Check the console for more details.", "error"), console.error(t);
+    }
+}
+async function fs(e) {
+>>>>>>> release-package
   try {
     be(new Blob([JSON.stringify(e.state.value)], {
       type: "text/plain;charset=utf-8"
@@ -243,25 +333,37 @@ async function us(e) {
     k("Failed to export the state as JSON. Check the console for more details.", "error"), console.error(t);
   }
 }
+<<<<<<< HEAD
 let G;
 function ds() {
   G || (G = document.createElement("input"), G.type = "file", G.accept = ".json");
+=======
+let B;
+function hs() {
+  B || (B = document.createElement("input"), B.type = "file", B.accept = ".json");
+>>>>>>> release-package
   function e() {
     return new Promise((t, n) => {
-      G.onchange = async () => {
-        const s = G.files;
+      B.onchange = async () => {
+        const s = B.files;
         if (!s)
           return t(null);
         const o = s.item(0);
         return t(o ? { text: await o.text(), file: o } : null);
-      }, G.oncancel = () => t(null), G.onerror = n, G.click();
+      }, B.oncancel = () => t(null), B.onerror = n, B.click();
     });
   }
   return e;
 }
+<<<<<<< HEAD
 async function ps(e) {
   try {
     const n = await ds()();
+=======
+async function ms(e) {
+  try {
+    const n = await hs()();
+>>>>>>> release-package
     if (!n)
       return;
     const { text: s, file: o } = n;
@@ -284,8 +386,13 @@ function j(e) {
   };
 }
 const Ae = "🍍 Pinia (root)", Tt = "_root";
+<<<<<<< HEAD
 function fs(e) {
   return Ut(e) ? {
+=======
+function gs(e) {
+  return Bt(e) ? {
+>>>>>>> release-package
     id: Tt,
     label: Ae
   } : {
@@ -293,8 +400,13 @@ function fs(e) {
     label: e.$id
   };
 }
+<<<<<<< HEAD
 function hs(e) {
   if (Ut(e)) {
+=======
+function _s(e) {
+  if (Bt(e)) {
+>>>>>>> release-package
     const n = Array.from(e._s.keys()), s = e._s;
     return {
       state: n.map((i) => ({
@@ -329,7 +441,11 @@ function hs(e) {
     value: e[n]
   }))), t;
 }
+<<<<<<< HEAD
 function ms(e) {
+=======
+function bs(e) {
+>>>>>>> release-package
   return e ? Array.isArray(e) ? e.reduce((t, n) => (t.keys.push(n.key), t.operations.push(n.type), t.oldValue[n.key] = n.oldValue, t.newValue[n.key] = n.newValue, t), {
     oldValue: {},
     keys: [],
@@ -342,7 +458,11 @@ function ms(e) {
     newValue: e.newValue
   } : {};
 }
+<<<<<<< HEAD
 function gs(e) {
+=======
+function vs(e) {
+>>>>>>> release-package
   switch (e) {
     case F.direct:
       return "mutation";
@@ -355,8 +475,13 @@ function gs(e) {
   }
 }
 let at = !0;
+<<<<<<< HEAD
 const St = [], K = "pinia:mutations", Q = "pinia", { assign: _s } = Object, Et = (e) => "🍍 " + e;
 function bs(e, t) {
+=======
+const St = [], K = "pinia:mutations", Q = "pinia", { assign: ys } = Object, xt = (e) => "🍍 " + e;
+function ws(e, t) {
+>>>>>>> release-package
   he({
     id: "dev.esm.pinia",
     label: "Pinia 🍍",
@@ -379,28 +504,44 @@ function bs(e, t) {
         {
           icon: "content_copy",
           action: () => {
+<<<<<<< HEAD
             cs(t);
+=======
+            ds(t);
+>>>>>>> release-package
           },
           tooltip: "Serialize and copy the state"
         },
         {
           icon: "content_paste",
           action: async () => {
+<<<<<<< HEAD
             await ls(t), n.sendInspectorTree(Q), n.sendInspectorState(Q);
+=======
+            await ps(t), n.sendInspectorTree(Q), n.sendInspectorState(Q);
+>>>>>>> release-package
           },
           tooltip: "Replace the state with the content of your clipboard"
         },
         {
           icon: "save",
           action: () => {
+<<<<<<< HEAD
             us(t);
+=======
+            fs(t);
+>>>>>>> release-package
           },
           tooltip: "Save the state as a JSON file"
         },
         {
           icon: "folder_open",
           action: async () => {
+<<<<<<< HEAD
             await ps(t), n.sendInspectorTree(Q), n.sendInspectorState(Q);
+=======
+            await ms(t), n.sendInspectorTree(Q), n.sendInspectorState(Q);
+>>>>>>> release-package
           },
           tooltip: "Import the state from a JSON file"
         }
@@ -457,14 +598,22 @@ function bs(e, t) {
     }), n.on.getInspectorTree((s) => {
       if (s.app === e && s.inspectorId === Q) {
         let o = [t];
+<<<<<<< HEAD
         o = o.concat(Array.from(t._s.values())), s.rootNodes = (s.filter ? o.filter((i) => "$id" in i ? i.$id.toLowerCase().includes(s.filter.toLowerCase()) : Ae.toLowerCase().includes(s.filter.toLowerCase())) : o).map(fs);
+=======
+        o = o.concat(Array.from(t._s.values())), s.rootNodes = (s.filter ? o.filter((i) => "$id" in i ? i.$id.toLowerCase().includes(s.filter.toLowerCase()) : Ae.toLowerCase().includes(s.filter.toLowerCase())) : o).map(gs);
+>>>>>>> release-package
       }
     }), globalThis.$pinia = t, n.on.getInspectorState((s) => {
       if (s.app === e && s.inspectorId === Q) {
         const o = s.nodeId === Tt ? t : t._s.get(s.nodeId);
         if (!o)
           return;
+<<<<<<< HEAD
         o && (s.nodeId !== Tt && (globalThis.$store = ht(o)), s.state = hs(o));
+=======
+        o && (s.nodeId !== Tt && (globalThis.$store = ht(o)), s.state = _s(o));
+>>>>>>> release-package
       }
     }), n.on.editInspectorState((s, o) => {
       if (s.app === e && s.inspectorId === Q) {
@@ -472,7 +621,11 @@ function bs(e, t) {
         if (!i)
           return k(`store "${s.nodeId}" not found`, "error");
         const { path: r } = s;
+<<<<<<< HEAD
         Ut(i) ? r.unshift("state") : (r.length !== 1 || !i._customProperties.has(r[0]) || r[0] in i.$state) && r.unshift("$state"), at = !1, s.set(i, r, s.state.value), at = !0;
+=======
+        Bt(i) ? r.unshift("state") : (r.length !== 1 || !i._customProperties.has(r[0]) || r[0] in i.$state) && r.unshift("$state"), at = !1, s.set(i, r, s.state.value), at = !0;
+>>>>>>> release-package
       }
     }), n.on.editComponentState((s) => {
       if (s.type.startsWith("🍍")) {
@@ -489,8 +642,13 @@ Only state can be modified.`);
     });
   });
 }
+<<<<<<< HEAD
 function vs(e, t) {
   St.includes(Et(t.$id)) || St.push(Et(t.$id)), he({
+=======
+function As(e, t) {
+  St.includes(xt(t.$id)) || St.push(xt(t.$id)), he({
+>>>>>>> release-package
     id: "dev.esm.pinia",
     label: "Pinia 🍍",
     logo: "https://pinia.vuejs.org/logo.svg",
@@ -527,7 +685,11 @@ function vs(e, t) {
           },
           groupId: p
         }
+<<<<<<< HEAD
       }), r((d) => {
+=======
+      }), r((p) => {
+>>>>>>> release-package
         Y = void 0, n.addTimelineEvent({
           layerId: K,
           event: {
@@ -538,12 +700,20 @@ function vs(e, t) {
               store: j(t.$id),
               action: j(c),
               args: l,
+<<<<<<< HEAD
               result: d
+=======
+              result: p
+>>>>>>> release-package
             },
             groupId: p
           }
         });
+<<<<<<< HEAD
       }), a((d) => {
+=======
+      }), a((p) => {
+>>>>>>> release-package
         Y = void 0, n.addTimelineEvent({
           layerId: K,
           event: {
@@ -555,14 +725,22 @@ function vs(e, t) {
               store: j(t.$id),
               action: j(c),
               args: l,
+<<<<<<< HEAD
               error: d
+=======
+              error: p
+>>>>>>> release-package
             },
             groupId: p
           }
         });
       });
     }, !0), t._customProperties.forEach((r) => {
+<<<<<<< HEAD
       jt(() => S(t[r]), (a, c) => {
+=======
+      zt(() => S(t[r]), (a, c) => {
+>>>>>>> release-package
         n.notifyComponentUpdate(), n.sendInspectorState(Q), at && n.addTimelineEvent({
           layerId: K,
           event: {
@@ -582,8 +760,13 @@ function vs(e, t) {
         return;
       const l = {
         time: s(),
+<<<<<<< HEAD
         title: gs(a),
         data: _s({ store: j(t.$id) }, ms(r)),
+=======
+        title: vs(a),
+        data: ys({ store: j(t.$id) }, bs(r)),
+>>>>>>> release-package
         groupId: Y
       };
       a === F.patchFunction ? l.subtitle = "⤵️" : a === F.patchObject ? l.subtitle = "🧩" : r && !Array.isArray(r) && (l.subtitle = r.type), r && (l.data["rawEvent(s)"] = {
@@ -637,7 +820,11 @@ function Yt(e, t, n) {
       return Y = void 0, a;
     };
 }
+<<<<<<< HEAD
 function ys({ app: e, store: t, options: n }) {
+=======
+function Ts({ app: e, store: t, options: n }) {
+>>>>>>> release-package
   if (!t.$id.startsWith("__hot:")) {
     if (t._isOptionsAPI = !!n.state, !t._p._testing) {
       Yt(t, Object.keys(n.actions), t._isOptionsAPI);
@@ -646,19 +833,32 @@ function ys({ app: e, store: t, options: n }) {
         s.apply(this, arguments), Yt(t, Object.keys(o._hmrPayload.actions), !!t._isOptionsAPI);
       };
     }
+<<<<<<< HEAD
     vs(
+=======
+    As(
+>>>>>>> release-package
       e,
       // FIXME: is there a way to allow the assignment from Store<Id, S, G, A> to StoreGeneric?
       t
     );
   }
 }
+<<<<<<< HEAD
 function ws() {
   const e = ae(!0), t = e.run(() => E({}));
   let n = [], s = [];
   const o = X({
     install(i) {
       gt(o), o._a = i, i.provide(me, o), i.config.globalProperties.$pinia = o, process.env.NODE_ENV !== "production" && process.env.NODE_ENV !== "test" && Z && bs(i, o), s.forEach((r) => n.push(r)), s = [];
+=======
+function Ss() {
+  const e = ae(!0), t = e.run(() => x({}));
+  let n = [], s = [];
+  const o = X({
+    install(i) {
+      gt(o), o._a = i, i.provide(me, o), i.config.globalProperties.$pinia = o, process.env.NODE_ENV !== "production" && process.env.NODE_ENV !== "test" && Z && ws(i, o), s.forEach((r) => n.push(r)), s = [];
+>>>>>>> release-package
     },
     use(i) {
       return !this._a && !pe ? s.push(i) : n.push(i), this;
@@ -671,7 +871,11 @@ function ws() {
     _s: /* @__PURE__ */ new Map(),
     state: t
   });
+<<<<<<< HEAD
   return process.env.NODE_ENV !== "production" && process.env.NODE_ENV !== "test" && typeof Proxy < "u" && o.use(ys), o;
+=======
+  return process.env.NODE_ENV !== "production" && process.env.NODE_ENV !== "test" && typeof Proxy < "u" && o.use(Ts), o;
+>>>>>>> release-package
 }
 function Se(e, t) {
   for (const n in t) {
@@ -679,7 +883,11 @@ function Se(e, t) {
     if (!(n in e))
       continue;
     const o = e[n];
+<<<<<<< HEAD
     tt(o) && tt(s) && !mt(s) && !zt(s) ? e[n] = Se(o, s) : e[n] = s;
+=======
+    tt(o) && tt(s) && !mt(s) && !Ht(s) ? e[n] = Se(o, s) : e[n] = s;
+>>>>>>> release-package
   }
   return e;
 }
@@ -691,20 +899,30 @@ function Kt(e, t, n, s = Ee) {
     const i = e.indexOf(t);
     i > -1 && (e.splice(i, 1), s());
   };
+<<<<<<< HEAD
   return !n && Ue() && Ge(o), o;
+=======
+  return !n && Ue() && Be(o), o;
+>>>>>>> release-package
 }
 function rt(e, ...t) {
   e.slice().forEach((n) => {
     n(...t);
   });
 }
+<<<<<<< HEAD
 const As = (e) => e(), Xt = Symbol(), kt = Symbol();
 function qt(e, t) {
+=======
+const xs = (e) => e(), Xt = Symbol(), Nt = Symbol();
+function Pt(e, t) {
+>>>>>>> release-package
   e instanceof Map && t instanceof Map ? t.forEach((n, s) => e.set(s, n)) : e instanceof Set && t instanceof Set && t.forEach(e.add, e);
   for (const n in t) {
     if (!t.hasOwnProperty(n))
       continue;
     const s = t[n], o = e[n];
+<<<<<<< HEAD
     tt(o) && tt(s) && e.hasOwnProperty(n) && !mt(s) && !zt(s) ? e[n] = qt(o, s) : e[n] = s;
   }
   return e;
@@ -715,6 +933,18 @@ const Ts = process.env.NODE_ENV !== "production" ? Symbol("pinia:skipHydration")
 );
 function Ss(e) {
   return !tt(e) || !e.hasOwnProperty(Ts);
+=======
+    tt(o) && tt(s) && e.hasOwnProperty(n) && !mt(s) && !Ht(s) ? e[n] = Pt(o, s) : e[n] = s;
+  }
+  return e;
+}
+const Es = process.env.NODE_ENV !== "production" ? Symbol("pinia:skipHydration") : (
+  /* istanbul ignore next */
+  Symbol()
+);
+function Cs(e) {
+  return !tt(e) || !e.hasOwnProperty(Es);
+>>>>>>> release-package
 }
 const { assign: I } = Object;
 function Zt(e) {
@@ -727,6 +957,7 @@ function te(e, t, n, s) {
     !a && (process.env.NODE_ENV === "production" || !s) && (n.state.value[e] = o ? o() : {});
     const p = process.env.NODE_ENV !== "production" && s ? (
       // use ref() to unwrap refs inside state TODO: check if this is still necessary
+<<<<<<< HEAD
       Vt(E(o ? o() : {}).value)
     ) : Vt(n.state.value[e]);
     return I(p, i, Object.keys(r || {}).reduce((d, g) => (process.env.NODE_ENV !== "production" && g in p && console.warn(`[🍍]: A getter cannot have the same name as another state property. Rename one of them. Found with "${g}" in store "${e}".`), d[g] = X(Ht(() => {
@@ -734,16 +965,26 @@ function te(e, t, n, s) {
       const w = n._s.get(e);
       return r[g].call(w, w);
     })), d), {}));
+=======
+      Ot(x(o ? o() : {}).value)
+    ) : Ot(n.state.value[e]);
+    return I(d, i, Object.keys(r || {}).reduce((p, m) => (process.env.NODE_ENV !== "production" && m in d && console.warn(`[🍍]: A getter cannot have the same name as another state property. Rename one of them. Found with "${m}" in store "${e}".`), p[m] = X(Ft(() => {
+      gt(n);
+      const v = n._s.get(e);
+      return r[m].call(v, v);
+    })), p), {}));
+>>>>>>> release-package
   }
-  return c = Pt(e, l, t, n, s, !0), c;
+  return c = It(e, l, t, n, s, !0), c;
 }
-function Pt(e, t, n = {}, s, o, i) {
+function It(e, t, n = {}, s, o, i) {
   let r;
   const a = I({ actions: {} }, n);
   if (process.env.NODE_ENV !== "production" && !s._e.active)
     throw new Error("Pinia destroyed");
   const c = { deep: !0 };
   process.env.NODE_ENV !== "production" && !pe && (c.onTrigger = (h) => {
+<<<<<<< HEAD
     l ? w = h : l == !1 && !b._hotUpdating && (Array.isArray(w) ? w.push(h) : console.error("🍍 debuggerEvents should be an array. This is most likely an internal Pinia bug."));
   });
   let l, p, d = [], g = [], w;
@@ -762,13 +1003,39 @@ function Pt(e, t, n = {}, s, o, i) {
       payload: h,
       storeId: e,
       events: w
+=======
+    l ? v = h : l == !1 && !b._hotUpdating && (Array.isArray(v) ? v.push(h) : console.error("🍍 debuggerEvents should be an array. This is most likely an internal Pinia bug."));
+  });
+  let l, d, p = [], m = [], v;
+  const C = s.state.value[e];
+  !i && !C && (process.env.NODE_ENV === "production" || !o) && (s.state.value[e] = {});
+  const nt = x({});
+  let _t;
+  function bt(h) {
+    let f;
+    l = d = !1, process.env.NODE_ENV !== "production" && (v = []), typeof h == "function" ? (h(s.state.value[e]), f = {
+      type: F.patchFunction,
+      storeId: e,
+      events: v
+    }) : (Pt(s.state.value[e], h), f = {
+      type: F.patchObject,
+      payload: h,
+      storeId: e,
+      events: v
+>>>>>>> release-package
     });
     const T = _t = Symbol();
-    Bt().then(() => {
+    Wt().then(() => {
       _t === T && (l = !0);
+<<<<<<< HEAD
     }), p = !0, rt(d, f, s.state.value[e]);
   }
   const $ = i ? function() {
+=======
+    }), d = !0, rt(p, f, s.state.value[e]);
+  }
+  const D = i ? function() {
+>>>>>>> release-package
     const { state: f } = n, T = f ? f() : {};
     this.$patch((q) => {
       I(q, T);
@@ -779,12 +1046,21 @@ function Pt(e, t, n = {}, s, o, i) {
       throw new Error(`🍍: Store "${e}" is built using the setup syntax and does not implement $reset().`);
     } : Ee
   );
+<<<<<<< HEAD
   function D() {
     r.stop(), d = [], g = [], s._s.delete(e);
   }
   const x = (h, f = "") => {
     if (Xt in h)
       return h[kt] = f, h;
+=======
+  function $() {
+    r.stop(), p = [], m = [], s._s.delete(e);
+  }
+  const E = (h, f = "") => {
+    if (Xt in h)
+      return h[Nt] = f, h;
+>>>>>>> release-package
     const T = function() {
       gt(s);
       const q = Array.from(arguments), ut = [], Ct = [];
@@ -794,9 +1070,13 @@ function Pt(e, t, n = {}, s, o, i) {
       function Le(P) {
         Ct.push(P);
       }
+<<<<<<< HEAD
       rt(g, {
+=======
+      rt(m, {
+>>>>>>> release-package
         args: q,
-        name: T[kt],
+        name: T[Nt],
         store: b,
         after: Ie,
         onError: Le
@@ -809,7 +1089,11 @@ function Pt(e, t, n = {}, s, o, i) {
       }
       return dt instanceof Promise ? dt.then((P) => (rt(ut, P), P)).catch((P) => (rt(Ct, P), Promise.reject(P))) : (rt(ut, dt), dt);
     };
+<<<<<<< HEAD
     return T[Xt] = !0, T[kt] = f, T;
+=======
+    return T[Xt] = !0, T[Nt] = f, T;
+>>>>>>> release-package
   }, R = /* @__PURE__ */ X({
     actions: {},
     getters: {},
@@ -819,6 +1103,7 @@ function Pt(e, t, n = {}, s, o, i) {
     _p: s,
     // _s: scope,
     $id: e,
+<<<<<<< HEAD
     $onAction: Kt.bind(null, g),
     $patch: bt,
     $reset: $,
@@ -828,11 +1113,26 @@ function Pt(e, t, n = {}, s, o, i) {
           storeId: e,
           type: F.direct,
           events: w
+=======
+    $onAction: Kt.bind(null, m),
+    $patch: bt,
+    $reset: D,
+    $subscribe(h, f = {}) {
+      const T = Kt(p, h, f.detached, () => q()), q = r.run(() => zt(() => s.state.value[e], (ut) => {
+        (f.flush === "sync" ? d : l) && h({
+          storeId: e,
+          type: F.direct,
+          events: v
+>>>>>>> release-package
         }, ut);
       }, I({}, c, f)));
       return T;
     },
+<<<<<<< HEAD
     $dispose: D
+=======
+    $dispose: $
+>>>>>>> release-package
   }, b = Fe(process.env.NODE_ENV !== "production" || process.env.NODE_ENV !== "production" && process.env.NODE_ENV !== "test" && Z ? I(
     {
       _hmrPayload: R,
@@ -844,6 +1144,7 @@ function Pt(e, t, n = {}, s, o, i) {
     // setupStore
   ) : ot);
   s._s.set(e, b);
+<<<<<<< HEAD
   const J = (s._a && s._a.runWithContext || As)(() => s._e.run(() => (r = ae()).run(() => t({ action: x }))));
   for (const h in J) {
     const f = J[h];
@@ -851,6 +1152,15 @@ function Pt(e, t, n = {}, s, o, i) {
       process.env.NODE_ENV !== "production" && o ? vt(nt.value, h, $t(J, h)) : i || (C && Ss(f) && (mt(f) ? f.value = C[h] : qt(f, C[h])), s.state.value[e][h] = f), process.env.NODE_ENV !== "production" && R.state.push(h);
     else if (typeof f == "function") {
       const T = process.env.NODE_ENV !== "production" && o ? f : x(f, h);
+=======
+  const J = (s._a && s._a.runWithContext || xs)(() => s._e.run(() => (r = ae()).run(() => t({ action: E }))));
+  for (const h in J) {
+    const f = J[h];
+    if (mt(f) && !Zt(f) || Ht(f))
+      process.env.NODE_ENV !== "production" && o ? vt(nt.value, h, Dt(J, h)) : i || (C && Cs(f) && (mt(f) ? f.value = C[h] : Pt(f, C[h])), s.state.value[e][h] = f), process.env.NODE_ENV !== "production" && R.state.push(h);
+    else if (typeof f == "function") {
+      const T = process.env.NODE_ENV !== "production" && o ? f : E(f, h);
+>>>>>>> release-package
       J[h] = T, process.env.NODE_ENV !== "production" && (R.actions[h] = f), a.actions[h] = f;
     } else process.env.NODE_ENV !== "production" && Zt(f) && (R.getters[h] = i ? (
       // @ts-expect-error
@@ -873,27 +1183,48 @@ function Pt(e, t, n = {}, s, o, i) {
         const T = h.$state[f], q = b.$state[f];
         typeof T == "object" && tt(T) && tt(q) ? Se(T, q) : h.$state[f] = q;
       }
+<<<<<<< HEAD
       vt(b, f, $t(h.$state, f));
     }), Object.keys(b.$state).forEach((f) => {
       f in h.$state || Dt(b, f);
     }), l = !1, p = !1, s.state.value[e] = $t(h._hmrPayload, "hotState"), p = !0, Bt().then(() => {
+=======
+      vt(b, f, Dt(h.$state, f));
+    }), Object.keys(b.$state).forEach((f) => {
+      f in h.$state || kt(b, f);
+    }), l = !1, d = !1, s.state.value[e] = Dt(h._hmrPayload, "hotState"), d = !0, Wt().then(() => {
+>>>>>>> release-package
       l = !0;
     });
     for (const f in h._hmrPayload.actions) {
       const T = h[f];
+<<<<<<< HEAD
       vt(b, f, x(T, f));
+=======
+      vt(b, f, E(T, f));
+>>>>>>> release-package
     }
     for (const f in h._hmrPayload.getters) {
       const T = h._hmrPayload.getters[f], q = i ? (
         // special handling of options api
+<<<<<<< HEAD
         Ht(() => (gt(s), T.call(b, b)))
+=======
+        Ft(() => (gt(s), T.call(b, b)))
+>>>>>>> release-package
       ) : T;
       vt(b, f, q);
     }
     Object.keys(b._hmrPayload.getters).forEach((f) => {
+<<<<<<< HEAD
       f in h._hmrPayload.getters || Dt(b, f);
     }), Object.keys(b._hmrPayload.actions).forEach((f) => {
       f in h._hmrPayload.actions || Dt(b, f);
+=======
+      f in h._hmrPayload.getters || kt(b, f);
+    }), Object.keys(b._hmrPayload.actions).forEach((f) => {
+      f in h._hmrPayload.actions || kt(b, f);
+>>>>>>> release-package
     }), b._hmrPayload = h._hmrPayload, b._getters = h._getters, b._hotUpdating = !1;
   })), process.env.NODE_ENV !== "production" && process.env.NODE_ENV !== "test" && Z) {
     const h = {
@@ -924,9 +1255,15 @@ function Pt(e, t, n = {}, s, o, i) {
       })));
   }), process.env.NODE_ENV !== "production" && b.$state && typeof b.$state == "object" && typeof b.$state.constructor == "function" && !b.$state.constructor.toString().includes("[native code]") && console.warn(`[🍍]: The "state" must be a plain object. It cannot be
 	state: () => new MyClass()
+<<<<<<< HEAD
 Found in store "${b.$id}".`), C && i && n.hydrate && n.hydrate(b.$state, C), l = !0, p = !0, b;
 }
 function Es(e, t, n) {
+=======
+Found in store "${b.$id}".`), C && i && n.hydrate && n.hydrate(b.$state, C), l = !0, d = !0, b;
+}
+function Ds(e, t, n) {
+>>>>>>> release-package
   let s, o;
   const i = typeof t == "function";
   s = e, o = i ? n : t;
@@ -934,6 +1271,7 @@ function Es(e, t, n) {
     const l = ze();
     if (a = // in test mode, ignore the argument provided as we can always retrieve a
     // pinia instance with getActivePinia()
+<<<<<<< HEAD
     (process.env.NODE_ENV === "test" && ft && ft._testing ? null : a) || (l ? Rt(me, null) : null), a && gt(a), process.env.NODE_ENV !== "production" && !ft)
       throw new Error(`[🍍]: "getActivePinia()" was called but there was no active Pinia. Are you trying to use a store before calling "app.use(pinia)"?
 See https://pinia.vuejs.org/core-concepts/outside-component-usage.html for help.
@@ -950,13 +1288,35 @@ This will fail in production.`);
       !c) {
         const g = d.proxy, w = "_pStores" in g ? g._pStores : g._pStores = {};
         w[s] = p;
+=======
+    (process.env.NODE_ENV === "test" && ft && ft._testing ? null : a) || (l ? jt(me, null) : null), a && gt(a), process.env.NODE_ENV !== "production" && !ft)
+      throw new Error(`[🍍]: "getActivePinia()" was called but there was no active Pinia. Are you trying to use a store before calling "app.use(pinia)"?
+See https://pinia.vuejs.org/core-concepts/outside-component-usage.html for help.
+This will fail in production.`);
+    a = ft, a._s.has(s) || (i ? It(s, t, o, a) : te(s, o, a), process.env.NODE_ENV !== "production" && (r._pinia = a));
+    const d = a._s.get(s);
+    if (process.env.NODE_ENV !== "production" && c) {
+      const p = "__hot:" + s, m = i ? It(p, t, o, a, !0) : te(p, I({}, o), a, !0);
+      c._hotUpdate(m), delete a.state.value[p], a._s.delete(p);
+    }
+    if (process.env.NODE_ENV !== "production" && Z) {
+      const p = He();
+      if (p && p.proxy && // avoid adding stores that are just built for hot module replacement
+      !c) {
+        const m = p.proxy, v = "_pStores" in m ? m._pStores : m._pStores = {};
+        v[s] = d;
+>>>>>>> release-package
       }
     }
     return p;
   }
   return r.$id = s, r;
 }
+<<<<<<< HEAD
 const xs = ["id", "checked"], Cs = ["for", "innerHTML"], $s = /* @__PURE__ */ M({
+=======
+const $s = ["id", "checked"], ks = ["for", "innerHTML"], Ns = /* @__PURE__ */ O({
+>>>>>>> release-package
   __name: "MCQOption",
   props: {
     optionKey: {},
@@ -967,8 +1327,13 @@ const xs = ["id", "checked"], Cs = ["for", "innerHTML"], $s = /* @__PURE__ */ M(
   emits: ["selectOption"],
   setup(e, { emit: t }) {
     const n = t, s = () => n("selectOption");
+<<<<<<< HEAD
     return (o, i) => (_(), y(B, null, [
       (_(), y("input", {
+=======
+    return (o, i) => (_(), w(G, null, [
+      (_(), w("input", {
+>>>>>>> release-package
         id: "option-" + o.optionKey,
         key: o.optionKey,
         "test-id": "radio_options",
@@ -976,14 +1341,23 @@ const xs = ["id", "checked"], Cs = ["for", "innerHTML"], $s = /* @__PURE__ */ M(
         name: "options",
         checked: o.checked,
         class: W(o.submitted && "ignore-hover")
+<<<<<<< HEAD
       }, null, 10, xs)),
       (_(), y("label", {
+=======
+      }, null, 10, $s)),
+      (_(), w("label", {
+>>>>>>> release-package
         key: o.optionKey,
         for: "option-" + o.optionKey,
         class: W(o.submitted ? "mcq-option-label ignore-hover" : "mcq-option-label"),
         onClick: i[0] || (i[0] = (r) => s()),
         innerHTML: o.option.optionValue
+<<<<<<< HEAD
       }, null, 10, Cs))
+=======
+      }, null, 10, ks))
+>>>>>>> release-package
     ], 64));
   }
 }), z = (e, t) => {
@@ -991,7 +1365,11 @@ const xs = ["id", "checked"], Cs = ["for", "innerHTML"], $s = /* @__PURE__ */ M(
   for (const [s, o] of t)
     n[s] = o;
   return n;
+<<<<<<< HEAD
 }, Ds = /* @__PURE__ */ z($s, [["__scopeId", "data-v-fdbfedc6"]]), ks = ["disabled"], Ns = /* @__PURE__ */ M({
+=======
+}, Qs = /* @__PURE__ */ z(Ns, [["__scopeId", "data-v-fdbfedc6"]]), Vs = ["disabled"], Ms = /* @__PURE__ */ O({
+>>>>>>> release-package
   __name: "MCQButton",
   props: {
     submitted: { type: Boolean },
@@ -1000,11 +1378,12 @@ const xs = ["id", "checked"], Cs = ["for", "innerHTML"], $s = /* @__PURE__ */ M(
   },
   emits: ["submitAnswer", "nextQuestion", "skipQuestion"],
   setup(e, { emit: t }) {
-    const n = E("skip"), s = E("Skip"), o = t, i = (c, l) => {
+    const n = x("skip"), s = x("Skip"), o = t, i = (c, l) => {
       !c && l ? r("next", "Next", "submitAnswer") : c && l ? r("skip", "Skip", "nextQuestion") : !c && !l && r("skip", "Skip", "skipQuestion");
     }, r = (c, l, p) => {
       n.value = c, s.value = l, o(p);
     }, a = (c, l) => c && l ? { class: "next", text: "Next" } : !c && l ? { class: "submit", text: "Submit" } : { class: n.value, text: s.value };
+<<<<<<< HEAD
     return (c, l) => (_(), y("div", null, [
       m("button", {
         disabled: c.hideSkip && a(c.submitted, c.selectedOption).class === "skip",
@@ -1014,6 +1393,17 @@ const xs = ["id", "checked"], Cs = ["for", "innerHTML"], $s = /* @__PURE__ */ M(
     ]));
   }
 }), Qs = /* @__PURE__ */ z(Ns, [["__scopeId", "data-v-847b8dd5"]]), Os = /* @__PURE__ */ M({
+=======
+    return (c, l) => (_(), w("div", null, [
+      g("button", {
+        disabled: c.hideSkip && a(c.submitted, c.selectedOption).class === "skip",
+        class: W(["mcq-button", a(c.submitted, c.selectedOption).class]),
+        onClick: l[0] || (l[0] = (d) => i(c.submitted, c.selectedOption))
+      }, N(a(c.submitted, c.selectedOption).text), 11, Vs)
+    ]));
+  }
+}), Os = /* @__PURE__ */ z(Ms, [["__scopeId", "data-v-847b8dd5"]]), qs = /* @__PURE__ */ O({
+>>>>>>> release-package
   __name: "NextButton",
   props: {
     buttonName: {}
@@ -1025,18 +1415,27 @@ const xs = ["id", "checked"], Cs = ["for", "innerHTML"], $s = /* @__PURE__ */ M(
     }, i = (r) => {
       s(r);
     };
+<<<<<<< HEAD
     return (r, a) => (_(), y("div", null, [
       m("button", {
+=======
+    return (r, a) => (_(), w("div", null, [
+      g("button", {
+>>>>>>> release-package
         class: W(r.buttonName === "Submit" ? "submit_btn" : "mcq-button"),
         onClick: a[0] || (a[0] = (c) => o())
       }, N(r.buttonName), 3)
     ]));
   }
+<<<<<<< HEAD
 }), ee = /* @__PURE__ */ z(Os, [["__scopeId", "data-v-8be7f61e"]]);
+=======
+}), ee = /* @__PURE__ */ z(qs, [["__scopeId", "data-v-8be7f61e"]]);
+>>>>>>> release-package
 var A = ((e) => (e[e.New = 0] = "New", e[e.Learning = 1] = "Learning", e[e.Review = 2] = "Review", e[e.Relearning = 3] = "Relearning", e))(A || {}), u = ((e) => (e[e.Manual = 0] = "Manual", e[e.Again = 1] = "Again", e[e.Hard = 2] = "Hard", e[e.Good = 3] = "Good", e[e.Easy = 4] = "Easy", e))(u || {});
-class v {
+class y {
   static card(t) {
-    return { ...t, state: v.state(t.state), due: v.time(t.due), last_review: t.last_review ? v.time(t.last_review) : void 0 };
+    return { ...t, state: y.state(t.state), due: y.time(t.due), last_review: t.last_review ? y.time(t.last_review) : void 0 };
   }
   static rating(t) {
     if (typeof t == "string") {
@@ -1064,26 +1463,44 @@ class v {
     throw new Error(`Invalid date:[${t}]`);
   }
   static review_log(t) {
-    return { ...t, due: v.time(t.due), rating: v.rating(t.rating), state: v.state(t.state), review: v.time(t.review) };
+    return { ...t, due: y.time(t.due), rating: y.rating(t.rating), state: y.state(t.state), review: y.time(t.review) };
   }
 }
+<<<<<<< HEAD
 const Vs = 0.9, Ms = 36500, qs = [0.4072, 1.1829, 3.1262, 15.4722, 7.2102, 0.5316, 1.0651, 0.0234, 1.616, 0.1544, 1.0824, 1.9813, 0.0953, 0.2975, 2.2042, 0.2407, 2.9466, 0.5034, 0.6567], Ps = !1, Is = !0, It = (e) => {
   let t = qs;
   return e != null && e.w && (e.w.length === 19 ? t = e == null ? void 0 : e.w : e.w.length === 17 && (t = e == null ? void 0 : e.w.concat([0, 0]), console.debug("[FSRS V5]auto fill w to 19 length"))), { request_retention: (e == null ? void 0 : e.request_retention) || Vs, maximum_interval: (e == null ? void 0 : e.maximum_interval) || Ms, w: t, enable_fuzz: (e == null ? void 0 : e.enable_fuzz) ?? Ps, enable_short_term: (e == null ? void 0 : e.enable_short_term) ?? Is };
+=======
+const Ps = 0.9, Is = 36500, Ls = [0.4072, 1.1829, 3.1262, 15.4722, 7.2102, 0.5316, 1.0651, 0.0234, 1.616, 0.1544, 1.0824, 1.9813, 0.0953, 0.2975, 2.2042, 0.2407, 2.9466, 0.5034, 0.6567], Rs = !1, js = !0, Lt = (e) => {
+  let t = Ls;
+  return e != null && e.w && (e.w.length === 19 ? t = e == null ? void 0 : e.w : e.w.length === 17 && (t = e == null ? void 0 : e.w.concat([0, 0]), console.debug("[FSRS V5]auto fill w to 19 length"))), { request_retention: (e == null ? void 0 : e.request_retention) || Ps, maximum_interval: (e == null ? void 0 : e.maximum_interval) || Is, w: t, enable_fuzz: (e == null ? void 0 : e.enable_fuzz) ?? Rs, enable_short_term: (e == null ? void 0 : e.enable_short_term) ?? js };
+>>>>>>> release-package
 };
 Date.prototype.scheduler = function(e, t) {
   return xe(this, e, t);
 }, Date.prototype.diff = function(e, t) {
+<<<<<<< HEAD
   return Ls(this, e, t);
 }, Date.prototype.format = function() {
   return Rs(this);
 }, Date.prototype.dueFormat = function(e, t, n) {
   return js(this, e, t, n);
+=======
+  return zs(this, e, t);
+}, Date.prototype.format = function() {
+  return Hs(this);
+}, Date.prototype.dueFormat = function(e, t, n) {
+  return Fs(this, e, t, n);
+>>>>>>> release-package
 };
 function xe(e, t, n) {
   return new Date(n ? et(e).getTime() + t * 24 * 60 * 60 * 1e3 : et(e).getTime() + t * 60 * 1e3);
 }
+<<<<<<< HEAD
 function Ls(e, t, n) {
+=======
+function zs(e, t, n) {
+>>>>>>> release-package
   if (!e || !t) throw new Error("Invalid date");
   const s = et(e).getTime() - et(t).getTime();
   let o = 0;
@@ -1097,33 +1514,51 @@ function Ls(e, t, n) {
   }
   return o;
 }
+<<<<<<< HEAD
 function Rs(e) {
+=======
+function Hs(e) {
+>>>>>>> release-package
   const t = et(e), n = t.getFullYear(), s = t.getMonth() + 1, o = t.getDate(), i = t.getHours(), r = t.getMinutes(), a = t.getSeconds();
   return `${n}-${pt(s)}-${pt(o)} ${pt(i)}:${pt(r)}:${pt(a)}`;
 }
 function pt(e) {
   return e < 10 ? `0${e}` : `${e}`;
 }
+<<<<<<< HEAD
 const Nt = [60, 60, 24, 31, 12], Qt = ["second", "min", "hour", "day", "month", "year"];
 function js(e, t, n, s = Qt) {
   e = et(e), t = et(t), s.length !== Qt.length && (s = Qt);
+=======
+const Qt = [60, 60, 24, 31, 12], Vt = ["second", "min", "hour", "day", "month", "year"];
+function Fs(e, t, n, s = Vt) {
+  e = et(e), t = et(t), s.length !== Vt.length && (s = Vt);
+>>>>>>> release-package
   let o = e.getTime() - t.getTime(), i;
-  for (o /= 1e3, i = 0; i < Nt.length && !(o < Nt[i]); i++) o /= Nt[i];
+  for (o /= 1e3, i = 0; i < Qt.length && !(o < Qt[i]); i++) o /= Qt[i];
   return `${Math.floor(o)}${n ? s[i] : ""}`;
 }
 function et(e) {
-  return v.time(e);
+  return y.time(e);
 }
 u.Again, u.Hard, u.Good, u.Easy;
+<<<<<<< HEAD
 const zs = [{ start: 2.5, end: 7, factor: 0.15 }, { start: 7, end: 20, factor: 0.1 }, { start: 20, end: 1 / 0, factor: 0.05 }];
 function Hs(e, t, n) {
   let s = 1;
   for (const r of zs) s += r.factor * Math.max(Math.min(e, r.end) - r.start, 0);
+=======
+const Us = [{ start: 2.5, end: 7, factor: 0.15 }, { start: 7, end: 20, factor: 0.1 }, { start: 20, end: 1 / 0, factor: 0.05 }];
+function Bs(e, t, n) {
+  let s = 1;
+  for (const r of Us) s += r.factor * Math.max(Math.min(e, r.end) - r.start, 0);
+>>>>>>> release-package
   e = Math.min(e, n);
   let o = Math.max(2, Math.round(e - s));
   const i = Math.min(Math.round(e + s), n);
   return e > t && (o = Math.max(o, t + 1)), o = Math.min(o, i), { min_ivl: o, max_ivl: i };
 }
+<<<<<<< HEAD
 class Fs {
   constructor(t) {
     V(this, "c");
@@ -1131,6 +1566,15 @@ class Fs {
     V(this, "s1");
     V(this, "s2");
     const n = Us();
+=======
+class Gs {
+  constructor(t) {
+    M(this, "c");
+    M(this, "s0");
+    M(this, "s1");
+    M(this, "s2");
+    const n = Ws();
+>>>>>>> release-package
     this.c = 1, this.s0 = n(" "), this.s1 = n(" "), this.s2 = n(" "), t == null && (t = +/* @__PURE__ */ new Date()), this.s0 -= n(t), this.s0 < 0 && (this.s0 += 1), this.s1 -= n(t), this.s1 < 0 && (this.s1 += 1), this.s2 -= n(t), this.s2 < 0 && (this.s2 += 1);
   }
   next() {
@@ -1144,7 +1588,11 @@ class Fs {
     return { c: this.c, s0: this.s0, s1: this.s1, s2: this.s2 };
   }
 }
+<<<<<<< HEAD
 function Us() {
+=======
+function Ws() {
+>>>>>>> release-package
   let e = 4022871197;
   return function(t) {
     t = String(t);
@@ -1156,6 +1604,7 @@ function Us() {
     return (e >>> 0) * 23283064365386963e-26;
   };
 }
+<<<<<<< HEAD
 function Gs(e) {
   const t = new Fs(e), n = () => t.next();
   return n.int32 = () => t.next() * 4294967296 | 0, n.double = () => n() + (n() * 2097152 | 0) * 11102230246251565e-32, n.state = () => t.state, n.importState = (s) => (t.state = s, n), n;
@@ -1167,6 +1616,19 @@ class Bs {
     V(this, "intervalModifier");
     V(this, "_seed");
     this.param = new Proxy(It(t), this.params_handler_proxy()), this.intervalModifier = this.calculate_interval_modifier(this.param.request_retention);
+=======
+function Js(e) {
+  const t = new Gs(e), n = () => t.next();
+  return n.int32 = () => t.next() * 4294967296 | 0, n.double = () => n() + (n() * 2097152 | 0) * 11102230246251565e-32, n.state = () => t.state, n.importState = (s) => (t.state = s, n), n;
+}
+const se = -0.5, ne = 19 / 81;
+class Ys {
+  constructor(t) {
+    M(this, "param");
+    M(this, "intervalModifier");
+    M(this, "_seed");
+    this.param = new Proxy(Lt(t), this.params_handler_proxy()), this.intervalModifier = this.calculate_interval_modifier(this.param.request_retention);
+>>>>>>> release-package
   }
   get interval_modifier() {
     return this.intervalModifier;
@@ -1191,7 +1653,7 @@ class Bs {
     } };
   }
   update_parameters(t) {
-    const n = It(t);
+    const n = Lt(t);
     for (const s in n) if (s in this.param) {
       const o = s;
       this.param[o] = n[o];
@@ -1205,7 +1667,11 @@ class Bs {
   }
   apply_fuzz(t, n, s) {
     if (!s || t < 2.5) return Math.round(t);
+<<<<<<< HEAD
     const o = Gs(this.seed)(), { min_ivl: i, max_ivl: r } = Hs(t, n, this.param.maximum_interval);
+=======
+    const o = Js(this.seed)(), { min_ivl: i, max_ivl: r } = Bs(t, n, this.param.maximum_interval);
+>>>>>>> release-package
     return Math.floor(o * (r - i + 1) + i);
   }
   next_interval(t, n, s = this.param.enable_fuzz) {
@@ -1238,12 +1704,21 @@ class Bs {
 }
 class Ce {
   constructor(t, n, s) {
+<<<<<<< HEAD
     V(this, "last");
     V(this, "current");
     V(this, "review_time");
     V(this, "next", /* @__PURE__ */ new Map());
     V(this, "algorithm");
     this.algorithm = s, this.last = v.card(t), this.current = v.card(t), this.review_time = v.time(n), this.init();
+=======
+    M(this, "last");
+    M(this, "current");
+    M(this, "review_time");
+    M(this, "next", /* @__PURE__ */ new Map());
+    M(this, "algorithm");
+    this.algorithm = s, this.last = y.card(t), this.current = y.card(t), this.review_time = y.time(n), this.init();
+>>>>>>> release-package
   }
   init() {
     const { state: t, last_review: n } = this.current;
@@ -1284,7 +1759,7 @@ class oe extends Ce {
   newState(t) {
     const n = this.next.get(t);
     if (n) return n;
-    const s = v.card(this.current);
+    const s = y.card(this.current);
     switch (s.difficulty = this.algorithm.init_difficulty(t), s.stability = this.algorithm.init_stability(t), t) {
       case u.Again:
         s.scheduled_days = 0, s.due = this.review_time.scheduler(1), s.state = A.Learning;
@@ -1309,7 +1784,7 @@ class oe extends Ce {
   learningState(t) {
     const n = this.next.get(t);
     if (n) return n;
-    const { state: s, difficulty: o, stability: i } = this.last, r = v.card(this.current), a = this.current.elapsed_days;
+    const { state: s, difficulty: o, stability: i } = this.last, r = y.card(this.current), a = this.current.elapsed_days;
     switch (r.difficulty = this.algorithm.next_difficulty(o, t), r.stability = this.algorithm.next_short_term_stability(i, t), t) {
       case u.Again: {
         r.scheduled_days = 0, r.due = this.review_time.scheduler(5, !1), r.state = s;
@@ -1325,8 +1800,13 @@ class oe extends Ce {
         break;
       }
       case u.Easy: {
+<<<<<<< HEAD
         const l = this.algorithm.next_short_term_stability(i, u.Good), p = this.algorithm.next_interval(l, a), d = Math.max(this.algorithm.next_interval(r.stability, a), p + 1);
         r.scheduled_days = d, r.due = this.review_time.scheduler(d, !0), r.state = A.Review;
+=======
+        const l = this.algorithm.next_short_term_stability(i, u.Good), d = this.algorithm.next_interval(l, a), p = Math.max(this.algorithm.next_interval(r.stability, a), d + 1);
+        r.scheduled_days = p, r.due = this.review_time.scheduler(p, !0), r.state = A.Review;
+>>>>>>> release-package
         break;
       }
       default:
@@ -1338,10 +1818,17 @@ class oe extends Ce {
   reviewState(t) {
     const n = this.next.get(t);
     if (n) return n;
+<<<<<<< HEAD
     const s = this.current.elapsed_days, { difficulty: o, stability: i } = this.last, r = this.algorithm.forgetting_curve(s, i), a = v.card(this.current), c = v.card(this.current), l = v.card(this.current), p = v.card(this.current);
     this.next_ds(a, c, l, p, o, i, r), this.next_interval(a, c, l, p, s), this.next_state(a, c, l, p), a.lapses += 1;
     const d = { card: a, log: this.buildLog(u.Again) }, g = { card: c, log: super.buildLog(u.Hard) }, w = { card: l, log: super.buildLog(u.Good) }, C = { card: p, log: super.buildLog(u.Easy) };
     return this.next.set(u.Again, d), this.next.set(u.Hard, g), this.next.set(u.Good, w), this.next.set(u.Easy, C), this.next.get(t);
+=======
+    const s = this.current.elapsed_days, { difficulty: o, stability: i } = this.last, r = this.algorithm.forgetting_curve(s, i), a = y.card(this.current), c = y.card(this.current), l = y.card(this.current), d = y.card(this.current);
+    this.next_ds(a, c, l, d, o, i, r), this.next_interval(a, c, l, d, s), this.next_state(a, c, l, d), a.lapses += 1;
+    const p = { card: a, log: this.buildLog(u.Again) }, m = { card: c, log: super.buildLog(u.Hard) }, v = { card: l, log: super.buildLog(u.Good) }, C = { card: d, log: super.buildLog(u.Easy) };
+    return this.next.set(u.Again, p), this.next.set(u.Hard, m), this.next.set(u.Good, v), this.next.set(u.Easy, C), this.next.get(t);
+>>>>>>> release-package
   }
   next_ds(t, n, s, o, i, r, a) {
     t.difficulty = this.algorithm.next_difficulty(i, u.Again), t.stability = this.algorithm.next_forget_stability(i, r, a), n.difficulty = this.algorithm.next_difficulty(i, u.Hard), n.stability = this.algorithm.next_recall_stability(i, r, a, u.Hard), s.difficulty = this.algorithm.next_difficulty(i, u.Good), s.stability = this.algorithm.next_recall_stability(i, r, a, u.Good), o.difficulty = this.algorithm.next_difficulty(i, u.Easy), o.stability = this.algorithm.next_recall_stability(i, r, a, u.Easy);
@@ -1361,7 +1848,7 @@ class ie extends Ce {
     const n = this.next.get(t);
     if (n) return n;
     this.current.scheduled_days = 0, this.current.elapsed_days = 0;
-    const s = v.card(this.current), o = v.card(this.current), i = v.card(this.current), r = v.card(this.current);
+    const s = y.card(this.current), o = y.card(this.current), i = y.card(this.current), r = y.card(this.current);
     return this.init_ds(s, o, i, r), this.next_interval(s, o, i, r, 0), this.next_state(s, o, i, r), this.update_next(s, o, i, r), this.next.get(t);
   }
   init_ds(t, n, s, o) {
@@ -1373,8 +1860,13 @@ class ie extends Ce {
   reviewState(t) {
     const n = this.next.get(t);
     if (n) return n;
+<<<<<<< HEAD
     const s = this.current.elapsed_days, { difficulty: o, stability: i } = this.last, r = this.algorithm.forgetting_curve(s, i), a = v.card(this.current), c = v.card(this.current), l = v.card(this.current), p = v.card(this.current);
     return this.next_ds(a, c, l, p, o, i, r), this.next_interval(a, c, l, p, s), this.next_state(a, c, l, p), a.lapses += 1, this.update_next(a, c, l, p), this.next.get(t);
+=======
+    const s = this.current.elapsed_days, { difficulty: o, stability: i } = this.last, r = this.algorithm.forgetting_curve(s, i), a = y.card(this.current), c = y.card(this.current), l = y.card(this.current), d = y.card(this.current);
+    return this.next_ds(a, c, l, d, o, i, r), this.next_interval(a, c, l, d, s), this.next_state(a, c, l, d), a.lapses += 1, this.update_next(a, c, l, d), this.next.get(t);
+>>>>>>> release-package
   }
   next_ds(t, n, s, o, i, r, a) {
     t.difficulty = this.algorithm.next_difficulty(i, u.Again), t.stability = this.algorithm.next_forget_stability(i, r, a), n.difficulty = this.algorithm.next_difficulty(i, u.Hard), n.stability = this.algorithm.next_recall_stability(i, r, a, u.Hard), s.difficulty = this.algorithm.next_difficulty(i, u.Good), s.stability = this.algorithm.next_recall_stability(i, r, a, u.Good), o.difficulty = this.algorithm.next_difficulty(i, u.Easy), o.stability = this.algorithm.next_recall_stability(i, r, a, u.Easy);
@@ -1391,10 +1883,17 @@ class ie extends Ce {
     this.next.set(u.Again, i), this.next.set(u.Hard, r), this.next.set(u.Good, a), this.next.set(u.Easy, c);
   }
 }
+<<<<<<< HEAD
 class Ws extends Bs {
   constructor(n) {
     super(n);
     V(this, "Schduler");
+=======
+class Ks extends Ys {
+  constructor(n) {
+    super(n);
+    M(this, "Schduler");
+>>>>>>> release-package
     const { enable_short_term: s } = this.parameters;
     this.Schduler = s ? oe : ie;
   }
@@ -1409,19 +1908,19 @@ class Ws extends Bs {
     return o && typeof o == "function" ? o(r) : r;
   }
   next(n, s, o, i) {
-    const r = this.Schduler, a = new r(n, s, this), c = v.rating(o);
+    const r = this.Schduler, a = new r(n, s, this), c = y.rating(o);
     if (c === u.Manual) throw new Error("Cannot review a manual rating");
     const l = a.review(c);
     return i && typeof i == "function" ? i(l) : l;
   }
   get_retrievability(n, s, o = !0) {
-    const i = v.card(n);
-    if (s = v.time(s), i.state !== A.Review) return;
+    const i = y.card(n);
+    if (s = y.time(s), i.state !== A.Review) return;
     const r = Math.max(s.diff(i.last_review, "days"), 0), a = this.forgetting_curve(r, +i.stability.toFixed(2));
     return o ? `${(a * 100).toFixed(2)}%` : a;
   }
   rollback(n, s, o) {
-    const i = v.card(n), r = v.review_log(s);
+    const i = y.card(n), r = y.review_log(s);
     if (r.rating === u.Manual) throw new Error("Cannot rollback a manual rating");
     let a, c, l;
     switch (r.state) {
@@ -1438,8 +1937,8 @@ class Ws extends Bs {
     return o && typeof o == "function" ? o(p) : p;
   }
   forget(n, s, o = !1, i) {
-    const r = v.card(n);
-    s = v.time(s);
+    const r = y.card(n);
+    s = y.time(s);
     const a = r.state === A.New ? 0 : s.diff(r.last_review, "days"), c = { rating: u.Manual, state: r.state, due: r.due, stability: r.stability, difficulty: r.difficulty, elapsed_days: 0, last_elapsed_days: r.elapsed_days, scheduled_days: a, review: s }, l = { card: { ...r, due: s, stability: 0, difficulty: 0, elapsed_days: 0, scheduled_days: 0, reps: o ? 0 : r.reps, lapses: o ? 0 : r.lapses, state: A.New, last_review: r.last_review }, log: c };
     return i && typeof i == "function" ? i(l) : l;
   }
@@ -1447,7 +1946,7 @@ class Ws extends Bs {
     if (!Array.isArray(n)) throw new Error("cards must be an array");
     const o = [];
     for (const i of n) {
-      if (v.state(i.state) !== A.Review || !i.last_review) continue;
+      if (y.state(i.state) !== A.Review || !i.last_review) continue;
       const r = Math.floor(i.scheduled_days), a = this.next_interval(+i.stability.toFixed(2), Math.round(i.elapsed_days), s.enable_fuzz ?? !0);
       if (a === r || a === 0) continue;
       const c = { ...i };
@@ -1458,7 +1957,11 @@ class Ws extends Bs {
     return o;
   }
 }
+<<<<<<< HEAD
 const Js = (e) => new Ws(e || {}), Ys = It({ enable_fuzz: !0 }), Ks = Js(Ys), Xs = (e) => ({
+=======
+const Xs = (e) => new Ks(e || {}), Zs = Lt({ enable_fuzz: !0 }), tn = Xs(Zs), en = (e) => ({
+>>>>>>> release-package
   id: e._id.$oid,
   last_review: e.lastAttempted,
   due: /* @__PURE__ */ new Date(),
@@ -1480,32 +1983,54 @@ const Js = (e) => new Ws(e || {}), Ys = It({ enable_fuzz: !0 }), Ks = Js(Ys), Xs
   state: e.correctAttempts === 0 ? 0 : 1
   // correctAttempts
 });
+<<<<<<< HEAD
 function Zs(e) {
   const t = /* @__PURE__ */ new Date(), n = Xs(e), s = Ks.repeat(n, t), o = e.correctAttempts / (e.attempts + 0.1) > 0.5 ? u.Good : u.Again, { card: i } = s[o];
+=======
+function sn(e) {
+  const t = /* @__PURE__ */ new Date(), n = en(e), s = tn.repeat(n, t), o = e.correctAttempts / (e.attempts + 0.1) > 0.5 ? u.Good : u.Again, { card: i } = s[o];
+>>>>>>> release-package
   return {
     ...i,
     reviewDue: i.due
   };
 }
+<<<<<<< HEAD
 const tn = (e) => e.map((t) => {
   const n = Zs(t);
+=======
+const nn = (e) => e.map((t) => {
+  const n = sn(t);
+>>>>>>> release-package
   return {
     ...t,
     reviewDue: n.reviewDue
   };
+<<<<<<< HEAD
 }), en = (e) => tn(e).sort(
   (t, n) => t.reviewDue.getTime() - n.reviewDue.getTime()
 ), $e = (e) => {
+=======
+}), on = (e) => nn(e).sort(
+  (t, n) => t.reviewDue.getTime() - n.reviewDue.getTime()
+), De = (e) => {
+>>>>>>> release-package
   for (let t = e.length - 1; t > 0; t--) {
     const n = Math.floor(Math.random() * (t + 1));
     [e[t], e[n]] = [e[n], e[t]];
   }
   return e;
+<<<<<<< HEAD
 }, sn = (e, t) => $e(t).slice(0, e), nn = (e, t) => {
   const n = en(t);
   return $e(n.slice(0, e));
+=======
+}, rn = (e, t) => De(t).slice(0, e), an = (e, t) => {
+  const n = on(t);
+  return De(n.slice(0, e));
+>>>>>>> release-package
 };
-function De(e) {
+function $e(e) {
   const t = e.reduce(
     (s, o) => (Object.keys(o).forEach((i) => {
       i.trim() !== "" && (s[i] || (s[i] = /* @__PURE__ */ new Set()), o[i].forEach((a) => s[i].add(a)));
@@ -1526,13 +2051,21 @@ function Gt(e, t) {
       return o.some((i) => t[s].includes(i));
   }));
 }
+<<<<<<< HEAD
 function on(e, t, n) {
+=======
+function cn(e, t, n) {
+>>>>>>> release-package
   return e.filter((s) => {
     const o = s.tags[n];
     return o && o.includes(t);
   });
 }
+<<<<<<< HEAD
 function rn(e, t, n) {
+=======
+function ln(e, t, n) {
+>>>>>>> release-package
   const s = e[t].question.optionsList;
   for (let o = 0; o < s.length; o++)
     if (s[o].optionValue === n)
@@ -1541,7 +2074,11 @@ function rn(e, t, n) {
 const ke = (e, t) => t.findIndex((n) => {
   var s;
   return ((s = n.question._id) == null ? void 0 : s.$oid) === e;
+<<<<<<< HEAD
 }), U = Es("questionsQueue", {
+=======
+}), U = Ds("questionsQueue", {
+>>>>>>> release-package
   state: () => ({
     allQs: [],
     questionsQueue: [],
@@ -1635,7 +2172,11 @@ const ke = (e, t) => t.findIndex((n) => {
       return this.questionsQueue.length;
     }
   }
+<<<<<<< HEAD
 }), an = ["innerHTML"], cn = { class: "mcq-list" }, ln = ["onClick"], un = { class: "next-prev-question" }, dn = /* @__PURE__ */ M({
+=======
+}), un = ["innerHTML"], dn = { class: "mcq-list" }, pn = ["onClick"], fn = { class: "next-prev-question" }, hn = /* @__PURE__ */ O({
+>>>>>>> release-package
   __name: "MCQQuestion",
   props: {
     _id: {},
@@ -1644,11 +2185,12 @@ const ke = (e, t) => t.findIndex((n) => {
   },
   emits: ["nextQuestion", "skipQuestion", "prevQuestion"],
   setup(e, { emit: t }) {
-    const n = U(), s = E(null), o = E(!1), i = t, r = E(n.getRemainingQuestions()), a = () => {
+    const n = U(), s = x(null), o = x(!1), i = t, r = x(n.getRemainingQuestions()), a = () => {
       o.value = !0;
     }, c = () => {
       s.value = null, i("nextQuestion");
     }, l = () => {
+<<<<<<< HEAD
       g(), r.value = n.getRemainingQuestions(), i("nextQuestion");
     }, p = () => {
       g(), i("skipQuestion");
@@ -1665,10 +2207,29 @@ const ke = (e, t) => t.findIndex((n) => {
     }, nt = ($, D, x) => n.quizMode === "Timed" ? _t($, D) : bt(D, x);
     function _t($, D) {
       const x = ke($.$oid, n.quizStats), R = n.quizStats[x].selectedValue, ot = rn(
+=======
+      m(), r.value = n.getRemainingQuestions(), i("nextQuestion");
+    }, d = () => {
+      m(), i("skipQuestion");
+    }, p = (D) => n.incrementStat(
+      D.$oid,
+      "attempts",
+      s.value ?? void 0
+    ), m = () => {
+      o.value = !1, s.value = null;
+    }, v = () => {
+      s.value = null, i("prevQuestion");
+    }, C = (D, $) => {
+      o.value || (s.value = s.value === $ ? null : $), p(D);
+    }, nt = (D, $, E) => n.quizMode === "Timed" ? _t(D, $) : bt($, E);
+    function _t(D, $) {
+      const E = ke(D.$oid, n.quizStats), R = n.quizStats[E].selectedValue, ot = ln(
+>>>>>>> release-package
         n.quizStats,
-        x,
+        E,
         R
       );
+<<<<<<< HEAD
       return String(ot) === D ? (s.value = D, "selected") : "";
     }
     function bt($, D) {
@@ -1696,11 +2257,41 @@ const ke = (e, t) => t.findIndex((n) => {
         ], 10, ln))), 128))
       ]),
       S(n).quizMode === "Tutor" ? (_(), H(Qs, {
+=======
+      return String(ot) === $ ? (s.value = $, "selected") : "";
+    }
+    function bt(D, $) {
+      const E = $[parseInt(D)], R = s.value === D;
+      return o.value ? E.optionCorrect ? "correct ignore-hover" : R ? "wrong ignore-hover" : "ignore-hover" : R ? "selected" : "";
+    }
+    return (D, $) => (_(), w(G, null, [
+      g("div", {
+        class: "mcq-statement",
+        innerHTML: D.statement
+      }, null, 8, un),
+      g("div", dn, [
+        (_(!0), w(G, null, ct(Object.entries(D.optionsList), ([E, R]) => (_(), w("div", {
+          key: E,
+          class: W(["mcq-option", nt(D._id, E, D.optionsList)]),
+          onClick: (ot) => C(D._id, E)
+        }, [
+          lt(Qs, {
+            "option-key": E,
+            checked: s.value === E,
+            option: R,
+            submitted: o.value,
+            onSelectOption: (ot) => C(D._id, E)
+          }, null, 8, ["option-key", "checked", "option", "submitted", "onSelectOption"])
+        ], 10, pn))), 128))
+      ]),
+      S(n).quizMode === "Tutor" ? (_(), H(Os, {
+>>>>>>> release-package
         key: 0,
         submitted: o.value,
         "selected-option": s.value,
         "hide-skip": r.value <= 1,
         onSubmitAnswer: a,
+<<<<<<< HEAD
         onNextQuestion: D[0] || (D[0] = (x) => l()),
         onSkipQuestion: p
       }, null, 8, ["submitted", "selected-option", "hide-skip"])) : O("", !0),
@@ -1729,6 +2320,36 @@ const ke = (e, t) => t.findIndex((n) => {
   setup(e) {
     const t = Rt("$updateQAttemptCallback") ?? Pe, n = U(), s = n.quizStats, o = n.quizStats.length, i = s.filter((c) => c.correct === 1).length, r = (i * 100 / o).toFixed(0);
     return xt(() => {
+=======
+        onNextQuestion: $[0] || ($[0] = (E) => l()),
+        onSkipQuestion: d
+      }, null, 8, ["submitted", "selected-option", "hide-skip"])) : V("", !0),
+      g("div", fn, [
+        S(n).quizMode === "Timed" ? (_(), H(ee, {
+          key: 0,
+          "button-name": S(n).questionsQueue.length >= 1 ? "→" : "Submit",
+          onNextQuestion: $[1] || ($[1] = (E) => c())
+        }, null, 8, ["button-name"])) : V("", !0),
+        S(n).quizMode === "Timed" && S(n).questionsStack.length > 1 ? (_(), H(ee, {
+          key: 1,
+          "button-name": "←",
+          onPrevQuestion: $[2] || ($[2] = (E) => v())
+        })) : V("", !0)
+      ])
+    ], 64));
+  }
+}), Ne = /* @__PURE__ */ z(hn, [["__scopeId", "data-v-181a554c"]]), mn = (e) => (ce("data-v-38adb08e"), e = e(), le(), e), gn = { class: "report-container" }, _n = { class: "mcq-report" }, bn = { class: "table-container" }, vn = /* @__PURE__ */ mn(() => /* @__PURE__ */ g("thead", null, [
+  /* @__PURE__ */ g("tr", null, [
+    /* @__PURE__ */ g("th", null, "question"),
+    /* @__PURE__ */ g("th", null, "correct option"),
+    /* @__PURE__ */ g("th", null, "your answer")
+  ])
+], -1)), yn = { class: "question-row" }, wn = ["href", "innerHTML"], An = { class: "answer-row" }, Tn = ["innerHTML"], Sn = { class: "answer-row" }, xn = ["innerHTML"], En = { class: "mcq-result" }, Cn = { class: "score" }, Dn = /* @__PURE__ */ O({
+  __name: "MCQStatus",
+  setup(e) {
+    const t = jt("$updateQAttemptCallback") ?? Pe, n = U(), s = n.quizStats, o = n.quizStats.length, i = s.filter((c) => c.correct === 1).length, r = (i * 100 / o).toFixed(0);
+    return Et(() => {
+>>>>>>> release-package
       try {
         const c = s.filter((l) => l.attempts).map(
           (l) => t(l.question._id.$oid, !!l.correct)
@@ -1737,6 +2358,7 @@ const ke = (e, t) => t.findIndex((n) => {
       } catch (c) {
         throw console.error("Error updating question attempts", c), c;
       }
+<<<<<<< HEAD
     }), (c, l) => (_(), y("div", fn, [
       m("div", hn, [
         m("div", mn, [
@@ -1771,24 +2393,74 @@ const ke = (e, t) => t.findIndex((n) => {
                     ),
                     innerHTML: d.correct === 1 ? "<span> ✔</span> " : "<span> ✘</span> <span>     </span>" + d.selectedValue
                   }, null, 10, An)
+=======
+    }), (c, l) => (_(), w("div", gn, [
+      g("div", _n, [
+        g("div", bn, [
+          g("table", null, [
+            vn,
+            g("tbody", null, [
+              (_(!0), w(G, null, ct(Object.entries(S(s)), ([d, p]) => (_(), w("tr", {
+                key: d,
+                class: "quiz-statment"
+              }, [
+                g("td", yn, [
+                  g("a", {
+                    href: p.question.link,
+                    target: "_blank",
+                    innerHTML: p.question.statement
+                  }, null, 8, wn)
+                ]),
+                g("td", An, [
+                  (_(!0), w(G, null, ct(Object.entries(
+                    p.question.optionsList
+                  ), ([m, v]) => (_(), w("span", { key: m }, [
+                    v.optionCorrect ? (_(), w("span", {
+                      key: 0,
+                      innerHTML: v.optionValue
+                    }, null, 8, Tn)) : V("", !0)
+                  ]))), 128))
+                ]),
+                g("td", Sn, [
+                  g("span", {
+                    class: W(
+                      p.correct === 1 ? "correct-answer" : "wrong-answer"
+                    ),
+                    innerHTML: p.correct === 1 ? "<span> ✔</span> " : "<span> ✘</span> <span>     </span>" + p.selectedValue
+                  }, null, 10, xn)
+>>>>>>> release-package
                 ])
               ]))), 128))
             ])
           ])
         ])
       ]),
+<<<<<<< HEAD
       m("div", null, [
         m("div", Tn, [
           m("span", Sn, "⌛ Result: " + N(S(i)) + " out of " + N(S(o)) + " - (" + N(S(r)) + " %)", 1)
+=======
+      g("div", null, [
+        g("div", En, [
+          g("span", Cn, "⌛ Result: " + N(S(i)) + " out of " + N(S(o)) + " - (" + N(S(r)) + " %)", 1)
+>>>>>>> release-package
         ])
       ])
     ]));
   }
+<<<<<<< HEAD
 }), Qe = /* @__PURE__ */ z(En, [["__scopeId", "data-v-38adb08e"]]), xn = { class: "questions-left-header" }, Cn = /* @__PURE__ */ M({
   __name: "MCQQuiz",
   setup(e) {
     const t = E(), n = U();
     xt(() => {
+=======
+}), Qe = /* @__PURE__ */ z(Dn, [["__scopeId", "data-v-38adb08e"]]), $n = { class: "questions-left-header" }, kn = /* @__PURE__ */ O({
+  __name: "MCQQuiz",
+  setup(e) {
+    const t = x(), n = U();
+    Et(() => {
+>>>>>>> release-package
       o();
     });
     const s = () => {
@@ -1797,10 +2469,17 @@ const ke = (e, t) => t.findIndex((n) => {
       n.setAnsweredQuestionsNum(), t.value = n.dequeueQuestion();
     }, i = () => window.location.reload();
     return (r, a) => {
+<<<<<<< HEAD
       const c = Be("MCQInfoPanel");
       return _(), y("main", null, [
         lt(c),
         m("h3", xn, " Question " + N(S(n).getAnsweredQuestionsNum()) + " out of " + N(S(n).quizStats.length), 1),
+=======
+      const c = Ge("MCQInfoPanel");
+      return _(), w("main", null, [
+        lt(c),
+        g("h3", $n, " Question " + N(S(n).getAnsweredQuestionsNum()) + " out of " + N(S(n).quizStats.length), 1),
+>>>>>>> release-package
         t.value ? (_(), H(Ne, {
           key: 0,
           statement: t.value.statement,
@@ -1808,9 +2487,15 @@ const ke = (e, t) => t.findIndex((n) => {
           _id: t.value._id,
           onNextQuestion: o,
           onSkipQuestion: s
+<<<<<<< HEAD
         }, null, 8, ["statement", "options-list", "_id"])) : O("", !0),
         t.value ? O("", !0) : (_(), H(Qe, { key: 1 })),
         t.value ? O("", !0) : (_(), y("button", {
+=======
+        }, null, 8, ["statement", "options-list", "_id"])) : V("", !0),
+        t.value ? V("", !0) : (_(), H(Qe, { key: 1 })),
+        t.value ? V("", !0) : (_(), w("button", {
+>>>>>>> release-package
           key: 2,
           class: "btn-relocate",
           onClick: i
@@ -1818,10 +2503,17 @@ const ke = (e, t) => t.findIndex((n) => {
       ]);
     };
   }
+<<<<<<< HEAD
 }), $n = /* @__PURE__ */ z(Cn, [["__scopeId", "data-v-edc7c7f1"]]), Dn = {
   key: 0,
   class: "time-left-header"
 }, kn = { class: "questions-left-header" }, Nn = /* @__PURE__ */ M({
+=======
+}), Nn = /* @__PURE__ */ z(kn, [["__scopeId", "data-v-edc7c7f1"]]), Qn = {
+  key: 0,
+  class: "time-left-header"
+}, Vn = { class: "questions-left-header" }, Mn = /* @__PURE__ */ O({
+>>>>>>> release-package
   __name: "MCQInfoPanel",
   props: {
     timeLeft: {
@@ -1834,18 +2526,32 @@ const ke = (e, t) => t.findIndex((n) => {
       const o = Math.floor(s / 60), i = s % 60;
       return `${o}:${i < 10 ? "0" : ""}${i}`;
     };
+<<<<<<< HEAD
     return (s, o) => (_(), y(B, null, [
       e.timeLeft ? (_(), y("h3", Dn, " Time left: " + N(n(e.timeLeft)), 1)) : O("", !0),
       m("h3", kn, " Question " + N(S(t).questionsStack.length) + " out of " + N(S(t).quizStats.length), 1)
     ], 64));
   }
 }), re = 1e3, Qn = "-1", On = /* @__PURE__ */ M({
+=======
+    return (s, o) => (_(), w(G, null, [
+      e.timeLeft ? (_(), w("h3", Qn, " Time left: " + N(n(e.timeLeft)), 1)) : V("", !0),
+      g("h3", Vn, " Question " + N(S(t).questionsStack.length) + " out of " + N(S(t).quizStats.length), 1)
+    ], 64));
+  }
+}), re = 1e3, On = "-1", qn = /* @__PURE__ */ O({
+>>>>>>> release-package
   __name: "MCQTimedQuiz",
   setup(e) {
-    const t = U(), n = E();
+    const t = U(), n = x();
     let s = null, o = null;
+<<<<<<< HEAD
     const i = E(t.timeLimit);
     xt(() => {
+=======
+    const i = x(t.timeLimit);
+    Et(() => {
+>>>>>>> release-package
       a();
     }), ue(() => {
       l(), p();
@@ -1856,6 +2562,7 @@ const ke = (e, t) => t.findIndex((n) => {
       s && clearTimeout(s), o && clearInterval(o);
     }, p = () => {
       i.value = t.timeLimit;
+<<<<<<< HEAD
       const g = () => n.value ? i.value ? i.value-- : d() : l();
       o = window.setInterval(g, re), s = window.setTimeout(() => {
       }, t.timeLimit * re);
@@ -1869,6 +2576,21 @@ const ke = (e, t) => t.findIndex((n) => {
     };
     return (g, w) => (_(), y("main", null, [
       lt(Nn, { "time-left": i.value }, null, 8, ["time-left"]),
+=======
+      const m = () => n.value ? i.value ? i.value-- : p() : l();
+      o = window.setInterval(m, re), s = window.setTimeout(() => {
+      }, t.timeLimit * re);
+    }, p = () => {
+      var v;
+      l();
+      const m = (C) => t.incrementStat(C, "attempts", On);
+      for (m(((v = n.value) == null ? void 0 : v._id.$oid) ?? ""); n.value = t.dequeueQuestion(); )
+        m(n.value._id.$oid);
+      return alert("Time's up! Quiz has ended."), a();
+    };
+    return (m, v) => (_(), w("main", null, [
+      lt(Mn, { "time-left": i.value }, null, 8, ["time-left"]),
+>>>>>>> release-package
       n.value ? (_(), H(Ne, {
         key: 0,
         statement: n.value.statement,
@@ -1876,33 +2598,54 @@ const ke = (e, t) => t.findIndex((n) => {
         _id: n.value._id,
         onNextQuestion: a,
         onPrevQuestion: r
+<<<<<<< HEAD
       }, null, 8, ["statement", "options-list", "_id"])) : O("", !0),
       n.value ? O("", !0) : (_(), H(Qe, { key: 1 })),
       n.value ? O("", !0) : (_(), y("button", {
+=======
+      }, null, 8, ["statement", "options-list", "_id"])) : V("", !0),
+      n.value ? V("", !0) : (_(), H(Qe, { key: 1 })),
+      n.value ? V("", !0) : (_(), w("button", {
+>>>>>>> release-package
         key: 2,
         class: "btn-relocate",
         onClick: c
       }, " End "))
     ]));
   }
+<<<<<<< HEAD
 }), Vn = /* @__PURE__ */ z(On, [["__scopeId", "data-v-4fd74e68"]]), Mn = ["id", "name", "value", "disabled"], qn = ["for"], Pn = {
   key: 0,
   class: "question-number"
 }, In = /* @__PURE__ */ M({
+=======
+}), Pn = /* @__PURE__ */ z(qn, [["__scopeId", "data-v-4fd74e68"]]), In = ["id", "name", "value", "disabled"], Ln = ["for"], Rn = {
+  key: 0,
+  class: "question-number"
+}, jn = /* @__PURE__ */ O({
+>>>>>>> release-package
   __name: "FilterCheckbox",
   props: {
     category: {},
     topics: {}
   },
   setup(e) {
-    const { category: t, topics: n } = e, s = U(), o = (c) => t === "course" ? c.toUpperCase() : c, i = Ht(
+    const { category: t, topics: n } = e, s = U(), o = (c) => t === "course" ? c.toUpperCase() : c, i = Ft(
       () => Object.entries(n).map(([c, l]) => {
+<<<<<<< HEAD
         const p = a(l, t), d = on(
+=======
+        const d = a(l, t), p = cn(
+>>>>>>> release-package
           s.allQs,
           l,
           t
         ).length.toString();
+<<<<<<< HEAD
         return { idx: c, topic: l, num: p, questionamount: d };
+=======
+        return { idx: c, topic: l, num: d, questionamount: p };
+>>>>>>> release-package
       }).filter(({ topic: c }) => c !== void 0)
     ), r = (c) => {
       if (!(c.target instanceof HTMLInputElement))
@@ -1910,6 +2653,7 @@ const ke = (e, t) => t.findIndex((n) => {
       const l = c.target.name, p = c.target.value;
       s.modifySelectedTags(c.target.checked, { category: l, topic: p });
     }, a = (c, l) => {
+<<<<<<< HEAD
       var w;
       const p = s.getselectedtags();
       if (!p[l] || (w = p[l]) != null && w.includes(
@@ -1952,15 +2696,60 @@ const ke = (e, t) => t.findIndex((n) => {
   key: 0,
   class: "filter"
 }, jn = { class: "category-heading" }, zn = /* @__PURE__ */ M({
+=======
+      var v;
+      const d = s.getselectedtags();
+      if (!d[l] || (v = d[l]) != null && v.includes(
+        c
+      ))
+        return null;
+      const p = JSON.parse(
+        JSON.stringify(s.getselectedtags())
+      );
+      p[l].includes(c) || p[l].push(c);
+      const m = s.allQs;
+      return Gt(
+        m,
+        p
+      ).length.toString();
+    };
+    return (c, l) => (_(), w("ul", null, [
+      (_(!0), w(G, null, ct(i.value, ({ idx: d, num: p, topic: m, questionamount: v }) => (_(), w("li", {
+        key: d,
+        class: W(["filter-options", { "grey-out": p === "0" }])
+      }, [
+        g("input", {
+          id: `${c.category}-${m}-checkbox`,
+          type: "checkbox",
+          name: c.category,
+          value: m,
+          disabled: p === "0",
+          onChange: l[0] || (l[0] = (C) => r(C))
+        }, null, 40, In),
+        g("label", {
+          for: `${c.category}-${m}-checkbox`
+        }, [
+          de(N(o(m)) + " ", 1),
+          p !== null && p !== "0" ? (_(), w("span", Rn, N(v), 1)) : V("", !0)
+        ], 8, Ln)
+      ], 2))), 128))
+    ]));
+  }
+}), zn = /* @__PURE__ */ z(jn, [["__scopeId", "data-v-43544b02"]]), Hn = {
+  key: 0,
+  class: "filter"
+}, Fn = { class: "category-heading" }, Un = /* @__PURE__ */ O({
+>>>>>>> release-package
   __name: "MCQTagOptions",
   setup(e) {
-    const t = E([]), n = U();
+    const t = x([]), n = U();
     let s = {};
-    return jt(
+    return zt(
       () => n.allQs,
       (o, i) => {
-        n.setTagSet(), t.value = n.getTagSet(), s = De(t.value);
+        n.setTagSet(), t.value = n.getTagSet(), s = $e(t.value);
       }
+<<<<<<< HEAD
     ), (o, i) => S(n).allQs ? (_(), y("div", Rn, [
       (_(!0), y(B, null, ct(Object.entries(S(s)), ([r, a]) => (_(), y("div", {
         key: r,
@@ -1968,13 +2757,26 @@ const ke = (e, t) => t.findIndex((n) => {
       }, [
         m("h2", jn, N(r), 1),
         lt(Ln, {
+=======
+    ), (o, i) => S(n).allQs ? (_(), w("div", Hn, [
+      (_(!0), w(G, null, ct(Object.entries(S(s)), ([r, a]) => (_(), w("div", {
+        key: r,
+        class: "category"
+      }, [
+        g("h2", Fn, N(r), 1),
+        lt(zn, {
+>>>>>>> release-package
           category: r,
           topics: a
         }, null, 8, ["category", "topics"])
       ]))), 128))
     ])) : O("", !0);
   }
+<<<<<<< HEAD
 }), Hn = /* @__PURE__ */ z(zn, [["__scopeId", "data-v-0ae43360"]]), Fn = { for: "optionName" }, Un = ["value"], Gn = /* @__PURE__ */ M({
+=======
+}), Bn = /* @__PURE__ */ z(Un, [["__scopeId", "data-v-0ae43360"]]), Gn = { for: "optionName" }, Wn = ["value"], Jn = /* @__PURE__ */ O({
+>>>>>>> release-package
   __name: "DropDownbox",
   props: {
     options: {},
@@ -1982,20 +2784,29 @@ const ke = (e, t) => t.findIndex((n) => {
     disabled: { type: Boolean }
   },
   setup(e) {
-    const t = U(), n = E(0);
+    const t = U(), n = x(0);
     function s(o) {
       const i = o.target;
       i.value && (n.value = parseFloat(i.value) * 60, t.setTimeLimit(n.value));
     }
+<<<<<<< HEAD
     return (o, i) => (_(), y("div", {
       class: W(o.disabled ? "dropdown input-disabled" : "dropdown")
     }, [
       m("label", Fn, N(o.optionName) + ":   ", 1),
       m("select", {
+=======
+    return (o, i) => (_(), w("div", {
+      class: W(o.disabled ? "dropdown input-disabled" : "dropdown")
+    }, [
+      g("label", Gn, N(o.optionName) + ":   ", 1),
+      g("select", {
+>>>>>>> release-package
         id: "optionName",
         name: "optionName",
         onChange: s
       }, [
+<<<<<<< HEAD
         (_(!0), y(B, null, ct(o.options, (r) => (_(), y("option", {
           key: r.value,
           value: r.value
@@ -2024,13 +2835,48 @@ const ke = (e, t) => t.findIndex((n) => {
       We(() => {
         const p = a.getquestionnumber();
         n.value = Math.min(10, p);
+=======
+        (_(!0), w(G, null, ct(o.options, (r) => (_(), w("option", {
+          key: r.value,
+          value: r.value
+        }, N(r.value) + " " + N(r.unit), 9, Wn))), 128))
+      ], 32)
+    ], 2));
+  }
+}), Yn = /* @__PURE__ */ z(Jn, [["__scopeId", "data-v-5f3ae97a"]]), st = (e) => (ce("data-v-f94ad471"), e = e(), le(), e), Kn = { class: "start-page-container" }, Xn = /* @__PURE__ */ st(() => /* @__PURE__ */ g("h1", null, "VetCloud Smart Quiz", -1)), Zn = { class: "quiz-config-container" }, to = { class: "question-config-container" }, eo = { class: "tag-text" }, so = { class: "question-number" }, no = { class: "question-amount-container" }, oo = /* @__PURE__ */ st(() => /* @__PURE__ */ g("label", { for: "question-amount" }, "Select the amount of questions:", -1)), io = ["max"], ro = {
+  key: 0,
+  class: "show-max-msg"
+}, ao = /* @__PURE__ */ st(() => /* @__PURE__ */ g("label", { for: "mode-select" }, "Select mode:", -1)), co = /* @__PURE__ */ st(() => /* @__PURE__ */ g("option", { value: "Tutor" }, "Tutor", -1)), lo = /* @__PURE__ */ st(() => /* @__PURE__ */ g("option", { value: "Timed" }, "Timed", -1)), uo = [
+  co,
+  lo
+], po = {
+  key: 0,
+  class: "srs-toggle-frame"
+}, fo = /* @__PURE__ */ st(() => /* @__PURE__ */ g("span", null, "Enable Spaced Repetition Scheduled", -1)), ho = /* @__PURE__ */ st(() => /* @__PURE__ */ g("label", {
+  class: "srs-label",
+  for: "switch"
+}, "toggle", -1)), mo = 3e3, go = /* @__PURE__ */ O({
+  __name: "StartPage",
+  props: {
+    modelValue: { type: Boolean },
+    modelModifiers: {}
+  },
+  emits: /* @__PURE__ */ We(["start-quiz"], ["update:modelValue"]),
+  setup(e, { emit: t }) {
+    const n = Je(e, "modelValue"), s = x(1), o = x("Tutor"), i = x(!1), r = x(null), a = t, c = U();
+    Et(() => {
+      Ye(() => {
+        const p = c.getquestionnumber();
+        s.value = Math.min(10, p);
+>>>>>>> release-package
       });
     });
-    const c = () => {
-      r("start-quiz", {
-        questionAmount: n.value,
-        mode: s.value
+    const l = () => {
+      a("start-quiz", {
+        questionAmount: s.value,
+        mode: o.value
       });
+<<<<<<< HEAD
     }, l = () => {
       i.value && clearTimeout(i.value), n.value > a.getquestionnumber() && (n.value = a.getquestionnumber(), o.value = !0, i.value = window.setTimeout(() => {
         o.value = !1;
@@ -2059,11 +2905,42 @@ const ke = (e, t) => t.findIndex((n) => {
               [
                 Je,
                 n.value,
+=======
+    }, d = () => {
+      r.value && clearTimeout(r.value), s.value > c.getquestionnumber() && (s.value = c.getquestionnumber(), i.value = !0, r.value = window.setTimeout(() => {
+        i.value = !1;
+      }, mo));
+    };
+    return (p, m) => (_(), w("div", Kn, [
+      Xn,
+      lt(Bn),
+      g("div", Zn, [
+        g("div", to, [
+          g("p", eo, [
+            de(" Maximum possible questions: "),
+            g("span", so, N(S(c).getquestionnumber()), 1)
+          ]),
+          g("div", no, [
+            oo,
+            $t(g("input", {
+              id: "question-amount",
+              "onUpdate:modelValue": m[0] || (m[0] = (v) => s.value = v),
+              type: "number",
+              placeholder: "Question amount",
+              min: "1",
+              max: S(c).getquestionnumber(),
+              onInput: d
+            }, null, 40, io), [
+              [
+                Ke,
+                s.value,
+>>>>>>> release-package
                 void 0,
                 { number: !0 }
               ]
             ])
           ]),
+<<<<<<< HEAD
           o.value ? (_(), y("p", no, " Cannot select more than " + N(S(a).getquestionnumber()) + " questions. ", 1)) : O("", !0),
           m("div", null, [
             oo,
@@ -2075,16 +2952,30 @@ const ke = (e, t) => t.findIndex((n) => {
             ])
           ]),
           lt(Bn, {
+=======
+          i.value ? (_(), w("p", ro, " Cannot select more than " + N(S(c).getquestionnumber()) + " questions. ", 1)) : V("", !0),
+          g("div", null, [
+            ao,
+            $t(g("select", {
+              id: "mode-select",
+              "onUpdate:modelValue": m[1] || (m[1] = (v) => o.value = v)
+            }, uo, 512), [
+              [Xe, o.value]
+            ])
+          ]),
+          lt(Yn, {
+>>>>>>> release-package
             options: [
               { value: 1, label: "Time Option 2", unit: "Min." },
               { value: 1.5, label: "Time Option 1", unit: "Min." }
             ],
             "option-name": "Time per Question",
-            class: W(s.value === "Timed" ? "" : "input-disabled"),
-            disabled: s.value !== "Timed"
+            class: W(o.value === "Timed" ? "" : "input-disabled"),
+            disabled: o.value !== "Timed"
           }, null, 8, ["class", "disabled"])
         ])
       ]),
+<<<<<<< HEAD
       s.value === "Tutor" ? (_(), y("div", co, [
         lo,
         m("input", {
@@ -2096,11 +2987,27 @@ const ke = (e, t) => t.findIndex((n) => {
         uo
       ])) : O("", !0),
       m("button", {
+=======
+      o.value === "Tutor" ? (_(), w("div", po, [
+        fo,
+        $t(g("input", {
+          id: "switch",
+          "onUpdate:modelValue": m[2] || (m[2] = (v) => n.value = v),
+          class: "srs-toggle",
+          type: "checkbox"
+        }, null, 512), [
+          [Ze, n.value]
+        ]),
+        ho
+      ])) : V("", !0),
+      g("button", {
+>>>>>>> release-package
         class: "start-button",
-        onClick: c
+        onClick: l
       }, "Start")
     ]));
   }
+<<<<<<< HEAD
 }), ho = /* @__PURE__ */ z(fo, [["__scopeId", "data-v-b5a73116"]]), mo = (e) => e.trim().toLowerCase().replace("_", " "), go = (e) => e.reduce((t, n) => {
   if (!n.includes(":")) return t;
   let [s, o] = n.split(":");
@@ -2109,12 +3016,26 @@ const ke = (e, t) => t.findIndex((n) => {
   _id: { $oid: t._id.$oid },
   statement: t.statement,
   tags: go(t.tags),
+=======
+}), _o = /* @__PURE__ */ z(go, [["__scopeId", "data-v-f94ad471"]]), bo = (e) => e.trim().toLowerCase().replace("_", " "), vo = (e) => e.reduce((t, n) => {
+  if (!n.includes(":")) return t;
+  let [s, o] = n.split(":");
+  return [s, o] = [s.trim().toLowerCase(), bo(o)], t[s] ? t[s] = [...t[s], o] : t[s] = [o], t;
+}, {}), yo = (e) => e.map((t) => ({
+  _id: { $oid: t._id.$oid },
+  statement: t.statement,
+  tags: vo(t.tags),
+>>>>>>> release-package
   optionsList: t.optionsList,
   link: t.link,
   attempts: t.attempts,
   correctAttempts: t.correctAttempts,
   lastAttempted: t.lastAttempted
+<<<<<<< HEAD
 })), Oe = { convertQuestions: _o }, bo = [
+=======
+})), Ve = { convertQuestions: yo }, wo = [
+>>>>>>> release-package
   {
     tags: [
       "course:vets2011",
@@ -2769,10 +3690,11 @@ const ke = (e, t) => t.findIndex((n) => {
   isNumber: (r) => typeof r == "number",
   isFunction: (r) => typeof r == "function"
 };
-function Lt(e) {
+function Rt(e) {
   const t = e.includes(":") && e.split(":").length === 2, n = !e.includes(":") && !e.includes(" ");
   return t || n;
 }
+<<<<<<< HEAD
 function Ve(e, t = !1) {
   return L.isArray(e, L.isString) ? t ? e.every(Lt) : e.some(Lt) : !1;
 }
@@ -2803,6 +3725,38 @@ const yt = {
 }, Ao = () => bo, To = () => {
   const e = Ao();
   return Oe.convertQuestions(qe(e));
+=======
+function Me(e, t = !1) {
+  return L.isArray(e, L.isString) ? t ? e.every(Rt) : e.some(Rt) : !1;
+}
+function Ao(e) {
+  return L.isObject(e) && L.isString(e.optionValue) && (e.optionCorrect === void 0 || L.isBoolean(e.optionCorrect));
+}
+function Oe(e) {
+  return L.isObject(e) && L.isObject(e._id) && // Assuming _id is an object with $oid property
+  L.isString(e._id.$oid) && L.isString(e.statement) && Me(e.tags) && // Modified to ensure tags are always checked
+  L.isArray(e.optionsList, Ao) && L.isString(e.link);
+}
+function To(e) {
+  return L.isArray(e, Oe);
+}
+const yt = {
+  isMCQuestion: Oe,
+  isMCQuestionArray: To,
+  validateTags: Me,
+  isTag: Rt
+}, So = (e) => {
+  try {
+    if (!e)
+      throw new Error("No question data found. Please Try again later.");
+    return Ve.convertQuestions(qe(e));
+  } catch (t) {
+    return alert(t), [];
+  }
+}, xo = () => wo, Eo = () => {
+  const e = xo();
+  return Ve.convertQuestions(qe(e));
+>>>>>>> release-package
 };
 function qe(e) {
   yt.isMCQuestionArray(e) ? console.info(
@@ -2833,22 +3787,34 @@ Total Questions Validated:`,
     }
     return { ...s, totalTags: r };
   }, t);
+<<<<<<< HEAD
   return So(n, e.length), e;
+=======
+  return Co(n, e.length), e;
+>>>>>>> release-package
 }
-function Ot(e, t) {
+function Mt(e, t) {
   e && console.warn(t, "color: #FF0000");
 }
+<<<<<<< HEAD
 function So(e, t) {
+=======
+function Co(e, t) {
+>>>>>>> release-package
   const { invalidQs: n, invalidTags: s, noTags: o, totalTags: i } = e;
-  Ot(
+  Mt(
     n,
     `Invalid Questions Received: %c${n} out of ${t}`
-  ), Ot(
+  ), Mt(
     s,
     `Filtering out invalid tags: %c${s} out of ${i}`
-  ), Ot(o, `Questions with no tags: %c${o}`);
+  ), Mt(o, `Questions with no tags: %c${o}`);
 }
+<<<<<<< HEAD
 const Eo = /* @__PURE__ */ M({
+=======
+const Do = /* @__PURE__ */ O({
+>>>>>>> release-package
   __name: "CrucibleComponent",
   props: {
     level: {
@@ -2858,6 +3824,7 @@ const Eo = /* @__PURE__ */ M({
     }
   },
   setup(e) {
+<<<<<<< HEAD
     const t = e, n = E(!1), s = E(0), o = U(), i = E(!1), r = E([]), a = Rt("$dataLink"), { level: c } = Vt(t);
     ue(async () => {
       if (a) {
@@ -2890,6 +3857,41 @@ const Eo = /* @__PURE__ */ M({
     }));
   }
 }), xo = {
+=======
+    const t = e, n = x(!1), s = x(0), o = U(), i = x(!1), r = x([]), a = jt("$dataLink"), { level: c } = Ot(t);
+    ue(async () => {
+      if (a) {
+        const m = await (async () => (await (await fetch(`${a}?level=${c.value}`)).json()).questions)();
+        r.value = So(m);
+      } else
+        r.value = Eo();
+      o.allQs = r.value;
+      const d = $e(
+        r.value.map((p) => p.tags)
+      );
+      o.setselectedTags(
+        Object.keys(d).reduce((p, m) => ({ ...p, [m]: [] }), {})
+      ), o.setTagSet();
+    });
+    const l = ({ questionAmount: d, mode: p }) => {
+      const m = o.getselectedtags();
+      if (!r.value.length)
+        return alert("Trouble fetching questions, please try again later");
+      const v = Gt(
+        r.value,
+        m
+      ), C = n.value ? an(d, v) : rn(d, v);
+      s.value = C.length, o.initialiseQuiz(C, p), p === "Timed" && o.setTimeLimit(d * o.timeLimit), i.value = !0;
+    };
+    return (d, p) => i.value && S(o).quizMode === "Tutor" ? (_(), H(Nn, { key: 0 })) : i.value && S(o).quizMode === "Timed" ? (_(), H(Pn, { key: 1 })) : (_(), H(_o, {
+      key: 2,
+      modelValue: n.value,
+      "onUpdate:modelValue": p[0] || (p[0] = (m) => n.value = m),
+      onStartQuiz: l
+    }, null, 8, ["modelValue"]));
+  }
+}), $o = {
+>>>>>>> release-package
   data: {
     questions: [
       {
@@ -2903,16 +3905,28 @@ const Eo = /* @__PURE__ */ M({
   }
 }, Pe = async (e, t) => {
 };
+<<<<<<< HEAD
 function ko(e, t = {}) {
   const n = ws();
   e.use(n), e.component("CrucibleComponent", Eo), e.provide("$dataLink", t.dataLink || xo), e.provide(
+=======
+function Vo(e, t = {}) {
+  const n = Ss();
+  e.use(n), e.component("CrucibleComponent", Do), e.provide("$dataLink", t.dataLink || $o), e.provide(
+>>>>>>> release-package
     "$updateQAttemptCallback",
     t.updateQAttemptCallback || Pe
   );
 }
 export {
+<<<<<<< HEAD
   Eo as CrucibleComponent,
   ko as createViewerPlugin,
   xo as defaultData,
+=======
+  Do as CrucibleComponent,
+  Vo as createViewerPlugin,
+  $o as defaultData,
+>>>>>>> release-package
   Pe as defaultUpdateQAttemptCallback
 };

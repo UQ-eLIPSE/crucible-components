@@ -48,9 +48,9 @@
       <span>Enable Spaced Repetition Scheduled</span>
       <input
         id="switch"
+        v-model="isEnabled"
         class="srs-toggle"
         type="checkbox"
-        @click="emit('enable-srs')"
       /><label class="srs-label" for="switch">toggle</label>
     </div>
     <button class="start-button" @click="startQuiz">Start</button>
@@ -62,9 +62,11 @@ import { onMounted, ref, watchEffect } from "vue";
 import MCQTagOptions from "./MCQ/MCQTagOptions.vue";
 import DropDownbox from "./MCQ/DropDownbox.vue";
 import { useQuizStore } from "@/store/QuizStore";
+
+const isEnabled = defineModel<boolean>(); // Enable SRS
+
 const questionAmount = ref<number>(1);
 const selectedMode = ref<string>("Tutor");
-
 const showMaxMsg = ref<boolean>(false);
 const showMaxMsgDelay = 3000;
 const showMaxMsgTimeoutId = ref<number | null>(null);

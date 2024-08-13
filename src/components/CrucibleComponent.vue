@@ -61,18 +61,15 @@ onBeforeMount(async () => {
 
 const handleStartQuiz = ({ questionAmount, mode }: StartQuizConfig) => {
   const selectedTags = questionsQueue.getselectedtags();
-
   if (!questions.value.length)
     return alert("Trouble fetching questions, please try again later");
-
   const filteredquestions: MCQuestion[] = filterQuestionsByTags(
     questions.value,
     selectedTags,
   );
-  const quizAmount =
-    enableSRS.value && mode === "Tutor"
-      ? getQuestionsFromSRS(questionAmount, filteredquestions)
-      : getQuestionsRandomly(questionAmount, filteredquestions);
+  const quizAmount = enableSRS.value
+    ? getQuestionsFromSRS(questionAmount, filteredquestions)
+    : getQuestionsRandomly(questionAmount, filteredquestions);
   quizQuestions.value = quizAmount.length;
   questionsQueue.initialiseQuiz(quizAmount, mode);
 
@@ -89,11 +86,7 @@ const handleStartQuiz = ({ questionAmount, mode }: StartQuizConfig) => {
   <MCQTimedQuiz
     v-else-if="quizStarted && questionsQueue.quizMode === 'Timed'"
   />
-  <StartPage
-    v-else
-    @start-quiz="handleStartQuiz"
-    @enable-srs="() => (enableSRS = !enableSRS)"
-  />
+  <StartPage v-else v-model="enableSRS" @start-quiz="handleStartQuiz" />
 </template>
 
 <style>
