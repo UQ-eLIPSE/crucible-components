@@ -60,13 +60,4 @@ describe("StartPage.vue", () => {
     await wrapper.vm.$nextTick();
     expect(wrapper.vm.questionAmount).toBe(5);
   });
-  it("Emit Enable Spaced Repetition if toggle button clicked", async () => {
-    const wrapper = mount(StartPage, {
-      props: {},
-    });
-    const toggleClick = wrapper.find(".srs-toggle");
-    toggleClick.trigger("click");
-    await wrapper.vm.$nextTick();
-    expect(wrapper.emitted("enable-srs")).toBeTruthy;
-  });
 });
