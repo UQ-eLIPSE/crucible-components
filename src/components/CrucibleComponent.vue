@@ -69,9 +69,10 @@ const handleStartQuiz = ({ questionAmount, mode }: StartQuizConfig) => {
     questions.value,
     selectedTags,
   );
-  const quizAmount = enableSRS.value
-    ? getQuestionsFromSRS(questionAmount, filteredquestions)
-    : getQuestionsRandomly(questionAmount, filteredquestions);
+  const quizAmount =
+    enableSRS.value && mode === "Tutor"
+      ? getQuestionsFromSRS(questionAmount, filteredquestions)
+      : getQuestionsRandomly(questionAmount, filteredquestions);
   quizQuestions.value = quizAmount.length;
   questionsQueue.initialiseQuiz(quizAmount, mode);
 
