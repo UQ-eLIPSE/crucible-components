@@ -2003,7 +2003,7 @@ const ke = (e, t) => t.findIndex((n) => {
       ], 32)
     ], 2));
   }
-}), Yn = /* @__PURE__ */ z(Jn, [["__scopeId", "data-v-5f3ae97a"]]), st = (e) => (ce("data-v-85a2c1ea"), e = e(), le(), e), Kn = { class: "start-page-container" }, Xn = /* @__PURE__ */ st(() => /* @__PURE__ */ g("h1", null, "VetCloud Smart Quiz", -1)), Zn = { class: "quiz-config-container" }, to = { class: "question-config-container" }, eo = { class: "tag-text" }, so = { class: "question-number" }, no = { class: "question-amount-container" }, oo = /* @__PURE__ */ st(() => /* @__PURE__ */ g("label", { for: "question-amount" }, "Select the amount of questions:", -1)), io = ["max"], ro = {
+}), Yn = /* @__PURE__ */ z(Jn, [["__scopeId", "data-v-5f3ae97a"]]), st = (e) => (ce("data-v-f94ad471"), e = e(), le(), e), Kn = { class: "start-page-container" }, Xn = /* @__PURE__ */ st(() => /* @__PURE__ */ g("h1", null, "VetCloud Smart Quiz", -1)), Zn = { class: "quiz-config-container" }, to = { class: "question-config-container" }, eo = { class: "tag-text" }, so = { class: "question-number" }, no = { class: "question-amount-container" }, oo = /* @__PURE__ */ st(() => /* @__PURE__ */ g("label", { for: "question-amount" }, "Select the amount of questions:", -1)), io = ["max"], ro = {
   key: 0,
   class: "show-max-msg"
 }, ao = /* @__PURE__ */ st(() => /* @__PURE__ */ g("label", { for: "mode-select" }, "Select mode:", -1)), co = /* @__PURE__ */ st(() => /* @__PURE__ */ g("option", { value: "Tutor" }, "Tutor", -1)), lo = /* @__PURE__ */ st(() => /* @__PURE__ */ g("option", { value: "Timed" }, "Timed", -1)), uo = [
@@ -2093,9 +2093,9 @@ const ke = (e, t) => t.findIndex((n) => {
         fo,
         $t(g("input", {
           id: "switch",
+          "onUpdate:modelValue": m[2] || (m[2] = (v) => n.value = v),
           class: "srs-toggle",
-          type: "checkbox",
-          "onUpdate:modelValue": m[2] || (m[2] = (v) => n.value = v)
+          type: "checkbox"
         }, null, 512), [
           [Ze, n.value]
         ]),
@@ -2107,7 +2107,7 @@ const ke = (e, t) => t.findIndex((n) => {
       }, "Start")
     ]));
   }
-}), _o = /* @__PURE__ */ z(go, [["__scopeId", "data-v-85a2c1ea"]]), bo = (e) => e.trim().toLowerCase().replace("_", " "), vo = (e) => e.reduce((t, n) => {
+}), _o = /* @__PURE__ */ z(go, [["__scopeId", "data-v-f94ad471"]]), bo = (e) => e.trim().toLowerCase().replace("_", " "), vo = (e) => e.reduce((t, n) => {
   if (!n.includes(":")) return t;
   let [s, o] = n.split(":");
   return [s, o] = [s.trim().toLowerCase(), bo(o)], t[s] ? t[s] = [...t[s], o] : t[s] = [o], t;
@@ -2891,9 +2891,9 @@ const Do = /* @__PURE__ */ O({
     };
     return (d, p) => i.value && S(o).quizMode === "Tutor" ? (_(), H(Nn, { key: 0 })) : i.value && S(o).quizMode === "Timed" ? (_(), H(Pn, { key: 1 })) : (_(), H(_o, {
       key: 2,
-      onStartQuiz: l,
       modelValue: n.value,
-      "onUpdate:modelValue": p[0] || (p[0] = (m) => n.value = m)
+      "onUpdate:modelValue": p[0] || (p[0] = (m) => n.value = m),
+      onStartQuiz: l
     }, null, 8, ["modelValue"]));
   }
 }), $o = {
