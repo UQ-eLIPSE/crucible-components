@@ -2003,7 +2003,7 @@ const $e = (e, t) => t.findIndex((n) => {
       ], 32)
     ], 2));
   }
-}), Gn = /* @__PURE__ */ z(Un, [["__scopeId", "data-v-5f3ae97a"]]), gt = (e) => (ce("data-v-79e39d2d"), e = e(), le(), e), Bn = { class: "start-page-container" }, Wn = /* @__PURE__ */ gt(() => /* @__PURE__ */ m("h1", null, "VetCloud Smart Quiz", -1)), Jn = { class: "quiz-config-container" }, Yn = { class: "question-config-container" }, Kn = { class: "tag-text" }, Xn = { class: "question-number" }, Zn = { class: "question-amount-container" }, to = /* @__PURE__ */ gt(() => /* @__PURE__ */ m("label", { for: "question-amount" }, "Select the amount of questions:", -1)), eo = ["max"], so = {
+}), Gn = /* @__PURE__ */ z(Un, [["__scopeId", "data-v-5f3ae97a"]]), gt = (e) => (ce("data-v-84467fb8"), e = e(), le(), e), Bn = { class: "start-page-container" }, Wn = /* @__PURE__ */ gt(() => /* @__PURE__ */ m("h1", null, "VetCloud Smart Quiz", -1)), Jn = { class: "quiz-config-container" }, Yn = { class: "question-config-container" }, Kn = { class: "tag-text" }, Xn = { class: "question-number" }, Zn = { class: "question-amount-container" }, to = /* @__PURE__ */ gt(() => /* @__PURE__ */ m("label", { for: "question-amount" }, "Select the amount of questions:", -1)), eo = ["max"], so = {
   key: 0,
   class: "show-max-msg"
 }, no = /* @__PURE__ */ gt(() => /* @__PURE__ */ m("label", { for: "mode-select" }, "Select mode:", -1)), oo = /* @__PURE__ */ gt(() => /* @__PURE__ */ m("option", { value: "Tutor" }, "Tutor", -1)), io = /* @__PURE__ */ gt(() => /* @__PURE__ */ m("option", { value: "Timed" }, "Timed", -1)), ro = [
@@ -2085,7 +2085,7 @@ const $e = (e, t) => t.findIndex((n) => {
       }, "Start")
     ]));
   }
-}), lo = /* @__PURE__ */ z(co, [["__scopeId", "data-v-79e39d2d"]]), uo = (e) => e.trim().toLowerCase().replace("_", " "), po = (e) => e.reduce((t, n) => {
+}), lo = /* @__PURE__ */ z(co, [["__scopeId", "data-v-84467fb8"]]), uo = (e) => e.trim().toLowerCase().replace("_", " "), po = (e) => e.reduce((t, n) => {
   if (!n.includes(":")) return t;
   let [s, o] = n.split(":");
   return [s, o] = [s.trim().toLowerCase(), uo(o)], t[s] ? t[s] = [...t[s], o] : t[s] = [o], t;
