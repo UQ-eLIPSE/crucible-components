@@ -2085,7 +2085,7 @@ const $e = (e, t) => t.findIndex((n) => {
       }, "Start")
     ]));
   }
-}), lo = /* @__PURE__ */ z(co, [["__scopeId", "data-v-84467fb8"]]), uo = (e) => e.trim().toLowerCase().replace("_", " "), po = (e) => e.reduce((t, n) => {
+}), lo = /* @__PURE__ */ z(co, [["__scopeId", "data-v-84467fb8"]]), uo = (e) => e.trim().toLowerCase().replace(/_+/g, " "), po = (e) => e.reduce((t, n) => {
   if (!n.includes(":")) return t;
   let [s, o] = n.split(":");
   return [s, o] = [s.trim().toLowerCase(), uo(o)], t[s] ? t[s] = [...t[s], o] : t[s] = [o], t;

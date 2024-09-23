@@ -4,7 +4,7 @@ import { MCQuestion, Tags } from "@/types/MCQ";
 
 // This function is used to convert the tags values to the correct format.
 const getCorrectTagValues = (value: string): string => {
-  return value.trim().toLowerCase().replace("_", " ");
+  return value.trim().toLowerCase().replace(/_+/g, " ");
 };
 
 export const convertTags = (tagsData: DataTags): Tags => {
