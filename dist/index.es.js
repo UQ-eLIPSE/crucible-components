@@ -2091,7 +2091,11 @@ const Ce = (e, t) => t.findIndex((n) => {
       }, "Start")
     ]));
   }
+<<<<<<< HEAD
 }), to = /* @__PURE__ */ z(Zn, [["__scopeId", "data-v-84467fb8"]]), eo = (e) => e.trim().toLowerCase().replace("_", " "), so = (e) => e.reduce((t, n) => {
+=======
+}), lo = /* @__PURE__ */ z(co, [["__scopeId", "data-v-84467fb8"]]), uo = (e) => e.trim().toLowerCase().replace(/_+/g, " "), po = (e) => e.reduce((t, n) => {
+>>>>>>> c653cd927142fb7d404f7dbf42ee0f08870970dc
   if (!n.includes(":")) return t;
   let [s, o] = n.split(":");
   return [s, o] = [s.trim().toLowerCase(), eo(o)], t[s] ? t[s] = [...t[s], o] : t[s] = [o], t;
