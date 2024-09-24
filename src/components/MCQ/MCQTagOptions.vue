@@ -16,19 +16,23 @@ import type { SelectedTags, Tags } from "@/types/MCQ";
 import { getUniquePropertyValues } from "../QuestionStore";
 import FilterCheckbox from "./FilterCheckbox.vue";
 import { useQuizStore } from "@/store/QuizStore";
-import { watch, ref } from "vue";
+import { watch, ref, onMounted } from "vue";
 
 const tagSet = ref<Tags[]>([]); // Use a ref to make tagSet reactive
 const questionsQueue = useQuizStore();
-let filterSet: SelectedTags = {};
+const filterSet = ref<SelectedTags>({});
 
+onMounted(() => {
+  tagSet.value = questionsQueue.getTagSet(); // Update tagSet inside the watch function
+  filterSet.value = getUniquePropertyValues(tagSet.value);
+});
 watch(
   () => questionsQueue.allQs,
 
   (_newValue, _oldValue) => {
     questionsQueue.setTagSet();
     tagSet.value = questionsQueue.getTagSet(); // Update tagSet inside the watch function
-    filterSet = getUniquePropertyValues(tagSet.value);
+    filterSet.value = getUniquePropertyValues(tagSet.value);
   },
 );
 </script>
