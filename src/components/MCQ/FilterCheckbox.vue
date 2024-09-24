@@ -1,24 +1,20 @@
 <template>
   <ul>
     <li
-      v-for="{ idx, num, topic, questionamount } in questionsNumByTags"
+      v-for="{ idx, topic, questionamount } in questionsNumByTags"
       :key="idx"
       class="filter-options"
-      :class="{ 'grey-out': num === '0' }"
     >
       <input
         :id="`${category}-${topic}-checkbox`"
         type="checkbox"
         :name="category"
         :value="topic"
-        :disabled="num === '0'"
         @change="onChecked($event)"
       />
       <label :for="`${category}-${topic}-checkbox`">
         {{ formatTopic(topic) }}
-        <span v-if="num !== null && num !== '0'" class="question-number">{{
-          questionamount
-        }}</span></label
+        <span class="question-number">{{ questionamount }}</span></label
       >
     </li>
   </ul>
