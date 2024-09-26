@@ -26,7 +26,6 @@
     </li>
   </ul>
 </template>
-
 <script setup lang="ts">
 import { SelectedTags } from "@/types/MCQ";
 import { useQuizStore } from "@/store/QuizStore";
