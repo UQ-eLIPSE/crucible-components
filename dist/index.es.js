@@ -1953,7 +1953,7 @@ const Ce = (e, t) => t.findIndex((n) => {
       ]))), 128))
     ]));
   }
-}), Mn = /* @__PURE__ */ H(On, [["__scopeId", "data-v-fc44fce9"]]), Vn = {
+}), Mn = /* @__PURE__ */ H(On, [["__scopeId", "data-v-2a7d0dbe"]]), Vn = {
   key: 0,
   class: "filter"
 }, qn = { class: "category-heading" }, Pn = /* @__PURE__ */ V({
@@ -2048,8 +2048,8 @@ const Ce = (e, t) => t.findIndex((n) => {
       ut(Ln),
       _("p", Fn, [
         (g(!0), v(z, null, K(c.value, ([w, N], X) => (g(), v("span", {
-          style: { "text-transform": "capitalize" },
-          key: w
+          key: w,
+          style: { "text-transform": "capitalize" }
         }, [
           (g(!0), v(z, null, K(N, (it, Z) => (g(), v("span", { key: Z }, [
             Pt(C(it) + " ", 1),
@@ -2113,7 +2113,7 @@ const Ce = (e, t) => t.findIndex((n) => {
       }, "Start")
     ]));
   }
-}), so = /* @__PURE__ */ H(eo, [["__scopeId", "data-v-c6cbb8a0"]]), no = (e) => e.trim().toLowerCase().replace(/_+/g, " "), oo = (e) => e.reduce((t, n) => {
+}), so = /* @__PURE__ */ H(eo, [["__scopeId", "data-v-3a37f595"]]), no = (e) => e.trim().toLowerCase().replace(/_+/g, " "), oo = (e) => e.reduce((t, n) => {
   if (!n.includes(":")) return t;
   let [s, o] = n.split(":");
   return [s, o] = [s.trim().toLowerCase(), no(o)], t[s] ? t[s] = [...t[s], o] : t[s] = [o], t;
