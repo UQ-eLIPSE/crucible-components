@@ -1,12 +1,12 @@
 var Pe = Object.defineProperty;
 var Le = (e, t, n) => t in e ? Pe(e, t, { enumerable: !0, configurable: !0, writable: !0, value: n }) : e[t] = n;
 var M = (e, t, n) => Le(e, typeof t != "symbol" ? t + "" : t, n);
-import { effectScope as ce, ref as S, markRaw as X, toRaw as ft, hasInjectionContext as Ie, inject as jt, getCurrentInstance as Re, watch as zt, unref as E, reactive as je, isRef as ht, isReactive as Ht, toRef as Ct, nextTick as Wt, computed as Ft, getCurrentScope as ze, onScopeDispose as He, toRefs as Ot, defineComponent as V, openBlock as g, createElementBlock as w, Fragment as B, normalizeClass as Y, createElementVNode as m, toDisplayString as k, renderList as at, createVNode as rt, createBlock as H, createCommentVNode as O, onMounted as gt, resolveComponent as Fe, onBeforeMount as le, createTextVNode as ue, watchEffect as Ue, withDirectives as Jt, vModelText as Ge, vModelSelect as Be } from "vue";
+import { effectScope as ce, ref as S, markRaw as X, toRaw as ht, hasInjectionContext as Ie, inject as jt, getCurrentInstance as Re, watch as zt, unref as E, reactive as je, isRef as mt, isReactive as Ht, toRef as Dt, nextTick as Wt, computed as Ft, getCurrentScope as ze, onScopeDispose as He, toRefs as Vt, defineComponent as V, openBlock as g, createElementBlock as w, Fragment as B, normalizeClass as W, createElementVNode as m, toDisplayString as k, renderList as at, createVNode as rt, createBlock as H, createCommentVNode as O, onMounted as ct, resolveComponent as Fe, onBeforeMount as le, createTextVNode as ue, watchEffect as Ue, withDirectives as Jt, vModelText as Ge, vModelSelect as Be } from "vue";
 var de = !1;
 function vt(e, t, n) {
   return Array.isArray(e) ? (e.length = Math.max(e.length, t), e.splice(t, 1, n), n) : (e[t] = n, n);
 }
-function Dt(e, t) {
+function kt(e, t) {
   if (Array.isArray(e)) {
     e.splice(t, 1);
     return;
@@ -20,13 +20,13 @@ function pe() {
   return typeof navigator < "u" && typeof window < "u" ? window : typeof globalThis < "u" ? globalThis : {};
 }
 const Je = typeof Proxy == "function", Ye = "devtools-plugin:setup", Ke = "plugin:settings:set";
-let nt, Vt;
+let nt, qt;
 function Xe() {
   var e;
-  return nt !== void 0 || (typeof window < "u" && window.performance ? (nt = !0, Vt = window.performance) : typeof globalThis < "u" && (!((e = globalThis.perf_hooks) === null || e === void 0) && e.performance) ? (nt = !0, Vt = globalThis.perf_hooks.performance) : nt = !1), nt;
+  return nt !== void 0 || (typeof window < "u" && window.performance ? (nt = !0, qt = window.performance) : typeof globalThis < "u" && (!((e = globalThis.perf_hooks) === null || e === void 0) && e.performance) ? (nt = !0, qt = globalThis.perf_hooks.performance) : nt = !1), nt;
 }
 function Ze() {
-  return Xe() ? Vt.now() : Date.now();
+  return Xe() ? qt.now() : Date.now();
 }
 class ts {
   constructor(t, n) {
@@ -108,8 +108,8 @@ function fe(e, t) {
  * (c) 2024 Eduardo San Martin Morote
  * @license MIT
  */
-let pt;
-const mt = (e) => pt = e, he = process.env.NODE_ENV !== "production" ? Symbol("pinia") : (
+let ft;
+const gt = (e) => ft = e, he = process.env.NODE_ENV !== "production" ? Symbol("pinia") : (
   /* istanbul ignore next */
   Symbol()
 );
@@ -355,7 +355,7 @@ function fs(e) {
   }
 }
 let it = !0;
-const St = [], K = "pinia:mutations", N = "pinia", { assign: hs } = Object, xt = (e) => "🍍 " + e;
+const St = [], K = "pinia:mutations", N = "pinia", { assign: hs } = Object, Et = (e) => "🍍 " + e;
 function ms(e, t) {
   fe({
     id: "dev.esm.pinia",
@@ -421,12 +421,12 @@ function ms(e, t) {
         const i = s.componentInstance.proxy._pStores;
         Object.values(i).forEach((r) => {
           s.instanceData.state.push({
-            type: xt(r.$id),
+            type: Et(r.$id),
             key: "state",
             editable: !0,
             value: r._isOptionsAPI ? {
               _custom: {
-                value: ft(r.$state),
+                value: ht(r.$state),
                 actions: [
                   {
                     icon: "restore",
@@ -440,7 +440,7 @@ function ms(e, t) {
               Object.keys(r.$state).reduce((c, l) => (c[l] = r.$state[l], c), {})
             )
           }), r._getters && r._getters.length && s.instanceData.state.push({
-            type: xt(r.$id),
+            type: Et(r.$id),
             key: "getters",
             editable: !1,
             value: r._getters.reduce((c, l) => {
@@ -464,7 +464,7 @@ function ms(e, t) {
         const o = s.nodeId === Tt ? t : t._s.get(s.nodeId);
         if (!o)
           return;
-        o && (s.nodeId !== Tt && (globalThis.$store = ft(o)), s.state = ds(o));
+        o && (s.nodeId !== Tt && (globalThis.$store = ht(o)), s.state = ds(o));
       }
     }), n.on.editInspectorState((s, o) => {
       if (s.app === e && s.inspectorId === N) {
@@ -490,7 +490,7 @@ Only state can be modified.`);
   });
 }
 function gs(e, t) {
-  St.includes(xt(t.$id)) || St.push(xt(t.$id)), fe({
+  St.includes(Et(t.$id)) || St.push(Et(t.$id)), fe({
     id: "dev.esm.pinia",
     label: "Pinia 🍍",
     logo: "https://pinia.vuejs.org/logo.svg",
@@ -528,7 +528,7 @@ function gs(e, t) {
           groupId: f
         }
       }), i((d) => {
-        J = void 0, n.addTimelineEvent({
+        Y = void 0, n.addTimelineEvent({
           layerId: K,
           event: {
             time: s(),
@@ -544,7 +544,7 @@ function gs(e, t) {
           }
         });
       }), r((d) => {
-        J = void 0, n.addTimelineEvent({
+        Y = void 0, n.addTimelineEvent({
           layerId: K,
           event: {
             time: s(),
@@ -573,7 +573,7 @@ function gs(e, t) {
               newValue: r,
               oldValue: c
             },
-            groupId: J
+            groupId: Y
           }
         });
       }, { deep: !0 });
@@ -584,7 +584,7 @@ function gs(e, t) {
         time: s(),
         title: fs(r),
         data: hs({ store: j(t.$id) }, ps(i)),
-        groupId: J
+        groupId: Y
       };
       r === F.patchFunction ? l.subtitle = "⤵️" : r === F.patchObject ? l.subtitle = "🧩" : i && !Array.isArray(i) && (l.subtitle = i.type), i && (l.data["rawEvent(s)"] = {
         _custom: {
@@ -619,22 +619,22 @@ function gs(e, t) {
     }, n.notifyComponentUpdate(), n.sendInspectorTree(N), n.sendInspectorState(N), n.getSettings().logStoreChanges && $(`"${t.$id}" store installed 🆕`);
   });
 }
-let Ae = 0, J;
+let Ae = 0, Y;
 function Kt(e, t, n) {
-  const s = t.reduce((o, a) => (o[a] = ft(e)[a], o), {});
+  const s = t.reduce((o, a) => (o[a] = ht(e)[a], o), {});
   for (const o in s)
     e[o] = function() {
       const a = Ae, i = n ? new Proxy(e, {
         get(...c) {
-          return J = a, Reflect.get(...c);
+          return Y = a, Reflect.get(...c);
         },
         set(...c) {
-          return J = a, Reflect.set(...c);
+          return Y = a, Reflect.set(...c);
         }
       }) : e;
-      J = a;
+      Y = a;
       const r = s[o].apply(i, arguments);
-      return J = void 0, r;
+      return Y = void 0, r;
     };
 }
 function _s({ app: e, store: t, options: n }) {
@@ -642,7 +642,7 @@ function _s({ app: e, store: t, options: n }) {
     if (t._isOptionsAPI = !!n.state, !t._p._testing) {
       Kt(t, Object.keys(n.actions), t._isOptionsAPI);
       const s = t._hotUpdate;
-      ft(t)._hotUpdate = function(o) {
+      ht(t)._hotUpdate = function(o) {
         s.apply(this, arguments), Kt(t, Object.keys(o._hmrPayload.actions), !!t._isOptionsAPI);
       };
     }
@@ -658,7 +658,7 @@ function bs() {
   let n = [], s = [];
   const o = X({
     install(a) {
-      mt(o), o._a = a, a.provide(he, o), a.config.globalProperties.$pinia = o, process.env.NODE_ENV !== "production" && process.env.NODE_ENV !== "test" && Z && ms(a, o), s.forEach((i) => n.push(i)), s = [];
+      gt(o), o._a = a, a.provide(he, o), a.config.globalProperties.$pinia = o, process.env.NODE_ENV !== "production" && process.env.NODE_ENV !== "test" && Z && ms(a, o), s.forEach((i) => n.push(i)), s = [];
     },
     use(a) {
       return !this._a && !de ? s.push(a) : n.push(a), this;
@@ -679,7 +679,7 @@ function Te(e, t) {
     if (!(n in e))
       continue;
     const o = e[n];
-    tt(o) && tt(s) && !ht(s) && !Ht(s) ? e[n] = Te(o, s) : e[n] = s;
+    tt(o) && tt(s) && !mt(s) && !Ht(s) ? e[n] = Te(o, s) : e[n] = s;
   }
   return e;
 }
@@ -699,13 +699,13 @@ function ot(e, ...t) {
   });
 }
 const vs = (e) => e(), Zt = Symbol(), $t = Symbol();
-function qt(e, t) {
+function Pt(e, t) {
   e instanceof Map && t instanceof Map ? t.forEach((n, s) => e.set(s, n)) : e instanceof Set && t instanceof Set && t.forEach(e.add, e);
   for (const n in t) {
     if (!t.hasOwnProperty(n))
       continue;
     const s = t[n], o = e[n];
-    tt(o) && tt(s) && e.hasOwnProperty(n) && !ht(s) && !Ht(s) ? e[n] = qt(o, s) : e[n] = s;
+    tt(o) && tt(s) && e.hasOwnProperty(n) && !mt(s) && !Ht(s) ? e[n] = Pt(o, s) : e[n] = s;
   }
   return e;
 }
@@ -718,7 +718,7 @@ function ws(e) {
 }
 const { assign: L } = Object;
 function te(e) {
-  return !!(ht(e) && e.effect);
+  return !!(mt(e) && e.effect);
 }
 function ee(e, t, n, s) {
   const { state: o, actions: a, getters: i } = t, r = n.state.value[e];
@@ -727,17 +727,17 @@ function ee(e, t, n, s) {
     !r && (process.env.NODE_ENV === "production" || !s) && (n.state.value[e] = o ? o() : {});
     const f = process.env.NODE_ENV !== "production" && s ? (
       // use ref() to unwrap refs inside state TODO: check if this is still necessary
-      Ot(S(o ? o() : {}).value)
-    ) : Ot(n.state.value[e]);
+      Vt(S(o ? o() : {}).value)
+    ) : Vt(n.state.value[e]);
     return L(f, a, Object.keys(i || {}).reduce((d, b) => (process.env.NODE_ENV !== "production" && b in f && console.warn(`[🍍]: A getter cannot have the same name as another state property. Rename one of them. Found with "${b}" in store "${e}".`), d[b] = X(Ft(() => {
-      mt(n);
+      gt(n);
       const A = n._s.get(e);
       return i[b].call(A, A);
     })), d), {}));
   }
-  return c = Pt(e, l, t, n, s, !0), c;
+  return c = Lt(e, l, t, n, s, !0), c;
 }
-function Pt(e, t, n = {}, s, o, a) {
+function Lt(e, t, n = {}, s, o, a) {
   let i;
   const r = L({ actions: {} }, n);
   if (process.env.NODE_ENV !== "production" && !s._e.active)
@@ -749,7 +749,7 @@ function Pt(e, t, n = {}, s, o, a) {
   let l, f, d = [], b = [], A;
   const Q = s.state.value[e];
   !a && !Q && (process.env.NODE_ENV === "production" || !o) && (s.state.value[e] = {});
-  const ct = S({});
+  const lt = S({});
   let _t;
   function bt(h) {
     let p;
@@ -757,7 +757,7 @@ function Pt(e, t, n = {}, s, o, a) {
       type: F.patchFunction,
       storeId: e,
       events: A
-    }) : (qt(s.state.value[e], h), p = {
+    }) : (Pt(s.state.value[e], h), p = {
       type: F.patchObject,
       payload: h,
       storeId: e,
@@ -786,13 +786,13 @@ function Pt(e, t, n = {}, s, o, a) {
     if (Zt in h)
       return h[$t] = p, h;
     const T = function() {
-      mt(s);
-      const q = Array.from(arguments), lt = [], Et = [];
+      gt(s);
+      const q = Array.from(arguments), ut = [], Ct = [];
       function Ve(P) {
-        lt.push(P);
+        ut.push(P);
       }
       function qe(P) {
-        Et.push(P);
+        Ct.push(P);
       }
       ot(b, {
         args: q,
@@ -801,20 +801,20 @@ function Pt(e, t, n = {}, s, o, a) {
         after: Ve,
         onError: qe
       });
-      let ut;
+      let dt;
       try {
-        ut = h.apply(this && this.$id === e ? this : _, q);
+        dt = h.apply(this && this.$id === e ? this : _, q);
       } catch (P) {
-        throw ot(Et, P), P;
+        throw ot(Ct, P), P;
       }
-      return ut instanceof Promise ? ut.then((P) => (ot(lt, P), P)).catch((P) => (ot(Et, P), Promise.reject(P))) : (ot(lt, ut), ut);
+      return dt instanceof Promise ? dt.then((P) => (ot(ut, P), P)).catch((P) => (ot(Ct, P), Promise.reject(P))) : (ot(ut, dt), dt);
     };
     return T[Zt] = !0, T[$t] = p, T;
   }, R = /* @__PURE__ */ X({
     actions: {},
     getters: {},
     state: [],
-    hotState: ct
+    hotState: lt
   }), st = {
     _p: s,
     // _s: scope,
@@ -823,12 +823,12 @@ function Pt(e, t, n = {}, s, o, a) {
     $patch: bt,
     $reset: C,
     $subscribe(h, p = {}) {
-      const T = Xt(d, h, p.detached, () => q()), q = i.run(() => zt(() => s.state.value[e], (lt) => {
+      const T = Xt(d, h, p.detached, () => q()), q = i.run(() => zt(() => s.state.value[e], (ut) => {
         (p.flush === "sync" ? f : l) && h({
           storeId: e,
           type: F.direct,
           events: A
-        }, lt);
+        }, ut);
       }, L({}, c, p)));
       return T;
     },
@@ -844,22 +844,22 @@ function Pt(e, t, n = {}, s, o, a) {
     // setupStore
   ) : st);
   s._s.set(e, _);
-  const W = (s._a && s._a.runWithContext || vs)(() => s._e.run(() => (i = ce()).run(() => t({ action: x }))));
-  for (const h in W) {
-    const p = W[h];
-    if (ht(p) && !te(p) || Ht(p))
-      process.env.NODE_ENV !== "production" && o ? vt(ct.value, h, Ct(W, h)) : a || (Q && ws(p) && (ht(p) ? p.value = Q[h] : qt(p, Q[h])), s.state.value[e][h] = p), process.env.NODE_ENV !== "production" && R.state.push(h);
+  const J = (s._a && s._a.runWithContext || vs)(() => s._e.run(() => (i = ce()).run(() => t({ action: x }))));
+  for (const h in J) {
+    const p = J[h];
+    if (mt(p) && !te(p) || Ht(p))
+      process.env.NODE_ENV !== "production" && o ? vt(lt.value, h, Dt(J, h)) : a || (Q && ws(p) && (mt(p) ? p.value = Q[h] : Pt(p, Q[h])), s.state.value[e][h] = p), process.env.NODE_ENV !== "production" && R.state.push(h);
     else if (typeof p == "function") {
       const T = process.env.NODE_ENV !== "production" && o ? p : x(p, h);
-      W[h] = T, process.env.NODE_ENV !== "production" && (R.actions[h] = p), r.actions[h] = p;
+      J[h] = T, process.env.NODE_ENV !== "production" && (R.actions[h] = p), r.actions[h] = p;
     } else process.env.NODE_ENV !== "production" && te(p) && (R.getters[h] = a ? (
       // @ts-expect-error
       n.getters[h]
-    ) : p, Z && (W._getters || // @ts-expect-error: same
-    (W._getters = X([]))).push(h));
+    ) : p, Z && (J._getters || // @ts-expect-error: same
+    (J._getters = X([]))).push(h));
   }
-  if (L(_, W), L(ft(_), W), Object.defineProperty(_, "$state", {
-    get: () => process.env.NODE_ENV !== "production" && o ? ct.value : s.state.value[e],
+  if (L(_, J), L(ht(_), J), Object.defineProperty(_, "$state", {
+    get: () => process.env.NODE_ENV !== "production" && o ? lt.value : s.state.value[e],
     set: (h) => {
       if (process.env.NODE_ENV !== "production" && o)
         throw new Error("cannot set hotState");
@@ -873,10 +873,10 @@ function Pt(e, t, n = {}, s, o, a) {
         const T = h.$state[p], q = _.$state[p];
         typeof T == "object" && tt(T) && tt(q) ? Te(T, q) : h.$state[p] = q;
       }
-      vt(_, p, Ct(h.$state, p));
+      vt(_, p, Dt(h.$state, p));
     }), Object.keys(_.$state).forEach((p) => {
-      p in h.$state || Dt(_, p);
-    }), l = !1, f = !1, s.state.value[e] = Ct(h._hmrPayload, "hotState"), f = !0, Wt().then(() => {
+      p in h.$state || kt(_, p);
+    }), l = !1, f = !1, s.state.value[e] = Dt(h._hmrPayload, "hotState"), f = !0, Wt().then(() => {
       l = !0;
     });
     for (const p in h._hmrPayload.actions) {
@@ -886,14 +886,14 @@ function Pt(e, t, n = {}, s, o, a) {
     for (const p in h._hmrPayload.getters) {
       const T = h._hmrPayload.getters[p], q = a ? (
         // special handling of options api
-        Ft(() => (mt(s), T.call(_, _)))
+        Ft(() => (gt(s), T.call(_, _)))
       ) : T;
       vt(_, p, q);
     }
     Object.keys(_._hmrPayload.getters).forEach((p) => {
-      p in h._hmrPayload.getters || Dt(_, p);
+      p in h._hmrPayload.getters || kt(_, p);
     }), Object.keys(_._hmrPayload.actions).forEach((p) => {
-      p in h._hmrPayload.actions || Dt(_, p);
+      p in h._hmrPayload.actions || kt(_, p);
     }), _._hmrPayload = h._hmrPayload, _._getters = h._getters, _._hotUpdating = !1;
   })), process.env.NODE_ENV !== "production" && process.env.NODE_ENV !== "test" && Z) {
     const h = {
@@ -935,14 +935,14 @@ function As(e, t, n) {
     const l = Ie();
     if (r = // in test mode, ignore the argument provided as we can always retrieve a
     // pinia instance with getActivePinia()
-    (process.env.NODE_ENV === "test" && pt && pt._testing ? null : r) || (l ? jt(he, null) : null), r && mt(r), process.env.NODE_ENV !== "production" && !pt)
+    (process.env.NODE_ENV === "test" && ft && ft._testing ? null : r) || (l ? jt(he, null) : null), r && gt(r), process.env.NODE_ENV !== "production" && !ft)
       throw new Error(`[🍍]: "getActivePinia()" was called but there was no active Pinia. Are you trying to use a store before calling "app.use(pinia)"?
 See https://pinia.vuejs.org/core-concepts/outside-component-usage.html for help.
 This will fail in production.`);
-    r = pt, r._s.has(s) || (a ? Pt(s, t, o, r) : ee(s, o, r), process.env.NODE_ENV !== "production" && (i._pinia = r));
+    r = ft, r._s.has(s) || (a ? Lt(s, t, o, r) : ee(s, o, r), process.env.NODE_ENV !== "production" && (i._pinia = r));
     const f = r._s.get(s);
     if (process.env.NODE_ENV !== "production" && c) {
-      const d = "__hot:" + s, b = a ? Pt(d, t, o, r, !0) : ee(d, L({}, o), r, !0);
+      const d = "__hot:" + s, b = a ? Lt(d, t, o, r, !0) : ee(d, L({}, o), r, !0);
       c._hotUpdate(b), delete r.state.value[d], r._s.delete(d);
     }
     if (process.env.NODE_ENV !== "production" && Z) {
@@ -976,12 +976,12 @@ const Ts = ["id", "checked"], Ss = ["for", "innerHTML"], xs = /* @__PURE__ */ V(
         type: "radio",
         name: "options",
         checked: o.checked,
-        class: Y(o.submitted && "ignore-hover")
+        class: W(o.submitted && "ignore-hover")
       }, null, 10, Ts)),
       (g(), w("label", {
         key: o.optionKey,
         for: "option-" + o.optionKey,
-        class: Y(o.submitted ? "mcq-option-label ignore-hover" : "mcq-option-label"),
+        class: W(o.submitted ? "mcq-option-label ignore-hover" : "mcq-option-label"),
         onClick: a[0] || (a[0] = (i) => s()),
         innerHTML: o.option.optionValue
       }, null, 10, Ss))
@@ -1009,12 +1009,12 @@ const Ts = ["id", "checked"], Ss = ["for", "innerHTML"], xs = /* @__PURE__ */ V(
     return (c, l) => (g(), w("div", null, [
       m("button", {
         disabled: c.hideSkip && r(c.submitted, c.selectedOption).class === "skip",
-        class: Y(["mcq-button", r(c.submitted, c.selectedOption).class]),
+        class: W(["mcq-button", r(c.submitted, c.selectedOption).class]),
         onClick: l[0] || (l[0] = (f) => a(c.submitted, c.selectedOption))
       }, k(r(c.submitted, c.selectedOption).text), 11, Cs)
     ]));
   }
-}), $s = /* @__PURE__ */ z(Ds, [["__scopeId", "data-v-847b8dd5"]]), ks = /* @__PURE__ */ V({
+}), ks = /* @__PURE__ */ z(Ds, [["__scopeId", "data-v-847b8dd5"]]), $s = /* @__PURE__ */ V({
   __name: "NextButton",
   props: {
     buttonName: {}
@@ -1028,12 +1028,12 @@ const Ts = ["id", "checked"], Ss = ["for", "innerHTML"], xs = /* @__PURE__ */ V(
     };
     return (a, i) => (g(), w("div", null, [
       m("button", {
-        class: Y(a.buttonName === "Submit" ? "submit_btn" : "mcq-button"),
+        class: W(a.buttonName === "Submit" ? "submit_btn" : "mcq-button"),
         onClick: i[0] || (i[0] = (r) => s())
       }, k(a.buttonName), 3)
     ]));
   }
-}), se = /* @__PURE__ */ z(ks, [["__scopeId", "data-v-8be7f61e"]]);
+}), se = /* @__PURE__ */ z($s, [["__scopeId", "data-v-8be7f61e"]]);
 var y = ((e) => (e[e.New = 0] = "New", e[e.Learning = 1] = "Learning", e[e.Review = 2] = "Review", e[e.Relearning = 3] = "Relearning", e))(y || {}), u = ((e) => (e[e.Manual = 0] = "Manual", e[e.Again = 1] = "Again", e[e.Hard = 2] = "Hard", e[e.Good = 3] = "Good", e[e.Easy = 4] = "Easy", e))(u || {});
 class v {
   static card(t) {
@@ -1068,7 +1068,7 @@ class v {
     return { ...t, due: v.time(t.due), rating: v.rating(t.rating), state: v.state(t.state), review: v.time(t.review) };
   }
 }
-const Ns = 0.9, Qs = 36500, Ms = [0.4072, 1.1829, 3.1262, 15.4722, 7.2102, 0.5316, 1.0651, 0.0234, 1.616, 0.1544, 1.0824, 1.9813, 0.0953, 0.2975, 2.2042, 0.2407, 2.9466, 0.5034, 0.6567], Os = !1, Vs = !0, Lt = (e) => {
+const Ns = 0.9, Qs = 36500, Ms = [0.4072, 1.1829, 3.1262, 15.4722, 7.2102, 0.5316, 1.0651, 0.0234, 1.616, 0.1544, 1.0824, 1.9813, 0.0953, 0.2975, 2.2042, 0.2407, 2.9466, 0.5034, 0.6567], Os = !1, Vs = !0, It = (e) => {
   let t = Ms;
   return e != null && e.w && (e.w.length === 19 ? t = e == null ? void 0 : e.w : e.w.length === 17 && (t = e == null ? void 0 : e.w.concat([0, 0]), console.debug("[FSRS V5]auto fill w to 19 length"))), { request_retention: (e == null ? void 0 : e.request_retention) || Ns, maximum_interval: (e == null ? void 0 : e.maximum_interval) || Qs, w: t, enable_fuzz: (e == null ? void 0 : e.enable_fuzz) ?? Os, enable_short_term: (e == null ? void 0 : e.enable_short_term) ?? Vs };
 };
@@ -1100,16 +1100,16 @@ function qs(e, t, n) {
 }
 function Ps(e) {
   const t = et(e), n = t.getFullYear(), s = t.getMonth() + 1, o = t.getDate(), a = t.getHours(), i = t.getMinutes(), r = t.getSeconds();
-  return `${n}-${dt(s)}-${dt(o)} ${dt(a)}:${dt(i)}:${dt(r)}`;
+  return `${n}-${pt(s)}-${pt(o)} ${pt(a)}:${pt(i)}:${pt(r)}`;
 }
-function dt(e) {
+function pt(e) {
   return e < 10 ? `0${e}` : `${e}`;
 }
-const kt = [60, 60, 24, 31, 12], Nt = ["second", "min", "hour", "day", "month", "year"];
-function Ls(e, t, n, s = Nt) {
-  e = et(e), t = et(t), s.length !== Nt.length && (s = Nt);
+const Nt = [60, 60, 24, 31, 12], Qt = ["second", "min", "hour", "day", "month", "year"];
+function Ls(e, t, n, s = Qt) {
+  e = et(e), t = et(t), s.length !== Qt.length && (s = Qt);
   let o = e.getTime() - t.getTime(), a;
-  for (o /= 1e3, a = 0; a < kt.length && !(o < kt[a]); a++) o /= kt[a];
+  for (o /= 1e3, a = 0; a < Nt.length && !(o < Nt[a]); a++) o /= Nt[a];
   return `${Math.floor(o)}${n ? s[a] : ""}`;
 }
 function et(e) {
@@ -1124,7 +1124,7 @@ function js(e, t, n) {
   const a = Math.min(Math.round(e + s), n);
   return e > t && (o = Math.max(o, t + 1)), o = Math.min(o, a), { min_ivl: o, max_ivl: a };
 }
-function Qt(e, t, n) {
+function Mt(e, t, n) {
   return Math.min(Math.max(e, t), n);
 }
 class zs {
@@ -1169,7 +1169,7 @@ class Us {
     M(this, "param");
     M(this, "intervalModifier");
     M(this, "_seed");
-    this.param = new Proxy(Lt(t), this.params_handler_proxy()), this.intervalModifier = this.calculate_interval_modifier(this.param.request_retention);
+    this.param = new Proxy(It(t), this.params_handler_proxy()), this.intervalModifier = this.calculate_interval_modifier(this.param.request_retention);
   }
   get interval_modifier() {
     return this.intervalModifier;
@@ -1194,7 +1194,7 @@ class Us {
     } };
   }
   update_parameters(t) {
-    const n = Lt(t);
+    const n = It(t);
     for (const s in n) if (s in this.param) {
       const o = s;
       this.param[o] = n[o];
@@ -1227,13 +1227,13 @@ class Us {
   }
   next_recall_stability(t, n, s, o) {
     const a = u.Hard === o ? this.param.w[15] : 1, i = u.Easy === o ? this.param.w[16] : 1;
-    return +Qt(n * (1 + Math.exp(this.param.w[8]) * (11 - t) * Math.pow(n, -this.param.w[9]) * (Math.exp((1 - s) * this.param.w[10]) - 1) * a * i), 0.01, 36500).toFixed(8);
+    return +Mt(n * (1 + Math.exp(this.param.w[8]) * (11 - t) * Math.pow(n, -this.param.w[9]) * (Math.exp((1 - s) * this.param.w[10]) - 1) * a * i), 0.01, 36500).toFixed(8);
   }
   next_forget_stability(t, n, s) {
-    return +Qt(this.param.w[11] * Math.pow(t, -this.param.w[12]) * (Math.pow(n + 1, this.param.w[13]) - 1) * Math.exp((1 - s) * this.param.w[14]), 0.01, 36500).toFixed(8);
+    return +Mt(this.param.w[11] * Math.pow(t, -this.param.w[12]) * (Math.pow(n + 1, this.param.w[13]) - 1) * Math.exp((1 - s) * this.param.w[14]), 0.01, 36500).toFixed(8);
   }
   next_short_term_stability(t, n) {
-    return +Qt(t * Math.exp(this.param.w[17] * (n - 3 + this.param.w[18])), 0.01, 36500).toFixed(8);
+    return +Mt(t * Math.exp(this.param.w[17] * (n - 3 + this.param.w[18])), 0.01, 36500).toFixed(8);
   }
   forgetting_curve(t, n) {
     return +Math.pow(1 + oe * t / n, ne).toFixed(8);
@@ -1464,7 +1464,7 @@ class Gs extends Us {
     return o;
   }
 }
-const Bs = (e) => new Gs(e || {}), Ws = Lt({ enable_fuzz: !0 }), Js = Bs(Ws), Ys = (e) => ({
+const Bs = (e) => new Gs(e || {}), Ws = It({ enable_fuzz: !0 }), Js = Bs(Ws), Ys = (e) => ({
   id: e._id.$oid,
   last_review: e.lastAttempted,
   due: /* @__PURE__ */ new Date(),
@@ -1511,7 +1511,7 @@ const Xs = (e) => e.map((t) => {
   const n = Zs(t);
   return tn(n.slice(0, e));
 };
-function It(e) {
+function xt(e) {
   const t = e.reduce(
     (s, o) => (Object.keys(o).forEach((a) => {
       a.trim() !== "" && (s[a] || (s[a] = /* @__PURE__ */ new Set()), o[a].forEach((r) => s[a].add(r)));
@@ -1587,7 +1587,7 @@ const Ce = (e, t) => t.findIndex((n) => {
       return this.selectedTags;
     },
     modifySelectedTags(e, { category: t, topic: n }) {
-      this.selectedTags[t] && (this.selectedTags[t] = e ? [...this.selectedTags[t], n] : this.selectedTags[t].filter(
+      console.log("check and ...", e, t, n), console.log("selecte Tag : ", this.selectedTags), this.selectedTags[t] && (console.log("not return"), this.selectedTags[t] = e ? [...this.selectedTags[t], n] : this.selectedTags[t].filter(
         (s) => s !== n
       ));
     },
@@ -1668,7 +1668,7 @@ const Ce = (e, t) => t.findIndex((n) => {
       s.value = null, a("prevQuestion");
     }, Q = (C, D) => {
       o.value || (s.value = s.value === D ? null : D), d(C);
-    }, ct = (C, D, x) => n.quizMode === "Timed" ? _t(C, D) : bt(D, x);
+    }, lt = (C, D, x) => n.quizMode === "Timed" ? _t(C, D) : bt(D, x);
     function _t(C, D) {
       const x = Ce(C.$oid, n.quizStats), R = n.quizStats[x].selectedValue, st = nn(
         n.quizStats,
@@ -1689,7 +1689,7 @@ const Ce = (e, t) => t.findIndex((n) => {
       m("div", an, [
         (g(!0), w(B, null, at(Object.entries(C.optionsList), ([x, R]) => (g(), w("div", {
           key: x,
-          class: Y(["mcq-option", ct(C._id, x, C.optionsList)]),
+          class: W(["mcq-option", lt(C._id, x, C.optionsList)]),
           onClick: (st) => Q(C._id, x)
         }, [
           rt(Es, {
@@ -1701,7 +1701,7 @@ const Ce = (e, t) => t.findIndex((n) => {
           }, null, 8, ["option-key", "checked", "option", "submitted", "onSelectOption"])
         ], 10, rn))), 128))
       ]),
-      E(n).quizMode === "Tutor" ? (g(), H($s, {
+      E(n).quizMode === "Tutor" ? (g(), H(ks, {
         key: 0,
         submitted: o.value,
         "selected-option": s.value,
@@ -1728,7 +1728,7 @@ const Ce = (e, t) => t.findIndex((n) => {
   __name: "MCQStatus",
   setup(e) {
     const t = jt("$updateQAttemptCallback") ?? Oe, n = U(), s = n.quizStats, o = n.quizStats.length, a = s.filter((c) => c.correct === 1).length, i = (a * 100 / o).toFixed(0);
-    return gt(() => {
+    return ct(() => {
       try {
         const c = s.filter((l) => l.attempts).map(
           (l) => t(l.question._id.$oid, !!l.correct)
@@ -1772,7 +1772,7 @@ const Ce = (e, t) => t.findIndex((n) => {
                 ]),
                 m("td", _n, [
                   m("span", {
-                    class: Y(
+                    class: W(
                       d.correct === 1 ? "correct-answer" : "wrong-answer"
                     ),
                     innerHTML: d.correct === 1 ? "<span> ✔</span> " : "<span> ✘</span> <span>     </span>" + d.selectedValue
@@ -1790,11 +1790,11 @@ const Ce = (e, t) => t.findIndex((n) => {
       ])
     ]));
   }
-}), $e = /* @__PURE__ */ z(wn, [["__scopeId", "data-v-38adb08e"]]), An = { class: "questions-left-header" }, Tn = /* @__PURE__ */ V({
+}), ke = /* @__PURE__ */ z(wn, [["__scopeId", "data-v-38adb08e"]]), An = { class: "questions-left-header" }, Tn = /* @__PURE__ */ V({
   __name: "MCQQuiz",
   setup(e) {
     const t = S(), n = U();
-    gt(() => {
+    ct(() => {
       o();
     });
     const s = () => {
@@ -1815,7 +1815,7 @@ const Ce = (e, t) => t.findIndex((n) => {
           onNextQuestion: o,
           onSkipQuestion: s
         }, null, 8, ["statement", "options-list", "_id"])) : O("", !0),
-        t.value ? O("", !0) : (g(), H($e, { key: 1 })),
+        t.value ? O("", !0) : (g(), H(ke, { key: 1 })),
         t.value ? O("", !0) : (g(), w("button", {
           key: 2,
           class: "btn-relocate",
@@ -1845,13 +1845,13 @@ const Ce = (e, t) => t.findIndex((n) => {
       m("h3", En, " Question " + k(E(t).questionsStack.length) + " out of " + k(E(t).quizStats.length), 1)
     ], 64));
   }
-}), re = 1e3, Dn = "-1", $n = /* @__PURE__ */ V({
+}), re = 1e3, Dn = "-1", kn = /* @__PURE__ */ V({
   __name: "MCQTimedQuiz",
   setup(e) {
     const t = U(), n = S();
     let s = null, o = null;
     const a = S(t.timeLimit);
-    gt(() => {
+    ct(() => {
       r();
     }), le(() => {
       l(), f();
@@ -1883,7 +1883,7 @@ const Ce = (e, t) => t.findIndex((n) => {
         onNextQuestion: r,
         onPrevQuestion: i
       }, null, 8, ["statement", "options-list", "_id"])) : O("", !0),
-      n.value ? O("", !0) : (g(), H($e, { key: 1 })),
+      n.value ? O("", !0) : (g(), H(ke, { key: 1 })),
       n.value ? O("", !0) : (g(), w("button", {
         key: 2,
         class: "btn-relocate",
@@ -1891,7 +1891,7 @@ const Ce = (e, t) => t.findIndex((n) => {
       }, " End "))
     ]));
   }
-}), kn = /* @__PURE__ */ z($n, [["__scopeId", "data-v-4fd74e68"]]), Nn = ["id", "name", "value"], Qn = ["for"], Mn = { class: "question-number" }, On = /* @__PURE__ */ V({
+}), $n = /* @__PURE__ */ z(kn, [["__scopeId", "data-v-4fd74e68"]]), Nn = ["id", "name", "value"], Qn = ["for"], Mn = /* @__PURE__ */ V({
   __name: "FilterCheckbox",
   props: {
     category: {},
@@ -1930,7 +1930,7 @@ const Ce = (e, t) => t.findIndex((n) => {
       ).length.toString();
     };
     return (i, r) => (g(), w("ul", null, [
-      (g(!0), w(B, null, at(s.value, ({ idx: c, topic: l, questionamount: f }) => (g(), w("li", {
+      (g(!0), w(B, null, at(s.value, ({ idx: c, topic: l, num: f, questionamount: d }) => (g(), w("li", {
         key: c,
         class: "filter-options"
       }, [
@@ -1939,45 +1939,50 @@ const Ce = (e, t) => t.findIndex((n) => {
           type: "checkbox",
           name: i.category,
           value: l,
-          onChange: r[0] || (r[0] = (d) => o(d))
+          onChange: r[0] || (r[0] = (b) => o(b))
         }, null, 40, Nn),
         m("label", {
           for: `${i.category}-${l}-checkbox`
         }, [
           ue(k(n(l)) + " ", 1),
-          m("span", Mn, k(f), 1)
+          m("span", null, " (" + k(Number(d)) + ") ", 1),
+          m("span", {
+            class: W(["question-number", { "grey-out": f === "0" }])
+          }, k(Number(f)), 3)
         ], 8, Qn)
       ]))), 128))
     ]));
   }
-}), Vn = /* @__PURE__ */ z(On, [["__scopeId", "data-v-345f2833"]]), qn = {
+}), On = /* @__PURE__ */ z(Mn, [["__scopeId", "data-v-00c5ba51"]]), Vn = {
   key: 0,
   class: "filter"
-}, Pn = { class: "category-heading" }, Ln = /* @__PURE__ */ V({
+}, qn = { class: "category-heading" }, Pn = /* @__PURE__ */ V({
   __name: "MCQTagOptions",
   setup(e) {
     const t = S([]), n = U(), s = S({});
-    return gt(() => {
-      t.value = n.getTagSet(), s.value = It(t.value);
+    return ct(() => {
+      n.setTagSet(), t.value = n.getTagSet(), s.value = xt(t.value);
+    }), ct(() => {
+      t.value = n.getTagSet(), s.value = xt(t.value);
     }), zt(
       () => n.allQs,
       (o, a) => {
-        n.setTagSet(), t.value = n.getTagSet(), s.value = It(t.value);
+        n.setTagSet(), t.value = n.getTagSet(), s.value = xt(t.value);
       }
-    ), (o, a) => E(n).allQs ? (g(), w("div", qn, [
+    ), (o, a) => E(n).allQs ? (g(), w("div", Vn, [
       (g(!0), w(B, null, at(Object.entries(s.value), ([i, r]) => (g(), w("div", {
         key: i,
         class: "category"
       }, [
-        m("h2", Pn, k(i), 1),
-        rt(Vn, {
+        m("h2", qn, k(i), 1),
+        rt(On, {
           category: i,
           topics: r
         }, null, 8, ["category", "topics"])
       ]))), 128))
     ])) : O("", !0);
   }
-}), In = /* @__PURE__ */ z(Ln, [["__scopeId", "data-v-a8cb9e79"]]), Rn = { for: "optionName" }, jn = ["value"], zn = /* @__PURE__ */ V({
+}), Ln = /* @__PURE__ */ z(Pn, [["__scopeId", "data-v-639d56d0"]]), In = { for: "optionName" }, Rn = ["value"], jn = /* @__PURE__ */ V({
   __name: "DropDownbox",
   props: {
     options: {},
@@ -1991,9 +1996,9 @@ const Ce = (e, t) => t.findIndex((n) => {
       a.value && (n.value = parseFloat(a.value) * 60, t.setTimeLimit(n.value));
     }
     return (o, a) => (g(), w("div", {
-      class: Y(o.disabled ? "dropdown input-disabled" : "dropdown")
+      class: W(o.disabled ? "dropdown input-disabled" : "dropdown")
     }, [
-      m("label", Rn, k(o.optionName) + ":   ", 1),
+      m("label", In, k(o.optionName) + ":   ", 1),
       m("select", {
         id: "optionName",
         name: "optionName",
@@ -2002,19 +2007,19 @@ const Ce = (e, t) => t.findIndex((n) => {
         (g(!0), w(B, null, at(o.options, (i) => (g(), w("option", {
           key: i.value,
           value: i.value
-        }, k(i.value) + " " + k(i.unit), 9, jn))), 128))
+        }, k(i.value) + " " + k(i.unit), 9, Rn))), 128))
       ], 32)
     ], 2));
   }
-}), Hn = /* @__PURE__ */ z(zn, [["__scopeId", "data-v-5f3ae97a"]]), Fn = { class: "start-page-container" }, Un = { class: "quiz-config-container" }, Gn = { class: "question-config-container" }, Bn = { class: "tag-text" }, Wn = { class: "question-number" }, Jn = { class: "question-amount-container" }, Yn = ["max"], Kn = {
+}), zn = /* @__PURE__ */ z(jn, [["__scopeId", "data-v-5f3ae97a"]]), Hn = { class: "start-page-container" }, Fn = { class: "quiz-config-container" }, Un = { class: "question-config-container" }, Gn = { class: "tag-text" }, Bn = { class: "question-number" }, Wn = { class: "question-amount-container" }, Jn = ["max"], Yn = {
   key: 0,
   class: "show-max-msg"
-}, Xn = 3e3, Zn = /* @__PURE__ */ V({
+}, Kn = 3e3, Xn = /* @__PURE__ */ V({
   __name: "StartPage",
   emits: ["start-quiz", "enable-srs"],
   setup(e, { emit: t }) {
     const n = S(1), s = S("Tutor"), o = S(!1), a = S(null), i = t, r = U();
-    gt(() => {
+    ct(() => {
       Ue(() => {
         const f = r.getquestionnumber();
         n.value = Math.min(10, f);
@@ -2028,18 +2033,18 @@ const Ce = (e, t) => t.findIndex((n) => {
     }, l = () => {
       a.value && clearTimeout(a.value), n.value > r.getquestionnumber() && (n.value = r.getquestionnumber(), o.value = !0, a.value = window.setTimeout(() => {
         o.value = !1;
-      }, Xn));
+      }, Kn));
     };
-    return (f, d) => (g(), w("div", Fn, [
+    return (f, d) => (g(), w("div", Hn, [
       d[6] || (d[6] = m("h1", null, "VetCloud Smart Quiz", -1)),
-      rt(In),
-      m("div", Un, [
-        m("div", Gn, [
-          m("p", Bn, [
+      rt(Ln),
+      m("div", Fn, [
+        m("div", Un, [
+          m("p", Gn, [
             d[2] || (d[2] = ue(" Maximum possible questions: ")),
-            m("span", Wn, k(E(r).getquestionnumber()), 1)
+            m("span", Bn, k(E(r).getquestionnumber()), 1)
           ]),
-          m("div", Jn, [
+          m("div", Wn, [
             d[3] || (d[3] = m("label", { for: "question-amount" }, "Select the amount of questions:", -1)),
             Jt(m("input", {
               id: "question-amount",
@@ -2049,7 +2054,7 @@ const Ce = (e, t) => t.findIndex((n) => {
               min: "1",
               max: E(r).getquestionnumber(),
               onInput: l
-            }, null, 40, Yn), [
+            }, null, 40, Jn), [
               [
                 Ge,
                 n.value,
@@ -2058,7 +2063,7 @@ const Ce = (e, t) => t.findIndex((n) => {
               ]
             ])
           ]),
-          o.value ? (g(), w("p", Kn, " Cannot select more than " + k(E(r).getquestionnumber()) + " questions. ", 1)) : O("", !0),
+          o.value ? (g(), w("p", Yn, " Cannot select more than " + k(E(r).getquestionnumber()) + " questions. ", 1)) : O("", !0),
           m("div", null, [
             d[5] || (d[5] = m("label", { for: "mode-select" }, "Select mode:", -1)),
             Jt(m("select", {
@@ -2071,13 +2076,13 @@ const Ce = (e, t) => t.findIndex((n) => {
               [Be, s.value]
             ])
           ]),
-          rt(Hn, {
+          rt(zn, {
             options: [
               { value: 1, label: "Time Option 2", unit: "Min." },
               { value: 1.5, label: "Time Option 1", unit: "Min." }
             ],
             "option-name": "Time per Question",
-            class: Y(s.value === "Timed" ? "" : "input-disabled"),
+            class: W(s.value === "Timed" ? "" : "input-disabled"),
             disabled: s.value !== "Timed"
           }, null, 8, ["class", "disabled"])
         ])
@@ -2088,20 +2093,20 @@ const Ce = (e, t) => t.findIndex((n) => {
       }, "Start")
     ]));
   }
-}), to = /* @__PURE__ */ z(Zn, [["__scopeId", "data-v-84467fb8"]]), eo = (e) => e.trim().toLowerCase().replace(/_+/g, " "), so = (e) => e.reduce((t, n) => {
+}), Zn = /* @__PURE__ */ z(Xn, [["__scopeId", "data-v-84467fb8"]]), to = (e) => e.trim().toLowerCase().replace(/_+/g, " "), eo = (e) => e.reduce((t, n) => {
   if (!n.includes(":")) return t;
   let [s, o] = n.split(":");
-  return [s, o] = [s.trim().toLowerCase(), eo(o)], t[s] ? t[s] = [...t[s], o] : t[s] = [o], t;
-}, {}), no = (e) => e.map((t) => ({
+  return [s, o] = [s.trim().toLowerCase(), to(o)], t[s] ? t[s] = [...t[s], o] : t[s] = [o], t;
+}, {}), so = (e) => e.map((t) => ({
   _id: { $oid: t._id.$oid },
   statement: t.statement,
-  tags: so(t.tags),
+  tags: eo(t.tags),
   optionsList: t.optionsList,
   link: t.link,
   attempts: t.attempts,
   correctAttempts: t.correctAttempts,
   lastAttempted: t.lastAttempted
-})), ke = { convertQuestions: no }, oo = [
+})), $e = { convertQuestions: so }, no = [
   {
     tags: [
       "course:vets2011",
@@ -2368,7 +2373,7 @@ const Ce = (e, t) => t.findIndex((n) => {
     lastAttempted: /* @__PURE__ */ new Date("2024-08-07T09:55:35.944+00:00")
   },
   {
-    tags: ["course: VETS2013", "course:vets2016", "subject:Physiology"],
+    tags: ["course:vets2016", "subject:Physiology"],
     statement: "<p>Which of the following types of glial cells myelinate neurons in the peripheral nervous system?</p>",
     optionsList: [
       {
@@ -2763,33 +2768,33 @@ function Rt(e) {
 function Ne(e, t = !1) {
   return I.isArray(e, I.isString) ? t ? e.every(Rt) : e.some(Rt) : !1;
 }
-function io(e) {
+function oo(e) {
   return I.isObject(e) && I.isString(e.optionValue) && (e.optionCorrect === void 0 || I.isBoolean(e.optionCorrect));
 }
 function Qe(e) {
   return I.isObject(e) && I.isObject(e._id) && // Assuming _id is an object with $oid property
   I.isString(e._id.$oid) && I.isString(e.statement) && Ne(e.tags) && // Modified to ensure tags are always checked
-  I.isArray(e.optionsList, io) && I.isString(e.link);
+  I.isArray(e.optionsList, oo) && I.isString(e.link);
 }
-function ao(e) {
+function io(e) {
   return I.isArray(e, Qe);
 }
 const yt = {
   isMCQuestion: Qe,
-  isMCQuestionArray: ao,
+  isMCQuestionArray: io,
   validateTags: Ne,
   isTag: Rt
-}, ro = (e) => {
+}, ao = (e) => {
   try {
     if (!e)
       throw new Error("No question data found. Please Try again later.");
-    return ke.convertQuestions(Me(e));
+    return $e.convertQuestions(Me(e));
   } catch (t) {
     return alert(t), [];
   }
-}, co = () => oo, lo = () => {
-  const e = co();
-  return ke.convertQuestions(Me(e));
+}, ro = () => no, co = () => {
+  const e = ro();
+  return $e.convertQuestions(Me(e));
 };
 function Me(e) {
   yt.isMCQuestionArray(e) ? console.info(
@@ -2820,22 +2825,22 @@ Total Questions Validated:`,
     }
     return { ...s, totalTags: i };
   }, t);
-  return uo(n, e.length), e;
+  return lo(n, e.length), e;
 }
-function Mt(e, t) {
+function Ot(e, t) {
   e && console.warn(t, "color: #FF0000");
 }
-function uo(e, t) {
+function lo(e, t) {
   const { invalidQs: n, invalidTags: s, noTags: o, totalTags: a } = e;
-  Mt(
+  Ot(
     n,
     `Invalid Questions Received: %c${n} out of ${t}`
-  ), Mt(
+  ), Ot(
     s,
     `Filtering out invalid tags: %c${s} out of ${a}`
-  ), Mt(o, `Questions with no tags: %c${o}`);
+  ), Ot(o, `Questions with no tags: %c${o}`);
 }
-const po = /* @__PURE__ */ V({
+const uo = /* @__PURE__ */ V({
   __name: "CrucibleComponent",
   props: {
     level: {
@@ -2845,15 +2850,15 @@ const po = /* @__PURE__ */ V({
     }
   },
   setup(e) {
-    const t = e, n = S(0), s = U(), o = S(!1), a = S([]), i = jt("$dataLink"), { level: r } = Ot(t);
+    const t = e, n = S(0), s = U(), o = S(!1), a = S([]), i = jt("$dataLink"), { level: r } = Vt(t);
     le(async () => {
       if (i) {
         const d = await (async () => (await (await fetch(`${i}?level=${r.value}`)).json()).questions)();
-        a.value = ro(d);
+        a.value = ao(d);
       } else
-        a.value = lo();
+        a.value = co();
       s.allQs = a.value;
-      const l = It(
+      const l = xt(
         a.value.map((f) => f.tags)
       );
       s.setselectedTags(
@@ -2870,12 +2875,12 @@ const po = /* @__PURE__ */ V({
       ), A = en(l, b);
       n.value = A.length, s.initialiseQuiz(A, f), f === "Timed" && s.setTimeLimit(l * s.timeLimit), o.value = !0;
     };
-    return (l, f) => o.value && E(s).quizMode === "Tutor" ? (g(), H(Sn, { key: 0 })) : o.value && E(s).quizMode === "Timed" ? (g(), H(kn, { key: 1 })) : (g(), H(to, {
+    return (l, f) => o.value && E(s).quizMode === "Tutor" ? (g(), H(Sn, { key: 0 })) : o.value && E(s).quizMode === "Timed" ? (g(), H($n, { key: 1 })) : (g(), H(Zn, {
       key: 2,
       onStartQuiz: c
     }));
   }
-}), fo = {
+}), po = {
   data: {
     questions: [
       {
@@ -2889,16 +2894,16 @@ const po = /* @__PURE__ */ V({
   }
 }, Oe = async (e, t) => {
 };
-function _o(e, t = {}) {
+function go(e, t = {}) {
   const n = bs();
-  e.use(n), e.component("CrucibleComponent", po), e.provide("$dataLink", t.dataLink || fo), e.provide(
+  e.use(n), e.component("CrucibleComponent", uo), e.provide("$dataLink", t.dataLink || po), e.provide(
     "$updateQAttemptCallback",
     t.updateQAttemptCallback || Oe
   );
 }
 export {
-  po as CrucibleComponent,
-  _o as createViewerPlugin,
-  fo as defaultData,
+  uo as CrucibleComponent,
+  go as createViewerPlugin,
+  po as defaultData,
   Oe as defaultUpdateQAttemptCallback
 };
