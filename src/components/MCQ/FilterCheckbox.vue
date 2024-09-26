@@ -114,8 +114,9 @@ const getQuestionsnumByTags = (
   background-color: #2a52be;
   color: white;
   padding: 4px 8px;
-  text-align: left;
+  text-align: center;
   width: fit-content;
+  min-width: 1.5em;
   font-weight: bolder;
   font-size: small;
   margin: 2px;
