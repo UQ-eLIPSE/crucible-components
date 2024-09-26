@@ -1,7 +1,7 @@
 <template>
   <ul>
     <li
-      v-for="{ idx, topic, num, questionamount } in questionsNumByTags"
+      v-for="{ idx, topic, questionamount } in questionsNumByTags"
       :key="idx"
       class="filter-options"
     >
@@ -19,9 +19,9 @@
           ({{ Number(questionamount) }})
           <!--  -->
         </span>
-        <span class="question-number" :class="{ 'grey-out': num === '0' }">
+        <!-- <span class="question-number" :class="{ 'grey-out': num === '0' }">
           {{ Number(num) }}
-        </span>
+        </span> -->
       </label>
     </li>
   </ul>
