@@ -158,6 +158,7 @@ ul {
   }
   .question-number {
     font-size: smaller;
+    min-width: 1em;
   }
 }
 </style>

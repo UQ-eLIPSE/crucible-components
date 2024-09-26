@@ -122,16 +122,14 @@ const checkMax = () => {
 }
 
 .question-number {
-  border-radius: 10px;
   text-align: center;
-  background-color: #2a52be;
-  color: white;
+  color: #41752d;
   padding: 4px 8px;
   text-align: left;
-  width: fit-content;
-  font-weight: bolder;
-  font-size: small;
-  margin-left: 2px;
+  font-size: 1.6em;
+  font-weight: 800;
+  font-style: oblique;
+  text-decoration: underline;
 }
 
 .start-page-container {
