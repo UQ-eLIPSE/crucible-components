@@ -278,7 +278,7 @@ export const pluginQuestions = [
     lastAttempted: new Date("2024-08-07T09:55:35.944+00:00"),
   },
   {
-    tags: ["course: VETS2013", "course:vets2016", "subject:Physiology"],
+    tags: ["course:vets2016", "subject:Physiology"],
     statement:
       "<p>Which of the following types of glial cells myelinate neurons in the peripheral nervous system?</p>",
     optionsList: [

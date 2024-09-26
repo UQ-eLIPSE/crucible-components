@@ -1,7 +1,7 @@
 <template>
   <ul>
     <li
-      v-for="{ idx, topic, questionamount } in questionsNumByTags"
+      v-for="{ idx, topic, num, questionamount } in questionsNumByTags"
       :key="idx"
       class="filter-options"
     >
@@ -14,8 +14,15 @@
       />
       <label :for="`${category}-${topic}-checkbox`">
         {{ formatTopic(topic) }}
-        <span class="question-number">{{ questionamount }}</span></label
-      >
+        <span>
+          <!--  -->
+          ({{ Number(questionamount) }})
+          <!--  -->
+        </span>
+        <span class="question-number" :class="{ 'grey-out': num === '0' }">
+          {{ Number(num) }}
+        </span>
+      </label>
     </li>
   </ul>
 </template>
@@ -58,6 +65,8 @@ const onChecked = (event: Event) => {
 
   const category = event.target.name as keyof SelectedTags;
   const topic = event.target.value;
+
+  // Make sure checkList.value is initialized and push to the array
   questionsQueue.modifySelectedTags(event.target.checked, { category, topic });
 };
 
@@ -100,6 +109,7 @@ const getQuestionsnumByTags = (
 
 .question-number {
   border-radius: 10px;
+  float: right;
   text-align: center;
   background-color: #2a52be;
   color: white;
@@ -108,7 +118,8 @@ const getQuestionsnumByTags = (
   width: fit-content;
   font-weight: bolder;
   font-size: small;
-  margin-left: 2px;
+  margin: 2px;
+  margin-right: 1.5em;
 }
 
 ul {

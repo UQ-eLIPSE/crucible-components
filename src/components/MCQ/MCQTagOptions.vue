@@ -23,6 +23,12 @@ const questionsQueue = useQuizStore();
 const filterSet = ref<SelectedTags>({});
 
 onMounted(() => {
+  questionsQueue.setTagSet();
+  tagSet.value = questionsQueue.getTagSet(); // Update tagSet inside the watch function
+  filterSet.value = getUniquePropertyValues(tagSet.value);
+});
+
+onMounted(() => {
   tagSet.value = questionsQueue.getTagSet(); // Update tagSet inside the watch function
   filterSet.value = getUniquePropertyValues(tagSet.value);
 });

@@ -50,13 +50,17 @@ export const useQuizStore = defineStore("questionsQueue", {
       this.selectedTags = tags;
     },
     getselectedtags() {
+      // console.log("getselectedtags: ", this.selectedTags);
       return this.selectedTags;
     },
     modifySelectedTags(
       isChecked: boolean,
       { category, topic }: { category: keyof SelectedTags; topic: string },
     ) {
+      console.log("check and ...", isChecked, category, topic);
+      console.log("selecte Tag : ", this.selectedTags);
       if (!this.selectedTags[category]) return;
+      console.log("not return");
       this.selectedTags[category] = isChecked
         ? [...this.selectedTags[category], topic]
         : this.selectedTags[category].filter(
