@@ -1953,7 +1953,7 @@ const Ce = (e, t) => t.findIndex((n) => {
       ]))), 128))
     ]));
   }
-}), On = /* @__PURE__ */ z(Mn, [["__scopeId", "data-v-371de7be"]]), Vn = {
+}), On = /* @__PURE__ */ z(Mn, [["__scopeId", "data-v-1ff80cb4"]]), Vn = {
   key: 0,
   class: "filter"
 }, qn = { class: "category-heading" }, Pn = /* @__PURE__ */ V({
