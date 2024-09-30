@@ -5,31 +5,32 @@ import { createPinia, setActivePinia } from "pinia";
 import { useQuizStore } from "../../src/store/QuizStore";
 import { questionsData as questions } from "../testSeeds";
 let wrapper: VueWrapper;
-const category: string = "course";
-const topics: string[] = ["VETS2011", "VETS9999", "VETS2013"];
+const category: string = "animal";
+const topics: string[] = ["horse", "dog", "cat"];
 let firstCheckbox: Omit<DOMWrapper<HTMLInputElement>, "exists">;
 let secondCheckbox: Omit<DOMWrapper<HTMLInputElement>, "exists">;
 let thirdCheckbox: Omit<DOMWrapper<HTMLInputElement>, "exists">;
-
-beforeEach(() => {
-  setActivePinia(createPinia());
-  // * NEED TO ADD THIS I THINK
-  const questionsQueue = useQuizStore();
-  questionsQueue.allQs = questions;
-  // Access the store and initialize it with some data
-  wrapper = mount(FilterCheckbox, {
-    props: {
-      category,
-      topics,
-    },
-  });
-  const checkboxes = wrapper.findAll("input[type='checkbox']");
-  firstCheckbox = checkboxes[0] as DOMWrapper<HTMLInputElement>;
-  secondCheckbox = checkboxes[1] as DOMWrapper<HTMLInputElement>;
-  thirdCheckbox = checkboxes[2] as DOMWrapper<HTMLInputElement>;
-});
+const coures: string = "course";
+const course_topics: string[] = ["VETS2011", "VETS9999", "VETS2013"];
 
 describe("FilterCheckbox.vue", () => {
+  beforeEach(() => {
+    setActivePinia(createPinia());
+    // * NEED TO ADD THIS I THINK
+    const questionsQueue = useQuizStore();
+    questionsQueue.allQs = questions;
+    // Access the store and initialize it with some data
+    wrapper = mount(FilterCheckbox, {
+      props: {
+        category,
+        topics,
+      },
+    });
+    const checkboxes = wrapper.findAll("input[type='checkbox']");
+    firstCheckbox = checkboxes[0] as DOMWrapper<HTMLInputElement>;
+    secondCheckbox = checkboxes[1] as DOMWrapper<HTMLInputElement>;
+    thirdCheckbox = checkboxes[2] as DOMWrapper<HTMLInputElement>;
+  });
   it("Should render the right number of checkboxes", () => {
     expect(wrapper.findAll("input[type='checkbox']").length).toBe(
       topics.length,
@@ -49,5 +50,35 @@ describe("FilterCheckbox.vue", () => {
     await firstCheckbox.trigger("click");
 
     expect(firstCheckbox.element.checked).toBe(true);
+  });
+});
+
+describe("Filterbox Special case: course category", () => {
+  beforeEach(() => {
+    setActivePinia(createPinia());
+    // * NEED TO ADD THIS I THINK
+    const questionsQueue = useQuizStore();
+    questionsQueue.allQs = questions;
+    // Access the store and initialize it with some data
+    wrapper = mount(FilterCheckbox, {
+      props: {
+        category: coures,
+        topics: course_topics,
+        selectedCourse: "VETS2011",
+      },
+    });
+    const checkboxes = wrapper.findAll("input[type='checkbox']");
+    firstCheckbox = checkboxes[0] as DOMWrapper<HTMLInputElement>;
+    secondCheckbox = checkboxes[1] as DOMWrapper<HTMLInputElement>;
+    thirdCheckbox = checkboxes[2] as DOMWrapper<HTMLInputElement>;
+  });
+  it("If users select one coures, the other course cannot be selected", async () => {
+    expect(wrapper.exists()).toBe(true);
+    await firstCheckbox.trigger("checked");
+    await wrapper.vm.$nextTick();
+    console.log(secondCheckbox.html());
+    expect(firstCheckbox.html()).not.toContain("disabled");
+    expect(secondCheckbox.html()).toContain("disabled");
+    expect(thirdCheckbox.html()).toContain("disabled");
   });
 });

@@ -10,6 +10,11 @@
         type="checkbox"
         :name="category"
         :value="topic"
+        :disabled="
+          category === 'course' &&
+          selectedCourse !== null &&
+          topic !== selectedCourse
+        "
         @change="onChecked($event)"
       />
       <label :for="`${category}-${topic}-checkbox`">
@@ -19,9 +24,6 @@
           ({{ Number(questionamount) }})
           <!--  -->
         </span>
-        <!-- <span class="question-number" :class="{ 'grey-out': num === '0' }">
-          {{ Number(num) }}
-        </span> -->
       </label>
     </li>
   </ul>
@@ -34,10 +36,13 @@ import {
   filterQuestionsBySingleTopic,
 } from "../QuestionStore";
 import { computed } from "vue";
-const { category, topics } = defineProps<{
+
+const { category, topics, selectedCourse } = defineProps<{
   category: string;
   topics: string[];
+  selectedCourse: string | null;
 }>();
+
 const questionsQueue = useQuizStore();
 
 const formatTopic = (topic: string) => {
@@ -132,6 +137,7 @@ ul {
   padding-left: 1rem;
   list-style-type: none;
 }
+
 @media screen and (max-width: 768px) {
   .filter-options {
     text-align: left;
@@ -139,6 +145,7 @@ ul {
     flex-wrap: wrap;
     align-items: center;
   }
+
   ul {
     display: flex;
     flex-direction: column;
@@ -148,13 +155,16 @@ ul {
     margin: 0;
     padding-left: clamp(10px, 5vw, 20px);
   }
+
   ul label {
     font-size: 0.85rem;
   }
+
   ul input {
     width: 8px;
     height: 8px;
   }
+
   .question-number {
     font-size: smaller;
     min-width: 1em;
