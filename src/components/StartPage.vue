@@ -2,29 +2,6 @@
   <div class="start-page-container">
     <h1>VetCloud Smart Quiz</h1>
     <MCQTagOptions />
-    <p class="select-box">
-      <span
-        v-for="([key, items], keyIndex) in setSelectedTags"
-        :key="key"
-        style="text-transform: capitalize"
-      >
-        <span v-for="(item, index) in items" :key="index">
-          {{ item }}
-          <span
-            v-if="index < items.length - 1"
-            style="color: black; font-size: 1.2em"
-          >
-            &cup;
-          </span>
-        </span>
-        <span
-          v-if="keyIndex < setSelectedTags.length - 1"
-          style="color: black; font-size: 1.2em"
-        >
-          &cap;
-        </span>
-      </span>
-    </p>
     <div class="quiz-config-container">
       <div class="question-config-container">
         <p class="tag-text">
@@ -73,7 +50,7 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref, watchEffect, computed } from "vue";
+import { onMounted, ref, watchEffect } from "vue";
 import MCQTagOptions from "./MCQ/MCQTagOptions.vue";
 import DropDownbox from "./MCQ/DropDownbox.vue";
 import { useQuizStore } from "@/store/QuizStore";
@@ -85,11 +62,7 @@ const showMaxMsgDelay = 3000;
 const showMaxMsgTimeoutId = ref<number | null>(null);
 const emit = defineEmits(["start-quiz", "enable-srs"]);
 const questionsQueue = useQuizStore();
-const setSelectedTags = computed(() => {
-  return Object.entries(questionsQueue.getselectedtags()).filter(
-    ([_key, items]) => Array.isArray(items) && items.length !== 0,
-  );
-});
+
 onMounted(() => {
   watchEffect(() => {
     const maxQuestions = questionsQueue.getquestionnumber();
@@ -255,13 +228,5 @@ const checkMax = () => {
 
 .srs-label:active:after {
   width: 20px;
-}
-.select-box {
-  color: #2a52be;
-  border: 2px solid #2a52be;
-  width: 100%;
-  max-width: 350px;
-  word-wrap: break-word;
-  text-transform: capitalize;
 }
 </style>

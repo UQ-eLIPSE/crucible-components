@@ -1,12 +1,7 @@
 <template>
   <ul>
     <li
-      v-for="{
-        idx,
-        topic,
-        disabledStyle,
-        questionamount,
-      } in questionsNumByTags"
+      v-for="{ idx, topic, num, questionamount } in questionsNumByTags"
       :key="idx"
       class="filter-options"
     >
@@ -15,23 +10,23 @@
         type="checkbox"
         :name="category"
         :value="topic"
-        :disabled="disabledStyle"
         @change="onChecked($event)"
       />
-      <label
-        :for="`${category}-${topic}-checkbox`"
-        :class="disabledStyle ? 'grey-out' : ''"
-      >
+      <label :for="`${category}-${topic}-checkbox`">
         {{ formatTopic(topic) }}
         <span>
           <!--  -->
           ({{ Number(questionamount) }})
           <!--  -->
         </span>
+        <span class="question-number" :class="{ 'grey-out': num === '0' }">
+          {{ Number(num) }}
+        </span>
       </label>
     </li>
   </ul>
 </template>
+
 <script setup lang="ts">
 import { SelectedTags } from "@/types/MCQ";
 import { useQuizStore } from "@/store/QuizStore";
@@ -40,13 +35,10 @@ import {
   filterQuestionsBySingleTopic,
 } from "../QuestionStore";
 import { computed } from "vue";
-
-const { category, topics, selectedCourse } = defineProps<{
+const { category, topics } = defineProps<{
   category: string;
   topics: string[];
-  selectedCourse: string | null;
 }>();
-
 const questionsQueue = useQuizStore();
 
 const formatTopic = (topic: string) => {
@@ -57,16 +49,12 @@ const questionsNumByTags = computed(() =>
   Object.entries(topics)
     .map(([idx, topic]) => {
       const num = getQuestionsnumByTags(topic, category);
-      const disabledStyle =
-        category === "course" &&
-        selectedCourse !== null &&
-        topic !== selectedCourse;
       const questionamount = filterQuestionsBySingleTopic(
         questionsQueue.allQs,
         topic,
         category,
       ).length.toString();
-      return { idx, topic, num, disabledStyle, questionamount };
+      return { idx, topic, num, questionamount };
     })
     .filter(({ topic }) => topic !== undefined),
 );
@@ -145,9 +133,6 @@ ul {
   padding-left: 1rem;
   list-style-type: none;
 }
-.grey-out {
-  color: grey;
-}
 @media screen and (max-width: 768px) {
   .filter-options {
     text-align: left;
@@ -155,7 +140,6 @@ ul {
     flex-wrap: wrap;
     align-items: center;
   }
-
   ul {
     display: flex;
     flex-direction: column;
@@ -165,16 +149,13 @@ ul {
     margin: 0;
     padding-left: clamp(10px, 5vw, 20px);
   }
-
   ul label {
     font-size: 0.85rem;
   }
-
   ul input {
     width: 8px;
     height: 8px;
   }
-
   .question-number {
     font-size: smaller;
     min-width: 1em;
