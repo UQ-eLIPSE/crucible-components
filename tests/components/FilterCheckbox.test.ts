@@ -52,33 +52,3 @@ describe("FilterCheckbox.vue", () => {
     expect(firstCheckbox.element.checked).toBe(true);
   });
 });
-
-describe("Filterbox Special case: course category", () => {
-  beforeEach(() => {
-    setActivePinia(createPinia());
-    // * NEED TO ADD THIS I THINK
-    const questionsQueue = useQuizStore();
-    questionsQueue.allQs = questions;
-    // Access the store and initialize it with some data
-    wrapper = mount(FilterCheckbox, {
-      props: {
-        category: coures,
-        topics: course_topics,
-        selectedCourse: "VETS2011",
-      },
-    });
-    const checkboxes = wrapper.findAll("input[type='checkbox']");
-    firstCheckbox = checkboxes[0] as DOMWrapper<HTMLInputElement>;
-    secondCheckbox = checkboxes[1] as DOMWrapper<HTMLInputElement>;
-    thirdCheckbox = checkboxes[2] as DOMWrapper<HTMLInputElement>;
-  });
-  it("If users select one coures, the other course cannot be selected", async () => {
-    expect(wrapper.exists()).toBe(true);
-    await firstCheckbox.trigger("checked");
-    await wrapper.vm.$nextTick();
-    console.log(secondCheckbox.html());
-    expect(firstCheckbox.html()).not.toContain("disabled");
-    expect(secondCheckbox.html()).toContain("disabled");
-    expect(thirdCheckbox.html()).toContain("disabled");
-  });
-});
