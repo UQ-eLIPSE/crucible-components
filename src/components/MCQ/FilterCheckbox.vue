@@ -5,6 +5,7 @@
         idx,
         topic,
         disabledStyle,
+        num,
         questionamount,
       } in questionsNumByTags"
       :key="idx"
@@ -28,6 +29,7 @@
           ({{ Number(questionamount) }})
           <!--  -->
         </span>
+        <span v-if="num !== null" class="question-number">{{ num }}</span>
       </label>
     </li>
   </ul>
@@ -58,9 +60,10 @@ const questionsNumByTags = computed(() =>
     .map(([idx, topic]) => {
       const num = getQuestionsnumByTags(topic, category);
       const disabledStyle =
-        category === "course" &&
-        selectedCourse !== null &&
-        topic !== selectedCourse;
+        (category === "course" &&
+          selectedCourse !== null &&
+          topic !== selectedCourse) ||
+        num === "0";
       const questionamount = filterQuestionsBySingleTopic(
         questionsQueue.allQs,
         topic,
@@ -100,11 +103,15 @@ const getQuestionsnumByTags = (
   const modifiedSelectedTags = JSON.parse(
     JSON.stringify(questionsQueue.getselectedtags()),
   );
+  const selectedTopic = Object.values(modifiedSelectedTags).flat();
 
   if (!modifiedSelectedTags[category].includes(topic)) {
     modifiedSelectedTags[category].push(topic);
   }
-
+  // not including selected topics
+  modifiedSelectedTags[category] = modifiedSelectedTags[category].filter(
+    (item: string) => !selectedTopic.includes(item),
+  );
   const questions = questionsQueue.allQs;
   return filterQuestionsByTags(
     questions,
