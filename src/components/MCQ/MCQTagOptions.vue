@@ -6,11 +6,7 @@
       class="category"
     >
       <h2 class="category-heading">{{ category }}</h2>
-      <FilterCheckbox
-        :category="category"
-        :topics="valueKeys"
-        :selected-course="selectedCourse"
-      />
+      <FilterCheckbox :category="category" :topics="valueKeys" />
     </div>
   </div>
 </template>
@@ -21,7 +17,6 @@ import { getUniquePropertyValues } from "../QuestionStore";
 import FilterCheckbox from "./FilterCheckbox.vue";
 import { useQuizStore } from "@/store/QuizStore";
 import { watch, ref, onMounted } from "vue";
-import { computed } from "vue";
 
 const tagSet = ref<Tags[]>([]); // Use a ref to make tagSet reactive
 const questionsQueue = useQuizStore();
@@ -31,12 +26,6 @@ onMounted(() => {
   questionsQueue.setTagSet();
   tagSet.value = questionsQueue.getTagSet();
   filterSet.value = getUniquePropertyValues(tagSet.value);
-});
-//
-const selectedCourse = computed(() => {
-  return questionsQueue.selectedTags["course"].length > 0
-    ? questionsQueue.selectedTags["course"][0]
-    : null;
 });
 
 watch(

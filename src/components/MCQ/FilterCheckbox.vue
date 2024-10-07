@@ -43,10 +43,9 @@ import {
 } from "../QuestionStore";
 import { computed } from "vue";
 
-const { category, topics, selectedCourse } = defineProps<{
+const { category, topics } = defineProps<{
   category: string;
   topics: string[];
-  selectedCourse: string | null;
 }>();
 
 const questionsQueue = useQuizStore();
@@ -59,11 +58,7 @@ const questionsNumByTags = computed(() =>
   Object.entries(topics)
     .map(([idx, topic]) => {
       const num = getQuestionsnumByTags(topic, category);
-      const disabledStyle =
-        (category === "course" &&
-          selectedCourse !== null &&
-          topic !== selectedCourse) ||
-        num === "0";
+      const disabledStyle = num === "0";
       const questionamount = filterQuestionsBySingleTopic(
         questionsQueue.allQs,
         topic,
